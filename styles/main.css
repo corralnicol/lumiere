@@ -49,20 +49,51 @@
   transform: scale(1.1);
 }
 
-.hero-arrow {
-  position: absolute;
-  right: clamp(10px, 2vw, 24px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: clamp(34px, 4.8vw, 48px);
-  height: clamp(34px, 4.8vw, 48px);
-  border: 0;
-  border-radius: 999px;
-  background: rgba(127, 67, 78, 0.85);
-  color: #fff6f7;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
-  line-height: 1;
-  cursor: pointer;
+.brand-bar {
+  width: 100%;
+  background: #D97D90;
+  padding: 6px 0;
+}
+
+.brands-container {
+  width: min(100%, 1400px);
+  margin: 0 auto;
+  padding: 0 4px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(4px, 1.2vw, 18px);
+  align-items: center;
+}
+
+.brand-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 4px;
+}
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.logo-rarebeauty {
+  width: clamp(98px, 23vw, 400px);
+}
+
+.logo-sheglam {
+  width: clamp(74px, 15vw, 200px);
+}
+
+.logo-theordinary {
+  width: clamp(70px, 14vw, 180px);
+}
+
+.logo-milkmakeup {
+  width: clamp(78px, 15vw, 200px);
 }
 
 @media (max-width: 1024px) {
@@ -91,6 +122,32 @@
 		min-height: 42px;
 		padding: 10px 16px;
 	}
+
+  .brands-container {
+		gap: 2px;
+		padding: 0 2px;
+	}
+
+	.brand-logo-link {
+		min-height: 48px;
+		padding: 2px;
+	}
+
+	.logo-rarebeauty {
+		width: clamp(88px, 22vw, 130px);
+	}
+
+	.logo-sheglam {
+		width: clamp(56px, 14vw, 90px);
+	}
+
+	.logo-theordinary {
+		width: clamp(58px, 14vw, 86px);
+	}
+
+	.logo-milkmakeup {
+		width: clamp(56px, 14vw, 92px);
+	}
 }
 
 @media (max-width: 480px) {
@@ -107,10 +164,5 @@
     min-width: 108px;
     font-size: 0.85rem;
     min-height: 40px;
-  }
-
-  .hero-arrow {
-    width: 34px;
-    height: 34px;
   }
 }
