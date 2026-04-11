@@ -1,10 +1,16 @@
 # Lumière Beauty
 
-**Lumière Beauty** es un e-commerce enfocado en la venta de productos de belleza. Nuestra plataforma simplifica la experiencia de compra con una interfaz intuitiva, moderna y responsive.
+**Lumière Beauty** es un marketplace enfocado en la venta de productos de belleza que priorizan el cuidado de la piel. Nuestra plataforma simplifica la experiencia de compra con una interfaz intuitiva, moderna y responsive. Ve más en nuestro [Behance](https://www.behance.net/gallery/245560359/Lumiere-Beauty-E-commerce-Platform-Design#).
 
 <p align="center">
   <img width="269" height="192" alt="Logo" src="https://github.com/user-attachments/assets/b84ca8fc-e083-417b-9954-3f01c90a5cfd" />
 </p>
+
+## Features
+
+- Catálogo de productos con filtros por categoría.
+- Requerimientos dermatológicos para cada producto.
+- Carrito de compras con resumen dinámico y proceso de checkout simplificado.
 
 ## Tech Stack
 
