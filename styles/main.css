@@ -193,6 +193,133 @@
   line-height: 1;
 }
 
+/* best sellers */
+.best-seller-section {
+  width: min(calc(100% - 32px), 1500px);
+  margin: clamp(20px, 3vw, 32px) auto clamp(28px, 4vw, 44px);
+  background: #d78293;
+  border-radius: clamp(20px, 4vw, 30px);
+  padding: 40px 80px 80px;
+  box-sizing: border-box;
+}
+
+.best-seller-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 700;
+  color: #5d1f2a;
+  margin: 0 0 50px;
+  line-height: 1.05;
+}
+
+.best-seller-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.best-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.best-card-image-box {
+  position: relative;
+  background: #ffffff;
+  border-radius: 8px;
+  min-height: clamp(190px, 24vw, 250px);
+  padding: 18px 18px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.best-card-image-box:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+
+.best-card-fav {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 2;
+
+  border: none;
+  background: transparent;
+  color: #7f434e;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+}
+
+.best-card-image {
+  display: block;
+  max-width: 82%;
+  max-height: 76%;
+  object-fit: contain;
+}
+
+.best-card-image-serum {
+  max-width: 62%;
+  max-height: 80%;
+}
+
+.best-card-image-foundation {
+  max-width: 62%;
+  max-height: 80%;
+}
+
+.best-card-image-eyeshadow {
+  max-width: 62%;
+  max-height: 80%;
+}
+
+.best-card-stars {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  z-index: 2;
+
+  display: flex;
+  gap: 3px;
+  color: #9f2f38;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.best-card-info {
+  padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.best-card-name {
+  margin: 16px 8px 8px;
+  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+  font-weight: 700;
+  color: #fdf1f2;
+  line-height: 1.05;
+  min-height: unset;
+}
+
+.best-card-desc {
+  margin: 0 8px;
+  color: #fff3f4;
+  font-size: clamp(0.95rem, 1.25vw, 1rem);
+  line-height: 1.25;
+  max-width: 92%;
+  min-height: unset;
+}
+
 @media (max-width: 1024px) {
   .hero-image {
     object-position: center 40%;
@@ -200,51 +327,51 @@
 }
 
 @media (max-width: 768px) {
-	.hero-banner {
-		height: clamp(240px, 44svh, 360px);
-		min-height: 240px;
-		background: linear-gradient(90deg, #E28496 0%, #F1748D 33%, #A9525A 87%, #BF5F67 100%);
-	}
+  .hero-banner {
+    height: clamp(240px, 44svh, 360px);
+    min-height: 240px;
+    background: linear-gradient(90deg, #E28496 0%, #F1748D 33%, #A9525A 87%, #BF5F67 100%);
+  }
 
-	.hero-image {
-		object-position: center 46%;
-	}
+  .hero-image {
+    object-position: center 46%;
+  }
 
-	.hero-button {
-		bottom: 14px;
-	}
+  .hero-button {
+    bottom: 14px;
+  }
 
-	.hero-btn {
-		min-width: 116px;
-		min-height: 42px;
-		padding: 10px 16px;
-	}
+  .hero-btn {
+    min-width: 116px;
+    min-height: 42px;
+    padding: 10px 16px;
+  }
 
   .brands-container {
-		gap: 2px;
-		padding: 0 2px;
-	}
+    gap: 2px;
+    padding: 0 2px;
+  }
 
-	.brand-logo-link {
-		min-height: 48px;
-		padding: 2px;
-	}
+  .brand-logo-link {
+    min-height: 48px;
+    padding: 2px;
+  }
 
-	.logo-rarebeauty {
-		width: clamp(88px, 22vw, 130px);
-	}
+  .logo-rarebeauty {
+    width: clamp(88px, 22vw, 130px);
+  }
 
-	.logo-sheglam {
-		width: clamp(56px, 14vw, 90px);
-	}
+  .logo-sheglam {
+    width: clamp(56px, 14vw, 90px);
+  }
 
-	.logo-theordinary {
-		width: clamp(58px, 14vw, 86px);
-	}
+  .logo-theordinary {
+    width: clamp(58px, 14vw, 86px);
+  }
 
-	.logo-milkmakeup {
-		width: clamp(56px, 14vw, 92px);
-	}
+  .logo-milkmakeup {
+    width: clamp(56px, 14vw, 92px);
+  }
 }
 
 @media (max-width: 480px) {
