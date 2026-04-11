@@ -1,0 +1,116 @@
+@import "reset.css";
+
+.landing-hero {
+  width: 100%;
+}
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 46vw, 640px);
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  inset: 0;
+  display: block;
+  object-position: center 42%;
+}
+
+.hero-button {
+  position: absolute;
+  right: clamp(30px, 4vw, 150px);
+  bottom: clamp(16px, 6vh, 100px);
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 155px;
+  min-height: 54px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: #7F434E;
+  color: #fff7f8;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #9f2f38;
+  transform: scale(1.1);
+}
+
+.hero-arrow {
+  position: absolute;
+  right: clamp(10px, 2vw, 24px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(34px, 4.8vw, 48px);
+  height: clamp(34px, 4.8vw, 48px);
+  border: 0;
+  border-radius: 999px;
+  background: rgba(127, 67, 78, 0.85);
+  color: #fff6f7;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .hero-image {
+    object-position: center 40%;
+  }
+}
+
+@media (max-width: 768px) {
+	.hero-banner {
+		height: clamp(240px, 44svh, 360px);
+		min-height: 240px;
+		background: linear-gradient(90deg, #E28496 0%, #F1748D 33%, #A9525A 87%, #BF5F67 100%);
+	}
+
+	.hero-image {
+		object-position: center 46%;
+	}
+
+	.hero-button {
+		bottom: 14px;
+	}
+
+	.hero-btn {
+		min-width: 116px;
+		min-height: 42px;
+		padding: 10px 16px;
+	}
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    height: clamp(210px, 40svh, 300px);
+    min-height: 210px;
+  }
+
+  .hero-image {
+    object-position: center 50%;
+  }
+
+  .hero-btn {
+    min-width: 108px;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+
+  .hero-arrow {
+    width: 34px;
+    height: 34px;
+  }
+}
