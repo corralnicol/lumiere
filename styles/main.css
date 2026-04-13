@@ -91,7 +91,7 @@
 .brands-container {
   width: min(100%, 1400px);
   margin: 0 auto;
-  padding: 0 4px;
+  padding: 0 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(4px, 1.2vw, 18px);
@@ -150,6 +150,7 @@
 
 .section-feedback {
   margin: 0 0 18px;
+  padding: 0 12px;
   text-align: center;
   color: #7f434e;
   font-size: 0.98rem;
@@ -341,7 +342,7 @@
   margin: clamp(20px, 3vw, 32px) auto clamp(28px, 4vw, 44px);
   background: #d78293;
   border-radius: clamp(20px, 4vw, 30px);
-  padding: 40px 80px 80px;
+  padding: 40px clamp(22px, 6vw, 80px) 80px;
   box-sizing: border-box;
 }
 
@@ -568,7 +569,7 @@
   background: #cdc1c3;
   color: #fff;
   padding: 5px 40px 20px;
-  margin-top: 170px;
+  margin-top: 140px;
 }
 
 .footer-newsletter {
@@ -576,6 +577,7 @@
   border-radius: 20px;
   padding: 40px 64px;
 
+  width: min(calc(100% - 32px), 1200px);
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
@@ -583,7 +585,8 @@
 
   margin-bottom: 40px;
   margin-top: -80px;
-  margin-left: 115px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .newsletter-text {
@@ -662,8 +665,8 @@
 }
 
 .footer-about {
-  max-width: 300px;
-  margin-left: 120px;
+  max-width: 320px;
+  margin-left: 0;
 }
 
 .footer-about p {
@@ -747,6 +750,15 @@
 }
 
 @media (max-width: 1024px) {
+  .interaction-feedback {
+    top: 150px;
+  }
+
+  .hero-btn {
+    right: clamp(18px, 4vw, 56px);
+    bottom: clamp(16px, 4vw, 34px);
+  }
+
   .categories {
     width: min(calc(100% - 16px), 1320px);
     padding: 12px 0;
@@ -758,6 +770,10 @@
 
   .best-seller-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .best-seller-section {
+    padding-bottom: 48px;
   }
 
   .best-card-name {
@@ -809,8 +825,6 @@
   }
 
   .footer-newsletter {
-    margin-left: auto;
-    margin-right: auto;
     padding: 30px 30px;
     flex-direction: column;
     text-align: center;
@@ -823,6 +837,7 @@
   }
 
   .footer-about {
+    grid-column: 1 / -1;
     margin-left: 0;
     max-width: 100%;
   }
@@ -894,8 +909,8 @@
   }
 
   .brands-container {
-    gap: 2px;
-    padding: 0 2px;
+    gap: 6px;
+    padding: 8px 10px;
   }
 
   .brand-logo-link {
@@ -920,6 +935,7 @@
   }
 
   .best-seller-section {
+    width: min(calc(100% - 20px), 100%);
     padding: 14px 12px 18px;
   }
 
@@ -1001,9 +1017,30 @@
   .footer-payments {
     flex-wrap: wrap;
   }
+
+  .newsletter-form {
+    width: min(100%, 340px);
+  }
+
+  .newsletter-form button {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
+  .interaction-feedback {
+    top: 88px;
+  }
+
+  .brand-bar {
+    padding: 10px 0;
+  }
+
+  .brands-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+  }
+
   .categories-title {
     margin-bottom: 10px;
   }
@@ -1085,5 +1122,10 @@
 
   .newsletter-form input {
     width: 100%;
+  }
+
+  .footer {
+    margin-top: 110px;
+    padding: 5px 16px 20px;
   }
 }
