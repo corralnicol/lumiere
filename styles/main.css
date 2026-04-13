@@ -53,31 +53,12 @@
   background: #f8e7ea;
 }
 
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.8s ease;
-}
-
-.hero-slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .hero-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero-image-loreal,
-.hero-image-sanvalentin,
-.hero-image-clinique {
-  object-position: center center;
 }
 
 .hero-btn {
@@ -932,17 +913,12 @@
     aspect-ratio: 1512 / 622;
   }
 
-  .hero-slide {
-    position: absolute;
-    inset: 0;
-  }
-
   .hero-image {
-    position: absolute;
+    position: relative;
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
   }
 
   .hero-btn {
