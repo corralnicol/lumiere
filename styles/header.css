@@ -12,6 +12,10 @@
   background: linear-gradient(90deg, #E28496 0%, #F1748D 33%, #A9525A 87%, #BF5F67 100%);
 }
 
+.logo-link {
+  text-decoration: none;
+}
+
 .logo {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
