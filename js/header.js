@@ -1,6 +1,7 @@
 function initializeMobileMenu() {
   const headerBar = document.querySelector(".header-bar");
   const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelectorAll(".main-nav a");
 
   if (!headerBar || !menuToggle) {
     return;
@@ -26,6 +27,10 @@ function initializeMobileMenu() {
     if (!headerBar.contains(event.target)) {
       closeMenu();
     }
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 }
 

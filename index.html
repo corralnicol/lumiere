@@ -4,82 +4,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumière Beauty</title>
+  <title>Lumiere Beauty</title>
 
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/header.css" />
   <script type="module" src="/js/header.js"></script>
   <script type="module" src="/js/hero.js"></script>
+  <script type="module" src="/js/landingInteractions.js"></script>
 </head>
 
 <body>
-  <!-- Header en el que está el logo y aparece en la parte superior de la web -->
-  <header class="header-lumiere">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="header-lumiere" id="top">
     <div class="degrade">
-      <h1 class="logo">Lumière</h1>
+      <a href="#top" class="logo-link" aria-label="Go to top">
+        <h1 class="logo">Lumiere</h1>
+      </a>
     </div>
-    <!-- Header en el que está las opciones de la página -->
     <div class="header-bar">
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <i class="fa-solid fa-bars"></i>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
-      <nav class="main-nav">
-        <a href="#">Shop <i class="fa-solid fa-chevron-down"></i></a>
-        <a href="#">On Sale</a>
-        <a href="#">Brands</a>
-        <a href="#">Categories</a>
-        <a href="#">Best Sellers</a>
+      <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="productos.html">Shop <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+        <a href="#best-sellers">On Sale</a>
+        <a href="#brands">Brands</a>
+        <a href="#categories">Categories</a>
+        <a href="#best-sellers">Best Sellers</a>
         <div class="mobile-menu-icons">
-          <a href="#" aria-label="Favorites"><i class="fa-regular fa-heart"></i></a>
-          <a href="#" aria-label="Cart"><i class="fa-solid fa-shopping-cart"></i></a>
-          <a href="#" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+          <a href="#best-sellers" aria-label="Favorites" data-feedback-link="favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+          <a href="productos.html" aria-label="Cart" data-feedback-link="cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+          <a href="#newsletter" aria-label="Account" data-feedback-link="account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
         </div>
       </nav>
-      <form class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Search for products..." />
+      <form class="search-box" data-search-form role="search" aria-label="Site search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="text" placeholder="Search for products..." aria-label="Search for products" data-search-input />
+        <button type="button" class="search-clear" data-search-clear aria-label="Clear search">Clear</button>
       </form>
       <div class="header-icons">
-        <a href="#"><i class="fa-regular fa-heart"></i></a>
-        <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
-        <a href="#"><i class="fa-regular fa-user"></i></a>
+        <a href="#best-sellers" aria-label="Favorites" data-feedback-link="favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+        <a href="productos.html" aria-label="Cart" data-feedback-link="cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+        <a href="#newsletter" aria-label="Account" data-feedback-link="account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
       </div>
     </div>
   </header>
-  <main>
-    <!-- Hero con el banner de loreal paris -->
-    <section class="landing-hero">
+
+  <div class="interaction-feedback" data-feedback-banner aria-live="polite" role="status"></div>
+
+  <main id="main-content" tabindex="-1">
+    <section class="landing-hero" id="hero">
       <div class="hero-banner">
-        <img src="img/banner/loreal.png" alt="L'Oréal Panorama Mascara" class="hero-image">
-        <a href="#" class="hero-btn">Shop Now</a>
+        <img src="img/banner/loreal.png" alt="L'Oreal Panorama Mascara" class="hero-image">
+        <a href="productos.html" class="hero-btn">Shop Now</a>
       </div>
     </section>
 
-    <!-- Barra de marcas que se ofrecen en la página -->
-    <section class="brand-bar">
+    <section class="brand-bar" id="brands">
       <div class="brands-container">
-        <a href="https://www.rarebeauty.com/" class="brand-logo-link" target="_blank">
+        <a href="https://www.rarebeauty.com/" class="brand-logo-link" target="_blank" rel="noopener noreferrer">
           <img src="img/brands/rare-beauty.svg" alt="Rare Beauty" class="brand-logo logo-rarebeauty">
         </a>
-        <a href="https://www.sheglam.com/" class="brand-logo-link" target="_blank">
+        <a href="https://www.sheglam.com/" class="brand-logo-link" target="_blank" rel="noopener noreferrer">
           <img src="img/brands/sheglam.svg" alt="SHEGLAM" class="brand-logo logo-sheglam">
         </a>
-        <a href="https://theordinary.com/en-us" class="brand-logo-link" target="_blank">
+        <a href="https://theordinary.com/en-us" class="brand-logo-link" target="_blank" rel="noopener noreferrer">
           <img src="img/brands/the-ordinary.svg" alt="The Ordinary" class="brand-logo logo-theordinary">
         </a>
-        <a href="https://milkmakeup.com/" class="brand-logo-link" target="_blank">
+        <a href="https://milkmakeup.com/" class="brand-logo-link" target="_blank" rel="noopener noreferrer">
           <img src="img/brands/milk-makeup.svg" alt="Milk Makeup" class="brand-logo logo-milkmakeup">
         </a>
       </div>
     </section>
 
-    <!-- Categorias -->
-    <section class="categories">
+    <section class="categories" id="categories">
       <h2 class="categories-title">Explore Our Categories</h2>
+      <p class="section-feedback" data-search-status aria-live="polite">Use the search bar to jump to matching products or categories.</p>
       <div class="carousel">
         <div class="carousel-track">
           <div class="group">
-            <a href="#" class="category-card">
+            <a href="productos.html?category=base" class="category-card" data-search-target="base complexion products foundation">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/base.png" alt="Base" class="category-img category-img-base">
@@ -88,7 +92,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=concealer" class="category-card" data-search-target="concealer under eye skin tone">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/concealer.png" alt="Concealer" class="category-img category-img-concealer">
@@ -97,7 +101,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=blush" class="category-card" data-search-target="blush cheeks color glow">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/blush.png" alt="Blush" class="category-img category-img-blush">
@@ -106,7 +110,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=contour" class="category-card" data-search-target="contour sculpt face definition">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/contour.png" alt="Contour" class="category-img category-img-contour">
@@ -115,7 +119,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=eyelash" class="category-card" data-search-target="eyelash lashes volume mascara">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/eyelash.png" alt="Eyelash" class="category-img category-img-eyelash">
@@ -124,7 +128,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=eyeliner" class="category-card" data-search-target="eyeliner eyes precision">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/eyeliner.png" alt="Eyeliner" class="category-img category-img-eyeliner">
@@ -133,7 +137,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=eyeshadow" class="category-card" data-search-target="eyeshadow palette eye color">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/eyeshadow.png" alt="Eyeshadow" class="category-img category-img-eyeshadow">
@@ -142,7 +146,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card">
+            <a href="productos.html?category=lip" class="category-card" data-search-target="lip lipstick gloss tint">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/lip.png" alt="Lip" class="category-img category-img-lip">
@@ -152,9 +156,8 @@
             </a>
           </div>
 
-          <!-- Duplicated for seamless infinite loop; hidden from screen readers. -->
           <div aria-hidden="true" class="group">
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=base" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/base.png" alt="" class="category-img category-img-base">
@@ -163,7 +166,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=concealer" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/concealer.png" alt="" class="category-img category-img-concealer">
@@ -172,7 +175,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=blush" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/blush.png" alt="" class="category-img category-img-blush">
@@ -181,7 +184,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=contour" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/contour.png" alt="" class="category-img category-img-contour">
@@ -190,7 +193,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=eyelash" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/eyelash.png" alt="" class="category-img category-img-eyelash">
@@ -199,7 +202,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=eyeliner" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/eyeliner.png" alt="" class="category-img category-img-eyeliner">
@@ -208,7 +211,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=eyeshadow" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/eyeshadow.png" alt="" class="category-img category-img-eyeshadow">
@@ -217,7 +220,7 @@
               </div>
             </a>
 
-            <a href="#" class="category-card" tabindex="-1">
+            <a href="productos.html?category=lip" class="category-card" tabindex="-1">
               <div class="category-box">
                 <div class="category-img-wrap">
                   <img src="img/categories/lip.png" alt="" class="category-img category-img-lip">
@@ -230,69 +233,64 @@
       </div>
     </section>
 
-    <!-- best sellers -->
-    <section class="best-seller-section">
+    <section class="best-seller-section" id="best-sellers">
       <h2 class="best-seller-title">Best Sellers</h2>
       <div class="best-seller-grid">
-
-        <!-- Card 1 Eye shadow -->
-
-        <article class="best-card">
+        <article class="best-card" data-search-target="patrick ta eyeshadow palette artistry edit">
           <div class="best-card-image-box">
-            <button class="best-card-fav" aria-label="Add to favorites">
-              <i class="fa-regular fa-heart"></i> </button>
+            <button class="best-card-fav" type="button" aria-label="Add Patrick Ta palette to favorites" aria-pressed="false" data-favorite-button data-item-name="Patrick Ta palette">
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
             <img src="img/best-sellers/eye-shadows.webp" alt="Patrick Ta eyeshadow palette"
               class="best-card-image best-card-image-eyeshadow">
             <div class="best-card-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-regular fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-regular fa-star" aria-hidden="true"></i>
             </div>
           </div>
           <div class="best-card-info">
-            <h3 class="best-card-name">Patrick ta</h3>
+            <h3 class="best-card-name">Patrick Ta</h3>
             <p class="best-card-desc">Major Dimension Essential Artistry Edit Eyeshadow Palette</p>
           </div>
         </article>
 
-        <!-- Card 2 the ordinary -->
-
-        <article class="best-card">
+        <article class="best-card" data-search-target="the ordinary sunscreen spf 45 skincare">
           <div class="best-card-image-box">
-            <button class="best-card-fav" aria-label="Add to favorites">
-              <i class="fa-regular fa-heart"></i> </button>
+            <button class="best-card-fav" type="button" aria-label="Add The Ordinary sunscreen to favorites" aria-pressed="false" data-favorite-button data-item-name="The Ordinary sunscreen">
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
             <img src="img/best-sellers/sunscreen.webp" alt="The Ordinary sunscreen"
               class="best-card-image best-card-image-serum">
             <div class="best-card-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
             </div>
           </div>
           <div class="best-card-info">
             <h3 class="best-card-name">The Ordinary</h3>
-            <p class="best-card-desc"> Sunscreen SPF 45 </p>
+            <p class="best-card-desc">Sunscreen SPF 45</p>
           </div>
         </article>
 
-        <!-- Card 3 Clinique -->
-
-        <article class="best-card">
+        <article class="best-card" data-search-target="clinique foundation vitamins spf50 liquid foundation">
           <div class="best-card-image-box">
-            <button class="best-card-fav" aria-label="Add to favorites">
-              <i class="fa-regular fa-heart"></i> </button>
+            <button class="best-card-fav" type="button" aria-label="Add Clinique foundation to favorites" aria-pressed="false" data-favorite-button data-item-name="Clinique foundation">
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
             <img src="img/best-sellers/clinique.webp" alt="Clinique foundation"
               class="best-card-image best-card-image-foundation">
             <div class="best-card-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
             </div>
           </div>
           <div class="best-card-info">
@@ -303,9 +301,8 @@
       </div>
     </section>
 
-    <!--Kits & Sets-->
-    <section class="kits-section">
-      <h2 class="kits-title">Kits & Sets</h2>
+    <section class="kits-section" id="kits">
+      <h2 class="kits-title">Kits &amp; Sets</h2>
 
       <div class="kits-grid">
         <article class="kits-card kits-card--tall">
@@ -332,24 +329,21 @@
   </main>
 
   <footer class="footer">
-    <!--Newsletter-->
-    <div class="footer-newsletter">
+    <div class="footer-newsletter" id="newsletter">
       <div class="newsletter-text">
         <p>Find out about all the promotions we have for you</p>
       </div>
 
-      <form class="newsletter-form">
-        <input type="email" name="email" placeholder="Enter your email address">
+      <form class="newsletter-form" data-newsletter-form>
+        <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address" data-newsletter-input>
         <button type="submit">Subscribe</button>
+        <p class="newsletter-message" data-newsletter-message aria-live="polite"></p>
       </form>
     </div>
 
-    <!--Social Links-->
     <div class="footer-links">
       <div class="footer-about">
-        <p>We are a beauty brand dedicated to enhancing your
-          natural glow through refined, thoughtfully curated products
-          designed for every unique tone</p>
+        <p>We are a beauty brand dedicated to enhancing your natural glow through refined, thoughtfully curated products designed for every unique tone.</p>
 
         <div class="footer-social">
           <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
@@ -369,54 +363,51 @@
 
       <div>
         <h4>COMPANY</h4>
-        <a href="#">About Lumière</a>
-        <a href="#">History</a>
-        <a href="#">Work with us</a>
-        <a href="#">100% original</a>
+        <a href="#hero">About Lumiere</a>
+        <a href="#brands">History</a>
+        <a href="mailto:teamlumiere@example.com">Work with us</a>
+        <a href="#best-sellers">100% original</a>
       </div>
 
       <div>
         <h4>HELP</h4>
-        <a href="#">Customer Support</a>
-        <a href="#">Delivery Details</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Privacy Policy</a>
+        <a href="mailto:support@lumierebeauty.example">Customer Support</a>
+        <a href="productos.html">Delivery Details</a>
+        <a href="#newsletter">Terms &amp; Conditions</a>
+        <a href="#newsletter">Privacy Policy</a>
       </div>
 
       <div>
         <h4>ACCOUNT</h4>
-        <a href="#">Account</a>
-        <a href="#">Manage Deliveries</a>
-        <a href="#">Orders</a>
-        <a href="#">Payments</a>
+        <a href="#newsletter">Account</a>
+        <a href="productos.html">Manage Deliveries</a>
+        <a href="productos.html">Orders</a>
+        <a href="#newsletter">Payments</a>
       </div>
 
       <div>
         <h4>RESOURCES</h4>
-        <a href="#">New Product</a>
-        <a href="#">Lumière Creators</a>
-        <a href="#">Gifts with Purchase</a>
-        <a href="#">Gift Cards</a>
+        <a href="productos.html">New Product</a>
+        <a href="#brands">Lumiere Creators</a>
+        <a href="#kits">Gifts with Purchase</a>
+        <a href="#newsletter">Gift Cards</a>
       </div>
     </div>
 
     <div class="footer-final">
-
       <div class="footer-bottom">
-        <h2>Lumière</h2>
+        <h2>Lumiere</h2>
       </div>
 
       <div class="footer-payments">
-        <img src="img/footer/visa.png">
-        <img src="img/footer/mastercard.png">
-        <img src="img/footer/paypal.png">
-        <img src="img/footer/apple.png">
-        <img src="img/footer/google.png">
+        <img src="img/footer/visa.png" alt="Visa">
+        <img src="img/footer/mastercard.png" alt="Mastercard">
+        <img src="img/footer/paypal.png" alt="PayPal">
+        <img src="img/footer/apple.png" alt="Apple Pay">
+        <img src="img/footer/google.png" alt="Google Pay">
       </div>
-
     </div>
   </footer>
-
 </body>
 
 </html>
