@@ -1,5 +1,41 @@
 @import "reset.css";
 
+.interaction-feedback {
+  position: fixed;
+  top: 124px;
+  left: 50%;
+  z-index: 30;
+  width: min(calc(100% - 24px), 620px);
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: 16px;
+  color: #6f3c46;
+  font-weight: 600;
+  border: 1px solid rgba(159, 47, 56, 0.18);
+  box-shadow: 0 12px 30px rgba(95, 31, 42, 0.12);
+  opacity: 0;
+  transform: translate(-50%, -8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.interaction-feedback.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.interaction-feedback[data-state="info"] {
+  background: rgba(255, 242, 245, 0.98);
+}
+
+.interaction-feedback[data-state="success"] {
+  background: rgba(251, 234, 239, 0.98);
+}
+
+.interaction-feedback[data-state="warning"] {
+  background: rgba(255, 236, 239, 0.98);
+}
+
 .landing-hero {
   width: 100%;
 }
@@ -131,6 +167,13 @@
   letter-spacing: 0.02em;
 }
 
+.section-feedback {
+  margin: 0 0 18px;
+  text-align: center;
+  color: #7f434e;
+  font-size: 0.98rem;
+}
+
 .carousel {
   position: relative;
   margin: 0 auto;
@@ -244,6 +287,14 @@
     0 0 0 3px rgba(255, 240, 242, 1),
     0 0 0 6px rgba(159, 47, 56, 0.4),
     0 14px 26px rgba(159, 47, 56, 0.22);
+}
+
+.category-card.is-search-match .category-box,
+.best-card.is-search-match .best-card-image-box {
+  box-shadow:
+    0 0 0 3px rgba(255, 240, 242, 1),
+    0 0 0 6px rgba(159, 47, 56, 0.45),
+    0 18px 34px rgba(159, 47, 56, 0.18);
 }
 
 .category-img-wrap {
@@ -369,6 +420,11 @@
   appearance: none;
   -webkit-appearance: none;
   box-shadow: none;
+}
+
+.best-card-fav.is-active {
+  color: #9f2f38;
+  transform: scale(1.08);
 }
 
 .best-card-image {
@@ -565,7 +621,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
 .newsletter-form input {
@@ -601,6 +656,21 @@
 .newsletter-form button:hover {
   background: #F1748D;
   color: #fff;
+}
+
+.newsletter-message {
+  min-height: 20px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #fff7f8;
+}
+
+.newsletter-message[data-state="error"] {
+  color: #fff2c6;
+}
+
+.newsletter-message[data-state="success"] {
+  color: #f5ffef;
 }
 
 .footer-links {
@@ -778,6 +848,13 @@
 }
 
 @media (max-width: 768px) {
+  .interaction-feedback {
+    top: 96px;
+    width: min(calc(100% - 16px), 100%);
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
   .categories {
     width: min(calc(100% - 12px), 100%);
     margin: clamp(28px, 5vw, 42px) auto clamp(44px, 7vw, 62px);
