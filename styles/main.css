@@ -19,6 +19,10 @@
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
+.interaction-feedback:empty {
+  display: none;
+}
+
 .interaction-feedback.is-visible {
   opacity: 1;
   transform: translate(-50%, 0);
@@ -80,6 +84,16 @@
 .hero-btn:hover {
   background: #9f2f38;
   transform: scale(1.1);
+}
+
+.hero-btn:focus-visible,
+.brand-logo-link:focus-visible,
+.footer-links a:focus-visible,
+.footer-social a:focus-visible,
+.newsletter-form button:focus-visible,
+.newsletter-form input:focus-visible {
+  outline: 3px solid rgba(159, 47, 56, 0.3);
+  outline-offset: 4px;
 }
 
 .brand-bar {
@@ -407,6 +421,12 @@
 .best-card-fav.is-active {
   color: #9f2f38;
   transform: scale(1.08);
+}
+
+.best-card-fav:focus-visible {
+  outline: 3px solid rgba(159, 47, 56, 0.28);
+  outline-offset: 4px;
+  border-radius: 999px;
 }
 
 .best-card-image {

@@ -23,15 +23,24 @@ function createFeedbackController() {
 function initializeSearch(feedback) {
   const form = document.querySelector("[data-search-form]");
   const input = document.querySelector("[data-search-input]");
+  const clearButton = document.querySelector("[data-search-clear]");
   const status = document.querySelector("[data-search-status]");
   const searchables = [...document.querySelectorAll("[data-search-target]")];
 
-  if (!form || !input || !status || searchables.length === 0) {
+  if (!form || !input || !clearButton || !status || searchables.length === 0) {
     return;
   }
 
   const clearMatches = () => {
     searchables.forEach((element) => element.classList.remove("is-search-match"));
+  };
+
+  const resetSearch = (message, feedbackMessage) => {
+    input.value = "";
+    clearMatches();
+    status.textContent = message;
+    feedback.show(feedbackMessage, "info");
+    input.focus();
   };
 
   form.addEventListener("submit", (event) => {
@@ -63,6 +72,13 @@ function initializeSearch(feedback) {
     status.textContent = `${matches.length} match${matches.length > 1 ? "es" : ""} found for "${rawQuery}".`;
     feedback.show(`Showing ${matches.length} search result${matches.length > 1 ? "s" : ""}.`, "success");
   });
+
+  clearButton.addEventListener("click", () => {
+    resetSearch(
+      "Type a product, brand or category to see matching sections.",
+      "Search reset. You can try a different keyword now."
+    );
+  });
 }
 
 function initializeFavorites(feedback) {
@@ -80,6 +96,10 @@ function initializeFavorites(feedback) {
       }
 
       const itemName = button.dataset.itemName || "Item";
+      button.setAttribute(
+        "aria-label",
+        isActive ? `Remove ${itemName} from favorites` : `Add ${itemName} to favorites`
+      );
       feedback.show(
         isActive ? `${itemName} added to favorites.` : `${itemName} removed from favorites.`,
         isActive ? "success" : "info"
@@ -138,9 +158,14 @@ function initializeUtilityLinks(feedback) {
 
 window.addEventListener("DOMContentLoaded", () => {
   const feedback = createFeedbackController();
+  const mainContent = document.querySelector("#main-content");
 
   initializeSearch(feedback);
   initializeFavorites(feedback);
   initializeNewsletter(feedback);
   initializeUtilityLinks(feedback);
+
+  if (window.location.hash === "#main-content" && mainContent) {
+    mainContent.focus();
+  }
 });

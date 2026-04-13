@@ -16,6 +16,25 @@
   text-decoration: none;
 }
 
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -48px;
+  transform: translateX(-50%);
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #fff7f8;
+  color: #7f434e;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 50;
+  box-shadow: 0 8px 20px rgba(95, 31, 42, 0.14);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 .logo {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
@@ -77,6 +96,16 @@
   color: #9f2f38;
 }
 
+.main-nav a:focus-visible,
+.header-icons a:focus-visible,
+.mobile-menu-icons a:focus-visible,
+.logo-link:focus-visible,
+.menu-toggle:focus-visible {
+  outline: 3px solid rgba(159, 47, 56, 0.32);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
 .search-box {
   grid-column: 2;
   grid-row: 1;
@@ -91,6 +120,11 @@
   align-items: center;
   padding: 0 16px;
   gap: 10px;
+}
+
+.search-box:focus-within {
+  border-color: #9f2f38;
+  box-shadow: 0 0 0 4px rgba(159, 47, 56, 0.12);
 }
 
 .search-box i {
@@ -111,6 +145,21 @@
 .search-box input::placeholder {
   color: #854651;
   font-size: 14px;
+}
+
+.search-clear {
+  border: 0;
+  background: transparent;
+  color: #7f434e;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-clear:focus-visible {
+  outline: 3px solid rgba(159, 47, 56, 0.26);
+  outline-offset: 2px;
+  border-radius: 999px;
 }
 
 .header-icons {

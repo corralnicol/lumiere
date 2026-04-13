@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="header-lumiere" id="top">
     <div class="degrade">
       <a href="#top" class="logo-link" aria-label="Go to top">
@@ -21,36 +22,37 @@
       </a>
     </div>
     <div class="header-bar">
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <i class="fa-solid fa-bars"></i>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
-      <nav class="main-nav">
-        <a href="productos.html">Shop <i class="fa-solid fa-chevron-down"></i></a>
+      <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="productos.html">Shop <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
         <a href="#best-sellers">On Sale</a>
         <a href="#brands">Brands</a>
         <a href="#categories">Categories</a>
         <a href="#best-sellers">Best Sellers</a>
         <div class="mobile-menu-icons">
-          <a href="#best-sellers" aria-label="Favorites" data-feedback-link="favorites"><i class="fa-regular fa-heart"></i></a>
-          <a href="productos.html" aria-label="Cart" data-feedback-link="cart"><i class="fa-solid fa-shopping-cart"></i></a>
-          <a href="#newsletter" aria-label="Account" data-feedback-link="account"><i class="fa-regular fa-user"></i></a>
+          <a href="#best-sellers" aria-label="Favorites" data-feedback-link="favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+          <a href="productos.html" aria-label="Cart" data-feedback-link="cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+          <a href="#newsletter" aria-label="Account" data-feedback-link="account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
         </div>
       </nav>
-      <form class="search-box" data-search-form>
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <form class="search-box" data-search-form role="search" aria-label="Site search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         <input type="text" placeholder="Search for products..." aria-label="Search for products" data-search-input />
+        <button type="button" class="search-clear" data-search-clear aria-label="Clear search">Clear</button>
       </form>
       <div class="header-icons">
-        <a href="#best-sellers" aria-label="Favorites" data-feedback-link="favorites"><i class="fa-regular fa-heart"></i></a>
-        <a href="productos.html" aria-label="Cart" data-feedback-link="cart"><i class="fa-solid fa-shopping-cart"></i></a>
-        <a href="#newsletter" aria-label="Account" data-feedback-link="account"><i class="fa-regular fa-user"></i></a>
+        <a href="#best-sellers" aria-label="Favorites" data-feedback-link="favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+        <a href="productos.html" aria-label="Cart" data-feedback-link="cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+        <a href="#newsletter" aria-label="Account" data-feedback-link="account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
       </div>
     </div>
   </header>
 
-  <div class="interaction-feedback" data-feedback-banner aria-live="polite"></div>
+  <div class="interaction-feedback" data-feedback-banner aria-live="polite" role="status"></div>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="landing-hero" id="hero">
       <div class="hero-banner">
         <img src="img/banner/loreal.png" alt="L'Oreal Panorama Mascara" class="hero-image">
@@ -237,16 +239,16 @@
         <article class="best-card" data-search-target="patrick ta eyeshadow palette artistry edit">
           <div class="best-card-image-box">
             <button class="best-card-fav" type="button" aria-label="Add Patrick Ta palette to favorites" aria-pressed="false" data-favorite-button data-item-name="Patrick Ta palette">
-              <i class="fa-regular fa-heart"></i>
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
             </button>
             <img src="img/best-sellers/eye-shadows.webp" alt="Patrick Ta eyeshadow palette"
               class="best-card-image best-card-image-eyeshadow">
             <div class="best-card-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-regular fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-regular fa-star" aria-hidden="true"></i>
             </div>
           </div>
           <div class="best-card-info">
@@ -258,16 +260,16 @@
         <article class="best-card" data-search-target="the ordinary sunscreen spf 45 skincare">
           <div class="best-card-image-box">
             <button class="best-card-fav" type="button" aria-label="Add The Ordinary sunscreen to favorites" aria-pressed="false" data-favorite-button data-item-name="The Ordinary sunscreen">
-              <i class="fa-regular fa-heart"></i>
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
             </button>
             <img src="img/best-sellers/sunscreen.webp" alt="The Ordinary sunscreen"
               class="best-card-image best-card-image-serum">
             <div class="best-card-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
             </div>
           </div>
           <div class="best-card-info">
@@ -279,16 +281,16 @@
         <article class="best-card" data-search-target="clinique foundation vitamins spf50 liquid foundation">
           <div class="best-card-image-box">
             <button class="best-card-fav" type="button" aria-label="Add Clinique foundation to favorites" aria-pressed="false" data-favorite-button data-item-name="Clinique foundation">
-              <i class="fa-regular fa-heart"></i>
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
             </button>
             <img src="img/best-sellers/clinique.webp" alt="Clinique foundation"
               class="best-card-image best-card-image-foundation">
             <div class="best-card-stars">
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
             </div>
           </div>
           <div class="best-card-info">
