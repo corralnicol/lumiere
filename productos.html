@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Lumiere</title>
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <script type="module" src="/js/renderProducts.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: #fff0f2;
+      color: #6b3c47;
+    }
+
+    .products-shell {
+      width: min(calc(100% - 32px), 1120px);
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .products-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #7f434e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .products-title {
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: #7f434e;
+    }
+
+    .products-summary {
+      margin: 0 0 28px;
+      color: #8e5b65;
+      font-size: 1rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .product-card,
+    .products-empty {
+      border-radius: 22px;
+      background: #fffafb;
+      border: 1px solid rgba(159, 47, 56, 0.15);
+      box-shadow: 0 12px 28px rgba(127, 67, 78, 0.08);
+    }
+
+    .product-card {
+      padding: 22px;
+    }
+
+    .product-card h3 {
+      margin: 0 0 10px;
+      color: #6d2f3b;
+      font-size: 1.15rem;
+    }
+
+    .product-meta {
+      margin: 0 0 10px;
+      color: #9f2f38;
+      font-weight: 700;
+    }
+
+    .product-copy {
+      margin: 0 0 12px;
+      line-height: 1.5;
+      color: #7a5d62;
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .product-tags span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff0f2;
+      color: #7f434e;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .products-empty {
+      padding: 28px;
+      text-align: center;
+      color: #7f434e;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="products-shell">
+    <a href="index.html" class="products-back">Back to landing</a>
+    <h1 class="products-title">Lumiere Products</h1>
+    <p class="products-summary" data-products-summary>Loading products...</p>
+    <section class="products-grid" id="products"></section>
+  </main>
+</body>
+
+</html>
