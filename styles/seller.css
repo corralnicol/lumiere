@@ -472,6 +472,109 @@
   margin: 0;
 }
 
+/* SECCION DE FAQ (ACORDEON) */
+
+.seller-faq {
+  width: 100%;
+  background: #fff;
+  padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px);
+}
+
+.seller-faq__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.seller-faq__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #5d1f2a;
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.seller-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.seller-faq__item {
+  border: 1px solid #e8d0d5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.seller-faq__item:hover {
+  box-shadow: 0 4px 12px rgba(127, 67, 78, 0.08);
+}
+
+.seller-faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-weight: 600;
+  color: #5d1f2a;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.seller-faq__question:hover {
+  background: #fff7f8;
+}
+
+.seller-faq__question[aria-expanded="true"] {
+  background: #fff7f8;
+  color: #9f2f38;
+}
+
+.seller-faq__icon {
+  font-size: 1rem;
+  color: #9f2f38;
+  transition: transform 0.3s ease;
+}
+
+/* Giro el icono a una 'X' cuando esta abierto */
+.seller-faq__question[aria-expanded="true"] .seller-faq__icon {
+  transform: rotate(45deg);
+}
+
+/* Animacion del acordeon */
+.seller-faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+/* Cuando el boton anterior tiene aria-expanded="true", expandimos la respuesta */
+.seller-faq__question[aria-expanded="true"]+.seller-faq__answer {
+  grid-template-rows: 1fr;
+}
+
+.seller-faq__answer-inner {
+  overflow: hidden;
+}
+
+.seller-faq__answer-inner p {
+  padding: 0 24px 24px 24px;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #5d3a40;
+  line-height: 1.6;
+  background: #fff7f8;
+}
+
+
 /* LINK ACTIVO EN NAV    */
 
 .nav-active {

@@ -25,7 +25,36 @@ function initializeSellerNewsletter() {
   });
 }
 
+// Inicializo el acordeon del FAQ
+function initializeFaqAccordion() {
+  const faqItems = document.querySelectorAll(".seller-faq__item");
+
+  faqItems.forEach((item) => {
+    const questionBtn = item.querySelector(".seller-faq__question");
+
+    if (!questionBtn) return;
+
+    questionBtn.addEventListener("click", () => {
+      const isExpanded = questionBtn.getAttribute("aria-expanded") === "true";
+
+      // Cierro todos los demas acordeones
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          const otherBtn = otherItem.querySelector(".seller-faq__question");
+          if (otherBtn) {
+            otherBtn.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+
+      // Alterno el estado del acordeon clickeado
+      questionBtn.setAttribute("aria-expanded", !isExpanded);
+    });
+  });
+}
+
 // Ejecuta todo cuando el DOM ya cargo completamente
 window.addEventListener("DOMContentLoaded", () => {
   initializeSellerNewsletter();
+  initializeFaqAccordion();
 });
