@@ -1,0 +1,194 @@
+/* HERO DEL SELLER */
+
+.seller-hero {
+  width: 100%;
+  /* Imagen de fondo con overlay rosa encima para que el texto se lea bien */
+  background: url("/img/seller/hero-bg.png") center center / cover no-repeat;
+  padding: clamp(60px, 10vw, 120px) clamp(24px, 6vw, 120px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay rosa semitransparente sobre la imagen de fondo */
+.seller-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(225, 130, 150, 0.75) 0%, rgba(210, 110, 135, 0.7) 40%, rgba(195, 100, 125, 0.72) 100%);
+  pointer-events: none;
+}
+
+/* Contenedor del texto y botones del hero */
+.seller-hero__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Titulo grande del hero */
+.seller-hero__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: clamp(24px, 4vw, 40px);
+  text-shadow: 0 2px 8px rgba(100, 30, 45, 0.15);
+}
+
+/* Contenedor de los botones y texto promocional del hero */
+.seller-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 28px);
+  flex-wrap: wrap;
+}
+
+/* Boton de registro */
+.seller-hero__register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 140px;
+  min-height: 48px;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background: #5d1f2a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.seller-hero__register-btn:hover {
+  background: #7F434E;
+  transform: scale(1.05);
+}
+
+.seller-hero__register-btn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+/* Texto de la promo del 10% de descuento */
+.seller-hero__promo {
+  color: #fce4ea;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 500;
+}
+
+
+/* SECCION DE STATS      */
+.seller-stats {
+  width: 100%;
+  background: #fff7f8;
+  padding: clamp(36px, 5vw, 60px) clamp(24px, 6vw, 80px);
+  text-align: center;
+}
+
+.seller-stats__subtitle {
+  max-width: 800px;
+  margin: 0 auto clamp(28px, 4vw, 48px);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  color: #7F434E;
+  line-height: 1.5;
+}
+
+/* Grid de las 3 tarjetas de estadisticas en columnas */
+.seller-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 40px);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.seller-stats__card {
+  padding: clamp(20px, 3vw, 32px) clamp(16px, 2vw, 24px);
+  background: #fce8ec;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(127, 67, 78, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.seller-stats__card:hover {
+  transform: translateY(-4px);
+}
+
+.seller-stats__number {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  font-weight: 700;
+  color: #7F434E;
+  margin-bottom: 12px;
+  text-decoration: underline;
+  text-decoration-color: rgba(127, 67, 78, 0.25);
+  text-underline-offset: 6px;
+}
+
+.seller-stats__desc {
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  color: #6B5453;
+  line-height: 1.5;
+}
+
+
+/* LINK ACTIVO EN NAV    */
+
+.nav-active {
+  font-weight: 600 !important;
+  color: #9f2f38 !important;
+  position: relative;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #9f2f38;
+  border-radius: 999px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .seller-hero {
+    padding: clamp(40px, 8vw, 70px) clamp(18px, 5vw, 40px);
+  }
+
+  .seller-hero__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .seller-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .seller-stats__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .seller-stats {
+    padding: clamp(28px, 5vw, 40px) clamp(16px, 4vw, 28px);
+  }
+}
+
+@media (max-width: 480px) {
+  .seller-hero__title {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+  }
+
+  .seller-hero__register-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

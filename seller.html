@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell on Lumiere | Lumiere Beauty</title>
+  <meta name="description"
+    content="Start selling your beauty products on Lumière. Create your seller account and reach thousands of customers.">
+
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <!-- Estilos propios de la pagina de vendedor -->
+  <link rel="stylesheet" href="/styles/seller.css" />
+
+  <script type="module" src="/js/header.js"></script>
+  <script type="module" src="/js/seller.js"></script>
+</head>
+
+<body>
+  <!-- Enlace de accesibilidad para saltar al contenido principal, igual que en la landing -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- HEADER: es el mismo de la landing page        -->
+  <!-- Solo le agregue el link de "Seller" en el nav -->
+  <header class="header-lumiere" id="top">
+    <div class="degrade">
+      <a href="index.html" class="logo-link" aria-label="Go to homepage">
+        <h1 class="logo">Lumière</h1>
+      </a>
+    </div>
+    <div class="header-bar">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="primary-navigation">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+      <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="productos.html">Shop <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+        <a href="index.html#best-sellers">On Sale</a>
+        <a href="index.html#brands">Brands</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#best-sellers">Best Sellers</a>
+        <!-- Este es el link de Seller que apunta a esta misma pagina -->
+        <a href="seller.html" class="nav-active">Seller</a>
+        <div class="mobile-menu-icons">
+          <a href="index.html#best-sellers" aria-label="Favorites"><i class="fa-regular fa-heart"
+              aria-hidden="true"></i></a>
+          <a href="productos.html" aria-label="Cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+          <a href="index.html#newsletter" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
+        </div>
+      </nav>
+      <form class="search-box" role="search" aria-label="Site search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="text" placeholder="Search for products..." aria-label="Search for products" />
+      </form>
+      <div class="header-icons">
+        <a href="index.html#best-sellers" aria-label="Favorites"><i class="fa-regular fa-heart"
+            aria-hidden="true"></i></a>
+        <a href="productos.html" aria-label="Cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+        <a href="index.html#newsletter" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- CONTENIDO PRINCIPAL DE LA PAGINA DE VENDEDOR  -->
+  <main id="main-content" tabindex="-1">
+
+    <!-- HERO: seccion principal -->
+    <section class="seller-hero" id="seller-hero">
+      <div class="seller-hero__content">
+        <h2 class="seller-hero__title">Create an Lumière<br>seller account</h2>
+        <div class="seller-hero__actions">
+          <a href="#steps" class="seller-hero__register-btn">Register</a>
+          <span class="seller-hero__promo">Get 10% off your first $30 brand sale</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS:-->
+    <section class="seller-stats" id="stats">
+      <p class="seller-stats__subtitle">More than 80% of Lumiere sellers make their first sale in less than 60 days.</p>
+
+      <div class="seller-stats__grid">
+        <div class="seller-stats__card">
+          <h3 class="seller-stats__number">$320,000+</h3>
+          <p class="seller-stats__desc">Average sales on the Lumiere store for independent sellers in the US in 2024.
+          </p>
+        </div>
+
+        <div class="seller-stats__card">
+          <h3 class="seller-stats__number">More than 60%</h3>
+          <p class="seller-stats__desc">Percentage of sales on Lumiere from independent sellers, most of whom are small
+            and medium-sized businesses.</p>
+        </div>
+
+        <div class="seller-stats__card">
+          <h3 class="seller-stats__number">More than 100</h3>
+          <p class="seller-stats__desc">Countries and regions where Lumiere ships to customers.</p>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+
+  <!-- FOOTER: es el mismo de la landing page-->
+
+  <footer class="footer">
+    <div class="footer-newsletter" id="newsletter">
+      <div class="newsletter-text">
+        <p>Find out about all the promotions we have for you</p>
+      </div>
+
+      <form class="newsletter-form" data-newsletter-form>
+        <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address"
+          data-newsletter-input>
+        <button type="submit">Subscribe</button>
+        <p class="newsletter-message" data-newsletter-message aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-about">
+        <p>We are a beauty brand dedicated to enhancing your natural glow through refined, thoughtfully curated products
+          designed for every unique tone.</p>
+
+        <div class="footer-social">
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/twiter.png" alt="Twitter">
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/insta.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://github.com/corralnicol/lumiere" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/github.png" alt="GitHub">
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>COMPANY</h4>
+        <a href="index.html#hero">About Lumiere</a>
+        <a href="index.html#brands">History</a>
+        <a href="mailto:teamlumiere@example.com">Work with us</a>
+        <a href="index.html#best-sellers">100% original</a>
+      </div>
+
+      <div>
+        <h4>HELP</h4>
+        <a href="mailto:support@lumierebeauty.example">Customer Support</a>
+        <a href="productos.html">Delivery Details</a>
+        <a href="#newsletter">Terms &amp; Conditions</a>
+        <a href="#newsletter">Privacy Policy</a>
+      </div>
+
+      <div>
+        <h4>FAQ</h4>
+        <a href="#newsletter">Account</a>
+        <a href="productos.html">Manage Deliveries</a>
+        <a href="productos.html">Orders</a>
+        <a href="#newsletter">Payments</a>
+      </div>
+
+      <div>
+        <h4>RESOURCES</h4>
+        <a href="productos.html">New Product</a>
+        <a href="index.html#brands">Lumiere Creators</a>
+        <a href="index.html#kits">Gifts with Purchase</a>
+        <a href="#newsletter">Gift Cards</a>
+      </div>
+    </div>
+
+    <div class="footer-final">
+      <div class="footer-bottom">
+        <h2>Lumière</h2>
+      </div>
+
+      <div class="footer-payments">
+        <img src="img/footer/visa.png" alt="Visa">
+        <img src="img/footer/mastercard.png" alt="Mastercard">
+        <img src="img/footer/paypal.png" alt="PayPal">
+        <img src="img/footer/apple.png" alt="Apple Pay">
+        <img src="img/footer/google.png" alt="Google Pay">
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
