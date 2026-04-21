@@ -137,6 +137,197 @@
 }
 
 
+/* SECCION DE BENEFICIOS */
+
+.seller-benefits {
+  width: 100%;
+  background: #FFF0F2;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 6vw, 80px);
+}
+
+/* Layout de dos columnas: imagen a la izquierda, info a la derecha */
+.seller-benefits__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: center;
+}
+
+.seller-benefits__image-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(127, 67, 78, 0.12);
+}
+
+.seller-benefits__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lista de beneficios con iconos de check */
+.seller-benefits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.seller-benefits__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: clamp(0.9rem, 1.3vw, 1.02rem);
+  color: #5d3a40;
+  line-height: 1.55;
+}
+
+/* Icono de check con circulo rosa */
+.seller-benefits__list li i {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #9f2f38;
+  font-size: 0.85rem;
+  background: #fce8ec;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* SECCION DE PASOS */
+
+.seller-steps {
+  width: 100%;
+  background: #fff7f8;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 6vw, 80px);
+}
+
+.seller-steps__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #7F434E;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+/* Layout de dos columnas: pasos a la izquierda, imagen a la derecha */
+.seller-steps__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: start;
+}
+
+.seller-steps__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Cada paso tiene un header con icono y titulo */
+.seller-steps__step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.seller-steps__step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.seller-steps__step-header i {
+  color: #9f2f38;
+  font-size: 1.1rem;
+}
+
+.seller-steps__step-header h3 {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-weight: 700;
+  color: #5d1f2a;
+}
+
+.seller-steps__step p {
+  font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+  color: #5d3a40;
+  line-height: 1.6;
+}
+
+.seller-steps__note {
+  color: #7a5d62 !important;
+  font-size: clamp(0.84rem, 1.1vw, 0.92rem) !important;
+}
+
+/* Lista de requisitos para crear la cuenta */
+.seller-steps__requirements {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.seller-steps__requirements li {
+  padding: 3px 0;
+  font-size: clamp(0.86rem, 1.1vw, 0.95rem);
+  color: #5d3a40;
+  line-height: 1.5;
+}
+
+.seller-steps__requirements li::before {
+  content: "•";
+  margin-right: 8px;
+  color: #9f2f38;
+}
+
+/* Link de "Learn to sell in Lumiere" */
+.seller-steps__learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7F434E;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 0.2s ease;
+}
+
+.seller-steps__learn-more:hover {
+  color: #9f2f38;
+}
+
+.seller-steps__learn-more i {
+  font-size: 0.7rem;
+}
+
+/* Imagen decorativa al lado de los pasos */
+.seller-steps__image-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(127, 67, 78, 0.12);
+  position: sticky;
+  top: 140px;
+}
+
+.seller-steps__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+
 /* LINK ACTIVO EN NAV    */
 
 .nav-active {
@@ -179,6 +370,25 @@
 
   .seller-stats {
     padding: clamp(28px, 5vw, 40px) clamp(16px, 4vw, 28px);
+  }
+
+  /* En mobile beneficios van en una columna */
+  .seller-benefits__container {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-benefits__image-wrap {
+    max-height: 300px;
+  }
+
+  /* En mobile los pasos van en una columna */
+  .seller-steps__container {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-steps__image-wrap {
+    position: static;
+    max-height: 350px;
   }
 }
 
