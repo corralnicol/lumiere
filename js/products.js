@@ -49,7 +49,7 @@ export async function getProducts() {
   let products = [];
 
   try {
-    const res = await fetch("/data/products.json");
+    const res = await fetch("/data/products.json?t=" + new Date().getTime());
 
     if (!res.ok) {
       return {

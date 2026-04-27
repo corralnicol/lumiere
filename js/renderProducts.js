@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   container.innerHTML = filteredProducts
     .map((p) => `
       <article class="product-card">
+        <img src="${p.imageUrl}" alt="${p.name}" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin-bottom: 16px; background-color: #fff;">
         <h3>${p.name}</h3>
         <p class="product-meta">$${p.price} - ${p.brand}</p>
         <p class="product-copy">${p.description}</p>
