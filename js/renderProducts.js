@@ -1,4 +1,4 @@
-import { getProducts } from "./products.js";
+import { getProducts } from "products.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const { products, error } = await getProducts();
