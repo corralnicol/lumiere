@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell on Lumiere | Lumiere Beauty</title>
+  <meta name="description"
+    content="Start selling your beauty products on Lumière. Create your seller account and reach thousands of customers.">
+
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <!-- Estilos propios de la pagina de vendedor -->
+  <link rel="stylesheet" href="/styles/seller.css" />
+
+  <script type="module" src="/js/header.js"></script>
+  <script type="module" src="/js/seller.js"></script>
+</head>
+
+<body>
+  <!-- Enlace de accesibilidad para saltar al contenido principal, igual que en la landing -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- HEADER: es el mismo de la landing page        -->
+  <!-- Solo le agregue el link de "Seller" en el nav -->
+  <header class="header-lumiere" id="top">
+    <div class="degrade">
+      <a href="index.html" class="logo-link" aria-label="Go to homepage">
+        <h1 class="logo">Lumière</h1>
+      </a>
+    </div>
+    <div class="header-bar">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="primary-navigation">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+      <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a href="productos.html">Shop <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+        <a href="index.html#best-sellers">On Sale</a>
+        <a href="index.html#brands">Brands</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#best-sellers">Best Sellers</a>
+        <!-- Este es el link de Seller que apunta a esta misma pagina -->
+        <a href="seller.html" class="nav-active">Seller</a>
+        <div class="mobile-menu-icons">
+          <a href="index.html#best-sellers" aria-label="Favorites"><i class="fa-regular fa-heart"
+              aria-hidden="true"></i></a>
+          <a href="productos.html" aria-label="Cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+          <a href="index.html#newsletter" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
+        </div>
+      </nav>
+      <form class="search-box" role="search" aria-label="Site search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="text" placeholder="Search for products..." aria-label="Search for products" />
+      </form>
+      <div class="header-icons">
+        <a href="index.html#best-sellers" aria-label="Favorites"><i class="fa-regular fa-heart"
+            aria-hidden="true"></i></a>
+        <a href="productos.html" aria-label="Cart"><i class="fa-solid fa-shopping-cart" aria-hidden="true"></i></a>
+        <a href="index.html#newsletter" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- CONTENIDO PRINCIPAL DE LA PAGINA DE VENDEDOR  -->
+  <main id="main-content" tabindex="-1">
+
+    <!-- HERO: seccion principal -->
+    <section class="seller-hero" id="seller-hero">
+      <div class="seller-hero__content">
+        <h2 class="seller-hero__title">Create an Lumière<br>seller account</h2>
+        <div class="seller-hero__actions">
+          <a href="#steps" class="seller-hero__register-btn">Register</a>
+          <span class="seller-hero__promo">Get 10% off your first $30 brand sale</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS:-->
+    <section class="seller-stats" id="stats">
+      <p class="seller-stats__subtitle">More than 80% of Lumiere sellers make their first sale in less than 60 days.</p>
+
+      <div class="seller-stats__grid">
+        <div class="seller-stats__card">
+          <h3 class="seller-stats__number">$320,000+</h3>
+          <p class="seller-stats__desc">Average sales on the Lumiere store for independent sellers in the US in 2024.
+          </p>
+        </div>
+
+        <div class="seller-stats__card">
+          <h3 class="seller-stats__number">More than 60%</h3>
+          <p class="seller-stats__desc">Percentage of sales on Lumiere from independent sellers, most of whom are small
+            and medium-sized businesses.</p>
+        </div>
+
+        <div class="seller-stats__card">
+          <h3 class="seller-stats__number">More than 100</h3>
+          <p class="seller-stats__desc">Countries and regions where Lumiere ships to customers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS: imagen a la izquierda y lista de ventajas a la derecha -->
+    <section class="seller-benefits" id="benefits">
+      <div class="seller-benefits__container">
+        <div class="seller-benefits__image-wrap">
+          <img src="img/seller/benefits.png" alt="Women collaborating on beauty business" class="seller-benefits__image">
+        </div>
+        <div class="seller-benefits__info">
+          <ul class="seller-benefits__list">
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              <span>10% cashback on your first $50,000 brand sale, then 5% cashback for the first year until you reach $1,000,000.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              <span>$100 off shipping to the Fulfillment by Lumiere network with the Lumiere Partner Carrier Program.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              <span>Free customer storage and returns with automatic enrollment in the Fulfillment by Lumiere New Pick program.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              <span>$50 credit toward creating Sponsored Products or Sponsored Brands ads.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASOS: guia de 3 pasos para comenzar a vender en Lumiere -->
+    <section class="seller-steps" id="steps">
+      <h2 class="seller-steps__title">Are you ready to begin?</h2>
+      <div class="seller-steps__container">
+        <div class="seller-steps__content">
+          <!-- Paso 1 -->
+          <div class="seller-steps__step">
+            <div class="seller-steps__step-header">
+              <i class="fa-solid fa-gear" aria-hidden="true"></i>
+              <h3>Step 1: Choose a sales plan</h3>
+            </div>
+            <p>We offer two sales plans, so you can choose the right package of tools and services at the right price.</p>
+            <p>The Individual sales plan costs $1.00 per sale.</p>
+            <p>The Professional sales plan costs $39.99 per month, regardless of how many items you sell.</p>
+            <p class="seller-steps__note">You can modify or cancel your sales plan at any time.</p>
+            <p class="seller-steps__note">Lumiere also charges a referral fee for each product you sell, and in some cases, other selling fees may apply. Some optional tools and programs involve additional costs.</p>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="seller-steps__step">
+            <div class="seller-steps__step-header">
+              <i class="fa-solid fa-gear" aria-hidden="true"></i>
+              <h3>Step 2: Create your Lumiere seller account</h3>
+            </div>
+            <p>Visit Lumiere.com and click Sign Up. Then, create the account using the email address associated with your Lumiere customer account or a separate email address from your business.</p>
+            <p>Before creating your seller account, make sure you have the following:</p>
+            <ul class="seller-steps__requirements">
+              <li>Bank account and routing number</li>
+              <li>Credit card for international payments</li>
+              <li>Government-issued ID</li>
+              <li>Tax information</li>
+              <li>Phone number</li>
+            </ul>
+            <p class="seller-steps__note">See our beginner's overview for step-by-step instructions on creating an Lumiere seller account.</p>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="seller-steps__step">
+            <div class="seller-steps__step-header">
+              <i class="fa-solid fa-gear" aria-hidden="true"></i>
+              <h3>Step 3: Start selling</h3>
+            </div>
+            <p>After creating an Lumiere seller account, you'll have access to Seller Control and can set up your public seller profile, shipping and returns, tax, payment, and business information.</p>
+            <p>Then you can list and price your products, register your brand, choose a fulfillment method, and take advantage of tools and programs to promote products and connect with customers.</p>
+          </div>
+
+          <a href="#benefits" class="seller-steps__learn-more">Learn to sell in Lumiere <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+        </div>
+
+        <!-- Imagen decorativa al lado de los pasos -->
+        <div class="seller-steps__image-wrap">
+          <img src="img/seller/steps.png" alt="Beauty products arrangement" class="seller-steps__image">
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS: 3 tarjetas con las opciones de fulfillment -->
+    <section class="seller-services" id="services">
+      <div class="seller-services__grid">
+        <article class="seller-services__card">
+          <div class="seller-services__icon">
+            <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+          </div>
+          <h3>Managed by the seller</h3>
+          <p>Use a suite of solutions to save time and money by managing customer orders yourself. Streamline orders you receive from Lumiere and other sales channels. Get great shipping rates and offer fast, reliable delivery.</p>
+        </article>
+
+        <article class="seller-services__card">
+          <div class="seller-services__icon">
+            <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+          </div>
+          <h3>Multichannel Logistics</h3>
+          <p>Lumiere manages customer orders for purchases made on your own website or through another sales channel.</p>
+        </article>
+
+        <article class="seller-services__card">
+          <div class="seller-services__icon">
+            <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+          </div>
+          <h3>Lumiere supply chain</h3>
+          <p>Get your products from manufacturers to customers worldwide. Take advantage of a comprehensive solution that keeps products available, provides faster and more reliable shipping, and significantly reduces costs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS: opiniones de vendedores reales -->
+    <section class="seller-testimonials" id="testimonials">
+      <div class="seller-testimonials__grid">
+        <!-- Testimonio 1 -->
+        <article class="seller-testimonials__item">
+          <div class="seller-testimonials__image-wrap">
+            <img src="img/seller/testimonial1.png" alt="Silvia Clerc, Lumiere seller" class="seller-testimonials__image">
+          </div>
+          <div class="seller-testimonials__content">
+            <div class="seller-testimonials__author">
+              <span class="seller-testimonials__dot"></span>
+              <span class="seller-testimonials__name">Silvia Clerc</span>
+              <span class="seller-testimonials__date">• 15 Feb 2025</span>
+            </div>
+            <blockquote class="seller-testimonials__quote">
+              "Challenges are a sign that something fundamental needs to change. In our case, it was the way we sold our products. It was time to start selling online."
+            </blockquote>
+          </div>
+        </article>
+
+        <!-- Testimonio 2 -->
+        <article class="seller-testimonials__item seller-testimonials__item--reverse">
+          <div class="seller-testimonials__image-wrap">
+            <img src="img/seller/testimonial2.png" alt="Lena Nual, Lumiere seller" class="seller-testimonials__image">
+          </div>
+          <div class="seller-testimonials__content">
+            <div class="seller-testimonials__author">
+              <span class="seller-testimonials__dot"></span>
+              <span class="seller-testimonials__name">Lena Nual</span>
+              <span class="seller-testimonials__date">• 16 Abr 2025</span>
+            </div>
+            <blockquote class="seller-testimonials__quote">
+              "I was confident that there was an interested community for whom we were important. All we had to do was find it."
+            </blockquote>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ: seccion de preguntas frecuentes con acordeon -->
+    <section class="seller-faq" id="faq">
+      <div class="seller-faq__container">
+        <h2 class="seller-faq__title">Frequently Asked Questions</h2>
+        <div class="seller-faq__accordion">
+          <!-- Pregunta 1 -->
+          <div class="seller-faq__item">
+            <button class="seller-faq__question" aria-expanded="false" aria-controls="faq-answer-1">
+              <span>What do I need to create a seller account?</span>
+              <i class="fa-solid fa-plus seller-faq__icon" aria-hidden="true"></i>
+            </button>
+            <div class="seller-faq__answer" id="faq-answer-1">
+              <div class="seller-faq__answer-inner">
+                <p>To register as a seller on Lumiere, you must have an active bank account, a valid credit card, a government-issued identification document, your tax information, and a phone number where we can contact you.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="seller-faq__item">
+            <button class="seller-faq__question" aria-expanded="false" aria-controls="faq-answer-2">
+              <span>How much does it cost to sell on Lumiere?</span>
+              <i class="fa-solid fa-plus seller-faq__icon" aria-hidden="true"></i>
+            </button>
+            <div class="seller-faq__answer" id="faq-answer-2">
+              <div class="seller-faq__answer-inner">
+                <p>We offer two selling plans to suit your needs: The Individual plan costs $1.00 per item sold, while the Professional plan is a flat fee of $39.99 per month, regardless of the number of items you sell. Additional selling fees and fulfillment costs may apply depending on the services you choose.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="seller-faq__item">
+            <button class="seller-faq__question" aria-expanded="false" aria-controls="faq-answer-3">
+              <span>When do I start getting paid?</span>
+              <i class="fa-solid fa-plus seller-faq__icon" aria-hidden="true"></i>
+            </button>
+            <div class="seller-faq__answer" id="faq-answer-3">
+              <div class="seller-faq__answer-inner">
+                <p>Lumiere deposits your payment directly into your bank account on a regular cycle. You will receive a notification when the funds have been sent. Typically, sellers receive their payments every 14 days, provided that they maintain a healthy seller account status.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER: es el mismo de la landing page-->
+
+  <footer class="footer">
+    <div class="footer-newsletter" id="newsletter">
+      <div class="newsletter-text">
+        <p>Find out about all the promotions we have for you</p>
+      </div>
+
+      <form class="newsletter-form" data-newsletter-form>
+        <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address"
+          data-newsletter-input>
+        <button type="submit">Subscribe</button>
+        <p class="newsletter-message" data-newsletter-message aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-about">
+        <p>We are a beauty brand dedicated to enhancing your natural glow through refined, thoughtfully curated products
+          designed for every unique tone.</p>
+
+        <div class="footer-social">
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/twiter.png" alt="Twitter">
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/insta.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://github.com/corralnicol/lumiere" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer/github.png" alt="GitHub">
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>COMPANY</h4>
+        <a href="index.html#hero">About Lumiere</a>
+        <a href="index.html#brands">History</a>
+        <a href="mailto:teamlumiere@example.com">Work with us</a>
+        <a href="index.html#best-sellers">100% original</a>
+      </div>
+
+      <div>
+        <h4>HELP</h4>
+        <a href="mailto:support@lumierebeauty.example">Customer Support</a>
+        <a href="productos.html">Delivery Details</a>
+        <a href="#newsletter">Terms &amp; Conditions</a>
+        <a href="#newsletter">Privacy Policy</a>
+      </div>
+
+      <div>
+        <h4>FAQ</h4>
+        <a href="#newsletter">Account</a>
+        <a href="productos.html">Manage Deliveries</a>
+        <a href="productos.html">Orders</a>
+        <a href="#newsletter">Payments</a>
+      </div>
+
+      <div>
+        <h4>RESOURCES</h4>
+        <a href="productos.html">New Product</a>
+        <a href="index.html#brands">Lumiere Creators</a>
+        <a href="index.html#kits">Gifts with Purchase</a>
+        <a href="#newsletter">Gift Cards</a>
+      </div>
+    </div>
+
+    <div class="footer-final">
+      <div class="footer-bottom">
+        <h2>Lumière</h2>
+      </div>
+
+      <div class="footer-payments">
+        <img src="img/footer/visa.png" alt="Visa">
+        <img src="img/footer/mastercard.png" alt="Mastercard">
+        <img src="img/footer/paypal.png" alt="PayPal">
+        <img src="img/footer/apple.png" alt="Apple Pay">
+        <img src="img/footer/google.png" alt="Google Pay">
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

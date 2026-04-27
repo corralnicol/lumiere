@@ -1,0 +1,671 @@
+/* HERO DEL SELLER */
+
+.seller-hero {
+  width: 100%;
+  /* Imagen de fondo con overlay rosa encima para que el texto se lea bien */
+  background: url("/img/seller/hero-bg.png") center center / cover no-repeat;
+  padding: clamp(60px, 10vw, 120px) clamp(24px, 6vw, 120px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay rosa semitransparente sobre la imagen de fondo */
+.seller-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(225, 130, 150, 0.75) 0%, rgba(210, 110, 135, 0.7) 40%, rgba(195, 100, 125, 0.72) 100%);
+  pointer-events: none;
+}
+
+/* Contenedor del texto y botones del hero */
+.seller-hero__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Titulo grande del hero */
+.seller-hero__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: clamp(24px, 4vw, 40px);
+  text-shadow: 0 2px 8px rgba(100, 30, 45, 0.15);
+}
+
+/* Contenedor de los botones y texto promocional del hero */
+.seller-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 28px);
+  flex-wrap: wrap;
+}
+
+/* Boton de registro */
+.seller-hero__register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 140px;
+  min-height: 48px;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background: #5d1f2a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.seller-hero__register-btn:hover {
+  background: #7F434E;
+  transform: scale(1.05);
+}
+
+.seller-hero__register-btn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+/* Texto de la promo del 10% de descuento */
+.seller-hero__promo {
+  color: #fce4ea;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 500;
+}
+
+
+/* SECCION DE STATS      */
+.seller-stats {
+  width: 100%;
+  background: #fff7f8;
+  padding: clamp(36px, 5vw, 60px) clamp(24px, 6vw, 80px);
+  text-align: center;
+}
+
+.seller-stats__subtitle {
+  max-width: 800px;
+  margin: 0 auto clamp(28px, 4vw, 48px);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  color: #7F434E;
+  line-height: 1.5;
+}
+
+/* Grid de las 3 tarjetas de estadisticas en columnas */
+.seller-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 40px);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.seller-stats__card {
+  padding: clamp(20px, 3vw, 32px) clamp(16px, 2vw, 24px);
+  background: #fce8ec;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(127, 67, 78, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.seller-stats__card:hover {
+  transform: translateY(-4px);
+}
+
+.seller-stats__number {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  font-weight: 700;
+  color: #7F434E;
+  margin-bottom: 12px;
+  text-decoration: underline;
+  text-decoration-color: rgba(127, 67, 78, 0.25);
+  text-underline-offset: 6px;
+}
+
+.seller-stats__desc {
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  color: #6B5453;
+  line-height: 1.5;
+}
+
+
+/* SECCION DE BENEFICIOS */
+
+.seller-benefits {
+  width: 100%;
+  background: #FFF0F2;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 6vw, 80px);
+}
+
+/* Layout de dos columnas: imagen a la izquierda, info a la derecha */
+.seller-benefits__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: center;
+}
+
+.seller-benefits__image-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(127, 67, 78, 0.12);
+}
+
+.seller-benefits__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lista de beneficios con iconos de check */
+.seller-benefits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.seller-benefits__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: clamp(0.9rem, 1.3vw, 1.02rem);
+  color: #5d3a40;
+  line-height: 1.55;
+}
+
+/* Icono de check con circulo rosa */
+.seller-benefits__list li i {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #9f2f38;
+  font-size: 0.85rem;
+  background: #fce8ec;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* SECCION DE PASOS */
+
+.seller-steps {
+  width: 100%;
+  background: #fff7f8;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 6vw, 80px);
+}
+
+.seller-steps__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #7F434E;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+/* Layout de dos columnas: pasos a la izquierda, imagen a la derecha */
+.seller-steps__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: start;
+}
+
+.seller-steps__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Cada paso tiene un header con icono y titulo */
+.seller-steps__step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.seller-steps__step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.seller-steps__step-header i {
+  color: #9f2f38;
+  font-size: 1.1rem;
+}
+
+.seller-steps__step-header h3 {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-weight: 700;
+  color: #5d1f2a;
+}
+
+.seller-steps__step p {
+  font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+  color: #5d3a40;
+  line-height: 1.6;
+}
+
+.seller-steps__note {
+  color: #7a5d62 !important;
+  font-size: clamp(0.84rem, 1.1vw, 0.92rem) !important;
+}
+
+/* Lista de requisitos para crear la cuenta */
+.seller-steps__requirements {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.seller-steps__requirements li {
+  padding: 3px 0;
+  font-size: clamp(0.86rem, 1.1vw, 0.95rem);
+  color: #5d3a40;
+  line-height: 1.5;
+}
+
+.seller-steps__requirements li::before {
+  content: "•";
+  margin-right: 8px;
+  color: #9f2f38;
+}
+
+/* Link de "Learn to sell in Lumiere" */
+.seller-steps__learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7F434E;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 0.2s ease;
+}
+
+.seller-steps__learn-more:hover {
+  color: #9f2f38;
+}
+
+.seller-steps__learn-more i {
+  font-size: 0.7rem;
+}
+
+/* Imagen decorativa al lado de los pasos */
+.seller-steps__image-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(127, 67, 78, 0.12);
+  position: sticky;
+  top: 140px;
+}
+
+.seller-steps__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+
+/* SECCION DE SERVICIOS */
+
+.seller-services {
+  width: 100%;
+  background: #fff;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 6vw, 80px);
+}
+
+.seller-services__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.seller-services__card {
+  padding: 32px 24px;
+  background: #fff7f8;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 16px rgba(127, 67, 78, 0.05);
+}
+
+.seller-services__card:hover {
+  transform: translateY(-5px);
+}
+
+.seller-services__icon {
+  width: 64px;
+  height: 64px;
+  background: #fce8ec;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.seller-services__icon i {
+  font-size: 1.8rem;
+  color: #9f2f38;
+}
+
+.seller-services__card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #5d1f2a;
+  margin-bottom: 16px;
+}
+
+.seller-services__card p {
+  font-size: 0.95rem;
+  color: #5d3a40;
+  line-height: 1.6;
+}
+
+/* SECCION DE TESTIMONIOS */
+
+.seller-testimonials {
+  width: 100%;
+  background: #fce8ec;
+  padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px);
+}
+
+.seller-testimonials__grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 80px);
+}
+
+.seller-testimonials__item {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(30px, 5vw, 60px);
+  align-items: center;
+}
+
+.seller-testimonials__item--reverse {
+  grid-template-columns: 1.5fr 1fr;
+}
+
+/* Para el segundo testimonio invierto el orden de las columnas */
+.seller-testimonials__item--reverse .seller-testimonials__image-wrap {
+  order: 2;
+}
+
+.seller-testimonials__item--reverse .seller-testimonials__content {
+  order: 1;
+}
+
+.seller-testimonials__image-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(127, 67, 78, 0.15);
+  aspect-ratio: 4/5;
+}
+
+.seller-testimonials__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.seller-testimonials__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.seller-testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #7a5d62;
+}
+
+.seller-testimonials__dot {
+  width: 12px;
+  height: 12px;
+  background: #9f2f38;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.seller-testimonials__name {
+  font-weight: 700;
+  color: #5d1f2a;
+}
+
+.seller-testimonials__quote {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-style: italic;
+  color: #7F434E;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* SECCION DE FAQ (ACORDEON) */
+
+.seller-faq {
+  width: 100%;
+  background: #fff;
+  padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px);
+}
+
+.seller-faq__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.seller-faq__title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #5d1f2a;
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.seller-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.seller-faq__item {
+  border: 1px solid #e8d0d5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.seller-faq__item:hover {
+  box-shadow: 0 4px 12px rgba(127, 67, 78, 0.08);
+}
+
+.seller-faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-weight: 600;
+  color: #5d1f2a;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.seller-faq__question:hover {
+  background: #fff7f8;
+}
+
+.seller-faq__question[aria-expanded="true"] {
+  background: #fff7f8;
+  color: #9f2f38;
+}
+
+.seller-faq__icon {
+  font-size: 1rem;
+  color: #9f2f38;
+  transition: transform 0.3s ease;
+}
+
+/* Giro el icono a una 'X' cuando esta abierto */
+.seller-faq__question[aria-expanded="true"] .seller-faq__icon {
+  transform: rotate(45deg);
+}
+
+/* Animacion del acordeon */
+.seller-faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+/* Cuando el boton anterior tiene aria-expanded="true", expandimos la respuesta */
+.seller-faq__question[aria-expanded="true"]+.seller-faq__answer {
+  grid-template-rows: 1fr;
+}
+
+.seller-faq__answer-inner {
+  overflow: hidden;
+}
+
+.seller-faq__answer-inner p {
+  padding: 0 24px 24px 24px;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #5d3a40;
+  line-height: 1.6;
+  background: #fff7f8;
+}
+
+
+/* LINK ACTIVO EN NAV    */
+
+.nav-active {
+  font-weight: 600 !important;
+  color: #9f2f38 !important;
+  position: relative;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #9f2f38;
+  border-radius: 999px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .seller-hero {
+    padding: clamp(40px, 8vw, 70px) clamp(18px, 5vw, 40px);
+  }
+
+  .seller-hero__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .seller-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .seller-stats__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .seller-stats {
+    padding: clamp(28px, 5vw, 40px) clamp(16px, 4vw, 28px);
+  }
+
+  /* En mobile beneficios van en una columna */
+  .seller-benefits__container {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-benefits__image-wrap {
+    max-height: 300px;
+  }
+
+  /* En mobile los pasos van en una columna */
+  .seller-steps__container {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-steps__image-wrap {
+    position: static;
+    max-height: 350px;
+  }
+
+  /* En mobile los servicios van en una sola columna */
+  .seller-services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* En mobile testimonios van en una sola columna */
+  .seller-testimonials__item,
+  .seller-testimonials__item--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  /* Quito el orden invertido en mobile para que la imagen siempre vaya primero */
+  .seller-testimonials__item--reverse .seller-testimonials__image-wrap {
+    order: 1;
+  }
+
+  .seller-testimonials__item--reverse .seller-testimonials__content {
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .seller-hero__title {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+  }
+
+  .seller-hero__register-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
