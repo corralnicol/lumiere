@@ -22,6 +22,9 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -62,6 +65,9 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -97,6 +103,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "long-lasting"
     ]
   },
   {
@@ -132,6 +142,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -162,6 +175,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "sunscreen"
     ]
   },
   {
@@ -202,6 +219,9 @@
         "rating": 5,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -232,6 +252,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -257,6 +280,10 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-aging",
+      "anti-acne"
     ]
   },
   {
@@ -292,6 +319,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -332,6 +362,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "vegan"
     ]
   },
   {
@@ -362,6 +395,9 @@
         "rating": 3,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -402,6 +438,10 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "vegan"
     ]
   },
   {
@@ -432,6 +472,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "anti-acne"
     ]
   },
   {
@@ -462,6 +506,9 @@
         "rating": 3,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -492,6 +539,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -517,6 +567,9 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -542,6 +595,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -577,6 +633,10 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "anti-aging"
     ]
   },
   {
@@ -612,6 +672,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -647,6 +710,10 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "soothing"
     ]
   },
   {
@@ -677,6 +744,10 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "soothing"
     ]
   },
   {
@@ -707,6 +778,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -747,6 +821,9 @@
         "rating": 5,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "vegan"
     ]
   },
   {
@@ -777,6 +854,10 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-acne",
+      "long-lasting"
     ]
   },
   {
@@ -807,6 +888,9 @@
         "rating": 3,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -837,6 +921,10 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "water-resistant"
     ]
   },
   {
@@ -872,6 +960,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "fragrance-free"
     ]
   },
   {
@@ -897,6 +989,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "water-resistant"
     ]
   },
   {
@@ -927,6 +1023,10 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "water-resistant"
     ]
   },
   {
@@ -962,6 +1062,9 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -992,6 +1095,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -1027,6 +1133,9 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "sunscreen"
     ]
   },
   {
@@ -1067,6 +1176,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "water-resistant"
     ]
   },
   {
@@ -1092,6 +1205,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -1127,6 +1243,10 @@
         "rating": 5,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "vegan"
     ]
   },
   {
@@ -1152,6 +1272,10 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "anti-aging"
     ]
   },
   {
@@ -1182,6 +1306,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "vegan"
     ]
   },
   {
@@ -1212,6 +1339,10 @@
         "rating": 3,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "moisturizer"
     ]
   },
   {
@@ -1247,6 +1378,10 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "paraben-free"
     ]
   },
   {
@@ -1277,6 +1412,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "hypoallergenic"
     ]
   },
   {
@@ -1317,6 +1456,10 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "anti-acne"
     ]
   },
   {
@@ -1357,6 +1500,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "hypoallergenic"
     ]
   },
   {
@@ -1397,6 +1544,10 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "hypoallergenic"
     ]
   },
   {
@@ -1432,6 +1583,9 @@
         "rating": 3,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -1457,6 +1611,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "anti-acne"
     ]
   },
   {
@@ -1482,6 +1640,9 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -1507,6 +1668,9 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -1542,6 +1706,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "moisturizer"
     ]
   },
   {
@@ -1577,6 +1745,10 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "fragrance-free"
     ]
   },
   {
@@ -1612,6 +1784,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "anti-aging"
     ]
   },
   {
@@ -1637,6 +1813,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -1672,6 +1851,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "water-resistant"
     ]
   },
   {
@@ -1702,6 +1885,10 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "anti-aging"
     ]
   },
   {
@@ -1737,6 +1924,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "moisturizer"
     ]
   },
   {
@@ -1777,6 +1968,9 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -1817,6 +2011,9 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -1842,6 +2039,10 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "water-resistant"
     ]
   },
   {
@@ -1877,6 +2078,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "anti-acne",
+      "moisturizer"
     ]
   },
   {
@@ -1912,6 +2117,10 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "vegan"
     ]
   },
   {
@@ -1947,6 +2156,9 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -1977,6 +2189,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -2012,6 +2227,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -2047,6 +2265,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "sunscreen"
     ]
   },
   {
@@ -2082,6 +2303,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -2107,6 +2331,10 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "cruelty-free"
     ]
   },
   {
@@ -2142,6 +2370,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "vegan"
     ]
   },
   {
@@ -2177,6 +2408,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "long-lasting"
     ]
   },
   {
@@ -2207,6 +2442,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "paraben-free"
     ]
   },
   {
@@ -2247,6 +2486,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -2287,6 +2529,9 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -2327,6 +2572,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -2367,6 +2615,9 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -2402,6 +2653,10 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-aging",
+      "long-lasting"
     ]
   },
   {
@@ -2427,6 +2682,10 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "fragrance-free"
     ]
   },
   {
@@ -2457,6 +2716,9 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -2497,6 +2759,10 @@
         "rating": 3,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "moisturizer"
     ]
   },
   {
@@ -2537,6 +2803,9 @@
         "rating": 3,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -2562,6 +2831,10 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "anti-acne"
     ]
   },
   {
@@ -2592,6 +2865,9 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -2632,6 +2908,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -2657,6 +2936,10 @@
         "rating": 5,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "anti-acne",
+      "moisturizer"
     ]
   },
   {
@@ -2697,6 +2980,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -2727,6 +3013,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "water-resistant"
     ]
   },
   {
@@ -2762,6 +3052,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -2787,6 +3080,10 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "long-lasting"
     ]
   },
   {
@@ -2817,6 +3114,9 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -2857,6 +3157,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -2892,6 +3195,10 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "anti-acne"
     ]
   },
   {
@@ -2927,6 +3234,10 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "long-lasting"
     ]
   },
   {
@@ -2952,6 +3263,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-acne",
+      "moisturizer"
     ]
   },
   {
@@ -2977,6 +3292,10 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "paraben-free"
     ]
   },
   {
@@ -3002,6 +3321,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "hypoallergenic"
     ]
   },
   {
@@ -3037,6 +3360,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "paraben-free"
     ]
   },
   {
@@ -3067,6 +3394,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "anti-acne"
     ]
   },
   {
@@ -3092,6 +3423,9 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -3127,6 +3461,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -3162,6 +3499,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "water-resistant"
     ]
   },
   {
@@ -3202,6 +3543,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "paraben-free"
     ]
   },
   {
@@ -3227,6 +3572,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "soothing"
     ]
   },
   {
@@ -3262,6 +3611,10 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "long-lasting"
     ]
   },
   {
@@ -3292,6 +3645,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "water-resistant"
     ]
   },
   {
@@ -3327,6 +3684,9 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -3362,6 +3722,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "hypoallergenic"
     ]
   },
   {
@@ -3397,6 +3761,10 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "sunscreen"
     ]
   },
   {
@@ -3432,6 +3800,10 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "fragrance-free"
     ]
   },
   {
@@ -3472,6 +3844,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -3502,6 +3877,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "soothing"
     ]
   },
   {
@@ -3537,6 +3916,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -3572,6 +3954,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "water-resistant"
     ]
   },
   {
@@ -3597,6 +3983,9 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -3637,6 +4026,9 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -3667,6 +4059,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -3707,6 +4102,10 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "anti-acne"
     ]
   },
   {
@@ -3732,6 +4131,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "sunscreen"
     ]
   },
   {
@@ -3767,6 +4169,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "anti-aging"
     ]
   },
   {
@@ -3797,6 +4203,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -3837,6 +4246,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "sunscreen"
     ]
   },
   {
@@ -3872,6 +4285,9 @@
         "rating": 5,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -3902,6 +4318,9 @@
         "rating": 5,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -3937,6 +4356,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "sunscreen"
     ]
   },
   {
@@ -3967,6 +4390,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -3992,6 +4418,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-aging",
+      "water-resistant"
     ]
   },
   {
@@ -4032,6 +4462,10 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "long-lasting"
     ]
   },
   {
@@ -4067,6 +4501,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "long-lasting"
     ]
   },
   {
@@ -4102,6 +4540,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -4132,6 +4573,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -4162,6 +4606,9 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -4187,6 +4634,9 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -4227,6 +4677,9 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "vegan"
     ]
   },
   {
@@ -4252,6 +4705,10 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "vegan"
     ]
   },
   {
@@ -4292,6 +4749,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -4317,6 +4777,10 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "soothing"
     ]
   },
   {
@@ -4352,6 +4816,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -4387,6 +4854,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -4412,6 +4882,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -4442,6 +4915,9 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -4482,6 +4958,10 @@
         "rating": 5,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "sunscreen"
     ]
   },
   {
@@ -4517,6 +4997,9 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -4552,6 +5035,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "anti-aging"
     ]
   },
   {
@@ -4592,6 +5079,10 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "moisturizer"
     ]
   },
   {
@@ -4617,6 +5108,10 @@
         "rating": 3,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "cruelty-free"
     ]
   },
   {
@@ -4647,6 +5142,9 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -4677,6 +5175,9 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -4702,6 +5203,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "sunscreen"
     ]
   },
   {
@@ -4732,6 +5236,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "sunscreen"
     ]
   },
   {
@@ -4762,6 +5270,10 @@
         "rating": 5,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "anti-acne"
     ]
   },
   {
@@ -4797,6 +5309,10 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "vegan"
     ]
   },
   {
@@ -4832,6 +5348,10 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "water-resistant"
     ]
   },
   {
@@ -4867,6 +5387,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -4892,6 +5415,10 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "water-resistant"
     ]
   },
   {
@@ -4927,6 +5454,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -4952,6 +5482,9 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -4977,6 +5510,9 @@
         "rating": 3,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -5007,6 +5543,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "anti-acne"
     ]
   },
   {
@@ -5032,6 +5572,10 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "vegan"
     ]
   },
   {
@@ -5067,6 +5611,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "paraben-free"
     ]
   },
   {
@@ -5107,6 +5655,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "sunscreen"
     ]
   },
   {
@@ -5132,6 +5684,10 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "hypoallergenic"
     ]
   },
   {
@@ -5157,6 +5713,10 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "anti-acne"
     ]
   },
   {
@@ -5192,6 +5752,9 @@
         "rating": 5,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -5227,6 +5790,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -5252,6 +5818,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "hypoallergenic"
     ]
   },
   {
@@ -5287,6 +5857,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "anti-aging",
+      "cruelty-free"
     ]
   },
   {
@@ -5322,6 +5896,9 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -5347,6 +5924,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -5372,6 +5952,10 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-acne",
+      "vegan"
     ]
   },
   {
@@ -5407,6 +5991,10 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "anti-acne"
     ]
   },
   {
@@ -5447,6 +6035,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -5477,6 +6068,10 @@
         "rating": 3,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "anti-acne"
     ]
   },
   {
@@ -5502,6 +6097,10 @@
         "rating": 3,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "cruelty-free"
     ]
   },
   {
@@ -5542,6 +6141,9 @@
         "rating": 5,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -5572,6 +6174,9 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -5602,6 +6207,10 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "anti-aging",
+      "soothing"
     ]
   },
   {
@@ -5632,6 +6241,9 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -5667,6 +6279,9 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -5692,6 +6307,9 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -5727,6 +6345,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -5767,6 +6388,9 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -5802,6 +6426,10 @@
         "rating": 5,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "moisturizer"
     ]
   },
   {
@@ -5832,6 +6460,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "moisturizer"
     ]
   },
   {
@@ -5872,6 +6504,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -5897,6 +6532,9 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -5932,6 +6570,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic",
+      "cruelty-free"
     ]
   },
   {
@@ -5967,6 +6609,10 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "anti-acne",
+      "vegan"
     ]
   },
   {
@@ -6002,6 +6648,10 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "fragrance-free"
     ]
   },
   {
@@ -6037,6 +6687,10 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "anti-aging"
     ]
   },
   {
@@ -6067,6 +6721,10 @@
         "rating": 3,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "anti-aging"
     ]
   },
   {
@@ -6097,6 +6755,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "water-resistant"
     ]
   },
   {
@@ -6127,6 +6789,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -6167,6 +6832,10 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "moisturizer"
     ]
   },
   {
@@ -6202,6 +6871,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "long-lasting"
     ]
   },
   {
@@ -6227,6 +6900,10 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "paraben-free"
     ]
   },
   {
@@ -6252,6 +6929,9 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -6282,6 +6962,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "paraben-free"
     ]
   },
   {
@@ -6312,6 +6996,10 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "sunscreen"
     ]
   },
   {
@@ -6337,6 +7025,10 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "moisturizer"
     ]
   },
   {
@@ -6372,6 +7064,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "vegan"
     ]
   },
   {
@@ -6397,6 +7093,10 @@
         "rating": 3,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "anti-acne"
     ]
   },
   {
@@ -6427,6 +7127,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -6457,6 +7160,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -6487,6 +7193,9 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -6527,6 +7236,10 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "anti-acne"
     ]
   },
   {
@@ -6552,6 +7265,10 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "water-resistant",
+      "paraben-free"
     ]
   },
   {
@@ -6582,6 +7299,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "vegan",
+      "anti-acne"
     ]
   },
   {
@@ -6617,6 +7338,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "fragrance-free"
     ]
   },
   {
@@ -6652,6 +7377,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -6682,6 +7410,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -6712,6 +7443,9 @@
         "rating": 3,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -6752,6 +7486,9 @@
         "rating": 4,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "hypoallergenic"
     ]
   },
   {
@@ -6792,6 +7529,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -6832,6 +7572,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -6872,6 +7615,9 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -6907,6 +7653,9 @@
         "rating": 5,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -6947,6 +7696,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "fragrance-free"
     ]
   },
   {
@@ -6982,6 +7735,10 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "sunscreen"
     ]
   },
   {
@@ -7012,6 +7769,9 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -7047,6 +7807,9 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "fragrance-free"
     ]
   },
   {
@@ -7087,6 +7850,10 @@
         "rating": 4,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "long-lasting",
+      "moisturizer"
     ]
   },
   {
@@ -7112,6 +7879,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -7137,6 +7907,9 @@
         "rating": 4,
         "comment": "Nice texture and great packaging."
       }
+    ],
+    "characteristics": [
+      "soothing"
     ]
   },
   {
@@ -7172,6 +7945,10 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "soothing",
+      "anti-aging"
     ]
   },
   {
@@ -7207,6 +7984,9 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -7237,6 +8017,9 @@
         "rating": 4,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "moisturizer"
     ]
   },
   {
@@ -7272,6 +8055,9 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "sunscreen"
     ]
   },
   {
@@ -7307,6 +8093,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -7342,6 +8131,10 @@
         "rating": 4,
         "comment": "Excellent product, lasts all day."
       }
+    ],
+    "characteristics": [
+      "fragrance-free",
+      "long-lasting"
     ]
   },
   {
@@ -7382,6 +8175,9 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "cruelty-free"
     ]
   },
   {
@@ -7407,6 +8203,9 @@
         "rating": 3,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -7447,6 +8246,9 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "long-lasting"
     ]
   },
   {
@@ -7482,6 +8284,10 @@
         "rating": 4,
         "comment": "Not my favorite but it does the job."
       }
+    ],
+    "characteristics": [
+      "anti-aging",
+      "fragrance-free"
     ]
   },
   {
@@ -7517,6 +8323,10 @@
         "rating": 5,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "vegan"
     ]
   },
   {
@@ -7552,6 +8362,10 @@
         "rating": 3,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "sunscreen",
+      "long-lasting"
     ]
   },
   {
@@ -7587,6 +8401,9 @@
         "rating": 5,
         "comment": "Very good quality for the price."
       }
+    ],
+    "characteristics": [
+      "paraben-free"
     ]
   },
   {
@@ -7617,6 +8434,9 @@
         "rating": 3,
         "comment": "Leaves a beautiful natural finish."
       }
+    ],
+    "characteristics": [
+      "anti-aging"
     ]
   },
   {
@@ -7652,6 +8472,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "water-resistant"
     ]
   },
   {
@@ -7687,6 +8510,10 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "moisturizer",
+      "hypoallergenic"
     ]
   },
   {
@@ -7722,6 +8549,10 @@
         "rating": 4,
         "comment": "I loved it, highly recommended."
       }
+    ],
+    "characteristics": [
+      "paraben-free",
+      "long-lasting"
     ]
   },
   {
@@ -7752,6 +8583,10 @@
         "rating": 5,
         "comment": "Good pigmentation and easy to use."
       }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "long-lasting"
     ]
   },
   {
@@ -7777,6 +8612,9 @@
         "rating": 4,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "anti-acne"
     ]
   },
   {
@@ -7807,6 +8645,9 @@
         "rating": 5,
         "comment": "The shade is perfect and blends incredibly well."
       }
+    ],
+    "characteristics": [
+      "vegan"
     ]
   }
 ]
