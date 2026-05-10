@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -88,9 +89,9 @@ function Header({ onFeedback }: HeaderProps) {
   return (
     <header className="header-lumiere" id="top">
       <div className="degrade">
-        <a href="#top" className="logo-link" aria-label="Go to top">
+        <Link to="#top" className="logo-link" aria-label="Go to top">
           <h1 className="logo">Lumière</h1>
-        </a>
+        </Link>
       </div>
 
       <div className={`header-bar ${isMenuOpen ? "menu-open" : ""}`}>
@@ -110,9 +111,9 @@ function Header({ onFeedback }: HeaderProps) {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <a href="/products" onClick={closeMenu}>
+          <Link to="/products" onClick={closeMenu}>
             Shop <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </a>
+          </Link>
           <a href="#best-sellers" onClick={closeMenu}>On Sale</a>
           <a href="#brands" onClick={closeMenu}>Brands</a>
           <a href="#categories" onClick={closeMenu}>Categories</a>
@@ -128,13 +129,13 @@ function Header({ onFeedback }: HeaderProps) {
               <i className="fa-regular fa-heart" aria-hidden="true"></i>
             </a>
 
-            <a
-              href="/products"
+            <Link
+              to="/products"
               aria-label="Cart"
               onClick={() => handleUtilityClick("cart")}
             >
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-            </a>
+            </Link>
 
             <a
               href="#newsletter"
@@ -181,13 +182,13 @@ function Header({ onFeedback }: HeaderProps) {
             <i className="fa-regular fa-heart" aria-hidden="true"></i>
           </a>
 
-          <a
-            href="/products"
+          <Link
+            to="/products"
             aria-label="Cart"
             onClick={() => handleUtilityClick("cart")}
           >
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-          </a>
+          </Link>
 
           <a
             href="#newsletter"

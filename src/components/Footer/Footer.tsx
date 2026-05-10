@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import { footerPayments, footerSocialLinks } from "../../data/homeContent";
 
 type FooterProps = {
@@ -92,7 +93,7 @@ function Footer({ onFeedback }: FooterProps) {
         <div>
           <h4>HELP</h4>
           <a href="mailto:support@lumierebeauty.example">Customer Support</a>
-          <a href="/products">Delivery Details</a>
+          <Link to="/products">Delivery Details</Link>
           <a href="#newsletter">Terms &amp; Conditions</a>
           <a href="#newsletter">Privacy Policy</a>
         </div>
@@ -100,14 +101,14 @@ function Footer({ onFeedback }: FooterProps) {
         <div>
           <h4>ACCOUNT</h4>
           <a href="#newsletter">Account</a>
-          <a href="/products">Manage Deliveries</a>
-          <a href="/products">Orders</a>
+          <Link to="/products">Manage Deliveries</Link>
+          <Link to="/products">Orders</Link>
           <a href="#newsletter">Payments</a>
         </div>
 
         <div>
           <h4>RESOURCES</h4>
-          <a href="/products">New Product</a>
+          <Link to="/products">New Product</Link>
           <a href="#brands">Lumiere Creators</a>
           <a href="#kits">Gifts with Purchase</a>
           <a href="#newsletter">Gift Cards</a>

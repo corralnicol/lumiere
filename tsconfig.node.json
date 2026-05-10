@@ -4,6 +4,9 @@
     "target": "es2023",
     "lib": ["ES2023"],
     "module": "esnext",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "types": ["node"],
     "skipLibCheck": true,
 
