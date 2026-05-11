@@ -17,7 +17,7 @@ export interface FeedbackState {
     isVisible: boolean;
 };
 
-type Filters = {
+export type Filters = {
     category: string;
     brands: string[];
     characteristics: ProductCharacteristics[];
@@ -64,8 +64,6 @@ const buildDefaultFilters = (): Filters => ({
     ratingMin: 0,
 });
 
-const formatPrice = (value: number) => `$${value.toFixed(2)}`;
-
 const parsePriceInput = (value: string) => {
     const trimmedValue = value.trim();
 
@@ -77,6 +75,28 @@ const parsePriceInput = (value: string) => {
 
     return Number.isFinite(parsedValue) ? parsedValue : null;
 };
+
+const formatPrice = (value: number) => `$${value.toFixed(2)}`;
+
+interface FiltersSidebarProps {
+    filters: Filters;
+    isSidebarOpen: boolean;
+    isPending: boolean;
+    categoryOptions: string[];
+    brandOptions: string[];
+    characteristicOptions: ProductCharacteristics[];
+    filteredProductsCount: number;
+    totalProductsCount: number;
+    activeFilterCount: number;
+    onToggleSidebar: () => void;
+    onCategoryChange: (category: string) => void;
+    onBrandToggle: (brand: string) => void;
+    onCharacteristicToggle: (characteristic: ProductCharacteristics) => void;
+    onPriceMinChange: (value: string) => void;
+    onPriceMaxChange: (value: string) => void;
+    onRatingChange: (value: number) => void;
+    onClearFilters: () => void;
+}
 
 function ActivityIndicator({ isVisible }: { isVisible: boolean }) {
     return (
@@ -94,6 +114,187 @@ function ActivityIndicator({ isVisible }: { isVisible: boolean }) {
         </div>
     );
 }
+
+export function FiltersSidebar({
+    filters,
+    isSidebarOpen,
+    isPending,
+    categoryOptions,
+    brandOptions,
+    characteristicOptions,
+    filteredProductsCount,
+    totalProductsCount,
+    activeFilterCount,
+    onToggleSidebar,
+    onCategoryChange,
+    onBrandToggle,
+    onCharacteristicToggle,
+    onPriceMinChange,
+    onPriceMaxChange,
+    onRatingChange,
+    onClearFilters,
+}: FiltersSidebarProps) {
+    const priceMinValue = parsePriceInput(filters.priceMinInput);
+    const priceMaxValue = parsePriceInput(filters.priceMaxInput);
+    const priceHint =
+        priceMinValue === null && priceMaxValue === null
+            ? "Any price"
+            : `${priceMinValue !== null ? formatPrice(priceMinValue) : "Any"} - ${priceMaxValue !== null ? formatPrice(priceMaxValue) : "Any"
+            }`;
+
+    return (
+        <aside
+            className={`filters-sidebar ${isSidebarOpen ? "is-open" : "is-collapsed"}`}
+            aria-label="Product filters"
+        >
+            <div className="filters-header">
+                <div>
+                    <p className="filters-eyebrow">Refine</p>
+                    <h2>Filters</h2>
+                    <div className="filters-meta">
+                        <span>
+                            {filteredProductsCount} of {totalProductsCount} items
+                        </span>
+                        {activeFilterCount > 0 ? (
+                            <span className="filters-active">{activeFilterCount} active</span>
+                        ) : null}
+                    </div>
+                </div>
+                <button
+                    className="filters-toggle"
+                    type="button"
+                    aria-expanded={isSidebarOpen}
+                    aria-controls="filters-panel"
+                    onClick={onToggleSidebar}
+                >
+                    <i
+                        className={`fa-solid ${isSidebarOpen ? "fa-chevron-left" : "fa-chevron-right"
+                            }`}
+                        aria-hidden="true"
+                    ></i>
+                    <span>{isSidebarOpen ? "Collapse" : "Expand"}</span>
+                </button>
+            </div>
+
+            <ActivityIndicator isVisible={isPending} />
+
+            <div className="filters-panel" id="filters-panel" hidden={!isSidebarOpen}>
+                <fieldset className="filters-group">
+                    <legend>Category</legend>
+                    <div className="filters-select">
+                        <select
+                            value={filters.category}
+                            onChange={(event) => onCategoryChange(event.target.value)}
+                        >
+                            <option value="">All categories</option>
+                            {categoryOptions.map((category) => (
+                                <option value={category} key={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset className="filters-group">
+                    <legend>Brand</legend>
+                    <div className="filters-options">
+                        {brandOptions.map((brand, index) => {
+                            const inputId = `filter-brand-${index}`;
+                            return (
+                                <label className="filters-option" htmlFor={inputId} key={brand}>
+                                    <input
+                                        id={inputId}
+                                        type="checkbox"
+                                        checked={filters.brands.includes(brand)}
+                                        onChange={() => onBrandToggle(brand)}
+                                    />
+                                    <span>{brand}</span>
+                                </label>
+                            );
+                        })}
+                    </div>
+                </fieldset>
+
+                <fieldset className="filters-group">
+                    <legend>Price</legend>
+                    <div className="filters-range">
+                        <label>
+                            <span>Min</span>
+                            <input
+                                type="number"
+                                step={0.01}
+                                placeholder="Any"
+                                value={filters.priceMinInput}
+                                onChange={(event) => onPriceMinChange(event.target.value)}
+                            />
+                        </label>
+                        <label>
+                            <span>Max</span>
+                            <input
+                                type="number"
+                                step={0.01}
+                                placeholder="Any"
+                                value={filters.priceMaxInput}
+                                onChange={(event) => onPriceMaxChange(event.target.value)}
+                            />
+                        </label>
+                    </div>
+                    <p className="filters-range-hint">{priceHint}</p>
+                </fieldset>
+
+                <fieldset className="filters-group">
+                    <legend>Characteristics</legend>
+                    <div className="filters-options">
+                        {characteristicOptions.map((characteristic, index) => {
+                            const inputId = `filter-characteristic-${index}`;
+                            return (
+                                <label
+                                    className="filters-option"
+                                    htmlFor={inputId}
+                                    key={characteristic}
+                                >
+                                    <input
+                                        id={inputId}
+                                        type="checkbox"
+                                        checked={filters.characteristics.includes(
+                                            characteristic
+                                        )}
+                                        onChange={() => onCharacteristicToggle(characteristic)}
+                                    />
+                                    <span>{characteristic.replace(/-/g, " ")}</span>
+                                </label>
+                            );
+                        })}
+                    </div>
+                </fieldset>
+
+                <fieldset className="filters-group">
+                    <legend>Rating</legend>
+                    <div className="filters-rating">
+                        <input
+                            type="range"
+                            min={0}
+                            max={5}
+                            step={0.5}
+                            value={filters.ratingMin}
+                            aria-label="Minimum rating"
+                            onChange={(event) => onRatingChange(Number(event.target.value))}
+                        />
+                        <span>{filters.ratingMin.toFixed(1)}+ stars</span>
+                    </div>
+                </fieldset>
+
+                <div className="filters-actions">
+                    <button type="button" onClick={onClearFilters}>
+                        Clear all
+                    </button>
+                </div>
+            </div>
+        </aside>
+    );
+}
+
 
 export function Products() {
     const [feedback, setFeedback] = useState<FeedbackState>({
@@ -287,14 +488,6 @@ export function Products() {
         return count;
     }, [filters]);
 
-    const priceMinValue = parsePriceInput(filters.priceMinInput);
-    const priceMaxValue = parsePriceInput(filters.priceMaxInput);
-    const priceHint =
-        priceMinValue === null && priceMaxValue === null
-            ? "Any price"
-            : `${priceMinValue !== null ? formatPrice(priceMinValue) : "Any"} - ${priceMaxValue !== null ? formatPrice(priceMaxValue) : "Any"
-            }`;
-
     return (
         <>
             <a className="skip-link" href="#products-main">
@@ -315,168 +508,25 @@ export function Products() {
 
             <main id="products-main" className="products-page" tabIndex={-1}>
                 <div className="products-layout">
-                    <aside
-                        className={`filters-sidebar ${isSidebarOpen ? "is-open" : "is-collapsed"}`}
-                        aria-label="Product filters"
-                    >
-                        <div className="filters-header">
-                            <div>
-                                <p className="filters-eyebrow">Refine</p>
-                                <h2>Filters</h2>
-                                <div className="filters-meta">
-                                    <span>
-                                        {filteredProducts.length} of {products.length} items
-                                    </span>
-                                    {activeFilterCount > 0 ? (
-                                        <span className="filters-active">
-                                            {activeFilterCount} active
-                                        </span>
-                                    ) : null}
-                                </div>
-                            </div>
-                            <button
-                                className="filters-toggle"
-                                type="button"
-                                aria-expanded={isSidebarOpen}
-                                aria-controls="filters-panel"
-                                onClick={() => setIsSidebarOpen((current) => !current)}
-                            >
-                                <i
-                                    className={`fa-solid ${isSidebarOpen ? "fa-chevron-left" : "fa-chevron-right"}`}
-                                    aria-hidden="true"
-                                ></i>
-                                <span>{isSidebarOpen ? "Collapse" : "Expand"}</span>
-                            </button>
-                        </div>
-
-                        <ActivityIndicator isVisible={isPending} />
-
-                        <div
-                            className="filters-panel"
-                            id="filters-panel"
-                            hidden={!isSidebarOpen}
-                        >
-                            <fieldset className="filters-group">
-                                <legend>Category</legend>
-                                <div className="filters-select">
-                                    <select
-                                        value={filters.category}
-                                        onChange={(event) =>
-                                            handleCategoryChange(event.target.value)
-                                        }
-                                    >
-                                        <option value="">All categories</option>
-                                        {categoryOptions.map((category) => (
-                                            <option value={category} key={category}>
-                                                {category}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </fieldset>
-
-                            <fieldset className="filters-group">
-                                <legend>Brand</legend>
-                                <div className="filters-options">
-                                    {brandOptions.map((brand, index) => {
-                                        const inputId = `filter-brand-${index}`;
-                                        return (
-                                            <label className="filters-option" htmlFor={inputId} key={brand}>
-                                                <input
-                                                    id={inputId}
-                                                    type="checkbox"
-                                                    checked={filters.brands.includes(brand)}
-                                                    onChange={() => handleBrandToggle(brand)}
-                                                />
-                                                <span>{brand}</span>
-                                            </label>
-                                        );
-                                    })}
-                                </div>
-                            </fieldset>
-
-                            <fieldset className="filters-group">
-                                <legend>Price</legend>
-                                <div className="filters-range">
-                                    <label>
-                                        <span>Min</span>
-                                        <input
-                                            type="number"
-                                            step={0.01}
-                                            placeholder="Any"
-                                            value={filters.priceMinInput}
-                                            onChange={(event) =>
-                                                handlePriceMinChange(event.target.value)
-                                            }
-                                        />
-                                    </label>
-                                    <label>
-                                        <span>Max</span>
-                                        <input
-                                            type="number"
-                                            step={0.01}
-                                            placeholder="Any"
-                                            value={filters.priceMaxInput}
-                                            onChange={(event) =>
-                                                handlePriceMaxChange(event.target.value)
-                                            }
-                                        />
-                                    </label>
-                                </div>
-                                <p className="filters-range-hint">
-                                    {priceHint}
-                                </p>
-                            </fieldset>
-
-                            <fieldset className="filters-group">
-                                <legend>Characteristics</legend>
-                                <div className="filters-options">
-                                    {characteristicOptions.map((characteristic, index) => {
-                                        const inputId = `filter-characteristic-${index}`;
-                                        return (
-                                            <label
-                                                className="filters-option"
-                                                htmlFor={inputId}
-                                                key={characteristic}
-                                            >
-                                                <input
-                                                    id={inputId}
-                                                    type="checkbox"
-                                                    checked={filters.characteristics.includes(characteristic)}
-                                                    onChange={() => handleCharacteristicToggle(characteristic)}
-                                                />
-                                                <span>{characteristic.replace(/-/g, " ")}</span>
-                                            </label>
-                                        );
-                                    })}
-                                </div>
-                            </fieldset>
-
-                            <fieldset className="filters-group">
-                                <legend>Rating</legend>
-                                <div className="filters-rating">
-                                    <input
-                                        type="range"
-                                        min={0}
-                                        max={5}
-                                        step={0.5}
-                                        value={filters.ratingMin}
-                                        aria-label="Minimum rating"
-                                        onChange={(event) =>
-                                            handleRatingChange(Number(event.target.value))
-                                        }
-                                    />
-                                    <span>{filters.ratingMin.toFixed(1)}+ stars</span>
-                                </div>
-                            </fieldset>
-
-                            <div className="filters-actions">
-                                <button type="button" onClick={handleClearFilters}>
-                                    Clear all
-                                </button>
-                            </div>
-                        </div>
-                    </aside>
+                    <FiltersSidebar
+                        filters={filters}
+                        isSidebarOpen={isSidebarOpen}
+                        isPending={isPending}
+                        categoryOptions={categoryOptions}
+                        brandOptions={brandOptions}
+                        characteristicOptions={characteristicOptions}
+                        filteredProductsCount={filteredProducts.length}
+                        totalProductsCount={products.length}
+                        activeFilterCount={activeFilterCount}
+                        onToggleSidebar={() => setIsSidebarOpen((current) => !current)}
+                        onCategoryChange={handleCategoryChange}
+                        onBrandToggle={handleBrandToggle}
+                        onCharacteristicToggle={handleCharacteristicToggle}
+                        onPriceMinChange={handlePriceMinChange}
+                        onPriceMaxChange={handlePriceMaxChange}
+                        onRatingChange={handleRatingChange}
+                        onClearFilters={handleClearFilters}
+                    />
 
                     <section className="products-grid-section" aria-label="Product list">
                         <div className="products-grid-header">
