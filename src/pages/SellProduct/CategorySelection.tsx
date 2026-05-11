@@ -1,5 +1,5 @@
 import styles from "./CategorySelection.module.css";
-import Navbar from "../../components/Navbar/Navbar";
+import SellNavbar from "../../components/Navbar/SellNavbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
 
 const CategorySelection = () => {
@@ -16,7 +16,7 @@ const CategorySelection = () => {
 
     return (
         <div className={styles.container}>
-            <Navbar />
+            <SellNavbar />
 
             <main className={styles.main}>
                 {/* Banner de Inicio */}
@@ -28,7 +28,8 @@ const CategorySelection = () => {
                         </p>
                     </div>
                     <div className={styles.bannerImageContainer}>
-                        <img src="/images/sell/cart-banner.png" alt="Cart" className={styles.bannerImage} />
+                        {/* Usando la nueva imagen que subiste */}
+                        <img src="/images/sellproducts/make up 3.svg" alt="Cart" className={styles.bannerImage} />
                     </div>
                 </section>
 
@@ -49,6 +50,7 @@ const CategorySelection = () => {
                 </section>
 
                 {/* Texto legal */}
+                <hr className={styles.dividerLine} />
                 <p className={styles.legalNotice}>
                     By posting, you agree to <strong>Lumière Beauty's Terms and Conditions</strong>. 
                     See how we protect your privacy in our <a href="#">Privacy Policy</a>.

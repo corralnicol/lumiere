@@ -1,1 +1,160 @@
-/* Estilos para CategorySelection - Pendiente para el siguiente commit */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #FDF4F5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    flex: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ─── Banner Superior ─── */
+.banner {
+    background-color: #EFE8E0;
+    border-radius: 20px;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.bannerContent {
+    max-width: 400px;
+}
+
+.bannerTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: #5A4545;
+    margin-bottom: 12px;
+    line-height: 1.1;
+}
+
+.bannerSubtitle {
+    font-size: 16px;
+    color: #6F5352;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.bannerImageContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bannerImage {
+    max-width: 280px;
+    height: auto;
+}
+
+/* ─── Selección de Categoría ─── */
+.selectionSection {
+    text-align: center;
+}
+
+.selectionTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #5A4545;
+    margin-bottom: 30px;
+}
+
+/* ─── Grid de Categorías ─── */
+.categoryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.categoryCard {
+    background-color: #F9EAEC;
+    border: none;
+    border-radius: 35px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.categoryCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.iconWrapper {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoryIcon {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+}
+
+.categoryName {
+    font-size: 16px;
+    font-weight: 700;
+    color: #6F5352;
+}
+
+/* ─── Divisor y Legal ─── */
+.dividerLine {
+    border: 0;
+    border-top: 1px solid #D9D9D9;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.legalNotice {
+    text-align: center;
+    font-size: 12px;
+    color: #8A7070;
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.legalNotice strong {
+    color: #6F5352;
+}
+
+.legalNotice a {
+    color: #6F5352;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .categoryGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .banner {
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .bannerImage {
+        margin-top: 20px;
+        max-width: 200px;
+    }
+}

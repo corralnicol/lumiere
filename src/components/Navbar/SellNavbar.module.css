@@ -1,0 +1,78 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: linear-gradient(90deg, #F9B6C2 0%, #A5646C 50%, #6E4149 100%);
+    height: 70px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.left {
+    flex: 1;
+}
+
+.logoText {
+    font-size: 38px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    font-family: 'Georgia', serif; /* O una fuente similar a la del logo */
+}
+
+.center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.centerLogo {
+    height: 55px;
+    width: auto;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+    
+    .logoText {
+        font-size: 28px;
+    }
+    
+    .centerLogo {
+        height: 40px;
+    }
+    
+    .navLink {
+        font-size: 14px;
+    }
+}
