@@ -1,7 +1,8 @@
+import type { categories } from "@/data/categories";
 import { productCharacteristics } from "@/data/characteristics";
 export interface Product {
     id: number | string;
-    category: string; // TODO: Use union of string literals
+    category: ProductCategory;
     brand: string;
     name: string;
     description: string;
@@ -22,6 +23,8 @@ export interface ProductReview {
 }
 
 export type ProductCharacteristics = typeof productCharacteristics[number];
+
+export type ProductCategory = typeof categories[number];
 
 export const hasRequiredFields = (product: Partial<Product>): product is Product => {
     return Boolean(
