@@ -9,6 +9,8 @@ import "./BestSellerDetail.css";
 
 type FeedbackType = "info" | "success" | "warning";
 
+type DetailTab = "description" | "howToUse" | "ingredients";
+
 type JsonProduct = {
   id: number | string;
   category: string;
@@ -20,20 +22,26 @@ type JsonProduct = {
   price: number;
   size?: string;
   stock?: number;
-  reviews?: unknown[];
-  localImage?: string;
+  reviews?: {
+    user: string;
+    rating: number;
+    comment: string;
+  }[];
 };
 
 const jsonProducts = productsData as JsonProduct[];
+
+function formatCharacteristic(characteristic: string) {
+  return characteristic
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
 
 function BestSellerDetail() {
   const { productId } = useParams();
 
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<
-    "whatItIs" | "howToUse" | "ingredients"
-  >("whatItIs");
-
+  const [activeTab, setActiveTab] = useState<DetailTab>("description");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
 
@@ -97,9 +105,9 @@ function BestSellerDetail() {
             <button
               className="detail-favorite"
               type="button"
-              aria-label={`Save ${product.brand} to wishlist`}
+              aria-label={`Save ${product.name} to wishlist`}
               onClick={() =>
-                showFeedback(`${product.brand} saved to wishlist.`, "success")
+                showFeedback(`${product.name} saved to wishlist.`, "success")
               }
             >
               <i className="fa-regular fa-heart" aria-hidden="true"></i>
@@ -109,9 +117,9 @@ function BestSellerDetail() {
           </div>
 
           <div className="product-detail-info">
-            <h1>{product.brand}</h1>
+            <p className="detail-brand">{product.brand}</p>
 
-            <p className="detail-product-name">{product.name}</p>
+            <h1>{product.name}</h1>
 
             <div className="detail-rating">
               <div
@@ -123,9 +131,7 @@ function BestSellerDetail() {
                 ))}
               </div>
 
-              <p>
-                ({product.rating}) ({product.reviewCount})
-              </p>
+              <p>({product.reviewCount})</p>
             </div>
 
             <p className="detail-price">${Number(product.price).toFixed(2)}</p>
@@ -164,7 +170,7 @@ function BestSellerDetail() {
                 className="add-cart-button"
                 onClick={() =>
                   showFeedback(
-                    `${quantity} ${product.brand} product added to cart.`,
+                    `${quantity} ${product.name} added to cart.`,
                     "success"
                   )
                 }
@@ -175,24 +181,13 @@ function BestSellerDetail() {
 
             <p className="detail-stock">{product.stock} units left available</p>
 
-            <div className="detail-badges">
-              {product.badges.map((badge) => (
-                <span key={badge}>{badge}</span>
+            <div className="detail-badges" aria-label="Product characteristics">
+              {product.characteristics.map((characteristic) => (
+                <span key={characteristic}>
+                  {formatCharacteristic(characteristic)}
+                </span>
               ))}
             </div>
-
-            <button
-              className="reviews-button"
-              type="button"
-              onClick={() =>
-                showFeedback(
-                  "Ratings and reviews section will be available soon.",
-                  "info"
-                )
-              }
-            >
-              Ratings &amp; Reviews
-            </button>
           </div>
         </section>
 
@@ -200,10 +195,10 @@ function BestSellerDetail() {
           <div className="detail-tabs">
             <button
               type="button"
-              className={activeTab === "whatItIs" ? "is-active" : ""}
-              onClick={() => setActiveTab("whatItIs")}
+              className={activeTab === "description" ? "is-active" : ""}
+              onClick={() => setActiveTab("description")}
             >
-              What it is
+              Description
             </button>
 
             <button
@@ -224,8 +219,39 @@ function BestSellerDetail() {
           </div>
 
           <p>{product.details[activeTab]}</p>
+        </section>
 
-          <p className="detail-long-description">{product.longDescription}</p>
+        <section className="product-reviews-section">
+          <h2>Reviews</h2>
+
+          <div className="product-reviews-list">
+            {product.reviews.map((review, index) => (
+              <article className="product-review-card" key={index}>
+                <div className="product-review-header">
+                  <h3>{review.user}</h3>
+
+                  <div
+                    className="product-review-stars"
+                    aria-label={`${review.rating} stars`}
+                  >
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <i
+                        className={
+                          starIndex < review.rating
+                            ? "fa-solid fa-star"
+                            : "fa-regular fa-star"
+                        }
+                        aria-hidden="true"
+                        key={starIndex}
+                      ></i>
+                    ))}
+                  </div>
+                </div>
+
+                <p>{review.comment}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="recommended-section">
@@ -239,7 +265,14 @@ function BestSellerDetail() {
                 key={item.id}
               >
                 <div className="recommended-image-box">
-                  <img src={getProductImageSrc(item)} alt={item.name} />
+                  <img
+                    src={getProductImageSrc(item)}
+                    alt={item.name}
+                    referrerPolicy="no-referrer"
+                    onError={(event) => {
+                      event.currentTarget.src = `https://picsum.photos/300/300?random=${item.id}`;
+                    }}
+                  />
                 </div>
 
                 <h3>{item.brand}</h3>
