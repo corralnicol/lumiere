@@ -30,9 +30,6 @@ export const productCharacteristicsArray = [
     "vegan",
     "cruelty-free",
     "fragrance-free",
-    "long-lasting",
-    "water-resistant",
-    "paraben-free",
 ] as const;
 
 export type ProductCharacteristics = typeof productCharacteristicsArray[number];
