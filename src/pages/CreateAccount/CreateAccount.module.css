@@ -8,7 +8,6 @@
     font-family: 'Montserrat', sans-serif;
     background-color: #f9eaec;
     position: relative;
-    /* Necesario para posicionar la decoración */
     overflow: hidden;
 }
 
@@ -40,7 +39,6 @@
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
-    /* Para que la decoración no cause scroll */
 }
 
 /* ─── Card central ─── */
@@ -49,14 +47,13 @@
     max-width: 480px;
     background-color: #EFE8E0;
     border-radius: 40px;
-    padding: 40px 60px 40px 60px;
+    padding: 30px 60px 30px 60px; /* Reducido un poco el padding vertical para que quepan los 4 campos */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px; /* Reducido el gap general para compactar */
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-    position: center;
+    position: relative;
     z-index: 1;
-    /* Para que esté por encima de la decoración */
 }
 
 /* ─── Título ─── */
@@ -75,7 +72,7 @@
     justify-content: center;
     gap: 30px;
     width: 100%;
-    padding: 13px;
+    padding: 12px;
     border: 1px solid #6F5352;
     border-radius: 10px;
     background-color: #EFE8E0;
@@ -122,7 +119,7 @@
 .fieldGroup {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
 .label {
@@ -133,7 +130,7 @@
 
 .input {
     width: 100%;
-    padding: 12px 14px;
+    padding: 10px 14px; /* Un poco más compacto */
     border: 1px solid #6F5352;
     border-radius: 10px;
     background-color: #EFE8E0;
@@ -181,7 +178,7 @@
 .checkboxGroup {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .checkboxLabel {
@@ -223,14 +220,10 @@
     text-decoration: underline;
 }
 
-.legalLink:hover {
-    color: #c06c84;
-}
-
-/* ─── Botón principal Login ─── */
-.loginBtn {
+/* ─── Botón principal Create ─── */
+.createBtn {
     width: 100%;
-    padding: 15px;
+    padding: 14px;
     border: none;
     border-radius: 14px;
     background-color: #DE7488;
@@ -240,16 +233,16 @@
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
     transition: background-color 0.25s, transform 0.2s;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
-.loginBtn:hover {
+.createBtn:hover {
     background-color: #bf5d78;
     transform: translateY(-1px);
 }
 
-/* ─── Enlace "Create one" ─── */
-.createAccount {
+/* ─── Enlace volver al login ─── */
+.loginRedirect {
     margin: 0;
     text-align: center;
     font-size: 13px;
@@ -257,12 +250,12 @@
     font-weight: 550;
 }
 
-.createLink {
+.loginLink {
     color: #DE7488;
     font-weight: 600;
     text-decoration: none;
 }
 
-.createLink:hover {
+.loginLink:hover {
     text-decoration: underline;
 }

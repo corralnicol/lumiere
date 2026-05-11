@@ -12,11 +12,13 @@
 .privacy {
     margin: 0;
     font-size: 13px;
-    color: #a09090;
+    color: #000000;
+    opacity: 30%;
 }
 
 .copyright {
     margin: 0;
     font-size: 12px;
-    color: #b0a0a0;
+    color: #000000;
+    opacity: 30%;
 }
