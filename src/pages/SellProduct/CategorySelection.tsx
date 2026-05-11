@@ -19,17 +19,13 @@ const CategorySelection = () => {
             <SellNavbar />
 
             <main className={styles.main}>
-                {/* Banner de Inicio */}
+                {/* Banner de Inicio con fondo de imagen */}
                 <section className={styles.banner}>
                     <div className={styles.bannerContent}>
                         <h2 className={styles.bannerTitle}>Start selling on Lumière Beauty</h2>
                         <p className={styles.bannerSubtitle}>
                             Publish your first product and connect with thousands of customers!
                         </p>
-                    </div>
-                    <div className={styles.bannerImageContainer}>
-                        {/* Usando la nueva imagen que subiste */}
-                        <img src="/images/sellproducts/make up 3.svg" alt="Cart" className={styles.bannerImage} />
                     </div>
                 </section>
 
@@ -53,7 +49,7 @@ const CategorySelection = () => {
                 <hr className={styles.dividerLine} />
                 <p className={styles.legalNotice}>
                     By posting, you agree to <strong>Lumière Beauty's Terms and Conditions</strong>. 
-                    See how we protect your privacy in our <a href="#">Privacy Policy</a>.
+                    See how we protect your privacy in our <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                 </p>
             </main>
 

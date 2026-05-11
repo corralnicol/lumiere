@@ -6,10 +6,7 @@ const SellNavbar = () => {
         <nav className={styles.navbar}>
             <div className={styles.left}>
                 <Link to="/" className={styles.logoText}>Lumière</Link>
-            </div>
-            
-            <div className={styles.center}>
-                <img src="/images/sellproducts/logo hada.png" alt="Logo Hada" className={styles.centerLogo} />
+                <img src="/images/sellproducts/logo hada.png" alt="Logo Hada" className={styles.hadaLogo} />
             </div>
             
             <div className={styles.right}>
