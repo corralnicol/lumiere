@@ -89,9 +89,9 @@ function Header({ onFeedback }: HeaderProps) {
   return (
     <header className="header-lumiere" id="top">
       <div className="degrade">
-        <a href="#top" className="logo-link" aria-label="Go to top">
+        <Link to="/" className="logo-link" aria-label="Go to home">
           <h1 className="logo">Lumière</h1>
-        </a>
+        </Link>
       </div>
 
       <div className={`header-bar ${isMenuOpen ? "menu-open" : ""}`}>
@@ -111,13 +111,13 @@ function Header({ onFeedback }: HeaderProps) {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <a href="/products" onClick={closeMenu}>
+          <Link to="/" onClick={closeMenu}>
             Shop <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </a>
-          <a href="#best-sellers" onClick={closeMenu}>On Sale</a>
-          <a href="#brands" onClick={closeMenu}>Brands</a>
-          <a href="#categories" onClick={closeMenu}>Categories</a>
-          <a href="#best-sellers" onClick={closeMenu}>Best Sellers</a>
+          </Link>
+          <a href="/#best-sellers" onClick={closeMenu}>On Sale</a>
+          <a href="/#brands" onClick={closeMenu}>Brands</a>
+          <a href="/#categories" onClick={closeMenu}>Categories</a>
+          <a href="/#best-sellers" onClick={closeMenu}>Best Sellers</a>
           <a href="/seller" onClick={closeMenu}>Seller</a>
 
           <div className="mobile-menu-icons">
