@@ -3,6 +3,7 @@ import Home from "./pages/Home/Home";
 import BestSellerDetail from "./pages/best-seller-detail/BestSellerDetail";
 import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/login/Login";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/best-sellers/:productId" element={<BestSellerDetail />} />
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<CreateAccount />} />
       </Routes>
     </BrowserRouter>
   );

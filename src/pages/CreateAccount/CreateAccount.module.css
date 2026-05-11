@@ -16,7 +16,7 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    right: 0;
     width: 320px;
     height: 320px;
     background-image: url('/images/login/decoration.svg');
@@ -24,6 +24,7 @@
     background-repeat: no-repeat;
     pointer-events: none;
     z-index: 0;
+    transform: scaleX(-1); /* Efecto espejo */
 }
 
 /* ─── Main con imagen de fondo ─── */
