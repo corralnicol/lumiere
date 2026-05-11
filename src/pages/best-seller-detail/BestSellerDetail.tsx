@@ -1,8 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { bestSellerProducts } from "../../data/bestSellerProducts";
+import {
+  bestSellerProducts,
+  type ProductReview,
+} from "../../data/bestSellerProducts";
 import productsData from "../../data/products.json";
 import { getProductImageSrc } from "../../utils/productImages";
 import "./BestSellerDetail.css";
@@ -42,10 +45,43 @@ function BestSellerDetail() {
 
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<DetailTab>("description");
+
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
 
+  const [reviews, setReviews] = useState<ProductReview[]>([]);
+  const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
+  const [reviewUser, setReviewUser] = useState("");
+  const [reviewRating, setReviewRating] = useState(5);
+  const [reviewComment, setReviewComment] = useState("");
+
   const product = bestSellerProducts.find((item) => item.id === productId);
+
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
+
+    const storageKey = `lumiere-reviews-${product.id}`;
+    const savedReviews = localStorage.getItem(storageKey);
+
+    if (!savedReviews) {
+      setReviews(product.reviews);
+      return;
+    }
+
+    try {
+      const parsedReviews = JSON.parse(savedReviews) as ProductReview[];
+
+      if (Array.isArray(parsedReviews)) {
+        setReviews(parsedReviews);
+      } else {
+        setReviews(product.reviews);
+      }
+    } catch {
+      setReviews(product.reviews);
+    }
+  }, [product]);
 
   const showFeedback = (message: string, type: FeedbackType = "info") => {
     setFeedbackMessage(message);
@@ -54,6 +90,46 @@ function BestSellerDetail() {
     window.setTimeout(() => {
       setFeedbackMessage("");
     }, 2600);
+  };
+
+  const handleReviewSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!product) {
+      return;
+    }
+
+    const trimmedUser = reviewUser.trim();
+    const trimmedComment = reviewComment.trim();
+
+    if (!trimmedUser || !trimmedComment) {
+      showFeedback(
+        "Please complete your name and review before submitting.",
+        "warning"
+      );
+      return;
+    }
+
+    const newReview: ProductReview = {
+      user: trimmedUser,
+      rating: reviewRating,
+      comment: trimmedComment,
+    };
+
+    const updatedReviews = [newReview, ...reviews];
+
+    setReviews(updatedReviews);
+    localStorage.setItem(
+      `lumiere-reviews-${product.id}`,
+      JSON.stringify(updatedReviews)
+    );
+
+    setReviewUser("");
+    setReviewRating(5);
+    setReviewComment("");
+    setIsReviewFormOpen(false);
+
+    showFeedback("Your review was submitted successfully.", "success");
   };
 
   if (!product) {
@@ -73,6 +149,9 @@ function BestSellerDetail() {
   }
 
   const recommendedProducts = jsonProducts.slice(0, 4);
+
+  const extraReviewCount = Math.max(0, reviews.length - product.reviews.length);
+  const visibleReviewCount = product.reviewCount + extraReviewCount;
 
   const ratingStars = Array.from({ length: 5 }).map((_, index) =>
     index < Math.round(product.rating)
@@ -131,7 +210,7 @@ function BestSellerDetail() {
                 ))}
               </div>
 
-              <p>({product.reviewCount})</p>
+              <p>({visibleReviewCount})</p>
             </div>
 
             <p className="detail-price">${Number(product.price).toFixed(2)}</p>
@@ -225,8 +304,11 @@ function BestSellerDetail() {
           <h2>Reviews</h2>
 
           <div className="product-reviews-list">
-            {product.reviews.map((review, index) => (
-              <article className="product-review-card" key={index}>
+            {reviews.map((review, index) => (
+              <article
+                className="product-review-card"
+                key={`${review.user}-${review.comment}-${index}`}
+              >
                 <div className="product-review-header">
                   <h3>{review.user}</h3>
 
@@ -252,6 +334,73 @@ function BestSellerDetail() {
               </article>
             ))}
           </div>
+
+          <button
+            type="button"
+            className="product-review-toggle"
+            onClick={() => setIsReviewFormOpen((currentValue) => !currentValue)}
+          >
+            add yours
+          </button>
+
+          {isReviewFormOpen && (
+            <form className="product-review-form" onSubmit={handleReviewSubmit}>
+              <div className="review-form-row">
+                <label>
+                  Name
+                  <input
+                    type="text"
+                    placeholder="Write your name"
+                    value={reviewUser}
+                    onChange={(event) => setReviewUser(event.target.value)}
+                  />
+                </label>
+
+                <div className="review-rating-field">
+                  <span>Rating</span>
+
+                  <div className="review-star-selector" aria-label="Select rating">
+                    {Array.from({ length: 5 }).map((_, index) => {
+                      const starValue = index + 1;
+                      const isSelected = starValue <= reviewRating;
+
+                      return (
+                        <button
+                          type="button"
+                          key={starValue}
+                          className={isSelected ? "is-selected" : ""}
+                          aria-label={`${starValue} star${
+                            starValue > 1 ? "s" : ""
+                          }`}
+                          onClick={() => setReviewRating(starValue)}
+                        >
+                          <i
+                            className={
+                              isSelected
+                                ? "fa-solid fa-star"
+                                : "fa-regular fa-star"
+                            }
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <label>
+                Review
+                <textarea
+                  placeholder="Write your opinion about this product"
+                  value={reviewComment}
+                  onChange={(event) => setReviewComment(event.target.value)}
+                />
+              </label>
+
+              <button type="submit">Submit review</button>
+            </form>
+          )}
         </section>
 
         <section className="recommended-section">
