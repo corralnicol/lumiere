@@ -7,8 +7,8 @@ import {
     type Product,
     type ProductCharacteristics,
     hasRequiredFields,
-    productCharacteristicsArray,
 } from "@/types/products";
+import { productCharacteristics } from "@/data/characteristics";
 import { ProductCard } from "@/components/ProductCard";
 
 export interface FeedbackState {
@@ -51,7 +51,7 @@ const clampValue = (value: number, min: number, max: number) => {
 
 const categoryOptions = getUniqueValues(products, (product) => product.category);
 const brandOptions = getUniqueValues(products, (product) => product.brand);
-const characteristicOptions = productCharacteristicsArray.filter((characteristic) =>
+const characteristicOptions = productCharacteristics.filter((characteristic) =>
     products.some((product) => product.characteristics.includes(characteristic))
 );
 

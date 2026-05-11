@@ -4,11 +4,11 @@
 import products from "../src/data/products.json" with { type: "json" };
 import fs from "node:fs";
 import path from "node:path";
-import { productCharacteristicsArray } from "../src/types/products.ts";
+import { productCharacteristics } from "../src/data/characteristics.ts";
 
 function transform(product) {
     // Shuffle array
-    const shuffled = productCharacteristicsArray.sort(() => 0.5 - Math.random());
+    const shuffled = productCharacteristics.sort(() => 0.5 - Math.random());
 
     // Get 1 or 2
     const count = Math.floor(Math.random() * 2) + 1;
