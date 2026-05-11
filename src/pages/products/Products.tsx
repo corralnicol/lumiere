@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState, useTransition } from "react";
+import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import productsData from "@/data/products.json";
+import { homeCategories } from "@/data/homeContent";
 import "./Products.css";
 import {
     type Product,
@@ -54,6 +56,12 @@ const brandOptions = getUniqueValues(products, (product) => product.brand);
 const characteristicOptions = productCharacteristics.filter((characteristic) =>
     products.some((product) => product.characteristics.includes(characteristic))
 );
+const categoryOptionsLookup = new Map(
+    categoryOptions.map((category) => [category.toLowerCase(), category])
+);
+const categoryIdLookup = new Map(
+    homeCategories.map((category) => [category.id.toLowerCase(), category.categoryValue])
+);
 
 const buildDefaultFilters = (): Filters => ({
     category: "",
@@ -77,6 +85,18 @@ const parsePriceInput = (value: string) => {
 };
 
 const formatPrice = (value: number) => `$${value.toFixed(2)}`;
+
+const resolveCategoryFromQueryParam = (value: string | null) => {
+    const normalizedValue = value?.trim().toLowerCase() ?? "";
+
+    if (normalizedValue === "") {
+        return "";
+    }
+
+    const mappedCategory = categoryIdLookup.get(normalizedValue) ?? normalizedValue;
+
+    return categoryOptionsLookup.get(mappedCategory.toLowerCase()) ?? "";
+};
 
 interface FiltersSidebarProps {
     filters: Filters;
@@ -297,12 +317,20 @@ export function FiltersSidebar({
 
 
 export function Products() {
+    const [searchParams] = useSearchParams();
+    const resolvedCategoryFromQuery = resolveCategoryFromQueryParam(
+        searchParams.get("category")
+    );
+
     const [feedback, setFeedback] = useState<FeedbackState>({
         message: "",
         type: "",
         isVisible: false,
     });
-    const [filters, setFilters] = useState<Filters>(() => buildDefaultFilters());
+    const [filters, setFilters] = useState<Filters>(() => ({
+        ...buildDefaultFilters(),
+        category: resolvedCategoryFromQuery,
+    }));
     const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
         if (typeof window === "undefined") {
             return true;
@@ -340,6 +368,19 @@ export function Products() {
             window.clearTimeout(timeoutId);
         };
     }, [feedback.isVisible, feedback.message]);
+
+    useEffect(() => {
+        setFilters((current) => {
+            if (current.category === resolvedCategoryFromQuery) {
+                return current;
+            }
+
+            return {
+                ...current,
+                category: resolvedCategoryFromQuery,
+            };
+        });
+    }, [resolvedCategoryFromQuery]);
 
     const updateFilters = (updater: (current: Filters) => Filters) => {
         startTransition(() => {
