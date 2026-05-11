@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -128,13 +129,13 @@ function Header({ onFeedback }: HeaderProps) {
               <i className="fa-regular fa-heart" aria-hidden="true"></i>
             </a>
 
-            <a
-              href="/products"
+            <Link
+              to="/cart"
               aria-label="Cart"
-              onClick={() => handleUtilityClick("cart")}
+              onClick={() => closeMenu()}
             >
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-            </a>
+            </Link>
 
             <a
               href="#newsletter"
@@ -181,13 +182,13 @@ function Header({ onFeedback }: HeaderProps) {
             <i className="fa-regular fa-heart" aria-hidden="true"></i>
           </a>
 
-          <a
-            href="/products"
+          <Link
+            to="/cart"
             aria-label="Cart"
-            onClick={() => handleUtilityClick("cart")}
+            onClick={() => closeMenu()}
           >
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-          </a>
+          </Link>
 
           <a
             href="#newsletter"
