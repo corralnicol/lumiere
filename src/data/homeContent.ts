@@ -163,41 +163,33 @@ export const homeBestSellers = [
 
 export const homeKits = [
   {
-    id: "kit1",
-    src: "/images/kits&sets/kit1.svg",
+    id: "glow-essentials-kit",
+    image: "/images/kits/kit1.svg",
     alt: "Sheglam lip kit",
-    cardClassName: "kits-card--tall",
-    imageClassName: "kit1",
   },
   {
-    id: "kit2",
-    src: "/images/kits&sets/kit2.svg",
+    id: "soft-glam-set",
+    image: "/images/kits/kit2.svg",
     alt: "Rare Beauty set",
-    cardClassName: "kits-card--top-left",
-    imageClassName: "kit2",
   },
   {
-    id: "kit3",
-    src: "/images/kits&sets/kit3.svg",
+    id: "skin-prep-kit",
+    image: "/images/kits/kit3.svg",
     alt: "The Ordinary set",
-    cardClassName: "kits-card--top-right",
-    imageClassName: "kit3",
   },
   {
-    id: "kit4",
-    src: "/images/kits&sets/kit4.svg",
+    id: "lip-care-set",
+    image: "/images/kits/kit4.svg",
     alt: "Milk Makeup set",
-    cardClassName: "kits-card--bottom-left",
-    imageClassName: "kit4",
   },
   {
-    id: "kit5",
-    src: "/images/kits&sets/kit5.svg",
+    id: "full-routine-kit",
+    image: "/images/kits/kit5.svg",
     alt: "Sol de Janeiro set",
-    cardClassName: "kits-card--bottom-right",
-    imageClassName: "kit5",
   },
 ];
+
+export const kits = homeKits;
 
 export const footerSocialLinks = [
   {
