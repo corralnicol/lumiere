@@ -47,10 +47,10 @@
     max-width: 480px;
     background-color: #EFE8E0;
     border-radius: 40px;
-    padding: 30px 60px 30px 60px; /* Reducido un poco el padding vertical para que quepan los 4 campos */
+    padding: 30px 60px 30px 60px;
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Reducido el gap general para compactar */
+    gap: 12px;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
     position: relative;
     z-index: 1;
@@ -130,7 +130,7 @@
 
 .input {
     width: 100%;
-    padding: 10px 14px; /* Un poco más compacto */
+    padding: 10px 14px;
     border: 1px solid #6F5352;
     border-radius: 10px;
     background-color: #EFE8E0;

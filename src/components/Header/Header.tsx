@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 
 type HeaderProps = {
@@ -137,13 +138,13 @@ function Header({ onFeedback }: HeaderProps) {
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
             </a>
 
-            <a
-              href="#newsletter"
+            <Link
+              to="/login"
               aria-label="Account"
-              onClick={() => handleUtilityClick("account")}
+              onClick={closeMenu}
             >
               <i className="fa-regular fa-user" aria-hidden="true"></i>
-            </a>
+            </Link>
           </div>
         </nav>
 
@@ -190,13 +191,12 @@ function Header({ onFeedback }: HeaderProps) {
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
           </a>
 
-          <a
-            href="#newsletter"
+          <Link
+            to="/login"
             aria-label="Account"
-            onClick={() => handleUtilityClick("account")}
           >
             <i className="fa-regular fa-user" aria-hidden="true"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </header>
