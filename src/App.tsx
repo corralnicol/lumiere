@@ -5,6 +5,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
+import SkincareDetails from "./pages/SellProduct/SkincareDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<CreateAccount />} />
         <Route path="/sell" element={<CategorySelection />} />
+        <Route path="/sell/details" element={<SkincareDetails />} />
       </Routes>
     </BrowserRouter>
   );
