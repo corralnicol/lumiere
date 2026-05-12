@@ -1,0 +1,311 @@
+/*Estilos de la página de Pago, selección de método de pago y formulario de tarjeta*/
+
+.payment-page {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+.payment-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #7F434E;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.payment-container {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Sección de métodos de pago */
+.payment-methods {
+  background: white;
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(127, 67, 78, 0.08);
+}
+
+.payment-section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: #7F434E;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-section-title i {
+  color: #D97D90;
+}
+
+/* Opciones de método de pago (tarjeta, PSE, Nequi) */
+.method-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.method-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 2px solid #E7C0C8;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #FFFAFB;
+}
+
+.method-option:hover {
+  border-color: #D97D90;
+  background: #FFF5F7;
+}
+
+.method-option.selected {
+  border-color: #7F434E;
+  background: #FFF0F2;
+  box-shadow: 0 0 0 4px rgba(127, 67, 78, 0.1);
+}
+
+.method-radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #E7C0C8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.method-option.selected .method-radio {
+  border-color: #7F434E;
+}
+
+.method-radio-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.3s;
+}
+
+.method-option.selected .method-radio-inner {
+  background: #7F434E;
+}
+
+.method-icon {
+  font-size: 1.5rem;
+  color: #D97D90;
+  width: 36px;
+  text-align: center;
+}
+
+.method-info h3 {
+  font-size: 1rem;
+  color: #7F434E;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.method-info p {
+  font-size: 0.85rem;
+  color: #A9525A;
+}
+
+/* Formulario de tarjeta de crédito */
+.card-form {
+  margin-top: 20px;
+  padding-top: 25px;
+  border-top: 2px dashed #FFF0F2;
+}
+
+.card-preview {
+  background: linear-gradient(135deg, #E28496 0%, #A9525A 100%);
+  border-radius: 18px;
+  padding: 28px 24px;
+  margin-bottom: 25px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-preview::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.card-preview::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card-chip {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.card-number-display {
+  font-size: 1.35rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.card-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.card-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-form .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.card-form .form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7F434E;
+}
+
+.card-form .form-group input {
+  padding: 14px 16px;
+  border: 2px solid #E7C0C8;
+  border-radius: 14px;
+  font-size: 1rem;
+  color: #7F434E;
+  background: #FFFAFB;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: "Inter", sans-serif;
+}
+
+.card-form .form-group input:focus {
+  outline: none;
+  border-color: #D97D90;
+  box-shadow: 0 0 0 4px rgba(217, 125, 144, 0.15);
+}
+
+.card-form .form-group input::placeholder {
+  color: #C9A0A8;
+}
+
+/* Botón de confirmar pago */
+.pay-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #7F434E 0%, #9f2f38 100%);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pay-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(159, 47, 56, 0.3);
+}
+
+.pay-btn:disabled {
+  background: #C9A0A8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Texto de seguridad debajo del botón */
+.security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: #A9525A;
+  font-size: 0.85rem;
+}
+
+.security-note i {
+  color: #D97D90;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .payment-container {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-page {
+    padding: 20px 12px;
+  }
+
+  .payment-methods {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .card-preview {
+    padding: 22px 18px;
+    min-height: 150px;
+  }
+
+  .card-number-display {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .card-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}

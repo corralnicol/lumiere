@@ -89,7 +89,7 @@ function Header({ onFeedback }: HeaderProps) {
   return (
     <header className="header-lumiere" id="top">
       <div className="degrade">
-        <Link to="#top" className="logo-link" aria-label="Go to top">
+        <Link to="/" className="logo-link" aria-label="Go to home">
           <h1 className="logo">Lumière</h1>
         </Link>
       </div>
@@ -130,9 +130,9 @@ function Header({ onFeedback }: HeaderProps) {
             </a>
 
             <Link
-              to="/products"
+              to="/cart"
               aria-label="Cart"
-              onClick={() => handleUtilityClick("cart")}
+              onClick={() => closeMenu()}
             >
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
             </Link>
@@ -183,9 +183,9 @@ function Header({ onFeedback }: HeaderProps) {
           </a>
 
           <Link
-            to="/products"
+            to="/cart"
             aria-label="Cart"
-            onClick={() => handleUtilityClick("cart")}
+            onClick={() => closeMenu()}
           >
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
           </Link>

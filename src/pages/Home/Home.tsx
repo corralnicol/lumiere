@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import Categories from "../../components/Categories/Categories";
@@ -6,9 +7,11 @@ import BestSellers from "../../components/BestSellers/BestSellers";
 import Footer from "../../components/Footer/Footer";
 import { homeKits } from "../../data/homeContent";
 
+type FeedbackType = "info" | "success" | "warning";
+
 type FeedbackState = {
   message: string;
-  type: "info" | "success" | "warning" | "";
+  type: FeedbackType | "";
   isVisible: boolean;
 };
 
@@ -21,7 +24,7 @@ function Home() {
 
   const showFeedback = (
     message: string,
-    type: "info" | "success" | "warning" = "info"
+    type: FeedbackType = "info"
   ) => {
     setFeedback({
       message,
@@ -78,19 +81,16 @@ function Home() {
           <h2 className="kits-title">Kits &amp; Sets</h2>
 
           <div className="kits-grid">
-            {homeKits.map((kit) => (
-              <article
-                className={`kits-card ${kit.cardClassName}`}
-                key={kit.id}
-              >
-                <img
-                  src={kit.src}
-                  alt={kit.alt}
-                  className={kit.imageClassName}
-                />
-              </article>
-            ))}
-          </div>
+          {homeKits.map((kit) => (
+          <Link
+          to={`/kits/${kit.id}`}
+          className="kits-card"
+          key={kit.id}
+          aria-label={`View details for ${kit.alt}`}>
+         <img src={kit.image} alt={kit.alt} />
+         </Link>
+        ))}
+        </div>
         </section>
       </main>
 

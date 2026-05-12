@@ -82,36 +82,38 @@ function Footer({ onFeedback }: FooterProps) {
           </div>
         </div>
 
+        {/* Sección de información de la empresa */}
         <div>
           <h4>COMPANY</h4>
-          <a href="#hero">About Lumiere</a>
-          <a href="#brands">History</a>
+          <a href="/#hero">About Lumiere</a>
+          <a href="/#brands">History</a>
           <a href="mailto:teamlumiere@example.com">Work with us</a>
-          <a href="#best-sellers">100% original</a>
+          <a href="/#best-sellers">100% original</a>
         </div>
 
+        {/* Enlaces de ayuda y recursos */}
         <div>
           <h4>HELP</h4>
           <a href="mailto:support@lumierebeauty.example">Customer Support</a>
           <Link to="/products">Delivery Details</Link>
-          <a href="#newsletter">Terms &amp; Conditions</a>
-          <a href="#newsletter">Privacy Policy</a>
+          <a href="/#newsletter">Terms &amp; Conditions</a>
+          <a href="/#newsletter">Privacy Policy</a>
         </div>
 
         <div>
           <h4>ACCOUNT</h4>
-          <a href="#newsletter">Account</a>
+          <a href="/#newsletter">Account</a>
           <Link to="/products">Manage Deliveries</Link>
           <Link to="/products">Orders</Link>
-          <a href="#newsletter">Payments</a>
+          <a href="/#newsletter">Payments</a>
         </div>
 
         <div>
           <h4>RESOURCES</h4>
           <Link to="/products">New Product</Link>
-          <a href="#brands">Lumiere Creators</a>
-          <a href="#kits">Gifts with Purchase</a>
-          <a href="#newsletter">Gift Cards</a>
+          <a href="/#brands">Lumiere Creators</a>
+          <a href="/#kits">Gifts with Purchase</a>
+          <a href="/#newsletter">Gift Cards</a>
         </div>
       </div>
 
