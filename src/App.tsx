@@ -16,7 +16,7 @@ function useHashScroll() {
 
   useEffect(() => {
     const handleHashScroll = () => {
-      const hash = window.location.hash.slice(1);
+      const hash = location.hash.slice(1);
       if (hash) {
         const element = document.getElementById(hash);
         if (element) {
@@ -33,12 +33,17 @@ function useHashScroll() {
   }, [location]);
 }
 
+function ScrollToHash() {
+  useHashScroll();
+  return null;
+}
+
 // TODO: Use UserProvider with name and email instead of just cart
 function App() {
-  useHashScroll();
   return (
     <CartProvider>
       <Router>
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/kits/:kitId" element={<KitDetail />} />

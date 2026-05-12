@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { brandLogos, homeBanners } from "../../data/homeContent";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
