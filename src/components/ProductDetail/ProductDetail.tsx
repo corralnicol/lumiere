@@ -295,14 +295,7 @@ export default function ProductDetailPage<
             : "fa-regular fa-star"
     );
 
-    const productCharacteristics =
-        product.characteristics && product.characteristics.length > 0
-            ? product.characteristics
-            : ([
-                product.category,
-                product.brand,
-                `${Math.round(product.rating)} stars`,
-            ].filter(Boolean) as string[]);
+    const productCharacteristics = product.characteristics ?? [];
 
     const reviewCountDisplay =
         typeof reviewCountBase === "number"
@@ -320,6 +313,8 @@ export default function ProductDetailPage<
     const recommendedImageResolver =
         getRecommendedImageSrc ??
         ((item: R) => item.image ?? item.imageUrl ?? "");
+
+    const category = product.category ?? "uncategorized";
 
     return (
         <>
@@ -377,6 +372,10 @@ export default function ProductDetailPage<
                     </div>
 
                     <div className="product-detail-info">
+                        <p className="detail-category">
+                            {category}
+                        </p>
+
                         <p className="detail-brand">{product.brand}</p>
 
                         <h1>{product.name}</h1>

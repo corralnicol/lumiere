@@ -117,6 +117,15 @@
   padding-top: 4px;
 }
 
+.detail-category {
+  margin: 0 0 6px;
+  color: #c65f72;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .detail-brand {
   margin: 0 0 6px;
   font-family: "Playfair Display", serif;
