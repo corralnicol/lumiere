@@ -1,14 +1,29 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./SkincareDetails.module.css";
 import SellNavbar from "../../components/Navbar/SellNavbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
+import { productCharacteristics as characteristics } from "@/data/characteristics";
+import { capitalize } from "@/utils/strings";
 
 const SkincareDetails = () => {
-    const characteristics = [
-        "Anti - ance", "Moisturizer", "Hypoallergenic",
-        "Sunscreen", "Anti - aging", "Soothing",
-        "Gluten free", "Cruelty free", "Vegan"
-    ];
+
+    const searchParams = useSearchParams();
+    const navigate = useNavigate();
+    const category = searchParams[0].get("category");
+
+    const [selected, setSelected] = useState<string[]>([]);
+
+    const toggleChar = (char: string) => {
+        setSelected(prev =>
+            prev.includes(char) ? prev.filter(c => c !== char) : [...prev, char]
+        );
+    };
+
+    const handleSend = () => {
+        if (selected.length === 0) return;
+        navigate(`/sell/success?category=${category}&characteristics=${selected.join(',')}`);
+    };
 
     return (
         <div className={styles.container}>
@@ -41,8 +56,12 @@ const SkincareDetails = () => {
 
                     <div className={styles.gridContainer}>
                         {characteristics.map((char, index) => (
-                            <button key={index} className={styles.charButton}>
-                                {char}
+                            <button
+                                key={index}
+                                className={selected.includes(char) ? styles.charButtonSelected : styles.charButton}
+                                onClick={() => toggleChar(char)}
+                            >
+                                {capitalize(char)}
                             </button>
                         ))}
                     </div>
@@ -82,7 +101,13 @@ const SkincareDetails = () => {
                     </div>
 
                     <div className={styles.actionRow}>
-                        <button className={styles.sendButton}>Send</button>
+                        <button
+                            className={selected.length > 0 ? styles.sendButton : styles.sendButtonDisabled}
+                            onClick={handleSend}
+                            disabled={selected.length === 0}
+                        >
+                            Send
+                        </button>
                     </div>
                 </section>
 

@@ -94,6 +94,30 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
+.charButtonSelected {
+    background-color: #FFF0F2;
+    border: 3px solid #DE7488;
+    border-radius: 40px;
+    padding: 20px;
+    min-height: 110px;
+    width: 280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #6F5353;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(222, 116, 136, 0.2);
+    transition: all 0.2s ease;
+}
+
+.charButtonSelected:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(222, 116, 136, 0.25);
+}
+
 /* ─── Iconos Decorativos Flotantes (Siguiendo el mockup) ─── */
 .decorIconSunTop {
     position: absolute;
@@ -281,6 +305,18 @@
 .sendButton:hover {
     background-color: #DE7488;
     transform: scale(1.02);
+}
+
+.sendButtonDisabled {
+    background-color: #C9B2B5;
+    color: #EFE8E0;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 80px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .dividerLine {

@@ -1,6 +1,7 @@
 import styles from "./CategorySelection.module.css";
 import SellNavbar from "../../components/Navbar/SellNavbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
+import { useNavigate } from "react-router-dom";
 
 const CategorySelection = () => {
     const categories = [
@@ -13,6 +14,8 @@ const CategorySelection = () => {
         { id: "eyeliners", name: "Eyeliners", icon: "/images/categories/eyeliner.png" },
         { id: "corrector", name: "Corrector", icon: "/images/categories/concealer.png" },
     ];
+
+    const navigate = useNavigate();
 
     return (
         <div className={styles.container}>
@@ -35,7 +38,7 @@ const CategorySelection = () => {
                     
                     <div className={styles.categoryGrid}>
                         {categories.map((cat) => (
-                            <button key={cat.id} className={styles.categoryCard}>
+                            <button key={cat.id} className={styles.categoryCard} onClick={() => navigate(`/sell/details?category=${cat.id}`)}>
                                 <div className={styles.iconWrapper}>
                                     <img src={cat.icon} alt={cat.name} className={styles.categoryIcon} />
                                 </div>
