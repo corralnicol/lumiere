@@ -3,6 +3,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import "./Seller.css";
 import { Link } from "react-router-dom";
+import { useUserState } from "@/contexts/user/UserContext";
 
 type FeedbackType = "info" | "success" | "warning";
 
@@ -32,6 +33,18 @@ const faqItems = [
             "Payments are deposited to the bank account you connect during onboarding, based on your payout schedule.",
     },
 ];
+
+function HeroAction() {
+    const user = useUserState();
+    const link = user?.isLoggedIn ? "/sell" : "/signup";
+    const label = user?.isLoggedIn ? "Manage Your Store" : "Sign Up";
+
+    return (
+        <Link to={link} className="seller-hero__register-btn">
+            {label}
+        </Link>
+    );
+}
 
 function Seller() {
     const [email, setEmail] = useState("");
@@ -96,9 +109,7 @@ function Seller() {
                         </p>
 
                         <div className="seller-hero__actions">
-                            <Link to="/signup" className="seller-hero__register-btn">
-                                Register
-                            </Link>
+                            <HeroAction />
                             <span className="seller-hero__promo">
                                 Get 10% off your first $30 brand sale
                             </span>

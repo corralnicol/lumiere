@@ -1,14 +1,44 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./SkincareDetails.module.css";
 import SellNavbar from "../../components/Navbar/SellNavbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
+import { productCharacteristics as characteristics } from "@/data/characteristics";
+import { capitalize } from "@/utils/strings";
 
 const SkincareDetails = () => {
-    const characteristics = [
-        "Anti - ance", "Moisturizer", "Hypoallergenic",
-        "Sunscreen", "Anti - aging", "Soothing",
-        "Gluten free", "Cruelty free", "Vegan"
-    ];
+
+    const searchParams = useSearchParams();
+    const navigate = useNavigate();
+    const category = searchParams[0].get("category");
+
+    const [selected, setSelected] = useState<string[]>([]);
+    const [form, setForm] = useState({ name: '', brand: '', price: '', size: '', stock: '' });
+
+    const toggleChar = (char: string) => {
+        setSelected(prev =>
+            prev.includes(char) ? prev.filter(c => c !== char) : [...prev, char]
+        );
+    };
+
+    const handleField = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const canSend = selected.length > 0 && form.name.trim() && form.brand.trim() && form.price.trim();
+
+    const handleSend = () => {
+        if (!canSend) return;
+        const params = new URLSearchParams({
+            category: category ?? '',
+            characteristics: selected.join(','),
+            name: form.name,
+            brand: form.brand,
+            price: form.price,
+            ...(form.size && { size: form.size }),
+            ...(form.stock !== '' && { stock: form.stock }),
+        });
+        navigate(`/sell/success?${params}`);
+    };
 
     return (
         <div className={styles.container}>
@@ -41,10 +71,46 @@ const SkincareDetails = () => {
 
                     <div className={styles.gridContainer}>
                         {characteristics.map((char, index) => (
-                            <button key={index} className={styles.charButton}>
-                                {char}
+                            <button
+                                key={index}
+                                className={selected.includes(char) ? styles.charButtonSelected : styles.charButton}
+                                onClick={() => toggleChar(char)}
+                            >
+                                {capitalize(char)}
                             </button>
                         ))}
+                    </div>
+                </section>
+
+                {/* Product Details Form */}
+                <section className={styles.productDetailsSection}>
+                    <h3 className={styles.detailsTitle}>Product details</h3>
+                    <div className={styles.detailsGrid}>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Name <span className={styles.required}>*</span></label>
+                            <input name="name" value={form.name} onChange={handleField}
+                                placeholder="e.g. Vitamin C Serum" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Brand <span className={styles.required}>*</span></label>
+                            <input name="brand" value={form.brand} onChange={handleField}
+                                placeholder="e.g. The Ordinary" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Price <span className={styles.required}>*</span></label>
+                            <input name="price" type="number" min="0" step="0.01" value={form.price} onChange={handleField}
+                                placeholder="0.00" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Size <span className={styles.optional}>(optional)</span></label>
+                            <input name="size" value={form.size} onChange={handleField}
+                                placeholder="e.g. 30ml" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Stock <span className={styles.optional}>(optional)</span></label>
+                            <input name="stock" type="number" min="0" step="1" value={form.stock} onChange={handleField}
+                                placeholder="0" className={styles.fieldInput} />
+                        </div>
                     </div>
                 </section>
 
@@ -82,7 +148,13 @@ const SkincareDetails = () => {
                     </div>
 
                     <div className={styles.actionRow}>
-                        <button className={styles.sendButton}>Send</button>
+                        <button
+                            className={canSend ? styles.sendButton : styles.sendButtonDisabled}
+                            onClick={handleSend}
+                            disabled={!canSend}
+                        >
+                            Send
+                        </button>
                     </div>
                 </section>
 

@@ -15,6 +15,7 @@ import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import AccountOverview from "./pages/account/Overview";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
 import SkincareDetails from "./pages/SellProduct/SkincareDetails";
+import SuccessPublish from "./pages/SellProduct/SuccessPublish";
 import Seller from "@/pages/seller/Seller";
 
 function useHashScroll() {
@@ -69,6 +70,7 @@ function App() {
           <Route path="/seller" element={<Seller />} />
           <Route path="/sell" element={<CategorySelection />} />
           <Route path="/sell/details" element={<SkincareDetails />} />
+          <Route path="/sell/success" element={<SuccessPublish />} />
         </Routes>
       </Router>
     </AppProviders>
