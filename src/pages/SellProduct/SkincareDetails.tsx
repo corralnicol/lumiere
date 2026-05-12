@@ -13,6 +13,7 @@ const SkincareDetails = () => {
     const category = searchParams[0].get("category");
 
     const [selected, setSelected] = useState<string[]>([]);
+    const [form, setForm] = useState({ name: '', brand: '', price: '', size: '', stock: '' });
 
     const toggleChar = (char: string) => {
         setSelected(prev =>
@@ -20,9 +21,23 @@ const SkincareDetails = () => {
         );
     };
 
+    const handleField = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const canSend = selected.length > 0 && form.name.trim() && form.brand.trim() && form.price.trim();
+
     const handleSend = () => {
-        if (selected.length === 0) return;
-        navigate(`/sell/success?category=${category}&characteristics=${selected.join(',')}`);
+        if (!canSend) return;
+        const params = new URLSearchParams({
+            category: category ?? '',
+            characteristics: selected.join(','),
+            name: form.name,
+            brand: form.brand,
+            price: form.price,
+            ...(form.size && { size: form.size }),
+            ...(form.stock !== '' && { stock: form.stock }),
+        });
+        navigate(`/sell/success?${params}`);
     };
 
     return (
@@ -67,6 +82,38 @@ const SkincareDetails = () => {
                     </div>
                 </section>
 
+                {/* Product Details Form */}
+                <section className={styles.productDetailsSection}>
+                    <h3 className={styles.detailsTitle}>Product details</h3>
+                    <div className={styles.detailsGrid}>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Name <span className={styles.required}>*</span></label>
+                            <input name="name" value={form.name} onChange={handleField}
+                                placeholder="e.g. Vitamin C Serum" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Brand <span className={styles.required}>*</span></label>
+                            <input name="brand" value={form.brand} onChange={handleField}
+                                placeholder="e.g. The Ordinary" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Price <span className={styles.required}>*</span></label>
+                            <input name="price" type="number" min="0" step="0.01" value={form.price} onChange={handleField}
+                                placeholder="0.00" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Size <span className={styles.optional}>(optional)</span></label>
+                            <input name="size" value={form.size} onChange={handleField}
+                                placeholder="e.g. 30ml" className={styles.fieldInput} />
+                        </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Stock <span className={styles.optional}>(optional)</span></label>
+                            <input name="stock" type="number" min="0" step="1" value={form.stock} onChange={handleField}
+                                placeholder="0" className={styles.fieldInput} />
+                        </div>
+                    </div>
+                </section>
+
                 {/* Banner 2: Búsqueda */}
                 <section className={styles.searchBanner}>
                     <div className={styles.searchBannerContent}>
@@ -102,9 +149,9 @@ const SkincareDetails = () => {
 
                     <div className={styles.actionRow}>
                         <button
-                            className={selected.length > 0 ? styles.sendButton : styles.sendButtonDisabled}
+                            className={canSend ? styles.sendButton : styles.sendButtonDisabled}
                             onClick={handleSend}
-                            disabled={selected.length === 0}
+                            disabled={!canSend}
                         >
                             Send
                         </button>
