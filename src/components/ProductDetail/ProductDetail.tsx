@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
     useEffect,
-    useMemo,
     useRef,
     useState,
     type ImgHTMLAttributes,
@@ -13,7 +12,6 @@ import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
 
 type FeedbackType = "info" | "success" | "warning";
-
 export type ProductReview = {
     user: string;
     rating: number;
@@ -108,7 +106,6 @@ export default function ProductDetailPage<
     R extends RecommendedProduct = RecommendedProduct
 >({
     product,
-    tabs,
     storageKeyPrefix = "lumiere-product-reviews",
     initialReviews,
     getInitialReviews,
@@ -168,35 +165,6 @@ export default function ProductDetailPage<
     useEffect(() => {
         getInitialReviewsRef.current = getInitialReviews;
     }, [getInitialReviews]);
-
-    const resolvedTabs = useMemo(() => {
-        if (!product) {
-            return [] as DetailTab[];
-        }
-
-        if (tabs && tabs.length > 0) {
-            return tabs;
-        }
-
-        if (product.description) {
-            return [
-                {
-                    id: "description",
-                    label: "Description",
-                    content: product.description,
-                },
-            ];
-        }
-
-        return [] as DetailTab[];
-    }, [product, tabs]);
-
-    const defaultTabId = resolvedTabs[0]?.id ?? "description";
-    const [activeTab, setActiveTab] = useState(defaultTabId);
-
-    useEffect(() => {
-        setActiveTab(defaultTabId);
-    }, [defaultTabId]);
 
     const productId = product?.id;
 
@@ -339,9 +307,6 @@ export default function ProductDetailPage<
             ? "product-detail-gallery product-detail-gallery--cover"
             : "product-detail-gallery";
 
-    const activeTabContent =
-        resolvedTabs.find((tab) => tab.id === activeTab)?.content ?? "";
-
     const recommendedImageResolver =
         getRecommendedImageSrc ??
         ((item: R) => item.image ?? item.imageUrl ?? "");
@@ -473,27 +438,12 @@ export default function ProductDetailPage<
                                 ))}
                             </div>
                         )}
+
+                        {product.description && (
+                            <p className="detail-description">{product.description}</p>
+                        )}
                     </div>
                 </section>
-
-                {resolvedTabs.length > 0 && (
-                    <section className="product-detail-description">
-                        <div className="detail-tabs">
-                            {resolvedTabs.map((tab) => (
-                                <button
-                                    key={tab.id}
-                                    type="button"
-                                    className={activeTab === tab.id ? "is-active" : ""}
-                                    onClick={() => setActiveTab(tab.id)}
-                                >
-                                    {tab.label}
-                                </button>
-                            ))}
-                        </div>
-
-                        <p>{activeTabContent}</p>
-                    </section>
-                )}
 
                 <section className="product-reviews-section">
                     <h2>{reviewsTitle}</h2>

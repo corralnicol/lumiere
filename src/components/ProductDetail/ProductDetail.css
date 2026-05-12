@@ -16,9 +16,14 @@
   width: min(calc(100% - 64px), 1280px);
   margin: 0 auto 28px;
   display: flex;
+  padding: 0;
+  border: none;
+  background: none;
   color: #7f434e;
   font-size: 0.95rem;
   font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .detail-back-link:hover {
@@ -250,47 +255,11 @@
   text-transform: uppercase;
 }
 
-/* TABS */
+/* DESCRIPTION */
 
-.product-detail-description {
-  width: min(calc(100% - 64px), 1280px);
-  margin: 52px auto 0;
-  color: #6b5453;
-}
-
-.detail-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.detail-tabs button {
-  min-width: 118px;
-  height: 34px;
-  border: none;
-  border-radius: 999px;
-  padding: 0 20px;
-  background: #f8e9e5;
-  color: #7f434e;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
-
-.detail-tabs button.is-active {
-  background: #df7890;
-  color: #ffffff;
-}
-
-.detail-tabs button:hover {
-  transform: translateY(-2px);
-}
-
-.product-detail-description p {
-  max-width: 760px;
-  margin: 0;
+.detail-description {
+  margin: 20px 0 0;
+  max-width: 560px;
   color: #6b5453;
   font-size: 1rem;
   line-height: 1.75;
@@ -666,7 +635,6 @@
 
   .detail-back-link,
   .product-detail-hero,
-  .product-detail-description,
   .product-reviews-section {
     width: min(calc(100% - 28px), 100%);
   }
@@ -706,6 +674,10 @@
     width: 76px;
     height: 76px;
     font-size: 0.58rem;
+  }
+
+  .detail-description {
+    max-width: 100%;
   }
 
   .product-review-toggle {
