@@ -29,9 +29,16 @@ const SkincareDetails = () => {
                     </h2>
                 </section>
 
-                {/* Grid de Características */}
+                {/* Grid de Características con iconos decorativos */}
                 <section className={styles.characteristicsSection}>
-                    {/* Aquí irán los iconos decorativos que se ven en el mockup */}
+                    {/* Iconos decorativos flotantes */}
+                    <img src="/images/characteristcs/icono sol.svg" alt="" className={styles.decorIconSunTop} />
+                    <img src="/images/characteristcs/icono crema.svg" alt="" className={styles.decorIconCreamLeft} />
+                    <img src="/images/characteristcs/icono rostro.svg" alt="" className={styles.decorIconFaceRight} />
+                    <img src="/images/characteristcs/icono rostro.svg" alt="" className={styles.decorIconFaceBottom} />
+                    <img src="/images/characteristcs/icono crema.svg" alt="" className={styles.decorIconCreamBottom} />
+                    <img src="/images/characteristcs/icono sol.svg" alt="" className={styles.decorIconSunBottom} />
+
                     <div className={styles.gridContainer}>
                         {characteristics.map((char, index) => (
                             <button key={index} className={styles.charButton}>
@@ -49,19 +56,19 @@ const SkincareDetails = () => {
                     </div>
                 </section>
 
-                {/* Métodos de búsqueda */}
+                {/* Métodos de búsqueda con tus iconos SVG */}
                 <section className={styles.searchMethods}>
                     <div className={styles.methodsContainer}>
                         <button className={styles.methodCard}>
-                            <i className="fa-solid fa-magnifying-glass"></i>
+                            <img src="/images/characteristcs/icono Search.svg" alt="Search" className={styles.methodIcon} />
                             <span>by keywords</span>
                         </button>
                         <button className={styles.methodCard}>
-                            <i className="fa-solid fa-camera"></i>
+                            <img src="/images/characteristcs/icono Camera.svg" alt="Camera" className={styles.methodIcon} />
                             <span>By photo</span>
                         </button>
                         <button className={styles.methodCard}>
-                            <i className="fa-solid fa-barcode"></i>
+                            <img src="/images/characteristcs/icono code.svg" alt="Code" className={styles.methodIcon} />
                             <span>By code</span>
                         </button>
                     </div>
