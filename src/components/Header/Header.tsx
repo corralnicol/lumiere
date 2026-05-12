@@ -1,10 +1,25 @@
-import { useState, type FormEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { Link } from "react-router-dom";
-
+import { useUserState } from "@/contexts/user/UserContext";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
 };
+
+function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
+  const user = useUserState();
+  const link = user?.isLoggedIn ? "/account" : "/login";
+
+  return (
+    <Link
+      to={link}
+      aria-label="Account"
+      onClick={closeMenu}
+    >
+      <i className="fa-regular fa-user" aria-hidden="true"></i>
+    </Link>
+  );
+}
 
 function Header({ onFeedback }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +29,7 @@ function Header({ onFeedback }: HeaderProps) {
     setIsMenuOpen(false);
   };
 
-  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const rawQuery = searchValue.trim();
@@ -90,9 +105,9 @@ function Header({ onFeedback }: HeaderProps) {
   return (
     <header className="header-lumiere" id="top">
       <div className="degrade">
-        <a href="#top" className="logo-link" aria-label="Go to top">
+        <Link to="/" className="logo-link" aria-label="Go to home">
           <h1 className="logo">Lumière</h1>
-        </a>
+        </Link>
       </div>
 
       <div className={`header-bar ${isMenuOpen ? "menu-open" : ""}`}>
@@ -112,39 +127,31 @@ function Header({ onFeedback }: HeaderProps) {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <a href="/products" onClick={closeMenu}>
-            Shop <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </a>
-          <a href="#best-sellers" onClick={closeMenu}>On Sale</a>
-          <a href="#brands" onClick={closeMenu}>Brands</a>
-          <a href="#categories" onClick={closeMenu}>Categories</a>
-          <a href="#best-sellers" onClick={closeMenu}>Best Sellers</a>
-          <a href="/seller" onClick={closeMenu}>Seller</a>
+          <Link to="/products" onClick={closeMenu}>Shop</Link>
+          <Link to="/#brands" onClick={closeMenu}>Brands</Link>
+          <Link to="/#categories" onClick={closeMenu}>Categories</Link>
+          <Link to="/#best-sellers" onClick={closeMenu}>Best Sellers</Link>
+          <Link to="/#kits" onClick={closeMenu}>Kits &amp; Sets</Link>
+          <Link to="/seller" onClick={closeMenu}>Seller</Link>
 
           <div className="mobile-menu-icons">
-            <a
-              href="#best-sellers"
+            <Link
+              to="/products"
               aria-label="Favorites"
               onClick={() => handleUtilityClick("favorites")}
             >
               <i className="fa-regular fa-heart" aria-hidden="true"></i>
-            </a>
-
-            <a
-              href="/products"
-              aria-label="Cart"
-              onClick={() => handleUtilityClick("cart")}
-            >
-              <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-            </a>
+            </Link>
 
             <Link
-              to="/login"
-              aria-label="Account"
-              onClick={closeMenu}
+              to="/cart"
+              aria-label="Cart"
+              onClick={() => closeMenu()}
             >
-              <i className="fa-regular fa-user" aria-hidden="true"></i>
+              <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
             </Link>
+
+            <AccountIcon closeMenu={closeMenu} />
           </div>
         </nav>
 
@@ -175,28 +182,23 @@ function Header({ onFeedback }: HeaderProps) {
         </form>
 
         <div className="header-icons">
-          <a
-            href="#best-sellers"
+          <Link
+            to="/#best-sellers"
             aria-label="Favorites"
             onClick={() => handleUtilityClick("favorites")}
           >
             <i className="fa-regular fa-heart" aria-hidden="true"></i>
-          </a>
-
-          <a
-            href="/products"
-            aria-label="Cart"
-            onClick={() => handleUtilityClick("cart")}
-          >
-            <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-          </a>
+          </Link>
 
           <Link
-            to="/login"
-            aria-label="Account"
+            to="/cart"
+            aria-label="Cart"
+            onClick={() => closeMenu()}
           >
-            <i className="fa-regular fa-user" aria-hidden="true"></i>
+            <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
           </Link>
+
+          <AccountIcon closeMenu={closeMenu} />
         </div>
       </div>
     </header>

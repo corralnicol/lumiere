@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
 
+
 type BestSellersProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
 };
@@ -44,13 +45,14 @@ function BestSellers({ onFeedback }: BestSellersProps) {
               key={product.id}
             >
               <div className="best-card-image-box">
+                {/* Botón de favoritos */}
                 <button
                   className={`best-card-fav ${isFavorite ? "is-active" : ""}`}
                   type="button"
                   aria-label={
                     isFavorite
-                      ? `Remove ${product.itemName} from favorites`
-                      : `Add ${product.itemName} to favorites`
+                      ? `Eliminar ${product.itemName} de favoritos`
+                      : `Añadir ${product.itemName} a favoritos`
                   }
                   aria-pressed={isFavorite}
                   onClick={(event) =>
@@ -69,6 +71,7 @@ function BestSellers({ onFeedback }: BestSellersProps) {
                   className={`best-card-image ${product.imageClassName}`}
                 />
 
+                {/* Estrellas de calificación */}
                 <div className="best-card-stars">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <i
@@ -94,6 +97,7 @@ function BestSellers({ onFeedback }: BestSellersProps) {
       </div>
     </section>
   );
+
 }
 
 export default BestSellers;

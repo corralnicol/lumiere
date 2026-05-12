@@ -1,12 +1,49 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./CreateAccount.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
+import { useUserActions, useUserState } from "@/contexts/user/UserContext";
 
 const CreateAccount = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [accepted, setAccepted] = useState(true);
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const user = useUserState();
+    const actions = useUserActions();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user?.isLoggedIn) {
+            navigate("/account", { replace: true });
+        }
+    }, [navigate, user?.isLoggedIn]);
+
+    const handleCreateAccount = () => {
+        if (!actions) {
+            return;
+        }
+
+        const trimmedEmail = email.trim();
+        const trimmedName = name.trim();
+        const trimmedPhone = phone.trim();
+
+        if (!trimmedEmail || !trimmedName) {
+            return;
+        }
+
+        actions.login({
+            name: trimmedName,
+            email: trimmedEmail,
+            phone: trimmedPhone,
+            isLoggedIn: true,
+        });
+
+        navigate("/account", { replace: true });
+    };
 
     return (
         <div className={styles.container}>
@@ -17,7 +54,7 @@ const CreateAccount = () => {
                     <h2 className={styles.title}>Create your account!</h2>
 
                     {/* Botón Google */}
-                    <button className={styles.googleBtn}>
+                    <button className={styles.googleBtn} type="button">
                         <img
                             src="/images/login/google.svg"
                             alt="Google"
@@ -41,6 +78,8 @@ const CreateAccount = () => {
                             type="email"
                             className={styles.input}
                             placeholder=""
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
 
@@ -52,6 +91,8 @@ const CreateAccount = () => {
                             type="tel"
                             className={styles.input}
                             placeholder=""
+                            value={phone}
+                            onChange={(event) => setPhone(event.target.value)}
                         />
                     </div>
 
@@ -63,6 +104,8 @@ const CreateAccount = () => {
                             type="text"
                             className={styles.input}
                             placeholder=""
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
                         />
                     </div>
 
@@ -75,6 +118,8 @@ const CreateAccount = () => {
                                 type={showPassword ? "text" : "password"}
                                 className={styles.input}
                                 placeholder=""
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
                             />
                             <button
                                 type="button"
@@ -116,7 +161,7 @@ const CreateAccount = () => {
                     </div>
 
                     {/* Botón Crear Cuenta */}
-                    <button className={styles.createBtn}>
+                    <button className={styles.createBtn} onClick={handleCreateAccount}>
                         Create account
                     </button>
 
