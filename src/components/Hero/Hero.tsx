@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { brandLogos, homeBanners } from "../../data/homeContent";
+import { Link } from "react-router";
 
 function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,9 +67,9 @@ function Hero() {
                 className={`hero-image ${slide.imageClassName}`}
               />
 
-              <a href="/products" className="hero-btn">
+              <Link to="/products" className="hero-btn">
                 Shop Now
-              </a>
+              </Link>
             </article>
           ))}
         </div>

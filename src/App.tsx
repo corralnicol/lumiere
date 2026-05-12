@@ -11,26 +11,34 @@ import Products from "./pages/products/Products";
 import ProductDetail from "./pages/ProductDetail";
 import KitDetail from "./pages/kit-detail";
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function useHashScroll() {
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "auto",
-    });
-  }, [pathname]);
+    const handleHashScroll = () => {
+      const hash = window.location.hash.slice(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 0);
+        }
+      } else {
+        window.scrollTo(0, 0);
+      }
+    };
 
-  return null;
+    handleHashScroll();
+  }, [location]);
 }
 
 // TODO: Use UserProvider with name and email instead of just cart
 function App() {
+  useHashScroll();
   return (
     <CartProvider>
       <Router>
-        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/kits/:kitId" element={<KitDetail />} />

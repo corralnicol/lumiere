@@ -111,23 +111,21 @@ function Header({ onFeedback }: HeaderProps) {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <Link to="/products" onClick={closeMenu}>
-            Shop <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </Link>
-          <a href="#best-sellers" onClick={closeMenu}>On Sale</a>
-          <a href="#brands" onClick={closeMenu}>Brands</a>
-          <a href="#categories" onClick={closeMenu}>Categories</a>
-          <a href="#best-sellers" onClick={closeMenu}>Best Sellers</a>
-          <a href="/seller" onClick={closeMenu}>Seller</a>
+          <Link to="/products" onClick={closeMenu}>Shop</Link>
+          <Link to="/#brands" onClick={closeMenu}>Brands</Link>
+          <Link to="/#categories" onClick={closeMenu}>Categories</Link>
+          <Link to="/#best-sellers" onClick={closeMenu}>Best Sellers</Link>
+          <Link to="/#kits" onClick={closeMenu}>Kits &amp; Sets</Link>
+          <Link to="/seller" onClick={closeMenu}>Seller</Link>
 
           <div className="mobile-menu-icons">
-            <a
-              href="#best-sellers"
+            <Link
+              to="/products"
               aria-label="Favorites"
               onClick={() => handleUtilityClick("favorites")}
             >
               <i className="fa-regular fa-heart" aria-hidden="true"></i>
-            </a>
+            </Link>
 
             <Link
               to="/cart"
@@ -137,13 +135,13 @@ function Header({ onFeedback }: HeaderProps) {
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
             </Link>
 
-            <a
-              href="#newsletter"
+            <Link
+              to="/#newsletter"
               aria-label="Account"
               onClick={() => handleUtilityClick("account")}
             >
               <i className="fa-regular fa-user" aria-hidden="true"></i>
-            </a>
+            </Link>
           </div>
         </nav>
 
@@ -174,13 +172,13 @@ function Header({ onFeedback }: HeaderProps) {
         </form>
 
         <div className="header-icons">
-          <a
-            href="#best-sellers"
+          <Link
+            to="/#best-sellers"
             aria-label="Favorites"
             onClick={() => handleUtilityClick("favorites")}
           >
             <i className="fa-regular fa-heart" aria-hidden="true"></i>
-          </a>
+          </Link>
 
           <Link
             to="/cart"
@@ -190,13 +188,13 @@ function Header({ onFeedback }: HeaderProps) {
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
           </Link>
 
-          <a
-            href="#newsletter"
+          <Link
+            to="/#newsletter"
             aria-label="Account"
             onClick={() => handleUtilityClick("account")}
           >
             <i className="fa-regular fa-user" aria-hidden="true"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </header>
