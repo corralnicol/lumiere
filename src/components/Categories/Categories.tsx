@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { homeCategories } from "../../data/homeContent";
 
 function Categories() {
@@ -18,8 +19,8 @@ function Categories() {
               key={groupIndex}
             >
               {homeCategories.map((category) => (
-                <a
-                  href={`/products?category=${category.categoryValue}`}
+                <Link
+                  to={`/products?category=${category.id}`}
                   className="category-card"
                   data-search-target={category.searchTarget}
                   tabIndex={groupIndex === 1 ? -1 : undefined}
@@ -36,7 +37,7 @@ function Categories() {
 
                     <p>{category.label}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           ))}

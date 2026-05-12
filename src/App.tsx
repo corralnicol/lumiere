@@ -7,6 +7,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Payment/Payment";
 import Confirmation from "./pages/Confirmation/Confirmation";
 import BestSellerDetail from "./pages/best-seller-detail/BestSellerDetail";
+import Products from "./pages/products/Products";
 import ProductDetail from "./pages/ProductDetail";
 import KitDetail from "./pages/kit-detail";
 
@@ -32,9 +33,9 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/" element={<Home />} />
           <Route path="/kits/:kitId" element={<KitDetail />} />
           <Route path="/best-sellers/:productId" element={<BestSellerDetail />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/products/:productId" element={<ProductDetail />} />
           {/* Order flow: cart -> checkout -> payment -> confirmation */}
           <Route path="/cart" element={<Cart />} />

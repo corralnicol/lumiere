@@ -111,13 +111,13 @@ function Header({ onFeedback }: HeaderProps) {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <Link to="/" onClick={closeMenu}>
+          <Link to="/products" onClick={closeMenu}>
             Shop <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </Link>
-          <a href="/#best-sellers" onClick={closeMenu}>On Sale</a>
-          <a href="/#brands" onClick={closeMenu}>Brands</a>
-          <a href="/#categories" onClick={closeMenu}>Categories</a>
-          <a href="/#best-sellers" onClick={closeMenu}>Best Sellers</a>
+          <a href="#best-sellers" onClick={closeMenu}>On Sale</a>
+          <a href="#brands" onClick={closeMenu}>Brands</a>
+          <a href="#categories" onClick={closeMenu}>Categories</a>
+          <a href="#best-sellers" onClick={closeMenu}>Best Sellers</a>
           <a href="/seller" onClick={closeMenu}>Seller</a>
 
           <div className="mobile-menu-icons">
