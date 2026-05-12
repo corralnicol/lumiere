@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+.account-container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: "Montserrat", sans-serif;
+	background-color: #f9eaec;
+}
+
+.account-main {
+	flex: 1;
+	display: grid;
+	place-items: center;
+	padding: 48px 20px 64px;
+}
+
+.account-card {
+	width: 100%;
+	max-width: 520px;
+	background-color: #efe8e0;
+	border-radius: 32px;
+	padding: 36px 40px 40px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	color: #6f5352;
+}
+
+.account-title {
+	margin: 0;
+	font-size: 26px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.account-subtitle {
+	margin: 0;
+	font-size: 14px;
+	text-align: center;
+	opacity: 0.75;
+}
+
+.account-details {
+	display: grid;
+	gap: 14px;
+	margin-top: 8px;
+}
+
+.account-detail-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 12px 14px;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.7);
+	font-size: 14px;
+}
+
+.account-detail-row span {
+	font-weight: 600;
+}
+
+.account-detail-row strong {
+	font-weight: 700;
+	color: #6f5352;
+}
+
+.account-logout {
+	width: 100%;
+	padding: 14px;
+	border: none;
+	border-radius: 14px;
+	background-color: #de7488;
+	color: #efe8e0;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.25s, transform 0.2s;
+}
+
+.account-logout:hover {
+	background-color: #bf5d78;
+	transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+	.account-card {
+		padding: 30px 24px 32px;
+	}
+
+	.account-detail-row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

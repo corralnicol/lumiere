@@ -12,6 +12,7 @@ import ProductDetails from "./pages/product-details/ProductDetails";
 import KitDetails from "./pages/kit-details/KitDetails";
 import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import AccountOverview from "./pages/account/Overview";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
 import SkincareDetails from "./pages/SellProduct/SkincareDetails";
 import Seller from "@/pages/seller/Seller";
@@ -63,6 +64,7 @@ function App() {
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<CreateAccount />} />
+          <Route path="/account" element={<AccountOverview />} />
           {/* Seller Routes */}
           <Route path="/seller" element={<Seller />} />
           <Route path="/sell" element={<CategorySelection />} />

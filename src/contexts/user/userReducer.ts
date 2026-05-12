@@ -5,7 +5,13 @@ type ActionType = { type: 'LOGIN'; payload: User } |
 { type: 'LOGOUT' };
 
 const raw = localStorage.getItem('user');
-export const initialUserState: User = raw ? JSON.parse(raw) : { name: '', email: '', isLoggedIn: false };
+const parsed = raw ? (JSON.parse(raw) as Partial<User>) : null;
+export const initialUserState: User = {
+  name: parsed?.name ?? '',
+  email: parsed?.email ?? '',
+  phone: parsed?.phone ?? '',
+  isLoggedIn: parsed?.isLoggedIn ?? false,
+};
 
 export function userReducer(state: User, action: ActionType): User {
   switch (action.type) {
@@ -14,7 +20,7 @@ export function userReducer(state: User, action: ActionType): User {
     case 'UPDATE_PROFILE':
       return { ...state, ...action.payload };
     case 'LOGOUT':
-      return { name: '', email: '', isLoggedIn: false };
+      return { name: '', email: '', phone: '', isLoggedIn: false };
     default:
       return state;
   }
