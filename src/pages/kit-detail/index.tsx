@@ -2,37 +2,11 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import {
-  bestSellerProducts,
-  type ProductReview,
-} from "../../data/bestSellerProducts";
-import productsData from "../../data/products.json";
-import { getProductImageSrc } from "../../utils/productImages";
-import "./BestSellerDetail.css";
+import { kitProducts, type KitReview } from "../../data/kitProducts";
+import "../best-seller-detail/BestSellerDetail.css";
 
 type FeedbackType = "info" | "success" | "warning";
-
 type DetailTab = "description" | "howToUse" | "ingredients";
-
-type JsonProduct = {
-  id: number | string;
-  category: string;
-  brand: string;
-  name: string;
-  description: string;
-  imageUrl: string;
-  rating: number;
-  price: number;
-  size?: string;
-  stock?: number;
-  reviews?: {
-    user: string;
-    rating: number;
-    comment: string;
-  }[];
-};
-
-const jsonProducts = productsData as JsonProduct[];
 
 function formatCharacteristic(characteristic: string) {
   return characteristic
@@ -40,8 +14,8 @@ function formatCharacteristic(characteristic: string) {
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-function BestSellerDetail() {
-  const { productId } = useParams();
+function KitDetail() {
+  const { kitId } = useParams();
 
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<DetailTab>("description");
@@ -49,39 +23,39 @@ function BestSellerDetail() {
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
 
-  const [reviews, setReviews] = useState<ProductReview[]>([]);
+  const [reviews, setReviews] = useState<KitReview[]>([]);
   const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
   const [reviewUser, setReviewUser] = useState("");
   const [reviewRating, setReviewRating] = useState(5);
   const [reviewComment, setReviewComment] = useState("");
 
-  const product = bestSellerProducts.find((item) => item.id === productId);
+  const kit = kitProducts.find((item) => item.id === kitId);
 
   useEffect(() => {
-    if (!product) {
+    if (!kit) {
       return;
     }
 
-    const storageKey = `lumiere-reviews-${product.id}`;
+    const storageKey = `lumiere-kit-reviews-${kit.id}`;
     const savedReviews = localStorage.getItem(storageKey);
 
     if (!savedReviews) {
-      setReviews(product.reviews);
+      setReviews(kit.reviews);
       return;
     }
 
     try {
-      const parsedReviews = JSON.parse(savedReviews) as ProductReview[];
+      const parsedReviews = JSON.parse(savedReviews) as KitReview[];
 
-      if (Array.isArray(parsedReviews)) {
+      if (Array.isArray(parsedReviews) && parsedReviews.length > 0) {
         setReviews(parsedReviews);
       } else {
-        setReviews(product.reviews);
+        setReviews(kit.reviews);
       }
     } catch {
-      setReviews(product.reviews);
+      setReviews(kit.reviews);
     }
-  }, [product]);
+  }, [kit]);
 
   const showFeedback = (message: string, type: FeedbackType = "info") => {
     setFeedbackMessage(message);
@@ -95,7 +69,7 @@ function BestSellerDetail() {
   const handleReviewSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!product) {
+    if (!kit) {
       return;
     }
 
@@ -110,7 +84,7 @@ function BestSellerDetail() {
       return;
     }
 
-    const newReview: ProductReview = {
+    const newReview: KitReview = {
       user: trimmedUser,
       rating: reviewRating,
       comment: trimmedComment,
@@ -120,7 +94,7 @@ function BestSellerDetail() {
 
     setReviews(updatedReviews);
     localStorage.setItem(
-      `lumiere-reviews-${product.id}`,
+      `lumiere-kit-reviews-${kit.id}`,
       JSON.stringify(updatedReviews)
     );
 
@@ -132,14 +106,14 @@ function BestSellerDetail() {
     showFeedback("Your review was submitted successfully.", "success");
   };
 
-  if (!product) {
+  if (!kit) {
     return (
       <>
         <Header onFeedback={showFeedback} />
 
         <main className="product-detail-empty">
-          <h1>Product not found</h1>
-          <p>The product you are looking for does not exist.</p>
+          <h1>Kit not found</h1>
+          <p>The kit you are looking for does not exist.</p>
           <Link to="/">Back to home</Link>
         </main>
 
@@ -148,15 +122,15 @@ function BestSellerDetail() {
     );
   }
 
-  const recommendedProducts = jsonProducts.slice(0, 4);
+  const recommendedKits = kitProducts
+    .filter((item) => item.id !== kit.id)
+    .slice(0, 4);
 
-  const extraReviewCount = Math.max(0, reviews.length - product.reviews.length);
-  const visibleReviewCount = product.reviewCount + extraReviewCount;
+  const extraReviewCount = Math.max(0, reviews.length - kit.reviews.length);
+  const visibleReviewCount = kit.reviewCount + extraReviewCount;
 
   const ratingStars = Array.from({ length: 5 }).map((_, index) =>
-    index < Math.round(product.rating)
-      ? "fa-solid fa-star"
-      : "fa-regular fa-star"
+    index < Math.round(kit.rating) ? "fa-solid fa-star" : "fa-regular fa-star"
   );
 
   return (
@@ -184,27 +158,24 @@ function BestSellerDetail() {
             <button
               className="detail-favorite"
               type="button"
-              aria-label={`Save ${product.name} to wishlist`}
+              aria-label={`Save ${kit.name} to wishlist`}
               onClick={() =>
-                showFeedback(`${product.name} saved to wishlist.`, "success")
+                showFeedback(`${kit.name} saved to wishlist.`, "success")
               }
             >
               <i className="fa-regular fa-heart" aria-hidden="true"></i>
             </button>
 
-            <img src={product.image} alt={product.name} />
+            <img src={kit.image} alt={kit.name} />
           </div>
 
           <div className="product-detail-info">
-            <p className="detail-brand">{product.brand}</p>
+            <p className="detail-brand">{kit.brand}</p>
 
-            <h1>{product.name}</h1>
+            <h1>{kit.name}</h1>
 
             <div className="detail-rating">
-              <div
-                className="detail-rating-stars"
-                aria-label={`${product.rating} stars`}
-              >
+              <div className="detail-rating-stars" aria-label={`${kit.rating} stars`}>
                 {ratingStars.map((starClass, index) => (
                   <i className={starClass} aria-hidden="true" key={index}></i>
                 ))}
@@ -213,9 +184,9 @@ function BestSellerDetail() {
               <p>({visibleReviewCount})</p>
             </div>
 
-            <p className="detail-price">${Number(product.price).toFixed(2)}</p>
+            <p className="detail-price">${Number(kit.price).toFixed(2)}</p>
 
-            <p className="detail-size">Size: {product.size}</p>
+            <p className="detail-size">Size: {kit.size}</p>
 
             <div className="detail-actions">
               <div className="quantity-control" aria-label="Quantity selector">
@@ -248,20 +219,17 @@ function BestSellerDetail() {
                 type="button"
                 className="add-cart-button"
                 onClick={() =>
-                  showFeedback(
-                    `${quantity} ${product.name} added to cart.`,
-                    "success"
-                  )
+                  showFeedback(`${quantity} ${kit.name} added to cart.`, "success")
                 }
               >
                 Add to cart
               </button>
             </div>
 
-            <p className="detail-stock">{product.stock} units left available</p>
+            <p className="detail-stock">{kit.stock} units left available</p>
 
-            <div className="detail-badges" aria-label="Product characteristics">
-              {product.characteristics.map((characteristic) => (
+            <div className="detail-badges" aria-label="Kit characteristics">
+              {kit.characteristics.map((characteristic) => (
                 <span key={characteristic}>
                   {formatCharacteristic(characteristic)}
                 </span>
@@ -297,7 +265,7 @@ function BestSellerDetail() {
             </button>
           </div>
 
-          <p>{product.details[activeTab]}</p>
+          <p>{kit.details[activeTab]}</p>
         </section>
 
         <section className="product-reviews-section">
@@ -392,7 +360,7 @@ function BestSellerDetail() {
               <label>
                 Review
                 <textarea
-                  placeholder="Write your opinion about this product"
+                  placeholder="Write your opinion about this kit"
                   value={reviewComment}
                   onChange={(event) => setReviewComment(event.target.value)}
                 />
@@ -407,21 +375,14 @@ function BestSellerDetail() {
           <h2>Recommended</h2>
 
           <div className="recommended-grid">
-            {recommendedProducts.map((item) => (
+            {recommendedKits.map((item) => (
               <Link
-                to={`/products/${item.id}`}
+                to={`/kits/${item.id}`}
                 className="recommended-card"
                 key={item.id}
               >
                 <div className="recommended-image-box">
-                  <img
-                    src={getProductImageSrc(item)}
-                    alt={item.name}
-                    referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.src = `https://picsum.photos/300/300?random=${item.id}`;
-                    }}
-                  />
+                  <img src={item.image} alt={item.name} />
                 </div>
 
                 <h3>{item.brand}</h3>
@@ -454,4 +415,4 @@ function BestSellerDetail() {
   );
 }
 
-export default BestSellerDetail;
+export default KitDetail;
