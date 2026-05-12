@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     useEffect,
     useRef,
@@ -111,7 +111,7 @@ export default function ProductDetailPage<
     getInitialReviews,
     reviewCountBase,
     backLinkHref = "/",
-    backLinkLabel = "← Back to home",
+    backLinkLabel = "← Back",
     notFoundTitle = "Product not found",
     notFoundMessage = "The product you are looking for does not exist.",
     notFoundLinkText = "Back to home",
@@ -141,6 +141,7 @@ export default function ProductDetailPage<
     const [reviewUser, setReviewUser] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
     const [reviewComment, setReviewComment] = useState("");
+    const navigate = useNavigate();
 
     const getInitialReviewsRef = useRef(getInitialReviews);
 
@@ -263,6 +264,15 @@ export default function ProductDetailPage<
         showFeedback("Your review was submitted successfully.", "success");
     };
 
+    const handleBackNavigation = () => {
+        if (window.history.length > 1) {
+            navigate(-1);
+            return;
+        }
+
+        navigate(backLinkHref);
+    };
+
     if (!product) {
         return (
             <>
@@ -327,10 +337,14 @@ export default function ProductDetailPage<
             )}
 
             <main className="product-detail-page">
-                <Link to={backLinkHref} className="detail-back-link">
+                <button
+                    type="button"
+                    className="detail-back-link"
+                    onClick={handleBackNavigation}
+                    aria-label={backLinkLabel || "Back"}
+                >
                     {backLinkLabel}
-                </Link>
-
+                </button>
                 <section className="product-detail-hero">
                     <div className={galleryClassName}>
                         <button
