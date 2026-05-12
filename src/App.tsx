@@ -6,10 +6,10 @@ import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Payment/Payment";
 import Confirmation from "./pages/Confirmation/Confirmation";
-import BestSellerDetail from "./pages/best-seller-detail/BestSellerDetail";
+import BestSellerDetails from "./pages/best-seller-details/BestSellerDetails";
 import Products from "./pages/products/Products";
-import ProductDetail from "./pages/ProductDetail";
-import KitDetail from "./pages/kit-detail";
+import ProductDetails from "./pages/product-details/ProductDetails";
+import KitDetails from "./pages/kit-details/KitDetails";
 import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
@@ -51,10 +51,10 @@ function App() {
         <ScrollToHash />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/kits/:kitId" element={<KitDetail />} />
-          <Route path="/best-sellers/:productId" element={<BestSellerDetail />} />
+          <Route path="/kits/:kitId" element={<KitDetails />} />
+          <Route path="/best-sellers/:productId" element={<BestSellerDetails />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:productId" element={<ProductDetail />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
           {/* Order flow: cart -> checkout -> payment -> confirmation */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
