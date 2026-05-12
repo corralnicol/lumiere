@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { CartProvider } from "./contexts/CartContext";
+import { AppProviders } from "./contexts/providers";
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
@@ -12,6 +12,7 @@ import ProductDetails from "./pages/product-details/ProductDetails";
 import KitDetails from "./pages/kit-details/KitDetails";
 import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import AccountOverview from "./pages/account/Overview";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
 import SkincareDetails from "./pages/SellProduct/SkincareDetails";
 import Seller from "@/pages/seller/Seller";
@@ -46,7 +47,7 @@ function ScrollToHash() {
 // TODO: Use UserProvider with name and email instead of just cart
 function App() {
   return (
-    <CartProvider>
+    <AppProviders >
       <Router>
         <ScrollToHash />
         <Routes>
@@ -63,13 +64,14 @@ function App() {
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<CreateAccount />} />
+          <Route path="/account" element={<AccountOverview />} />
           {/* Seller Routes */}
           <Route path="/seller" element={<Seller />} />
           <Route path="/sell" element={<CategorySelection />} />
           <Route path="/sell/details" element={<SkincareDetails />} />
         </Routes>
       </Router>
-    </CartProvider>
+    </AppProviders>
   );
 }
 

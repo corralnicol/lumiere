@@ -2,6 +2,7 @@ import { useState, type SubmitEvent } from "react";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import "./Seller.css";
+import { Link } from "react-router-dom";
 
 type FeedbackType = "info" | "success" | "warning";
 
@@ -95,9 +96,9 @@ function Seller() {
                         </p>
 
                         <div className="seller-hero__actions">
-                            <a href="#seller-newsletter" className="seller-hero__register-btn">
+                            <Link to="/signup" className="seller-hero__register-btn">
                                 Register
-                            </a>
+                            </Link>
                             <span className="seller-hero__promo">
                                 Get 10% off your first $30 brand sale
                             </span>

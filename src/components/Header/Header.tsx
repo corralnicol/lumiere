@@ -1,9 +1,25 @@
-import { useState, type FormEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { Link } from "react-router-dom";
+import { useUserState } from "@/contexts/user/UserContext";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
 };
+
+function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
+  const user = useUserState();
+  const link = user?.isLoggedIn ? "/account" : "/login";
+
+  return (
+    <Link
+      to={link}
+      aria-label="Account"
+      onClick={closeMenu}
+    >
+      <i className="fa-regular fa-user" aria-hidden="true"></i>
+    </Link>
+  );
+}
 
 function Header({ onFeedback }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +29,7 @@ function Header({ onFeedback }: HeaderProps) {
     setIsMenuOpen(false);
   };
 
-  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const rawQuery = searchValue.trim();
@@ -135,13 +151,7 @@ function Header({ onFeedback }: HeaderProps) {
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
             </Link>
 
-            <Link
-              to="/login"
-              aria-label="Account"
-              onClick={closeMenu}
-            >
-              <i className="fa-regular fa-user" aria-hidden="true"></i>
-            </Link>
+            <AccountIcon closeMenu={closeMenu} />
           </div>
         </nav>
 
@@ -188,12 +198,7 @@ function Header({ onFeedback }: HeaderProps) {
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
           </Link>
 
-          <Link
-            to="/login"
-            aria-label="Account"
-          >
-            <i className="fa-regular fa-user" aria-hidden="true"></i>
-          </Link>
+          <AccountIcon closeMenu={closeMenu} />
         </div>
       </div>
     </header>

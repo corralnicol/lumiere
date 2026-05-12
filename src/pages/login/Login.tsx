@@ -1,12 +1,59 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
+import { useUserActions, useUserState } from "@/contexts/user/UserContext";
+
+const deriveNameFromEmail = (value: string) => {
+    const base = value.split("@")[0] ?? "";
+    const normalized = base
+        .replace(/[._-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    if (!normalized) {
+        return "Guest";
+    }
+
+    return normalized.replace(/\b\w/g, (letter) => letter.toUpperCase());
+};
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [accepted, setAccepted] = useState(true);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const user = useUserState();
+    const actions = useUserActions();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user?.isLoggedIn) {
+            navigate("/account", { replace: true });
+        }
+    }, [navigate, user?.isLoggedIn]);
+
+    const handleLogin = () => {
+        if (!actions) {
+            return;
+        }
+
+        const trimmedEmail = email.trim();
+
+        if (!trimmedEmail) {
+            return;
+        }
+
+        actions.login({
+            name: deriveNameFromEmail(trimmedEmail),
+            email: trimmedEmail,
+            phone: user?.phone ?? "",
+            isLoggedIn: true,
+        });
+
+        navigate("/account", { replace: true });
+    };
 
     return (
         <div className={styles.container}>
@@ -16,7 +63,7 @@ const Login = () => {
                 <div className={styles.card}>
                     <h2 className={styles.title}>Log in!!</h2>
 
-                    <button className={styles.googleBtn}>
+                    <button className={styles.googleBtn} type="button">
                         <img
                             src="/images/login/google.svg"
                             alt="Google"
@@ -38,6 +85,8 @@ const Login = () => {
                             type="email"
                             className={styles.input}
                             placeholder=""
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
 
@@ -49,6 +98,8 @@ const Login = () => {
                                 type={showPassword ? "text" : "password"}
                                 className={styles.input}
                                 placeholder=""
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
                             />
                             <button
                                 type="button"
@@ -88,7 +139,7 @@ const Login = () => {
                         </p>
                     </div>
 
-                    <button className={styles.loginBtn}>
+                    <button className={styles.loginBtn} onClick={handleLogin}>
                         Log in
                     </button>
 
