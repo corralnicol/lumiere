@@ -1,0 +1,307 @@
+/* Estilos de la página de Confirmación, comprobante de compra con número de pedido */
+
+.confirmation-page {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+.confirmation-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #7F434E;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Animación del check de éxito */
+.success-animation {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.success-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E28496 0%, #D97D90 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  animation: scaleIn 0.6s ease-out;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-circle i {
+  font-size: 3rem;
+  color: white;
+}
+
+.success-text {
+  font-size: 1.3rem;
+  color: #7F434E;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.success-subtitle {
+  font-size: 1rem;
+  color: #A9525A;
+}
+
+/* Tarjeta del comprobante/recibo */
+.receipt-card {
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  margin-top: 30px;
+  box-shadow: 0 20px 50px rgba(127, 67, 78, 0.12);
+  border: 1px solid rgba(127, 67, 78, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto decorativo en la parte superior del recibo */
+.receipt-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #E28496, #F1748D, #A9525A, #BF5F67);
+}
+
+.receipt-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed #FFF0F2;
+}
+
+.receipt-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: #7F434E;
+  margin-bottom: 8px;
+}
+
+.receipt-date {
+  font-size: 0.9rem;
+  color: #A9525A;
+}
+
+/* Número de pedido destacado */
+.order-number-section {
+  background: #FFF0F2;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.order-number-label {
+  font-size: 0.9rem;
+  color: #A9525A;
+  margin-bottom: 6px;
+}
+
+.order-number-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #7F434E;
+  letter-spacing: 2px;
+}
+
+/* Lista de productos en el recibo */
+.receipt-items {
+  margin-bottom: 20px;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #FFF5F6;
+}
+
+.receipt-item:last-child {
+  border-bottom: none;
+}
+
+.receipt-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.receipt-item-image {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  background: #FFF8F9;
+  border-radius: 8px;
+}
+
+.receipt-item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7F434E;
+}
+
+.receipt-item-qty {
+  font-size: 0.8rem;
+  color: #A9525A;
+}
+
+.receipt-item-price {
+  font-weight: 700;
+  color: #7F434E;
+}
+
+/* Totales del recibo */
+.receipt-totals {
+  border-top: 2px dashed #FFF0F2;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.receipt-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.receipt-grand-total {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #7F434E;
+  padding-top: 15px;
+  border-top: 2px solid #FFF0F2;
+  margin-top: 10px;
+}
+
+/* Información de envío en el recibo */
+.receipt-shipping {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px dashed #FFF0F2;
+}
+
+.receipt-shipping-title {
+  font-weight: 700;
+  color: #7F434E;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.receipt-shipping-title i {
+  color: #D97D90;
+}
+
+.receipt-shipping p {
+  font-size: 0.9rem;
+  color: #A9525A;
+  line-height: 1.6;
+}
+
+/* Botones de acción al final */
+.confirmation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.home-btn {
+  width: 100%;
+  padding: 16px;
+  background: #7F434E;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+}
+
+.home-btn:hover {
+  background: #9f2f38;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(159, 47, 56, 0.25);
+}
+
+.print-btn {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  color: #7F434E;
+  border: 2px solid #7F434E;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+}
+
+.print-btn:hover {
+  background: #FFF0F2;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .confirmation-page {
+    padding: 20px 12px;
+  }
+
+  .receipt-card {
+    padding: 25px 18px;
+    border-radius: 22px;
+  }
+
+  .order-number-value {
+    font-size: 1.4rem;
+  }
+
+  .receipt-item-info {
+    gap: 8px;
+  }
+
+  .receipt-item-image {
+    width: 38px;
+    height: 38px;
+  }
+}
