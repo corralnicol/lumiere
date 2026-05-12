@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
 import SkincareDetails from "./pages/SellProduct/SkincareDetails";
+import SuccessPublish from "./pages/SellProduct/SuccessPublish";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<CreateAccount />} />
         <Route path="/sell" element={<CategorySelection />} />
         <Route path="/sell/details" element={<SkincareDetails />} />
+        <Route path="/sell/success" element={<SuccessPublish />} />
       </Routes>
     </BrowserRouter>
   );
