@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { CartProvider } from "./contexts/CartContext";
+import { AppProviders } from "./contexts/providers";
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
@@ -46,7 +46,7 @@ function ScrollToHash() {
 // TODO: Use UserProvider with name and email instead of just cart
 function App() {
   return (
-    <CartProvider>
+    <AppProviders >
       <Router>
         <ScrollToHash />
         <Routes>
@@ -69,7 +69,7 @@ function App() {
           <Route path="/sell/details" element={<SkincareDetails />} />
         </Routes>
       </Router>
-    </CartProvider>
+    </AppProviders>
   );
 }
 
