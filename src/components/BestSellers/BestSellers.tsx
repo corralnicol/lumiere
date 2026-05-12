@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
 
 type BestSellersProps = {
@@ -8,7 +9,13 @@ type BestSellersProps = {
 function BestSellers({ onFeedback }: BestSellersProps) {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
 
-  const toggleFavorite = (productId: string, itemName: string) => {
+  const toggleFavorite = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    productId: string,
+    itemName: string
+  ) => {
+    event.preventDefault();
+
     const isFavorite = favoriteIds.includes(productId);
 
     if (isFavorite) {
@@ -30,7 +37,8 @@ function BestSellers({ onFeedback }: BestSellersProps) {
           const isFavorite = favoriteIds.includes(product.id);
 
           return (
-            <article
+            <Link
+              to={`/best-sellers/${product.id}`}
               className="best-card"
               data-search-target={product.searchTarget}
               key={product.id}
@@ -45,7 +53,9 @@ function BestSellers({ onFeedback }: BestSellersProps) {
                       : `Add ${product.itemName} to favorites`
                   }
                   aria-pressed={isFavorite}
-                  onClick={() => toggleFavorite(product.id, product.itemName)}
+                  onClick={(event) =>
+                    toggleFavorite(event, product.id, product.itemName)
+                  }
                 >
                   <i
                     className={`${isFavorite ? "fa-solid" : "fa-regular"} fa-heart`}
@@ -78,7 +88,7 @@ function BestSellers({ onFeedback }: BestSellersProps) {
                 <h3 className="best-card-name">{product.brand}</h3>
                 <p className="best-card-desc">{product.description}</p>
               </div>
-            </article>
+            </Link>
           );
         })}
       </div>
