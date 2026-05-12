@@ -14,6 +14,7 @@ import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import CategorySelection from "./pages/SellProduct/CategorySelection";
 import SkincareDetails from "./pages/SellProduct/SkincareDetails";
+import Seller from "@/pages/seller/Seller";
 
 function useHashScroll() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<CreateAccount />} />
           {/* Seller Routes */}
+          <Route path="/seller" element={<Seller />} />
           <Route path="/sell" element={<CategorySelection />} />
           <Route path="/sell/details" element={<SkincareDetails />} />
         </Routes>
