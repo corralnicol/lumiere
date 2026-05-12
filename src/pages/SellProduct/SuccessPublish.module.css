@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF0F2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.imageContainer {
+    position: relative;
+    width: 200%;
+    max-width: 1300px;
+    margin-bottom: 60px;
+}
+
+.successImageWrapper {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.successImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.checkIconWrapper {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F9D7D8;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px #BF6F76;
+    border: none;
+}
+
+.checkIconWrapper i {
+    font-size: 35px;
+    color: #6F5353;
+}
+
+.messageContent {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.successTitle {
+    font-size: 32px;
+    font-weight: 800;
+    color: #5A4545;
+    margin-bottom: 15px;
+}
+
+.successDescription {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #6F5353;
+    font-weight: 500;
+}
+
+.actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.acceptButton {
+    background-color: #DE7488;
+    border: 2px solid #FFF0F2;
+    color: #FFF0F2;
+    text-decoration: none;
+    width: 260px;
+    padding: 10px 0;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(222, 116, 136, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acceptButton:hover {
+    background-color: #C15E71;
+    transform: translateY(-2px);
+}
+
+.publishMoreButton {
+    background-color: transparent;
+    border: 2px solid #6F5352;
+    color: #6F5352;
+    text-decoration: none;
+    width: 260px;
+    padding: 10px 0;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.publishMoreButton:hover {
+    background-color: #5A4545;
+    color: white;
+}
+
+
+.dividerLine {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #9A8282;
+    opacity: 0.5;
+    margin-bottom: 30px;
+}
+
+.legalNotice {
+    font-size: 14px;
+    color: #6f5353;
+    opacity: 0.5;
+    max-width: 600px;
+}
+
+.legalNotice a {
+    color: #6F5353;
+    opacity: 0.7;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .acceptButton,
+    .publishMoreButton {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .successTitle {
+        font-size: 26px;
+    }
+}

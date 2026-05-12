@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/* ─── Layout general ─── */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f9eaec;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ─── Imagen Decorativa (Borde inferior de la pantalla) ─── */
+.container::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    height: 320px;
+    background-image: url('/images/login/decoration.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+    transform: scaleX(-1); /* Efecto espejo */
+}
+
+/* ─── Main con imagen de fondo ─── */
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background-image: url('/images/login/makeup 2.svg');
+    background-size: cover;
+    background-position: center -200px;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ─── Card central ─── */
+.card {
+    width: 100%;
+    max-width: 480px;
+    background-color: #EFE8E0;
+    border-radius: 40px;
+    padding: 30px 60px 30px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Título ─── */
+.title {
+    margin: 0 0 4px 0;
+    font-size: 26px;
+    font-weight: 600;
+    color: #6F5352;
+    text-align: center;
+}
+
+/* ─── Botón Google ─── */
+.googleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #6F5352;
+    border-radius: 10px;
+    background-color: #EFE8E0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6F5352;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.googleBtn:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+.googleIcon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ─── Divisor ─── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dividerLine {
+    flex: 1;
+    height: 1px;
+    background-color: #B18886;
+}
+
+.dividerText {
+    margin: 0;
+    font-size: 13px;
+    color: #6F5352;
+    opacity: 80%;
+    white-space: nowrap;
+}
+
+/* ─── Campos del formulario ─── */
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6F5352;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #6F5352;
+    border-radius: 10px;
+    background-color: #EFE8E0;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: #6F5352;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #6F5352;
+}
+
+/* ─── Campo contraseña con ícono ─── */
+.passwordWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.passwordWrapper .input {
+    padding-right: 44px;
+}
+
+.eyeBtn {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.eyeBtn img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+}
+
+/* ─── Checkbox ─── */
+.checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6F5352;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkIcon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #E6A0A3;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.legalText {
+    margin: 0;
+    font-size: 9px;
+    color: #6F5352;
+    line-height: 1.4;
+    opacity: 70%;
+    font-weight: 500;
+}
+
+.legalLink {
+    color: #6F5352;
+    text-decoration: underline;
+}
+
+/* ─── Botón principal Create ─── */
+.createBtn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background-color: #DE7488;
+    color: #EFE8E0;
+    font-size: 17px;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.25s, transform 0.2s;
+    margin-top: 4px;
+}
+
+.createBtn:hover {
+    background-color: #bf5d78;
+    transform: translateY(-1px);
+}
+
+/* ─── Enlace volver al login ─── */
+.loginRedirect {
+    margin: 0;
+    text-align: center;
+    font-size: 13px;
+    color: #6F5352;
+    font-weight: 550;
+}
+
+.loginLink {
+    color: #DE7488;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.loginLink:hover {
+    text-decoration: underline;
+}
