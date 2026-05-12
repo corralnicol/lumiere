@@ -82,6 +82,7 @@ function Footer({ onFeedback }: FooterProps) {
           </div>
         </div>
 
+        {/* Sección de información de la empresa */}
         <div>
           <h4>COMPANY</h4>
           <Link to="/#hero">About Lumiere</Link>
@@ -90,6 +91,7 @@ function Footer({ onFeedback }: FooterProps) {
           <Link to="/#best-sellers">100% original</Link>
         </div>
 
+        {/* Enlaces de ayuda y recursos */}
         <div>
           <h4>HELP</h4>
           <a href="mailto:support@lumierebeauty.example">Customer Support</a>
