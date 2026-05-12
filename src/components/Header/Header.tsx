@@ -136,9 +136,9 @@ function Header({ onFeedback }: HeaderProps) {
             </Link>
 
             <Link
-              to="/#newsletter"
+              to="/login"
               aria-label="Account"
-              onClick={() => handleUtilityClick("account")}
+              onClick={closeMenu}
             >
               <i className="fa-regular fa-user" aria-hidden="true"></i>
             </Link>
@@ -189,9 +189,8 @@ function Header({ onFeedback }: HeaderProps) {
           </Link>
 
           <Link
-            to="/#newsletter"
+            to="/login"
             aria-label="Account"
-            onClick={() => handleUtilityClick("account")}
           >
             <i className="fa-regular fa-user" aria-hidden="true"></i>
           </Link>

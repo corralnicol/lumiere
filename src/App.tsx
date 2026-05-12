@@ -10,6 +10,10 @@ import BestSellerDetail from "./pages/best-seller-detail/BestSellerDetail";
 import Products from "./pages/products/Products";
 import ProductDetail from "./pages/ProductDetail";
 import KitDetail from "./pages/kit-detail";
+import Login from "./pages/login/Login";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
+import CategorySelection from "./pages/SellProduct/CategorySelection";
+import SkincareDetails from "./pages/SellProduct/SkincareDetails";
 
 function useHashScroll() {
   const location = useLocation();
@@ -55,6 +59,12 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirmation" element={<Confirmation />} />
+          {/* Auth Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<CreateAccount />} />
+          {/* Seller Routes */}
+          <Route path="/sell" element={<CategorySelection />} />
+          <Route path="/sell/details" element={<SkincareDetails />} />
         </Routes>
       </Router>
     </CartProvider>

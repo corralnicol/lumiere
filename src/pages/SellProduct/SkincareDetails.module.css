@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF0F2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+
+.backNavigation {
+    padding: 20px 60px;
+    background-color: #FFF0F2;
+}
+
+.backLink {
+    text-decoration: none;
+    color: #5A4545;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.heroBanner {
+    background-image: url('/images/characteristcs/make up 7.svg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.heroTitle {
+    font-size: 38px;
+    font-weight: 700;
+    color: #5A4545;
+    line-height: 1.2;
+}
+
+.characteristicsSection {
+    position: relative;
+    padding: 80px 0;
+    background-color: #FFF0F2;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.charButton {
+    background-color: #FFF0F2;
+    border: 3px solid #B18886;
+    border-radius: 40px;
+    padding: 20px;
+    min-height: 110px;
+    width: 280px;
+    /* Ancho fijo para "recortarlas" horizontalmente */
+    margin: 0 auto;
+    /* Centra la card en su celda del grid */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #6F5353;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.charButton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Iconos Decorativos Flotantes (Siguiendo el mockup) ─── */
+.decorIconSunTop {
+    position: absolute;
+    top: 50px;
+    left: 45%;
+    width: 45px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.decorIconCreamLeft {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    width: 75px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.decorIconFaceRight {
+    position: absolute;
+    top: 20%;
+    right: 8%;
+    width: 70px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.decorIconFaceBottom {
+    position: absolute;
+    bottom: 15%;
+    left: 8%;
+    width: 70px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.decorIconCreamBottom {
+    position: absolute;
+    bottom: 5%;
+    right: 12%;
+    width: 75px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.decorIconSunBottom {
+    position: absolute;
+    bottom: 10%;
+    right: 40%;
+    width: 45px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+
+/* ─── Banner de Búsqueda ─── */
+.searchBanner {
+    background-image: linear-gradient(rgba(255, 240, 242, 0.4), rgba(255, 240, 242, 0.4)), url('/images/characteristcs/make up 5.svg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 100px;
+    /* Bajamos el texto */
+    padding-left: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.searchBannerContent {
+    max-width: 700px;
+}
+
+.searchTitle {
+    font-size: 40px;
+    font-weight: 700;
+    color: #6F5353;
+    margin-bottom: 10px;
+}
+
+.searchSubtitle {
+    font-size: 20px;
+    color: #6F5353;
+    font-weight: 600;
+}
+
+/* ─── Métodos de Búsqueda (TRASLAPADOS) ─── */
+.searchMethods {
+    background-color: #FFF0F2;
+    padding-bottom: 60px;
+    width: 100%;
+    position: relative;
+}
+
+.methodsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: -100px auto 0;
+    /* MARGEN NEGATIVO PARA TRASLAPE */
+    position: relative;
+    z-index: 10;
+}
+
+.methodCard {
+    background-color: #EFE8E0;
+    border: 1px solid #9A8282;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 320px;
+    /* Más anchas */
+    min-height: 200px;
+    /* Más altas */
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.methodIcon {
+    height: 60px;
+    /* Iconos más grandes */
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.methodCard span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #6F5353;
+}
+
+.methodCard:hover {
+    background-color: #E5DDD3;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.inputWrapper {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 18px 30px;
+    border-radius: 15px;
+    border: 1px solid #B3A8A9;
+    background-color: #EFE8E0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #5A4545;
+}
+
+.actionRow {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1200px;
+    margin: 25px auto 0;
+}
+
+.sendButton {
+    background-color: #DE7488;
+    color: #EFE8E0;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 80px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sendButton:hover {
+    background-color: #DE7488;
+    transform: scale(1.02);
+}
+
+.dividerLine {
+    border: 0;
+    border-top: 1px solid #9A8282;
+    opacity: 0.5;
+    margin-top: 50px;
+}
+
+.legalNotice {
+    text-align: center;
+    font-size: 14px;
+    color: #B3A8A9;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.legalNotice a {
+    color: #B3A8A9;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 0 40px;
+    }
+
+    .methodsContainer {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: -60px;
+    }
+
+    .methodCard {
+        width: 45%;
+        min-height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroBanner {
+        min-height: 250px;
+        padding: 40px 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .heroTitle {
+        font-size: 26px;
+    }
+
+    .gridContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .charButton {
+        width: 100%;
+        min-height: 80px;
+    }
+
+    /* Ocultamos iconos decorativos en móvil para limpiar la vista */
+    .decorIconSunTop, .decorIconCreamLeft, .decorIconFaceRight, 
+    .decorIconFaceBottom, .decorIconCreamBottom, .decorIconSunBottom {
+        display: none;
+    }
+
+    .searchBanner {
+        min-height: 250px;
+        padding: 40px 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .searchTitle {
+        font-size: 28px;
+    }
+
+    .methodsContainer {
+        margin-top: 20px; /* Quitamos el traslape en móvil */
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .methodCard {
+        width: 100%;
+    }
+
+    .inputWrapper, .actionRow {
+        padding: 0 20px;
+    }
+
+    .sendButton {
+        width: 100%;
+    }
+
+    .backNavigation {
+        padding: 15px 20px;
+    }
+}
