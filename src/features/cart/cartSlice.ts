@@ -35,7 +35,7 @@ const cartSlice = createSlice({
       state.items = [];
     },
     setCart(state, action: PayloadAction<CartItem[]>) {
-      // reemplaza todo el carrito (útil al cargar desde perfil)
+      // reemplaza todo el carrito
       state.items = action.payload;
     },
   },

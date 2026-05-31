@@ -24,7 +24,7 @@ const productsSlice = createSlice({
       state.list = action.payload;
     },
     addProduct(state, action: PayloadAction<Product>) {
-      // agrega un producto al listado (poco usado pero está aquí por si sirve)
+      // agrega un producto al listado 
       state.list.push(action.payload);
     },
     removeProduct(state, action: PayloadAction<string>) {
