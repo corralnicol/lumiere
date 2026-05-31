@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
+import { useCreateOrderMutation } from '../../services/supabaseApi';
 import { useCart } from '../../contexts/CartContext';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
 
-// Página de checkout
-// Aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
+// página de checkout
+// aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
 const Checkout: React.FC = () => {
+  const userId = useAppSelector((state) => state.auth.userId);
   const { cart, getCartTotal } = useCart();
   const navigate = useNavigate();
 
-  // Estado para guardar los datos que el usuario escribe en el formulario
+  // RTK Query crea la orden cuando hay usuario logueado.
+  const [createOrder, { isLoading: creatingOrder }] = useCreateOrderMutation();
+
+  // estado para guardar los datos que el usuario escribe en el formulario
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,17 +29,17 @@ const Checkout: React.FC = () => {
     zipCode: '',
   });
 
-  // Función simple para los mensajes del Header y Footer
+  // para los mensajes del Header y Footer
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
 
-  // Cálculo de precios
+  // cálculo de precios
   const subtotal = getCartTotal();
   const shipping = 5.00;
   const total = subtotal + shipping;
 
-  // Actualiza el estado cuando el usuario escribe en cualquier campo del formulario
+  // actualiza el estado cuando el usuario escribe en cualquier campo del formulario
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -42,16 +48,35 @@ const Checkout: React.FC = () => {
     }));
   };
 
-  // Cuando el usuario envía el formulario, guardamos los datos y lo llevamos a la página de pago
-  const handleSubmit = (e: React.FormEvent) => {
+  // cuando el usuario envía el formulario, guardamos envío y avanzamos al pago
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Guardamos los datos de envío en localStorage para usarlos después
+    // se guardan datos de envío en localStorage para usarlos después
     localStorage.setItem('lumiere_shipping', JSON.stringify(formData));
+
+    // Si hay usuario logueado, dejamos registrada una orden pendiente en Supabase.
+    // El carrito se vacía más adelante, cuando el pago se confirma.
+    if (userId && cart.length > 0) {
+      try {
+        await createOrder({
+          userId,
+          items: cart.map((item) => ({
+            productId: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+        }).unwrap();
+      } catch (err) {
+        console.error('Error al crear la orden:', err);
+      }
+    }
+
     navigate('/payment');
   };
 
-  // Si el carrito está vacío, mandamos al usuario de vuelta al carrito
+  // si el carrito está vacío, manda al usuario de vuelta al carrito
   if (cart.length === 0) {
     return (
       <>
@@ -262,9 +287,9 @@ const Checkout: React.FC = () => {
               </div>
             </div>
 
-            {/* Botón para ir al pago (solo si los campos requeridos están llenos) */}
-            <button type="submit" className="continue-payment-btn">
-              Continuar al Pago
+            {/* botón para ir al pago (se deshabilita mientras se crea la orden) */}
+            <button type="submit" className="continue-payment-btn" disabled={creatingOrder}>
+              {creatingOrder ? 'Creando orden...' : 'Continuar al Pago'}
               <i className="fa-solid fa-arrow-right"></i>
             </button>
           </form>
@@ -273,7 +298,8 @@ const Checkout: React.FC = () => {
           <aside className="order-summary">
             <h2 className="order-summary-title">Tu Pedido</h2>
 
-            {/* Lista de productos en miniatura */}
+            {/* lista de productos en miniatura */}
+            {/* Nico, cuando conectes los productos de Supabase, aquí debería mostrar nombre, imagen y precio real */}
             {cart.map((item) => (
               <div key={item.id} className="order-item">
                 <img src={item.imageUrl} alt={item.name} className="order-item-image" />

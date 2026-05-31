@@ -1,15 +1,14 @@
-// src/components/AvatarUploader.tsx
 
-import React, { useState, ChangeEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useAppSelector } from '../app/hooks';
 import { useUpdateProfileMutation } from '../services/supabaseApi';
 
-// TODO: replace with real Supabase client/config when available
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || '';
-const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || '';
+// Nico, reemplaza esto con la config real de Supabase cuando esté lista
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
 export const AvatarUploader: React.FC = () => {
-  const dispatch = useAppDispatch();
   const { userId } = useAppSelector((state) => state.auth);
   const [updateProfile] = useUpdateProfileMutation();
   const [preview, setPreview] = useState<string | null>(null);
@@ -18,16 +17,16 @@ export const AvatarUploader: React.FC = () => {
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !userId) return;
-    // preview for UI feedback
+    // vista previa de la imagen para que el usuario vea lo que subió
     const objectUrl = URL.createObjectURL(file);
     setPreview(objectUrl);
     setUploading(true);
 
-    // upload to Supabase Storage (placeholder implementation)
+    // subir la imagen al Storage de Supabase (por ahora es placeholder)
     const uploadUrl = `${SUPABASE_URL}/storage/v1/object/avatars/${userId}.png`;
     try {
       const res = await fetch(uploadUrl, {
-        method: 'POST', // Supabase uses POST for upload
+        method: 'POST',
         headers: {
           apikey: SUPABASE_ANON_KEY,
           Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
@@ -35,9 +34,8 @@ export const AvatarUploader: React.FC = () => {
         body: file,
       });
       if (!res.ok) throw new Error('Upload failed');
-      const data = await res.json();
       const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/avatars/${userId}.png`;
-      // Update profile avatar_url field
+      // actualizar el campo avatar_url en el perfil
       await updateProfile({ userId, avatarUrl: publicUrl }).unwrap();
     } catch (err) {
       console.error('Avatar upload error', err);

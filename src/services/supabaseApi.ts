@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Nico aqui reemplaza todo con los url y la key de supabase que hagas
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || '';
-const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || '';
+// Nico aquí reemplaza todo con los url y la key de supabase que hagas
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// baseQuery con fetch.
+// baseQuery con fetch
 const baseQuery = fetchBaseQuery({
   baseUrl: `${SUPABASE_URL}/rest/v1/`,
   prepareHeaders: (headers) => {
@@ -25,7 +25,7 @@ export const supabaseApi = createApi({
     // Profile
     getProfile: builder.query<any, string>({
       query: (userId) => `profiles?id=eq.${userId}&select=*`,
-      providesTags: (result, error, arg) => [{ type: 'Profile', id: arg }],
+      providesTags: (_result, _error, userId) => [{ type: 'Profile', id: userId }],
     }),
     updateProfile: builder.mutation<any, { userId: string; name?: string; avatarUrl?: string }>({
       query: ({ userId, ...patch }) => ({
@@ -33,7 +33,7 @@ export const supabaseApi = createApi({
         method: 'PATCH',
         body: patch,
       }),
-      invalidatesTags: (result, error, { userId }) => [{ type: 'Profile', id: userId }],
+      invalidatesTags: (_result, _error, { userId }) => [{ type: 'Profile', id: userId }],
     }),
     // Order
     createOrder: builder.mutation<any, { userId: string; items: any[] }>({
@@ -59,7 +59,7 @@ export const supabaseApi = createApi({
         method: 'PATCH',
         body: { cart: null },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'Profile', id: arg }],
+      invalidatesTags: (_result, _error, userId) => [{ type: 'Profile', id: userId }],
     }),
   }),
 });

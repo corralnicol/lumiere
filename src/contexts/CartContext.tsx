@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 
 // Definimos cómo se ve un producto en nuestra tienda
 export interface Product {
@@ -22,7 +23,7 @@ interface CartItem extends Product {
 // Estas son todas las acciones que se pueden hacer con el carrito
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (productId: number) => void;
   updateQuantity: (productId: number, quantity: number) => void;
   clearCart: () => void;
@@ -49,15 +50,19 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // Función para agregar un producto al carrito
   // Si el producto ya está, solo le sumamos 1 a la cantidad
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, quantity = 1) => {
+    const quantityToAdd = Math.max(1, quantity);
+
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
         return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantityToAdd }
+            : item
         );
       }
-      return [...prevCart, { ...product, quantity: 1 }];
+      return [...prevCart, { ...product, quantity: quantityToAdd }];
     });
   };
 

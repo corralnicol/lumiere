@@ -16,7 +16,7 @@ export const store = configureStore({
     getDefaultMiddleware().concat(supabaseApi.middleware),
 });
 
-// optional: enable refetchOnFocus/refetchOnReconnect
+
 setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
