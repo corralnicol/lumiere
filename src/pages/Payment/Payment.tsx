@@ -1,39 +1,45 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
 import { useCart } from '../../contexts/CartContext';
+import { useClearCartInProfileMutation, useCreateOrderMutation } from '../../services/supabaseApi';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
 import '../../styles/payment.css';
 
 // Página de pago
-// El usuario elige cómo quiere pagar (tarjeta, PSE, Nequi) y llena los datos de pago
+// El usuario elige cómo quiere pagar y llena los datos de pago
 const Payment: React.FC = () => {
   const { cart, getCartTotal, clearCart } = useCart();
+  const userId = useAppSelector((state) => state.auth.userId);
   const navigate = useNavigate();
+  const [createOrder, { isLoading: creatingOrder }] = useCreateOrderMutation();
+  const [clearCartInProfile] = useClearCartInProfileMutation();
 
-  // Método de pago seleccionado por el usuario
+  // Método de pago seleccionado por el usuario.
   const [paymentMethod, setPaymentMethod] = useState('card');
 
-  // Datos de la tarjeta de crédito/débito
+  // Datos de tarjeta usados solo para la vista de pago local.
   const [cardData, setCardData] = useState({
     cardNumber: '',
     cardName: '',
     expiry: '',
     cvv: '',
   });
+  const [paymentError, setPaymentError] = useState('');
 
-  // Función para los mensajes del Header y Footer
+  // El Header/Footer piden esta función para mostrar feedback.
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
 
-  // Cálculo de precios
+  // Total usando el carrito que ahora vive en Redux.
   const subtotal = getCartTotal();
   const shipping = 5.00;
   const total = subtotal + shipping;
 
-  // Actualiza los datos de la tarjeta cuando el usuario escribe
+  // Actualiza la vista previa de la tarjeta.
   const handleCardChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCardData((prev) => ({
@@ -42,19 +48,39 @@ const Payment: React.FC = () => {
     }));
   };
 
-  // Formatea el número de tarjeta para que se vea bonito en la vista previa
+  // Solo ordena el número visualmente en grupos de cuatro.
   const formatCardNumber = (number: string) => {
     const cleaned = number.replace(/\s/g, '');
     const groups = cleaned.match(/.{1,4}/g);
     return groups ? groups.join(' ') : '';
   };
 
-  // Cuando el usuario confirma el pago
-  const handlePayment = () => {
-    // Generamos un número de pedido único con la fecha y un número random
+  // Aquí sí se crea la orden: el checkout solo recoge datos de envío.
+  const handlePayment = async () => {
+    // Número local para el comprobante que se muestra en confirmación.
     const orderNumber = `LUM-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
-    // Guardamos la info del pedido para mostrarla en la confirmación
+    if (userId) {
+      try {
+        await createOrder({
+          userId,
+          items: cart.map((item) => ({
+            productId: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+        }).unwrap();
+        // Después de crear la orden, limpiamos profiles.cart como pide la entrega.
+        await clearCartInProfile(userId).unwrap();
+      } catch (err) {
+        console.error('Error al crear la orden:', err);
+        setPaymentError('No pudimos confirmar el pedido. Intenta de nuevo.');
+        return;
+      }
+    }
+
+    // Guardamos el comprobante local para la pantalla de confirmación.
     localStorage.setItem('lumiere_order', JSON.stringify({
       orderNumber,
       items: cart,
@@ -63,14 +89,13 @@ const Payment: React.FC = () => {
       paymentMethod,
     }));
 
-    // Vaciamos el carrito porque ya se completó la compra
+    // Vaciamos el carrito local después de confirmar la orden.
     clearCart();
 
-    // Llevamos al usuario a la pantalla de confirmación
     navigate('/confirmation');
   };
 
-  // Si el carrito está vacío, no debería estar en esta página
+  // Si alguien entra directo sin carrito, lo mandamos a comprar.
   if (cart.length === 0) {
     return (
       <>
@@ -265,9 +290,11 @@ const Payment: React.FC = () => {
             )}
 
             {/* Botón para confirmar el pago */}
-            <button className="pay-btn" onClick={handlePayment}>
+            {paymentError && <p className="payment-error">{paymentError}</p>}
+
+            <button className="pay-btn" onClick={handlePayment} disabled={creatingOrder}>
               <i className="fa-solid fa-lock"></i>
-              Confirmar y Pagar ${total.toFixed(2)}
+              {creatingOrder ? 'Creando orden...' : `Confirmar y Pagar $${total.toFixed(2)}`}
             </button>
 
             {/* Nota de seguridad */}

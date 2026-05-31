@@ -5,13 +5,12 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
 
-// Página de checkout
-// Aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
+// Página de checkout: solo recoge envío y revisa el pedido antes del pago.
 const Checkout: React.FC = () => {
   const { cart, getCartTotal } = useCart();
   const navigate = useNavigate();
 
-  // Estado para guardar los datos que el usuario escribe en el formulario
+  // Datos de envío que luego se muestran en confirmación.
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,17 +22,16 @@ const Checkout: React.FC = () => {
     zipCode: '',
   });
 
-  // Función simple para los mensajes del Header y Footer
+  // El Header/Footer piden esta función para feedback.
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
 
-  // Cálculo de precios
+  // El total sale del carrito centralizado.
   const subtotal = getCartTotal();
   const shipping = 5.00;
   const total = subtotal + shipping;
 
-  // Actualiza el estado cuando el usuario escribe en cualquier campo del formulario
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -42,16 +40,16 @@ const Checkout: React.FC = () => {
     }));
   };
 
-  // Cuando el usuario envía el formulario, guardamos los datos y lo llevamos a la página de pago
-  const handleSubmit = (e: React.FormEvent) => {
+  // Checkout no crea la orden; eso pasa al confirmar pago.
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Guardamos los datos de envío en localStorage para usarlos después
+    // Se guarda para que Confirmation pueda armar el recibo.
     localStorage.setItem('lumiere_shipping', JSON.stringify(formData));
     navigate('/payment');
   };
 
-  // Si el carrito está vacío, mandamos al usuario de vuelta al carrito
+  // Si no hay carrito, no dejamos avanzar al flujo de compra.
   if (cart.length === 0) {
     return (
       <>
@@ -262,7 +260,7 @@ const Checkout: React.FC = () => {
               </div>
             </div>
 
-            {/* Botón para ir al pago (solo si los campos requeridos están llenos) */}
+            {/* botón para ir al pago */}
             <button type="submit" className="continue-payment-btn">
               Continuar al Pago
               <i className="fa-solid fa-arrow-right"></i>
@@ -273,7 +271,7 @@ const Checkout: React.FC = () => {
           <aside className="order-summary">
             <h2 className="order-summary-title">Tu Pedido</h2>
 
-            {/* Lista de productos en miniatura */}
+            {/* Resumen del carrito que viene de Redux. */}
             {cart.map((item) => (
               <div key={item.id} className="order-item">
                 <img src={item.imageUrl} alt={item.name} className="order-item-image" />

@@ -17,6 +17,8 @@ import CategorySelection from "./pages/SellProduct/CategorySelection";
 import SkincareDetails from "./pages/SellProduct/SkincareDetails";
 import SuccessPublish from "./pages/SellProduct/SuccessPublish";
 import Seller from "@/pages/seller/Seller";
+import Profile from "./pages/Profile/Profile";
+import BuyerOverview from "./pages/BuyerOverview/BuyerOverview";
 
 function useHashScroll() {
   const location = useLocation();
@@ -45,7 +47,6 @@ function ScrollToHash() {
   return null;
 }
 
-// TODO: Use UserProvider with name and email instead of just cart
 function App() {
   return (
     <AppProviders >
@@ -59,6 +60,7 @@ function App() {
           <Route path="/products/:productId" element={<ProductDetails />} />
           {/* Order flow: cart -> checkout -> payment -> confirmation */}
           <Route path="/cart" element={<Cart />} />
+          <Route path="/overview" element={<BuyerOverview />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirmation" element={<Confirmation />} />
@@ -66,6 +68,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<CreateAccount />} />
           <Route path="/account" element={<AccountOverview />} />
+          <Route path="/profile" element={<Profile />} />
           {/* Seller Routes */}
           <Route path="/seller" element={<Seller />} />
           <Route path="/sell" element={<CategorySelection />} />
