@@ -37,7 +37,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action: PayloadAction<AddItemPayload>) {
-      // esto guarda el carrito para poder usarlo en checkout
+      // Guarda el producto en Redux para que checkout y pago lean el mismo carrito.
       const quantityToAdd = Math.max(1, action.payload.quantity ?? 1);
       const existing = state.items.find(i => i.id === action.payload.id);
       if (existing) {
@@ -47,11 +47,11 @@ const cartSlice = createSlice({
       }
     },
     removeItem(state, action: PayloadAction<number>) {
-      // elimina item del carrito
+      // Elimina un producto completo del carrito.
       state.items = state.items.filter(i => i.id !== action.payload);
     },
     updateQuantity(state, action: PayloadAction<{ id: number; quantity: number }>) {
-      // cambia la cantidad desde los botones del carrito
+      // Cambia la cantidad desde los botones + y -.
       if (action.payload.quantity <= 0) {
         state.items = state.items.filter(i => i.id !== action.payload.id);
         return;
@@ -62,11 +62,11 @@ const cartSlice = createSlice({
       }
     },
     clearCart(state) {
-      // limpia el carrito cuando la orden ya se creó
+      // Se usa cuando el pago ya quedó confirmado.
       state.items = [];
     },
     setCart(state, action: PayloadAction<CartItem[]>) {
-      // reemplaza todo el carrito
+      // Por si después cargamos el carrito desde profiles.cart en Supabase.
       state.items = action.payload;
     },
   },

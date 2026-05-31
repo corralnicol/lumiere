@@ -23,26 +23,26 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setProducts(state, action: PayloadAction<Product[]>) {
-      // aquí cargo el catálogo completo
+      // Cami/Sofi: cuando conecten el catálogo real, pueden guardar la lista aquí.
       state.list = action.payload;
     },
     addProduct(state, action: PayloadAction<Product>) {
-      // agrega un producto al listado 
+      // Sirve para sumar productos nuevos sin reemplazar todo el catálogo.
       state.list.push(action.payload);
     },
     removeProduct(state, action: PayloadAction<string>) {
-      // elimina por id
+      // Elimina por id y limpia la selección si era ese mismo producto.
       state.list = state.list.filter(p => p.id !== action.payload);
       if (state.selectedProduct?.id === action.payload) {
         state.selectedProduct = null;
       }
     },
     setSelectedProduct(state, action: PayloadAction<Product>) {
-      // guarda el producto que el usuario está viendo
+      // Guarda el producto abierto en detalle, por si otra vista lo necesita.
       state.selectedProduct = action.payload;
     },
     clearSelectedProduct(state) {
-      // limpia el producto seleccionado
+      // Lo dejamos vacío al salir del detalle.
       state.selectedProduct = null;
     },
   },

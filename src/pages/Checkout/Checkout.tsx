@@ -5,13 +5,12 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
 
-// página de checkout
-// aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
+// Página de checkout: solo recoge envío y revisa el pedido antes del pago.
 const Checkout: React.FC = () => {
   const { cart, getCartTotal } = useCart();
   const navigate = useNavigate();
 
-  // estado para guardar los datos que el usuario escribe en el formulario
+  // Datos de envío que luego se muestran en confirmación.
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,17 +22,16 @@ const Checkout: React.FC = () => {
     zipCode: '',
   });
 
-  // para los mensajes del Header y Footer
+  // El Header/Footer piden esta función para feedback.
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
 
-  // cálculo de precios
+  // El total sale del carrito centralizado.
   const subtotal = getCartTotal();
   const shipping = 5.00;
   const total = subtotal + shipping;
 
-  // actualiza el estado cuando el usuario escribe en cualquier campo del formulario
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -42,16 +40,16 @@ const Checkout: React.FC = () => {
     }));
   };
 
-  // cuando el usuario envía el formulario, guardamos envío y avanzamos al pago
+  // Checkout no crea la orden; eso pasa al confirmar pago.
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // se guardan datos de envío en localStorage para usarlos después
+    // Se guarda para que Confirmation pueda armar el recibo.
     localStorage.setItem('lumiere_shipping', JSON.stringify(formData));
     navigate('/payment');
   };
 
-  // si el carrito está vacío, manda al usuario de vuelta al carrito
+  // Si no hay carrito, no dejamos avanzar al flujo de compra.
   if (cart.length === 0) {
     return (
       <>
@@ -273,8 +271,7 @@ const Checkout: React.FC = () => {
           <aside className="order-summary">
             <h2 className="order-summary-title">Tu Pedido</h2>
 
-            {/* lista de productos en miniatura */}
-            {/* Nico, cuando conectes los productos de Supabase, aquí debería mostrar nombre, imagen y precio real */}
+            {/* Resumen del carrito que viene de Redux. */}
             {cart.map((item) => (
               <div key={item.id} className="order-item">
                 <img src={item.imageUrl} alt={item.name} className="order-item-image" />

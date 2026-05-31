@@ -47,7 +47,6 @@ function ScrollToHash() {
   return null;
 }
 
-// chicas usen userprovider con email nombre y foto de perfil en lugar de solo el carrito
 function App() {
   return (
     <AppProviders >

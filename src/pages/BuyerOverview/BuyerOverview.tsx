@@ -2,20 +2,19 @@ import React from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useGetOrdersByUserQuery } from '../../services/supabaseApi';
 
-// página de analíticas del comprador
-// aquí el usuario puede ver cuántas órdenes ha hecho y cuánto ha gastado en total
+// Página simple de analíticas del comprador.
 const BuyerOverview: React.FC = () => {
   const userId = useAppSelector((state) => state.auth.userId);
 
-  // Nico aqui se traen las órdenes del usuario desde Supabase
+  // Aquí se leen solo las órdenes del usuario autenticado.
   const { data: orders, isLoading, isError } = useGetOrdersByUserQuery(userId ?? '', {
     skip: !userId,
   });
 
-  // calculamos las métricas básicas
+  // Métricas pedidas para la entrega.
   const totalOrders = orders?.length ?? 0;
 
-  // TNico, cuando la tabla orders tenga los precios reales, hay que sumar los precios de cada item
+  // Nico: si luego cambian la forma de guardar items, revisen esta suma.
   const totalSpent = orders?.reduce((acc: number, order: any) => {
     const orderTotal = order.items?.reduce(
       (sum: number, item: any) => sum + (item.price ?? 0) * (item.quantity ?? 1),

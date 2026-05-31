@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useGetProfileQuery, useUpdateProfileMutation } from '../../services/supabaseApi';
 import { AvatarUploader } from '../../components/AvatarUploader';
 import { updateProfile as updateAuthProfile } from '../../features/auth/authSlice';
 import { useUserActions, useUserState } from '../../contexts/user/UserContext';
-import Navbar from '../../components/Navbar/Navbar';
-import AuthFooter from '../../components/Footer/AuthFooter';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 import './Profile.css';
 
 export const Profile: React.FC = () => {
@@ -15,10 +15,9 @@ export const Profile: React.FC = () => {
   const authUser = useAppSelector((state) => state.auth);
   const user = useUserState();
   const userActions = useUserActions();
-  const navigate = useNavigate();
   const userId = authUser.userId ?? user?.email ?? null;
 
-  // Obtener el perfil actual
+  // Traemos el perfil para mostrar nombre y foto guardados en Supabase.
   const { data: profile, isLoading, isError } = useGetProfileQuery(userId ?? '', {
     skip: !userId || !authUser.userId,
   });
@@ -29,7 +28,11 @@ export const Profile: React.FC = () => {
   const [message, setMessage] = useState('');
   const currentProfile = profile?.[0];
 
-  // Llenar el nombre cuando el perfil carga
+  const showFeedback = (feedbackMessage: string) => {
+    setMessage(feedbackMessage);
+  };
+
+  // Si Supabase responde, usamos ese nombre; si no, usamos el login local.
   React.useEffect(() => {
     if (currentProfile) {
       setName(currentProfile.full_name ?? '');
@@ -40,12 +43,6 @@ export const Profile: React.FC = () => {
       setName(authUser.fullName || user?.name || '');
     }
   }, [authUser.fullName, currentProfile, user?.name]);
-
-  React.useEffect(() => {
-    if (!userId && !user?.isLoggedIn) {
-      navigate('/login', { replace: true });
-    }
-  }, [navigate, user?.isLoggedIn, userId]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -58,7 +55,7 @@ export const Profile: React.FC = () => {
       if (authUser.userId) {
         await updateProfile({ userId, full_name: trimmedName }).unwrap();
       }
-      // actualizar estados locales para que se vea el cambio de una vez
+      // Actualizamos ambos estados mientras terminamos de unir login real con Supabase.
       dispatch(updateAuthProfile({ userId, fullName: trimmedName }));
       userActions?.updateProfile({ name: trimmedName });
       setMessage('Perfil actualizado.');
@@ -68,26 +65,28 @@ export const Profile: React.FC = () => {
     }
   };
 
-  if (!userId && !user?.isLoggedIn) {
-    return null;
-  }
-
   const currentAvatarUrl = currentProfile?.avatar_url ?? authUser.avatarUrl;
 
   return (
     <div className="profile-shell">
-      <Navbar />
+      <Header onFeedback={showFeedback} />
 
       <main className="profile-page">
         <section className="profile-card">
-          <Link to="/account" className="profile-back-link">
-            Volver a mi cuenta
+          <Link to={userId ? '/account' : '/login'} className="profile-back-link">
+            {userId ? 'Volver a mi cuenta' : 'Iniciar sesión'}
           </Link>
 
           <div className="profile-heading">
             <p>Mi cuenta</p>
             <h1>Perfil</h1>
           </div>
+
+          {!userId && (
+            <p className="profile-message profile-message--warning">
+              Inicia sesión para editar tu perfil.
+            </p>
+          )}
 
           {isLoading && <p className="profile-message">Cargando perfil...</p>}
           {isError && (
@@ -99,7 +98,7 @@ export const Profile: React.FC = () => {
 
           <AvatarUploader
             currentAvatarUrl={currentAvatarUrl}
-            disabled={!authUser.userId}
+            disabled={!authUser.userId || !userId}
             onAvatarUploaded={(avatarUrl) => {
               dispatch(updateAuthProfile({ avatarUrl }));
               setMessage('Foto de perfil actualizada.');
@@ -141,7 +140,7 @@ export const Profile: React.FC = () => {
         </section>
       </main>
 
-      <AuthFooter />
+      <Footer onFeedback={showFeedback} />
     </div>
   );
 };

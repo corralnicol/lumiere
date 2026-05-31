@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import type { ChangeEvent } from 'react';
 import { useAppSelector } from '../app/hooks';
 import { useUpdateProfileMutation } from '../services/supabaseApi';
 
-// Nico, reemplaza esto con la config real de Supabase cuando esté lista
+// Nico: estas variables salen del .env, igual que en supabaseApi.
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
@@ -29,12 +28,12 @@ export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
     const file = e.target.files?.[0];
     if (!file || !userId || disabled) return;
     setError('');
-    // vista previa de la imagen para que el usuario vea lo que subió
+    // Mostramos la foto de una vez, antes de esperar a Supabase.
     const objectUrl = URL.createObjectURL(file);
     setPreview(objectUrl);
     setUploading(true);
 
-    // subir la imagen al Storage de Supabase (por ahora es placeholder)
+    // Ruta pedida para la entrega: avatars/{user_id}.png
     const uploadUrl = `${SUPABASE_URL}/storage/v1/object/avatars/${userId}.png`;
     try {
       const res = await fetch(uploadUrl, {
@@ -47,7 +46,7 @@ export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
       });
       if (!res.ok) throw new Error('Upload failed');
       const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/avatars/${userId}.png`;
-      // actualizar el campo avatar_url en el perfil
+      // Después de subirla, guardamos la URL pública en profiles.avatar_url.
       await updateProfile({ userId, avatar_url: publicUrl }).unwrap();
       onAvatarUploaded?.(publicUrl);
     } catch (err) {

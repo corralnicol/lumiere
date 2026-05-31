@@ -1,7 +1,7 @@
-// hooks tipados para usar en toda la app con Redux
+// Hooks tipados para usar Redux sin repetir tipos en cada componente.
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from './store';
 
-// en vez de usar useDispatch y useSelector directamente, usamos estos
+// Usen estos en las páginas nuevas en vez de useDispatch/useSelector directos.
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: <T>(selector: (state: RootState) => T) => T = useSelector;

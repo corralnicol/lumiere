@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Nico aquí reemplaza todo con los url y la key de supabase que hagas
+// Nico: estas variables deben quedar en .env cuando conectemos el proyecto real.
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// baseQuery con fetch
+// Aquí centralicé las llamadas REST a Supabase para no repetir fetch en cada página.
 const baseQuery = fetchBaseQuery({
   baseUrl: `${SUPABASE_URL}/rest/v1/`,
   prepareHeaders: (headers) => {
@@ -22,7 +22,7 @@ export const supabaseApi = createApi({
   baseQuery,
   tagTypes: ['Profile', 'Order'],
   endpoints: (builder) => ({
-    // Profile
+    // Perfil: nombre y foto del usuario comprador.
     getProfile: builder.query<any, string>({
       query: (userId) => `profiles?id=eq.${userId}&select=*`,
       providesTags: (_result, _error, userId) => [{ type: 'Profile', id: userId }],
@@ -35,7 +35,7 @@ export const supabaseApi = createApi({
       }),
       invalidatesTags: (_result, _error, { userId }) => [{ type: 'Profile', id: userId }],
     }),
-    // Order
+    // Órdenes: se crean al confirmar pago y se leen en el overview.
     createOrder: builder.mutation<any, { userId: string; items: any[] }>({
       query: ({ userId, items }) => ({
         url: 'orders',
@@ -52,7 +52,7 @@ export const supabaseApi = createApi({
       query: (userId) => `orders?user_id=eq.${userId}&select=*`,
       providesTags: ['Order'],
     }),
-    // clear cart in profile
+    // Limpia el carrito que queda guardado en profiles después de crear la orden.
     clearCartInProfile: builder.mutation<any, string>({
       query: (userId) => ({
         url: `profiles?id=eq.${userId}`,

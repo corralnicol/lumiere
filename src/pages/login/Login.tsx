@@ -57,6 +57,7 @@ const Login = () => {
             isLoggedIn: true,
         });
 
+        // Cuando Nico conecte auth real, aquí debería llegar el id y la sesión de Supabase.
         dispatch(setUser({
             userId: trimmedEmail,
             email: trimmedEmail,

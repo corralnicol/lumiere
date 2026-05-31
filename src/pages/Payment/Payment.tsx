@@ -17,10 +17,10 @@ const Payment: React.FC = () => {
   const [createOrder, { isLoading: creatingOrder }] = useCreateOrderMutation();
   const [clearCartInProfile] = useClearCartInProfileMutation();
 
-  // Método de pago seleccionado por el usuario
+  // Método de pago seleccionado por el usuario.
   const [paymentMethod, setPaymentMethod] = useState('card');
 
-  // Datos de la tarjeta de crédito/débito
+  // Datos de tarjeta usados solo para la vista de pago local.
   const [cardData, setCardData] = useState({
     cardNumber: '',
     cardName: '',
@@ -29,17 +29,17 @@ const Payment: React.FC = () => {
   });
   const [paymentError, setPaymentError] = useState('');
 
-  // Función para los mensajes del Header y Footer
+  // El Header/Footer piden esta función para mostrar feedback.
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
 
-  // Cálculo de precios
+  // Total usando el carrito que ahora vive en Redux.
   const subtotal = getCartTotal();
   const shipping = 5.00;
   const total = subtotal + shipping;
 
-  // Actualiza los datos de la tarjeta cuando el usuario escribe
+  // Actualiza la vista previa de la tarjeta.
   const handleCardChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCardData((prev) => ({
@@ -48,16 +48,16 @@ const Payment: React.FC = () => {
     }));
   };
 
-  // Formatea el número de tarjeta para que se vea bonito en la vista previa
+  // Solo ordena el número visualmente en grupos de cuatro.
   const formatCardNumber = (number: string) => {
     const cleaned = number.replace(/\s/g, '');
     const groups = cleaned.match(/.{1,4}/g);
     return groups ? groups.join(' ') : '';
   };
 
-  // Cuando el usuario confirma el pago
+  // Aquí sí se crea la orden: el checkout solo recoge datos de envío.
   const handlePayment = async () => {
-    // Generamos un número de pedido único con la fecha y un número random
+    // Número local para el comprobante que se muestra en confirmación.
     const orderNumber = `LUM-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
     if (userId) {
@@ -71,7 +71,7 @@ const Payment: React.FC = () => {
             quantity: item.quantity,
           })),
         }).unwrap();
-        // esta lógica limpia el carrito guardado en el perfil cuando la orden ya se creó
+        // Después de crear la orden, limpiamos profiles.cart como pide la entrega.
         await clearCartInProfile(userId).unwrap();
       } catch (err) {
         console.error('Error al crear la orden:', err);
@@ -80,7 +80,7 @@ const Payment: React.FC = () => {
       }
     }
 
-    // Guardamos la info del pedido para mostrarla en la confirmación
+    // Guardamos el comprobante local para la pantalla de confirmación.
     localStorage.setItem('lumiere_order', JSON.stringify({
       orderNumber,
       items: cart,
@@ -89,14 +89,13 @@ const Payment: React.FC = () => {
       paymentMethod,
     }));
 
-    // Vaciamos el carrito porque ya se completó la compra
+    // Vaciamos el carrito local después de confirmar la orden.
     clearCart();
 
-    // Llevamos al usuario a la pantalla de confirmación
     navigate('/confirmation');
   };
 
-  // Si el carrito está vacío, no debería estar en esta página
+  // Si alguien entra directo sin carrito, lo mandamos a comprar.
   if (cart.length === 0) {
     return (
       <>
