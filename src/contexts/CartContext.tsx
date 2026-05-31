@@ -1,5 +1,12 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import {
+  addItem,
+  clearCart as clearReduxCart,
+  removeItem,
+  updateQuantity as updateReduxQuantity,
+} from '../features/cart/cartSlice';
 
 // Definimos cómo se ve un producto en nuestra tienda
 export interface Product {
@@ -36,12 +43,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 // Este es el componente que envuelve toda la app y comparte el estado del carrito
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Al iniciar, revisamos si ya hay un carrito guardado en el navegador (localStorage)
-  // Así no se pierde cuando el usuario recarga la página
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const savedCart = localStorage.getItem('lumiere_cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart.items);
 
   // Cada vez que el carrito cambia, lo guardamos en localStorage para que persista
   useEffect(() => {
@@ -51,24 +54,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   // Función para agregar un producto al carrito
   // Si el producto ya está, solo le sumamos 1 a la cantidad
   const addToCart = (product: Product, quantity = 1) => {
-    const quantityToAdd = Math.max(1, quantity);
-
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantityToAdd }
-            : item
-        );
-      }
-      return [...prevCart, { ...product, quantity: quantityToAdd }];
-    });
+    dispatch(addItem({ ...product, quantity }));
   };
 
   // Para eliminar un producto del carrito por completo
   const removeFromCart = (productId: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    dispatch(removeItem(productId));
   };
 
   // Para cambiar la cantidad de un producto (por ejemplo con los botones + y -)
@@ -78,16 +69,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       removeFromCart(productId);
       return;
     }
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
+    dispatch(updateReduxQuantity({ id: productId, quantity }));
   };
 
   // Para vaciar todo el carrito (se usa al finalizar la compra)
   const clearCart = () => {
-    setCart([]);
+    dispatch(clearReduxCart());
   };
 
   // Calcula el precio total sumando precio * cantidad de cada producto
