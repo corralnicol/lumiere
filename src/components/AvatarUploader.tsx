@@ -10,21 +10,25 @@ const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
 type AvatarUploaderProps = {
   currentAvatarUrl?: string;
+  disabled?: boolean;
   onAvatarUploaded?: (avatarUrl: string) => void;
 };
 
 export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
   currentAvatarUrl = '',
+  disabled = false,
   onAvatarUploaded,
 }) => {
   const { userId } = useAppSelector((state) => state.auth);
   const [updateProfile] = useUpdateProfileMutation();
   const [preview, setPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !userId) return;
+    if (!file || !userId || disabled) return;
+    setError('');
     // vista previa de la imagen para que el usuario vea lo que subió
     const objectUrl = URL.createObjectURL(file);
     setPreview(objectUrl);
@@ -48,6 +52,7 @@ export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
       onAvatarUploaded?.(publicUrl);
     } catch (err) {
       console.error('Avatar upload error', err);
+      setError('No pudimos subir la foto. Revisa la conexión con Supabase.');
     } finally {
       setUploading(false);
     }
@@ -56,12 +61,23 @@ export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
   return (
     <div className="avatar-uploader">
       <label>
-        <input type="file" accept="image/png" onChange={handleFileChange} disabled={uploading} />
+        <input
+          type="file"
+          accept="image/png"
+          onChange={handleFileChange}
+          disabled={uploading || disabled}
+        />
         {uploading ? 'Subiendo...' : 'Selecciona una foto'}
       </label>
       {(preview || currentAvatarUrl) && (
         <img src={preview ?? currentAvatarUrl} alt="Foto de perfil" className="avatar-preview" />
       )}
+      {!preview && !currentAvatarUrl && (
+        <div className="avatar-placeholder">
+          <i className="fa-regular fa-user" aria-hidden="true"></i>
+        </div>
+      )}
+      {error && <p className="avatar-error">{error}</p>}
     </div>
   );
 };

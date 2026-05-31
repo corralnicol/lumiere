@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserActions, useUserState } from "@/contexts/user/UserContext";
+import { useAppDispatch } from "@/app/hooks";
+import { clearUser } from "@/features/auth/authSlice";
 import Navbar from "@/components/Navbar/Navbar";
 import AuthFooter from "@/components/Footer/AuthFooter";
 import "./account.css";
@@ -8,6 +10,7 @@ import "./account.css";
 const AccountOverview = () => {
   const user = useUserState();
   const actions = useUserActions();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isLoggedIn = Boolean(user?.isLoggedIn);
 
@@ -19,6 +22,7 @@ const AccountOverview = () => {
 
   const handleLogout = () => {
     actions?.logout?.();
+    dispatch(clearUser());
     navigate("/login", { replace: true });
   };
 
@@ -61,6 +65,10 @@ const AccountOverview = () => {
           >
             Log out
           </button>
+
+          <Link to="/profile" className="account-profile-link">
+            Edit profile
+          </Link>
         </section>
       </main>
 

@@ -85,6 +85,24 @@
 	transform: translateY(-1px);
 }
 
+.account-profile-link {
+	width: 100%;
+	padding: 14px;
+	border-radius: 14px;
+	background-color: rgba(255, 255, 255, 0.78);
+	color: #6f5352;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 600;
+	transition: background-color 0.25s, transform 0.2s;
+}
+
+.account-profile-link:hover {
+	background-color: #fff7f8;
+	transform: translateY(-1px);
+}
+
 @media (max-width: 640px) {
 	.account-card {
 		padding: 30px 24px 32px;

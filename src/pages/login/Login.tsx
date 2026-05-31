@@ -4,6 +4,8 @@ import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
 import { useUserActions, useUserState } from "@/contexts/user/UserContext";
+import { useAppDispatch } from "@/app/hooks";
+import { setUser } from "@/features/auth/authSlice";
 
 const deriveNameFromEmail = (value: string) => {
     const base = value.split("@")[0] ?? "";
@@ -27,6 +29,7 @@ const Login = () => {
     const user = useUserState();
     const actions = useUserActions();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (user?.isLoggedIn) {
@@ -45,12 +48,24 @@ const Login = () => {
             return;
         }
 
+        const name = deriveNameFromEmail(trimmedEmail);
+
         actions.login({
-            name: deriveNameFromEmail(trimmedEmail),
+            name,
             email: trimmedEmail,
             phone: user?.phone ?? "",
             isLoggedIn: true,
         });
+
+        dispatch(setUser({
+            userId: trimmedEmail,
+            email: trimmedEmail,
+            fullName: name,
+            avatarUrl: "",
+            session: {
+                accessToken: "local-demo-session",
+            },
+        }));
 
         navigate("/account", { replace: true });
     };
