@@ -8,7 +8,15 @@ import { useUpdateProfileMutation } from '../services/supabaseApi';
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || '';
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-export const AvatarUploader: React.FC = () => {
+type AvatarUploaderProps = {
+  currentAvatarUrl?: string;
+  onAvatarUploaded?: (avatarUrl: string) => void;
+};
+
+export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
+  currentAvatarUrl = '',
+  onAvatarUploaded,
+}) => {
   const { userId } = useAppSelector((state) => state.auth);
   const [updateProfile] = useUpdateProfileMutation();
   const [preview, setPreview] = useState<string | null>(null);
@@ -36,7 +44,8 @@ export const AvatarUploader: React.FC = () => {
       if (!res.ok) throw new Error('Upload failed');
       const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/avatars/${userId}.png`;
       // actualizar el campo avatar_url en el perfil
-      await updateProfile({ userId, avatarUrl: publicUrl }).unwrap();
+      await updateProfile({ userId, avatar_url: publicUrl }).unwrap();
+      onAvatarUploaded?.(publicUrl);
     } catch (err) {
       console.error('Avatar upload error', err);
     } finally {
@@ -50,7 +59,9 @@ export const AvatarUploader: React.FC = () => {
         <input type="file" accept="image/png" onChange={handleFileChange} disabled={uploading} />
         {uploading ? 'Subiendo...' : 'Selecciona una foto'}
       </label>
-      {preview && <img src={preview} alt="preview" className="avatar-preview" />}
+      {(preview || currentAvatarUrl) && (
+        <img src={preview ?? currentAvatarUrl} alt="Foto de perfil" className="avatar-preview" />
+      )}
     </div>
   );
 };

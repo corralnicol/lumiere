@@ -17,19 +17,20 @@ export const Profile: React.FC = () => {
   const [updateProfile] = useUpdateProfileMutation();
 
   const [name, setName] = useState('');
+  const currentProfile = profile?.[0];
 
   // Llenar el nombre cuando el perfil carga
   React.useEffect(() => {
-    if (profile?.[0]) {
-      setName(profile[0].full_name ?? '');
+    if (currentProfile) {
+      setName(currentProfile.full_name ?? '');
     }
-  }, [profile]);
+  }, [currentProfile]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!userId) return;
     try {
-      await updateProfile({ userId, name }).unwrap();
+      await updateProfile({ userId, full_name: name }).unwrap();
       // Actualizar el slice de auth para que la UI refleje el nuevo nombre inmediatamente
       dispatch(updateAuthProfile({ userId, fullName: name }));
     } catch (err) {
@@ -43,7 +44,10 @@ export const Profile: React.FC = () => {
   return (
     <div className="profile-page">
       <h1>Perfil</h1>
-      <AvatarUploader />
+      <AvatarUploader
+        currentAvatarUrl={currentProfile?.avatar_url ?? ''}
+        onAvatarUploaded={(avatarUrl) => dispatch(updateAuthProfile({ avatarUrl }))}
+      />
       <form onSubmit={handleSubmit} className="profile-form">
         <label>
           Nombre:

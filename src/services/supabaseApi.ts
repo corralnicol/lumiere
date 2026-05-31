@@ -27,7 +27,7 @@ export const supabaseApi = createApi({
       query: (userId) => `profiles?id=eq.${userId}&select=*`,
       providesTags: (_result, _error, userId) => [{ type: 'Profile', id: userId }],
     }),
-    updateProfile: builder.mutation<any, { userId: string; name?: string; avatarUrl?: string }>({
+    updateProfile: builder.mutation<any, { userId: string; full_name?: string; avatar_url?: string }>({
       query: ({ userId, ...patch }) => ({
         url: `profiles?id=eq.${userId}`,
         method: 'PATCH',
