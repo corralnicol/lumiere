@@ -6,6 +6,10 @@ export interface AuthState {
   email: string;
   fullName: string;
   avatarUrl: string;
+  session: {
+    accessToken: string;
+    refreshToken?: string;
+  } | null;
 }
 
 const initialState: AuthState = {
@@ -13,6 +17,7 @@ const initialState: AuthState = {
   email: '',
   fullName: '',
   avatarUrl: '',
+  session: null,
 };
 
 const authSlice = createSlice({
@@ -25,6 +30,7 @@ const authSlice = createSlice({
       state.email = action.payload.email;
       state.fullName = action.payload.fullName;
       state.avatarUrl = action.payload.avatarUrl;
+      state.session = action.payload.session;
     },
     clearUser(state) {
       // esto resetea el estado cuando el usuario cierra sesión
@@ -32,6 +38,7 @@ const authSlice = createSlice({
       state.email = '';
       state.fullName = '';
       state.avatarUrl = '';
+      state.session = null;
     },
     updateProfile(state, action: PayloadAction<Partial<AuthState>>) {
       // actualiza solo los campos que llegan desde el perfil
