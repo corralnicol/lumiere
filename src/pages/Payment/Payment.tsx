@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
 import { useCart } from '../../contexts/CartContext';
+import { useClearCartInProfileMutation, useCreateOrderMutation } from '../../services/supabaseApi';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
 import '../../styles/payment.css';
 
 // Página de pago
-// El usuario elige cómo quiere pagar (tarjeta, PSE, Nequi) y llena los datos de pago
+// El usuario elige cómo quiere pagar y llena los datos de pago
 const Payment: React.FC = () => {
   const { cart, getCartTotal, clearCart } = useCart();
+  const userId = useAppSelector((state) => state.auth.userId);
   const navigate = useNavigate();
+  const [createOrder, { isLoading: creatingOrder }] = useCreateOrderMutation();
+  const [clearCartInProfile] = useClearCartInProfileMutation();
 
   // Método de pago seleccionado por el usuario
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -22,6 +27,7 @@ const Payment: React.FC = () => {
     expiry: '',
     cvv: '',
   });
+  const [paymentError, setPaymentError] = useState('');
 
   // Función para los mensajes del Header y Footer
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
@@ -50,9 +56,29 @@ const Payment: React.FC = () => {
   };
 
   // Cuando el usuario confirma el pago
-  const handlePayment = () => {
+  const handlePayment = async () => {
     // Generamos un número de pedido único con la fecha y un número random
     const orderNumber = `LUM-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+
+    if (userId) {
+      try {
+        await createOrder({
+          userId,
+          items: cart.map((item) => ({
+            productId: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+        }).unwrap();
+        // esta lógica limpia el carrito guardado en el perfil cuando la orden ya se creó
+        await clearCartInProfile(userId).unwrap();
+      } catch (err) {
+        console.error('Error al crear la orden:', err);
+        setPaymentError('No pudimos confirmar el pedido. Intenta de nuevo.');
+        return;
+      }
+    }
 
     // Guardamos la info del pedido para mostrarla en la confirmación
     localStorage.setItem('lumiere_order', JSON.stringify({
@@ -265,9 +291,11 @@ const Payment: React.FC = () => {
             )}
 
             {/* Botón para confirmar el pago */}
-            <button className="pay-btn" onClick={handlePayment}>
+            {paymentError && <p className="payment-error">{paymentError}</p>}
+
+            <button className="pay-btn" onClick={handlePayment} disabled={creatingOrder}>
               <i className="fa-solid fa-lock"></i>
-              Confirmar y Pagar ${total.toFixed(2)}
+              {creatingOrder ? 'Creando orden...' : `Confirmar y Pagar $${total.toFixed(2)}`}
             </button>
 
             {/* Nota de seguridad */}

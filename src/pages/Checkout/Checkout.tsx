@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../app/hooks';
-import { useCreateOrderMutation } from '../../services/supabaseApi';
 import { useCart } from '../../contexts/CartContext';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -10,12 +8,8 @@ import '../../styles/checkout.css';
 // página de checkout
 // aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
 const Checkout: React.FC = () => {
-  const userId = useAppSelector((state) => state.auth.userId);
   const { cart, getCartTotal } = useCart();
   const navigate = useNavigate();
-
-  // RTK Query crea la orden cuando hay usuario logueado.
-  const [createOrder, { isLoading: creatingOrder }] = useCreateOrderMutation();
 
   // estado para guardar los datos que el usuario escribe en el formulario
   const [formData, setFormData] = useState({
@@ -54,25 +48,6 @@ const Checkout: React.FC = () => {
 
     // se guardan datos de envío en localStorage para usarlos después
     localStorage.setItem('lumiere_shipping', JSON.stringify(formData));
-
-    // Si hay usuario logueado, dejamos registrada una orden pendiente en Supabase.
-    // El carrito se vacía más adelante, cuando el pago se confirma.
-    if (userId && cart.length > 0) {
-      try {
-        await createOrder({
-          userId,
-          items: cart.map((item) => ({
-            productId: item.id,
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity,
-          })),
-        }).unwrap();
-      } catch (err) {
-        console.error('Error al crear la orden:', err);
-      }
-    }
-
     navigate('/payment');
   };
 
@@ -287,9 +262,9 @@ const Checkout: React.FC = () => {
               </div>
             </div>
 
-            {/* botón para ir al pago (se deshabilita mientras se crea la orden) */}
-            <button type="submit" className="continue-payment-btn" disabled={creatingOrder}>
-              {creatingOrder ? 'Creando orden...' : 'Continuar al Pago'}
+            {/* botón para ir al pago */}
+            <button type="submit" className="continue-payment-btn">
+              Continuar al Pago
               <i className="fa-solid fa-arrow-right"></i>
             </button>
           </form>
