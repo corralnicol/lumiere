@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Definimos cómo se ve un producto en nuestra tienda
 export interface Product {
@@ -34,7 +34,7 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 // Este es el componente que envuelve toda la app y comparte el estado del carrito
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Al iniciar, revisamos si ya hay un carrito guardado en el navegador (localStorage)
   // Así no se pierde cuando el usuario recarga la página
   const [cart, setCart] = useState<CartItem[]>(() => {
