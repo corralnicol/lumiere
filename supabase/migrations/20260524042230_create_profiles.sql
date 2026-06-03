@@ -12,9 +12,6 @@ END;
 $$;
 
 -- One profile per Supabase Auth user.
--- organization_id is the *primary* org a user belongs to (the one they created
--- or were first invited to). Full membership is tracked in organization_members.
-
 CREATE TABLE public.profiles (
   id           uuid        PRIMARY KEY REFERENCES auth.users ON DELETE CASCADE,
   email        text        NOT NULL UNIQUE,
@@ -37,13 +34,13 @@ LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
 BEGIN
-  INSERT INTO public.profiles (id, email, first_name, last_name)
+  INSERT INTO public.profiles (id, email, first_name, last_name, avatar_url)
   VALUES (
     NEW.id,
     NEW.email,
     NEW.raw_user_meta_data->>'first_name',
     NEW.raw_user_meta_data->>'last_name',
-    NEW.avatar_url->>'avatar_url'
+    NEW.raw_user_meta_data->>'avatar_url'
   );
   RETURN NEW;
 END;
@@ -65,7 +62,8 @@ AS $$
 BEGIN
   UPDATE public.profiles
   SET email = NEW.email
-  WHERE id = NEW.id;
+  WHERE id = NEW.id
+  AND NEW.email IS NOT NULL;
   RETURN NEW;
 END;
 $$;
@@ -95,3 +93,19 @@ CREATE POLICY "profiles: users can update their own"
   TO authenticated
   USING ((select auth.uid()) = id)
   WITH CHECK ((select auth.uid()) = id);
+
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('avatars', 'avatars', true)
+ON CONFLICT (id) DO NOTHING;
+
+CREATE POLICY "avatars: public read"
+  ON storage.objects FOR SELECT
+  USING (bucket_id = 'avatars');
+
+CREATE POLICY "avatars: owner write"
+  ON storage.objects FOR INSERT
+  TO authenticated
+  WITH CHECK (
+    bucket_id = 'avatars'
+    AND name = 'avatars/' || (select auth.uid())::text || '.png'
+  );
