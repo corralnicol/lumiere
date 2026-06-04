@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
+import { useUserState } from '@/contexts/user/UserContext';
+import { supabase } from '@/lib/supabase';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
@@ -10,18 +12,41 @@ import '../../styles/checkout.css';
 const Checkout: React.FC = () => {
   const { cart, getCartTotal } = useCart();
   const navigate = useNavigate();
+  const user = useUserState();
+
+  // Separamos el nombre completo en nombre y apellido
+  const nameParts = (user?.name || '').trim().split(' ');
+  const firstNameFromContext = nameParts[0] || '';
+  const lastNameFromContext = nameParts.slice(1).join(' ') || '';
 
   // Estado para guardar los datos que el usuario escribe en el formulario
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
+    firstName: firstNameFromContext,
+    lastName: lastNameFromContext,
+    email: user?.email || '',
+    phone: user?.phone || '',
     address: '',
     city: '',
     department: '',
     zipCode: '',
   });
+
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState('');
+
+  // Cuando carga el usuario, actualizamos los campos del contexto por si llegaron tarde
+  useEffect(() => {
+    if (user?.name || user?.email) {
+      const parts = (user?.name || '').trim().split(' ');
+      setFormData((prev) => ({
+        ...prev,
+        firstName: parts[0] || prev.firstName,
+        lastName: parts.slice(1).join(' ') || prev.lastName,
+        email: user?.email || prev.email,
+        phone: user?.phone || prev.phone,
+      }));
+    }
+  }, [user?.name, user?.email, user?.phone]);
 
   // Función simple para los mensajes del Header y Footer
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
@@ -42,11 +67,34 @@ const Checkout: React.FC = () => {
     }));
   };
 
-  // Cuando el usuario envía el formulario, guardamos los datos y lo llevamos a la página de pago
-  const handleSubmit = (e: React.FormEvent) => {
+  // Cuando el usuario envía el formulario, guardamos dirección en Supabase y lo llevamos al pago
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSaveError('');
 
-    // Guardamos los datos de envío en localStorage para usarlos después
+    // Si el usuario está logueado, guardamos los datos de envío en su perfil de Supabase
+    if (user?.isLoggedIn && user?.id) {
+      setIsSaving(true);
+      const { error } = await supabase
+        .from('profiles')
+        .update({
+          address: formData.address,
+          city: formData.city,
+          state: formData.department,
+          zip: formData.zipCode,
+        })
+        .eq('id', user.id);
+
+      setIsSaving(false);
+
+      if (error) {
+        console.error('Error guardando dirección:', error);
+        setSaveError('No se pudo guardar la dirección. Intenta de nuevo.');
+        return;
+      }
+    }
+
+    // Guardamos los datos de envío en localStorage para usarlos en la página de pago
     localStorage.setItem('lumiere_shipping', JSON.stringify(formData));
     navigate('/payment');
   };
