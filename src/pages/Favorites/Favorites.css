@@ -1,0 +1,173 @@
+/* ── Favorites Page ─────────────────────────────────────────────── */
+
+.favorites-page {
+  --rose-900: #5d1f2a;
+  --rose-800: #6f3c46;
+  --rose-700: #7f434e;
+  --rose-500: #b45b6a;
+  --rose-300: #e7b7c1;
+  --rose-200: #f1d6dc;
+  --rose-100: #f9eef1;
+  --cream: #fff7f8;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+  min-height: 60vh;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
+
+.favorites-header {
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.favorites-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+  color: var(--rose-900);
+  line-height: 1.1;
+}
+
+.favorites-header p {
+  color: var(--rose-700);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ── Loading / Empty ───────────────────────────────────────────── */
+
+.favorites-loading {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.1rem;
+  color: var(--rose-700);
+  font-weight: 500;
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--cream);
+  border: 1px solid rgba(159, 47, 56, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(127, 67, 78, 0.08);
+}
+
+.favorites-empty i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--rose-300);
+  display: block;
+}
+
+.favorites-empty h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--rose-900);
+}
+
+.favorites-empty p {
+  color: var(--rose-700);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.favorites-empty .continue-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: var(--rose-700);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 12px 24px rgba(127, 67, 78, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.favorites-empty .continue-btn:hover {
+  background: var(--rose-800);
+  transform: translateY(-2px);
+}
+
+/* ── Grid ──────────────────────────────────────────────────────── */
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2.6vw, 28px);
+}
+
+/*
+ * Force every card in the favorites grid to stretch equally so all
+ * internal elements (image, brand, name, rating, price, badges) stay
+ * on the same visual baseline across the row, regardless of text length.
+ */
+
+.favorites-grid .product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;             /* stretch to grid row height */
+}
+
+.favorites-grid .product-card-media {
+  flex-shrink: 0;           /* image area never collapses */
+}
+
+.favorites-grid .product-card-body {
+  flex: 1;                  /* body fills remaining space */
+  display: flex;
+  flex-direction: column;
+}
+
+.favorites-grid .product-card-body h3 {
+  /* brand – fixed region */
+  min-height: 1.4em;
+  line-height: 1.2;
+}
+
+.favorites-grid .product-card-name {
+  /* product name – allow up to 2 lines then clip */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.4em;        /* reserve space for 2 lines */
+}
+
+.favorites-grid .product-card-rating {
+  margin-top: auto;         /* push rating + everything below to bottom */
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .favorites-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-page {
+    padding: 2.5rem 1rem 4rem;
+  }
+
+  .favorites-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}

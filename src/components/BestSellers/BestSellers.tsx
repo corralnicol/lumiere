@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
-
+import { supabase } from "@/lib/supabase";
+import { useUserState } from "@/contexts/user/UserContext";
 
 type BestSellersProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -9,24 +10,64 @@ type BestSellersProps = {
 
 function BestSellers({ onFeedback }: BestSellersProps) {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  const user = useUserState();
 
-  const toggleFavorite = (
+  // Cargar los favoritos desde el perfil del usuario al iniciar
+  useEffect(() => {
+    if (user?.isLoggedIn && user?.id) {
+      const fetchFavorites = async () => {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("favorites")
+          .eq("id", user.id)
+          .single();
+
+        if (data && Array.isArray(data.favorites)) {
+          setFavoriteIds(data.favorites as string[]);
+        }
+      };
+      fetchFavorites();
+    } else {
+      setFavoriteIds([]); // Limpiar favoritos si no hay sesión
+    }
+  }, [user?.isLoggedIn, user?.id]);
+
+  const toggleFavorite = async (
     event: React.MouseEvent<HTMLButtonElement>,
     productId: string,
     itemName: string
   ) => {
     event.preventDefault();
 
-    const isFavorite = favoriteIds.includes(productId);
-
-    if (isFavorite) {
-      setFavoriteIds((currentIds) => currentIds.filter((id) => id !== productId));
-      onFeedback(`${itemName} removed from favorites.`, "info");
+    if (!user?.isLoggedIn) {
+      onFeedback("Inicia sesión para guardar tus favoritos.", "warning");
       return;
     }
 
-    setFavoriteIds((currentIds) => [...currentIds, productId]);
-    onFeedback(`${itemName} added to favorites.`, "success");
+    const isFavorite = favoriteIds.includes(productId);
+    const newFavoriteIds = isFavorite
+      ? favoriteIds.filter((id) => id !== productId)
+      : [...favoriteIds, productId];
+
+    // Optimistic UI Update (se actualiza visualmente de inmediato)
+    setFavoriteIds(newFavoriteIds);
+    if (isFavorite) {
+      onFeedback(`${itemName} eliminado de favoritos.`, "info");
+    } else {
+      onFeedback(`${itemName} añadido a favoritos.`, "success");
+    }
+
+    // Actualizar directamente la tabla profiles
+    const { error } = await supabase
+      .from("profiles")
+      .update({ favorites: newFavoriteIds })
+      .eq("id", user.id);
+    
+    if (error) {
+      console.error("Error al actualizar favoritos en Supabase:", error);
+      // Revertir el estado si falla
+      setFavoriteIds(favoriteIds);
+    }
   };
 
   return (

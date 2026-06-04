@@ -87,10 +87,6 @@ function Header({ onFeedback }: HeaderProps) {
   const handleUtilityClick = (
     type: "favorites" | "cart" | "account"
   ) => {
-    if (type === "favorites") {
-      onFeedback("Favorites are still in development and will be available soon.", "info");
-    }
-
     if (type === "cart") {
       onFeedback("Opening the products page so you can continue shopping.", "info");
     }
@@ -136,7 +132,7 @@ function Header({ onFeedback }: HeaderProps) {
 
           <div className="mobile-menu-icons">
             <Link
-              to="/products"
+              to="/favorites"
               aria-label="Favorites"
               onClick={() => handleUtilityClick("favorites")}
             >
@@ -183,7 +179,7 @@ function Header({ onFeedback }: HeaderProps) {
 
         <div className="header-icons">
           <Link
-            to="/#best-sellers"
+            to="/favorites"
             aria-label="Favorites"
             onClick={() => handleUtilityClick("favorites")}
           >

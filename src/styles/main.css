@@ -462,7 +462,8 @@
   transition: transform 0.3s ease;
 }
 
-.best-card-fav {
+.best-card-fav,
+.product-card-fav {
   position: absolute;
   top: 12px;
   right: 14px;
@@ -479,12 +480,14 @@
   box-shadow: none;
 }
 
-.best-card-fav.is-active {
+.best-card-fav.is-active,
+.product-card-fav.is-active {
   color: #9f2f38;
   transform: scale(1.08);
 }
 
-.best-card-fav:focus-visible {
+.best-card-fav:focus-visible,
+.product-card-fav:focus-visible {
   outline: 3px solid rgba(159, 47, 56, 0.28);
   outline-offset: 4px;
   border-radius: 999px;

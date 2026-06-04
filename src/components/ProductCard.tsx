@@ -14,7 +14,14 @@ const buildSearchTarget = (product: Product) => {
         .join(" ");
 };
 
-export function ProductCard({ product, index }: { product: Product; index?: number }) {
+interface ProductCardProps {
+    product: Product;
+    index?: number;
+    isFavorite?: boolean;
+    onToggleFavorite?: (productId: string, event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export function ProductCard({ product, index, isFavorite, onToggleFavorite }: ProductCardProps) {
     const sizeLabel = product.size || "Standard size";
     const stockLabel = product.stock > 0 ? `${product.stock} left` : "Unavailable";
     const stockState = product.stock <= 20 ? "low" : "ok";
@@ -27,6 +34,16 @@ export function ProductCard({ product, index }: { product: Product; index?: numb
             style={{ animationDelay: `${index ?? 1} * 0.04}s` } as CSSProperties}
         >
             <div className="product-card-media">
+                {onToggleFavorite && (
+                    <button
+                        className={`product-card-fav ${isFavorite ? "is-active" : ""}`}
+                        type="button"
+                        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                        onClick={(event) => onToggleFavorite(String(product.id), event)}
+                    >
+                        <i className={`${isFavorite ? "fa-solid" : "fa-regular"} fa-heart`} aria-hidden="true"></i>
+                    </button>
+                )}
                 <span className="product-card-tag">
                     {product.category}
                 </span>

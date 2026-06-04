@@ -106,7 +106,8 @@
   line-height: 1;
 }
 
-.detail-favorite:hover {
+.detail-favorite:hover,
+.detail-favorite.is-active {
   color: #9f2f38;
   transform: scale(1.08);
 }

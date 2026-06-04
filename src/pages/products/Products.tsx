@@ -12,6 +12,8 @@ import {
 } from "@/types/products";
 import { productCharacteristics } from "@/data/characteristics";
 import { ProductCard } from "@/components/ProductCard";
+import { supabase } from "@/lib/supabase";
+import { useUserState } from "@/contexts/user/UserContext";
 
 export interface FeedbackState {
     message: string;
@@ -317,10 +319,72 @@ export function FiltersSidebar({
 
 
 export function Products() {
+    const user = useUserState();
+    const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
     const [searchParams] = useSearchParams();
     const resolvedCategoryFromQuery = resolveCategoryFromQueryParam(
         searchParams.get("category")
     );
+
+    useEffect(() => {
+        if (user?.isLoggedIn && user?.id) {
+            const fetchFavorites = async () => {
+                const { data, error } = await supabase
+                    .from("profiles")
+                    .select("favorites")
+                    .eq("id", user.id)
+                    .single();
+
+                if (data && Array.isArray(data.favorites)) {
+                    setFavoriteIds(data.favorites as string[]);
+                }
+            };
+            fetchFavorites();
+        } else {
+            setFavoriteIds([]);
+        }
+    }, [user?.isLoggedIn, user?.id]);
+
+    const toggleFavorite = async (
+        productId: string,
+        event: React.MouseEvent<HTMLButtonElement>
+    ) => {
+        event.preventDefault();
+        event.stopPropagation(); // Evitar que redirija a los detalles del producto
+
+        if (!user?.isLoggedIn) {
+            showFeedback("Inicia sesión para guardar tus favoritos.", "warning");
+            return;
+        }
+
+        const isFavorite = favoriteIds.includes(productId);
+        const newFavoriteIds = isFavorite
+            ? favoriteIds.filter((id) => id !== productId)
+            : [...favoriteIds, productId];
+
+        // Optimistic UI Update
+        setFavoriteIds(newFavoriteIds);
+        
+        // Encontrar el producto para mostrar el feedback
+        const product = products.find((p) => String(p.id) === productId);
+        const productName = product ? product.name : "Producto";
+
+        if (isFavorite) {
+            showFeedback(`${productName} eliminado de favoritos.`, "info");
+        } else {
+            showFeedback(`${productName} añadido a favoritos.`, "success");
+        }
+
+        const { error } = await supabase
+            .from("profiles")
+            .update({ favorites: newFavoriteIds })
+            .eq("id", user.id);
+
+        if (error) {
+            console.error("Error toggling favorite:", error);
+            setFavoriteIds(favoriteIds); // Revertir
+        }
+    };
 
     const [feedback, setFeedback] = useState<FeedbackState>({
         message: "",
@@ -599,6 +663,8 @@ export function Products() {
                                         product={product}
                                         index={index}
                                         key={product.id}
+                                        isFavorite={favoriteIds.includes(String(product.id))}
+                                        onToggleFavorite={toggleFavorite}
                                     />
                                 ))}
                             </div>

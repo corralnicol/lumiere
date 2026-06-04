@@ -10,6 +10,8 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
+import { supabase } from "@/lib/supabase";
+import { useUserState } from "@/contexts/user/UserContext";
 
 type FeedbackType = "info" | "success" | "warning";
 export type ProductReview = {
@@ -134,6 +136,61 @@ export default function ProductDetailPage<
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
+    const user = useUserState();
+    const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (user?.isLoggedIn && user?.id) {
+            const fetchFavorites = async () => {
+                const { data, error } = await supabase
+                    .from("profiles")
+                    .select("favorites")
+                    .eq("id", user.id)
+                    .single();
+
+                if (data && Array.isArray(data.favorites)) {
+                    setFavoriteIds(data.favorites as string[]);
+                }
+            };
+            fetchFavorites();
+        } else {
+            setFavoriteIds([]);
+        }
+    }, [user?.isLoggedIn, user?.id]);
+
+    const isFavorite = product ? favoriteIds.includes(String(product.id)) : false;
+
+    const handleToggleFavorite = async () => {
+        if (!product) return;
+        
+        if (!user?.isLoggedIn) {
+            showFeedback("Inicia sesión para guardar tus favoritos.", "warning");
+            return;
+        }
+
+        const nextFavoriteIds = isFavorite
+            ? favoriteIds.filter((id) => id !== String(product.id))
+            : [...favoriteIds, String(product.id)];
+
+        // Optimistic UI Update
+        setFavoriteIds(nextFavoriteIds);
+
+        if (isFavorite) {
+            showFeedback(`${product.name} removed from favorites.`, "info");
+        } else {
+            showFeedback(`${product.name} added to favorites.`, "success");
+        }
+
+        const { error } = await supabase
+            .from("profiles")
+            .update({ favorites: nextFavoriteIds })
+            .eq("id", user.id);
+
+        if (error) {
+            console.error("Error updating favorites on detail page:", error);
+            setFavoriteIds(favoriteIds); // Revertir
+        }
+    };
 
     const [baseReviews, setBaseReviews] = useState<ProductReview[]>([]);
     const [reviews, setReviews] = useState<ProductReview[]>([]);
@@ -343,14 +400,12 @@ export default function ProductDetailPage<
                 <section className="product-detail-hero">
                     <div className={galleryClassName}>
                         <button
-                            className="detail-favorite"
+                            className={`detail-favorite ${isFavorite ? "is-active" : ""}`}
                             type="button"
-                            aria-label={`Save ${product.name} to wishlist`}
-                            onClick={() =>
-                                showFeedback(`${product.name} saved to wishlist.`, "success")
-                            }
+                            aria-label={isFavorite ? `Remove ${product.name} from wishlist` : `Save ${product.name} to wishlist`}
+                            onClick={handleToggleFavorite}
                         >
-                            <i className="fa-regular fa-heart" aria-hidden="true"></i>
+                            <i className={`${isFavorite ? "fa-solid" : "fa-regular"} fa-heart`} aria-hidden="true"></i>
                         </button>
 
                         <img
