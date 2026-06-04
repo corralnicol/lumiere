@@ -10,19 +10,20 @@ const AccountOverview = () => {
   const actions = useUserActions();
   const navigate = useNavigate();
   const isLoggedIn = Boolean(user?.isLoggedIn);
+  const loading = Boolean(user?.loading);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/login", { replace: true });
+    if (!loading && !isLoggedIn) {
+      navigate("/auth/sign-in", { replace: true });
     }
-  }, [isLoggedIn, navigate]);
+  }, [loading, isLoggedIn, navigate]);
 
-  const handleLogout = () => {
-    actions?.logout?.();
-    navigate("/login", { replace: true });
+  const handleLogout = async () => {
+    await actions?.logout?.();
+    navigate("/auth/sign-in", { replace: true });
   };
 
-  if (!isLoggedIn) {
+  if (loading || !isLoggedIn) {
     return null;
   }
 

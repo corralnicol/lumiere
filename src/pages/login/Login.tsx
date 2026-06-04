@@ -3,56 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
-import { useUserActions, useUserState } from "@/contexts/user/UserContext";
-
-const deriveNameFromEmail = (value: string) => {
-    const base = value.split("@")[0] ?? "";
-    const normalized = base
-        .replace(/[._-]+/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-
-    if (!normalized) {
-        return "Guest";
-    }
-
-    return normalized.replace(/\b\w/g, (letter) => letter.toUpperCase());
-};
+import { useUserState } from "@/contexts/user/UserContext";
+import { signIn } from "@/lib/auth";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [accepted, setAccepted] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const user = useUserState();
-    const actions = useUserActions();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user?.isLoggedIn) {
+        if (!user.loading && user.isLoggedIn) {
             navigate("/account", { replace: true });
         }
-    }, [navigate, user?.isLoggedIn]);
+    }, [navigate, user.loading, user.isLoggedIn]);
 
-    const handleLogin = () => {
-        if (!actions) {
-            return;
-        }
-
+    const handleLogin = async () => {
         const trimmedEmail = email.trim();
+        if (!trimmedEmail || !password) return;
 
-        if (!trimmedEmail) {
-            return;
+        setError("");
+        const errorMsg = await signIn({ email: trimmedEmail, password });
+        if (errorMsg) {
+            setError(errorMsg);
         }
-
-        actions.login({
-            name: deriveNameFromEmail(trimmedEmail),
-            email: trimmedEmail,
-            phone: user?.phone ?? "",
-            isLoggedIn: true,
-        });
-
-        navigate("/account", { replace: true });
     };
 
     return (
@@ -61,7 +38,7 @@ const Login = () => {
 
             <main className={styles.main}>
                 <div className={styles.card}>
-                    <h2 className={styles.title}>Log in!!</h2>
+                    <h2 className={styles.title}>Sign in</h2>
 
                     <button className={styles.googleBtn} type="button">
                         <img
@@ -69,7 +46,7 @@ const Login = () => {
                             alt="Google"
                             className={styles.googleIcon}
                         />
-                        Sign up with Google
+                        Sign in with Google
                     </button>
 
                     <div className={styles.divider}>
@@ -139,13 +116,15 @@ const Login = () => {
                         </p>
                     </div>
 
+                    {error && <p className={styles.error ?? styles.legalText} style={{ color: 'red' }}>{error}</p>}
+
                     <button className={styles.loginBtn} onClick={handleLogin}>
-                        Log in
+                        Sign in
                     </button>
 
                     <p className={styles.createAccount}>
                         Don't have an account?{" "}
-                        <Link to="/signup" className={styles.createLink}>Create one</Link>
+                        <Link to="/auth/sign-up" className={styles.createLink}>Sign up</Link>
                     </p>
                 </div>
             </main>

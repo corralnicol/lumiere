@@ -36,7 +36,7 @@ const faqItems = [
 
 function HeroAction() {
     const user = useUserState();
-    const link = user?.isLoggedIn ? "/sell" : "/signup";
+    const link = user?.isLoggedIn ? "/sell" : "/auth/sign-up";
     const label = user?.isLoggedIn ? "Manage Your Store" : "Sign Up";
 
     return (

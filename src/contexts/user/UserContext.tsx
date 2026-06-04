@@ -1,27 +1,59 @@
-import { createContext, useContext, useReducer, useEffect, useMemo } from 'react';
-import { userReducer, initialUserState } from './userReducer';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import { supabase } from '@/lib/supabase';
 import type { User } from '@/types/user';
 
-const UserStateContext = createContext<User | null>(null);
+const initialState: User = { name: '', email: '', phone: '', isLoggedIn: false, loading: true };
+
+const UserStateContext = createContext<User>(initialState);
+
 type UserActions = {
-  login: (userData: User) => void;
-  updateProfile: (fields: Partial<User>) => void;
-  logout: () => void;
+  logout: () => Promise<void>;
 };
 
 const UserDispatchContext = createContext<UserActions | null>(null);
 
+async function loadFromClaims(): Promise<User> {
+  const { data } = await supabase.auth.getClaims();
+  if (!data?.claims) {
+    return { name: '', email: '', phone: '', isLoggedIn: false, loading: false };
+  }
+  const meta = data.claims.user_metadata as Record<string, string> | undefined;
+  const phone = meta?.phone ?? '';
+  const firstName = meta?.first_name ?? '';
+  const lastName = meta?.last_name ?? '';
+  const name = [firstName, lastName].filter(Boolean).join(' ') || data.claims.email || '';
+  return {
+    id: data.claims.sub,
+    name,
+    email: data.claims.email ?? '',
+    phone,
+    isLoggedIn: true,
+    loading: false,
+  };
+}
+
 export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [state, dispatch] = useReducer(userReducer, initialUserState);
+  const [state, setState] = useState<User>(initialState);
+
+  const refresh = useCallback(async () => {
+    const user = await loadFromClaims();
+    setState(user);
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(state));
-  }, [state]);
+    refresh();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      setTimeout(refresh, 0);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [refresh]);
 
   const actions = useMemo<UserActions>(() => ({
-    login: (userData: User) => dispatch({ type: 'LOGIN', payload: userData }),
-    updateProfile: (fields: Partial<User>) => dispatch({ type: 'UPDATE_PROFILE', payload: fields }),
-    logout: () => dispatch({ type: 'LOGOUT' }),
+    logout: async () => {
+      await supabase.auth.signOut();
+    },
   }), []);
 
   return (
