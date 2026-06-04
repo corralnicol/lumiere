@@ -1,10 +1,13 @@
+
+// este componente es el encargado de mostrar los detalles de un producto específico, incluyendo su imagen, descripción, características, reseñas y productos recomendados. 
+
 import { Link, useNavigate } from "react-router-dom";
 import {
     useEffect,
     useRef,
     useState,
+    type FormEvent,
     type ImgHTMLAttributes,
-    type SubmitEvent,
 } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -12,7 +15,16 @@ import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
 
 type FeedbackType = "info" | "success" | "warning";
+
+// aqui defino los tipos de datos que se utilizan en el componente.
 export type ProductReview = {
+    user: string;
+    rating: number;
+    comment: string;
+};
+
+export type SubmitReviewPayload = {
+    productId: number | string;
     user: string;
     rating: number;
     comment: string;
@@ -50,6 +62,8 @@ export type RecommendedProduct = {
     imageUrl?: string;
 };
 
+// este tipo de props se utiliza para configurar el componente ProductDetailPage, permitiendo personalizar su comportamiento y apariencia a través de diferentes opciones.
+
 type ProductDetailPageProps<
     T extends ProductDetailItem = ProductDetailItem,
     R extends RecommendedProduct = RecommendedProduct
@@ -75,6 +89,9 @@ type ProductDetailPageProps<
     reviewToggleLabel?: string;
     reviewSubmitLabel?: string;
     reviewPlaceholder?: string;
+    onSubmitReview?: (
+        payload: SubmitReviewPayload
+    ) => Promise<ProductReview[] | void> | ProductReview[] | void;
     recommendedProducts?: R[];
     getRecommendedLink?: (item: R) => string;
     getRecommendedImageSrc?: (item: R) => string;
@@ -83,13 +100,13 @@ type ProductDetailPageProps<
 };
 
 const DEFAULT_REVIEW_PLACEHOLDER = "Write your opinion about this product";
-
+// en esta funcion lo que hago es formatear las características del producto, reemplazando los guiones por espacios y capitalizando la primera letra de cada palabra para que se vean más amigables en la interfaz de usuario.
 function formatCharacteristic(characteristic: string) {
     return characteristic
         .replace(/-/g, " ")
         .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
-
+// aqui lo que se hace es construir las pestañas de detalles del producto a partir de su descripción y características.
 function resolveFallback<T>(
     fallback: string | ((value: T) => string) | undefined,
     value: T
@@ -100,7 +117,7 @@ function resolveFallback<T>(
 
     return typeof fallback === "function" ? fallback(value) : fallback;
 }
-
+// aqui se construyen las pestañas de detalles del producto a partir de su descripción y características.
 export default function ProductDetailPage<
     T extends ProductDetailItem,
     R extends RecommendedProduct = RecommendedProduct
@@ -125,11 +142,13 @@ export default function ProductDetailPage<
     reviewToggleLabel = "add yours",
     reviewSubmitLabel = "Submit review",
     reviewPlaceholder = DEFAULT_REVIEW_PLACEHOLDER,
+    onSubmitReview,
     recommendedProducts = [],
     getRecommendedLink = (item) => `/products/${item.id}`,
     getRecommendedImageSrc,
     getRecommendedImageFallbackSrc,
     recommendedImageReferrerPolicy,
+    // aqui se definen las props del componente, con valores por defecto para algunas de ellas, y se utiliza el hook useState para manejar el estado de la cantidad de producto a agregar al carrito.
 }: ProductDetailPageProps<T, R>) {
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -141,11 +160,20 @@ export default function ProductDetailPage<
     const [reviewUser, setReviewUser] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
     const [reviewComment, setReviewComment] = useState("");
+    const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+
     const navigate = useNavigate();
-
     const getInitialReviewsRef = useRef(getInitialReviews);
-
     const { addToCart } = useCart();
+
+    const showFeedback = (message: string, type: FeedbackType = "info") => {
+        setFeedbackMessage(message);
+        setFeedbackType(type);
+
+        window.setTimeout(() => {
+            setFeedbackMessage("");
+        }, 2600);
+    };
 
     const handleAddToCart = () => {
         addToCart({
@@ -160,6 +188,7 @@ export default function ProductDetailPage<
             size: product!.size ?? "",
             stock: product!.stock ?? 0,
         });
+
         showFeedback(`${quantity} ${product!.name} added to cart.`, "success");
     };
 
@@ -185,7 +214,7 @@ export default function ProductDetailPage<
         if (productId == null || !product) {
             return;
         }
-
+        // aqui se calcula la lista de reseñas a mostrar, tomando en cuenta las reseñas iniciales que se pasan como prop.
         const resolvedBaseReviews =
             getInitialReviewsRef.current?.(product) ??
             initialReviews ??
@@ -214,17 +243,8 @@ export default function ProductDetailPage<
             setReviews(resolvedBaseReviews);
         }
     }, [productId, product, storageKeyPrefix, initialReviews]);
-
-    const showFeedback = (message: string, type: FeedbackType = "info") => {
-        setFeedbackMessage(message);
-        setFeedbackType(type);
-
-        window.setTimeout(() => {
-            setFeedbackMessage("");
-        }, 2600);
-    };
-
-    const handleReviewSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    // aqui se calcula la lista de productos recomendados a mostrar, tomando los primeros 4 productos de la lista de recomendados que se pasan como prop.
+    const handleReviewSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (!product) {
@@ -248,22 +268,71 @@ export default function ProductDetailPage<
             comment: trimmedComment,
         };
 
-        const updatedReviews = [newReview, ...reviews];
+        try {
+            setIsSubmittingReview(true);
 
-        setReviews(updatedReviews);
-        localStorage.setItem(
-            `${storageKeyPrefix}-${product.id}`,
-            JSON.stringify(updatedReviews)
-        );
+            if (onSubmitReview) {
+                const syncedReviews = await onSubmitReview({
+                    productId: product.id,
+                    user: trimmedUser,
+                    rating: reviewRating,
+                    comment: trimmedComment,
+                });
 
-        setReviewUser("");
-        setReviewRating(5);
-        setReviewComment("");
-        setIsReviewFormOpen(false);
+                if (Array.isArray(syncedReviews) && syncedReviews.length > 0) {
+                    setReviews(syncedReviews);
+                    localStorage.setItem(
+                        `${storageKeyPrefix}-${product.id}`,
+                        JSON.stringify(syncedReviews)
+                    );
+                } else {
+                    const updatedReviews = [newReview, ...reviews];
 
-        showFeedback("Your review was submitted successfully.", "success");
+                    setReviews(updatedReviews);
+                    localStorage.setItem(
+                        `${storageKeyPrefix}-${product.id}`,
+                        JSON.stringify(updatedReviews)
+                    );
+                }
+            } else {
+                const updatedReviews = [newReview, ...reviews];
+
+                setReviews(updatedReviews);
+                localStorage.setItem(
+                    `${storageKeyPrefix}-${product.id}`,
+                    JSON.stringify(updatedReviews)
+                );
+            }
+
+            setReviewUser("");
+            setReviewRating(5);
+            setReviewComment("");
+            setIsReviewFormOpen(false);
+
+            showFeedback("Your review was submitted successfully.", "success");
+        } catch {
+            const updatedReviews = [newReview, ...reviews];
+
+            setReviews(updatedReviews);
+            localStorage.setItem(
+                `${storageKeyPrefix}-${product.id}`,
+                JSON.stringify(updatedReviews)
+            );
+
+            setReviewUser("");
+            setReviewRating(5);
+            setReviewComment("");
+            setIsReviewFormOpen(false);
+
+            showFeedback(
+                "Your review is visible now, but it could not be synced with Supabase yet.",
+                "warning"
+            );
+        } finally {
+            setIsSubmittingReview(false);
+        }
     };
-
+    
     const handleBackNavigation = () => {
         if (window.history.length > 1) {
             navigate(-1);
@@ -302,8 +371,7 @@ export default function ProductDetailPage<
             ? reviewCountBase + Math.max(0, reviews.length - baseReviews.length)
             : reviews.length;
 
-    const resolvedImageSrc =
-        imageSrc ?? product.image ?? product.imageUrl ?? "";
+    const resolvedImageSrc = imageSrc ?? product.image ?? product.imageUrl ?? "";
 
     const galleryClassName =
         galleryVariant === "cover"
@@ -340,6 +408,7 @@ export default function ProductDetailPage<
                 >
                     {backLinkLabel}
                 </button>
+
                 <section className="product-detail-hero">
                     <div className={galleryClassName}>
                         <button
@@ -360,21 +429,22 @@ export default function ProductDetailPage<
                             onError={
                                 imageFallbackSrc
                                     ? (event) => {
-                                        const fallback = resolveFallback(imageFallbackSrc, product);
+                                          const fallback = resolveFallback(
+                                              imageFallbackSrc,
+                                              product
+                                          );
 
-                                        if (fallback) {
-                                            event.currentTarget.src = fallback;
-                                        }
-                                    }
+                                          if (fallback) {
+                                              event.currentTarget.src = fallback;
+                                          }
+                                      }
                                     : undefined
                             }
                         />
                     </div>
 
                     <div className="product-detail-info">
-                        <p className="detail-category">
-                            {category}
-                        </p>
+                        <p className="detail-category">{category}</p>
 
                         <p className="detail-brand">{product.brand}</p>
 
@@ -386,21 +456,30 @@ export default function ProductDetailPage<
                                 aria-label={`${product.rating} stars`}
                             >
                                 {ratingStars.map((starClass, index) => (
-                                    <i className={starClass} aria-hidden="true" key={index}></i>
+                                    <i
+                                        className={starClass}
+                                        aria-hidden="true"
+                                        key={index}
+                                    ></i>
                                 ))}
                             </div>
 
                             <p>({reviewCountDisplay})</p>
                         </div>
 
-                        <p className="detail-price">${Number(product.price).toFixed(2)}</p>
+                        <p className="detail-price">
+                            ${Number(product.price).toFixed(2)}
+                        </p>
 
                         <p className="detail-size">
                             Size: {product.size || "Standard size"}
                         </p>
 
                         <div className="detail-actions">
-                            <div className="quantity-control" aria-label="Quantity selector">
+                            <div
+                                className="quantity-control"
+                                aria-label="Quantity selector"
+                            >
                                 <button
                                     type="button"
                                     aria-label="Decrease quantity"
@@ -496,13 +575,18 @@ export default function ProductDetailPage<
                     <button
                         type="button"
                         className="product-review-toggle"
-                        onClick={() => setIsReviewFormOpen((currentValue) => !currentValue)}
+                        onClick={() =>
+                            setIsReviewFormOpen((currentValue) => !currentValue)
+                        }
                     >
                         {reviewToggleLabel}
                     </button>
 
                     {isReviewFormOpen && (
-                        <form className="product-review-form" onSubmit={handleReviewSubmit}>
+                        <form
+                            className="product-review-form"
+                            onSubmit={handleReviewSubmit}
+                        >
                             <div className="review-form-row">
                                 <label>
                                     Name
@@ -510,7 +594,9 @@ export default function ProductDetailPage<
                                         type="text"
                                         placeholder="Write your name"
                                         value={reviewUser}
-                                        onChange={(event) => setReviewUser(event.target.value)}
+                                        onChange={(event) =>
+                                            setReviewUser(event.target.value)
+                                        }
                                     />
                                 </label>
 
@@ -530,8 +616,9 @@ export default function ProductDetailPage<
                                                     type="button"
                                                     key={starValue}
                                                     className={isSelected ? "is-selected" : ""}
-                                                    aria-label={`${starValue} star${starValue > 1 ? "s" : ""
-                                                        }`}
+                                                    aria-label={`${starValue} star${
+                                                        starValue > 1 ? "s" : ""
+                                                    }`}
                                                     onClick={() => setReviewRating(starValue)}
                                                 >
                                                     <i
@@ -554,11 +641,17 @@ export default function ProductDetailPage<
                                 <textarea
                                     placeholder={reviewPlaceholder}
                                     value={reviewComment}
-                                    onChange={(event) => setReviewComment(event.target.value)}
+                                    onChange={(event) =>
+                                        setReviewComment(event.target.value)
+                                    }
                                 />
                             </label>
 
-                            <button type="submit">{reviewSubmitLabel}</button>
+                            <button type="submit" disabled={isSubmittingReview}>
+                                {isSubmittingReview
+                                    ? "Submitting..."
+                                    : reviewSubmitLabel}
+                            </button>
                         </form>
                     )}
                 </section>
@@ -582,15 +675,15 @@ export default function ProductDetailPage<
                                             onError={
                                                 getRecommendedImageFallbackSrc
                                                     ? (event) => {
-                                                        const fallback = resolveFallback(
-                                                            getRecommendedImageFallbackSrc,
-                                                            item
-                                                        );
+                                                          const fallback = resolveFallback(
+                                                              getRecommendedImageFallbackSrc,
+                                                              item
+                                                          );
 
-                                                        if (fallback) {
-                                                            event.currentTarget.src = fallback;
-                                                        }
-                                                    }
+                                                          if (fallback) {
+                                                              event.currentTarget.src = fallback;
+                                                          }
+                                                      }
                                                     : undefined
                                             }
                                         />
@@ -626,3 +719,4 @@ export default function ProductDetailPage<
         </>
     );
 }
+

@@ -123,3 +123,41 @@ export async function getProductById(
 
   return mapProductRowToDetail(data);
 }
+
+// aqui lo que se hace es agregar una nueva reseña a un producto específico, enviando la información de la reseña al backend a través de una función de Supabase.
+
+export type AddReviewPayload = {
+  productId: string | number;
+  text: string;
+  rating: number;
+};
+
+// esta funcion se esncarga de enviar una nueva reseña a la edge function add_review de Supabase, pasando el ID del producto, el texto de la reseña y la calificación. 
+
+export async function addReviewToProduct({
+  productId,
+  text,
+  rating,
+}: AddReviewPayload): Promise<ProductReview[]> {
+  const { data, error } = await supabase.functions.invoke("add_review", {
+    body: {
+      product_id: productId,
+      text,
+      rating,
+    },
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  if (Array.isArray(data)) {
+    return normalizeReviews(data as Json);
+  }
+
+  if (data && typeof data === "object" && "reviews" in data) {
+    return normalizeReviews((data as { reviews: Json }).reviews);
+  }
+
+  return [];
+}

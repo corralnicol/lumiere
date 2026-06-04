@@ -1,4 +1,6 @@
+
 // este componente es el encargado de mostrar los detalles de un producto específico.
+
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductDetailPage, {
@@ -8,7 +10,7 @@ import ProductDetailPage, {
 } from "@/components/ProductDetail/ProductDetail";
 import productsData from "@/data/products.json";
 import { getProductImageSrc } from "@/utils/productImages";
-import { getProductById } from "@/services/productService";
+import { addReviewToProduct, getProductById } from "@/services/productService";
 
 // aqui defino el tipo LocalProduct que extiende de ProductDetailItem y agrega algunos campos adicionales como category, description y reviews.
 
@@ -18,16 +20,25 @@ type LocalProduct = ProductDetailItem & {
   reviews?: ProductReview[];
 };
 
+type SubmitReviewData = {
+  productId: string | number;
+  user?: string;
+  rating: number;
+  comment: string;
+};
+
 const localProducts = productsData as LocalProduct[];
 
-// esta funcion se encarga de proporcionar reseñas predeterminadas para un producto, en caso de que no tenga reseñas reales en la base de datos. 
+// esta funcion se encarga de proporcionar reseñas predeterminadas para un producto, en caso de que no tenga reseñas reales en la base de datos.
 
 function getDefaultReviews(product: ProductDetailItem): ProductReview[] {
   return [
     {
       user: "Sofia M.",
       rating: Math.max(4, Math.round(product.rating)),
-      comment: `I liked the texture and finish of this ${product.category?.toLowerCase() ?? "beauty"} product.`,
+      comment: `I liked the texture and finish of this ${
+        product.category?.toLowerCase() ?? "beauty"
+      } product.`,
     },
     {
       user: "Camila R.",
@@ -57,9 +68,9 @@ function buildTabs(product: ProductDetailItem): DetailTab[] {
       id: "details",
       label: "Details",
       content: `Category: ${product.category ?? "Beauty"}.
-Brand: ${product.brand}.
-Size: ${product.size || "Standard size"}.
-Stock: ${product.stock ?? "Available"}.`,
+      Brand: ${product.brand}.
+      Size: ${product.size || "Standard size"}.
+      Stock: ${product.stock ?? "Available"}.`,
     },
     {
       id: "reviews",
@@ -114,6 +125,20 @@ export default function ProductDetails() {
       .slice(0, 4);
   }, [product]);
 
+  // en esta funcion se usa para poder agregar una reseña a un producto específico, llamando a la función addReviewToProduct que se encarga de interactuar con la base de datos de Supabase para guardar la reseña.
+
+  async function handleSubmitReview({
+    productId: reviewProductId,
+    rating,
+    comment,
+  }: SubmitReviewData) {
+    return addReviewToProduct({
+      productId: reviewProductId,
+      text: comment,
+      rating,
+    });
+  }
+
   if (isLoading) {
     return (
       <ProductDetailPage
@@ -138,6 +163,10 @@ export default function ProductDetails() {
       notFoundMessage="The product you are looking for does not exist."
       notFoundLinkText="Back to products"
       notFoundLinkHref="/products"
+      reviewToggleLabel="Write a review"
+      reviewSubmitLabel="Publish review"
+      reviewPlaceholder="Share your experience with this product..."
+      onSubmitReview={handleSubmitReview}
       initialReviews={
         product?.reviews && product.reviews.length > 0
           ? product.reviews
@@ -162,7 +191,9 @@ export default function ProductDetails() {
           : ""
       }
       imageFallbackSrc={(selected) =>
-        `/images/categories/${selected.category?.toLowerCase() ?? "foundation"}.png`
+        `/images/categories/${
+          selected.category?.toLowerCase() ?? "foundation"
+        }.png`
       }
       imageReferrerPolicy="no-referrer"
       galleryVariant="cover"
