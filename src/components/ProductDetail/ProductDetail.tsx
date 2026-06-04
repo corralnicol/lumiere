@@ -177,7 +177,7 @@ export default function ProductDetailPage<
 
     const handleAddToCart = () => {
         addToCart({
-            id: Number(product!.id),
+            id: product!.id, // se agrega el producto al carrito utilizando la función addToCart del contexto de carrito.
             category: product!.category ?? "",
             brand: product!.brand,
             name: product!.name,
