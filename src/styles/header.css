@@ -185,6 +185,33 @@
   color: #9f2f38;
 }
 
+.cart-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #e985a8;
+  color: #5d2836;
+  font-size: 0.75rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 0 0.2px currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
 @media (max-width: 1200px) {
   .header-bar {
     grid-template-columns: minmax(0, 1fr) minmax(220px, 340px) auto;
