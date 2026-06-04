@@ -1,6 +1,7 @@
-import { useState, type SubmitEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useUserState } from "@/contexts/user/UserContext";
+import { useCart } from "@/contexts/CartContext";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -11,11 +12,7 @@ function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
   const link = user?.isLoggedIn ? "/account" : "/auth/sign-in";
 
   return (
-    <Link
-      to={link}
-      aria-label="Account"
-      onClick={closeMenu}
-    >
+    <Link to={link} aria-label="Account" onClick={closeMenu}>
       <i className="fa-regular fa-user" aria-hidden="true"></i>
     </Link>
   );
@@ -25,11 +22,14 @@ function Header({ onFeedback }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
-  const handleSearchSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const rawQuery = searchValue.trim();
@@ -84,15 +84,13 @@ function Header({ onFeedback }: HeaderProps) {
     onFeedback("Search reset. You can try a different keyword now.", "info");
   };
 
-  const handleUtilityClick = (
-    type: "favorites" | "cart" | "account"
-  ) => {
+  const handleUtilityClick = (type: "favorites" | "cart" | "account") => {
     if (type === "favorites") {
       onFeedback("Favorites are still in development and will be available soon.", "info");
     }
 
     if (type === "cart") {
-      onFeedback("Opening the products page so you can continue shopping.", "info");
+      onFeedback("Opening your cart.", "info");
     }
 
     if (type === "account") {
@@ -127,12 +125,24 @@ function Header({ onFeedback }: HeaderProps) {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <Link to="/products" onClick={closeMenu}>Shop</Link>
-          <Link to="/#brands" onClick={closeMenu}>Brands</Link>
-          <Link to="/#categories" onClick={closeMenu}>Categories</Link>
-          <Link to="/#best-sellers" onClick={closeMenu}>Best Sellers</Link>
-          <Link to="/#kits" onClick={closeMenu}>Kits &amp; Sets</Link>
-          <Link to="/seller" onClick={closeMenu}>Seller</Link>
+          <Link to="/products" onClick={closeMenu}>
+            Shop
+          </Link>
+          <Link to="/#brands" onClick={closeMenu}>
+            Brands
+          </Link>
+          <Link to="/#categories" onClick={closeMenu}>
+            Categories
+          </Link>
+          <Link to="/#best-sellers" onClick={closeMenu}>
+            Best Sellers
+          </Link>
+          <Link to="/#kits" onClick={closeMenu}>
+            Kits &amp; Sets
+          </Link>
+          <Link to="/seller" onClick={closeMenu}>
+            Seller
+          </Link>
 
           <div className="mobile-menu-icons">
             <Link
@@ -145,10 +155,15 @@ function Header({ onFeedback }: HeaderProps) {
 
             <Link
               to="/cart"
-              aria-label="Cart"
-              onClick={() => closeMenu()}
+              className="cart-nav-link"
+              aria-label={`Cart with ${cartCount} items`}
+              onClick={() => handleUtilityClick("cart")}
             >
-              <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
+              <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+
+              {cartCount > 0 && (
+                <span className="cart-count-badge">{cartCount}</span>
+              )}
             </Link>
 
             <AccountIcon closeMenu={closeMenu} />
@@ -192,10 +207,15 @@ function Header({ onFeedback }: HeaderProps) {
 
           <Link
             to="/cart"
-            aria-label="Cart"
-            onClick={() => closeMenu()}
+            className="cart-nav-link"
+            aria-label={`Cart with ${cartCount} items`}
+            onClick={() => handleUtilityClick("cart")}
           >
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
+
+            {cartCount > 0 && (
+              <span className="cart-count-badge">{cartCount}</span>
+            )}
           </Link>
 
           <AccountIcon closeMenu={closeMenu} />
