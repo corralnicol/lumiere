@@ -3,46 +3,39 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./CreateAccount.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
-import { useUserActions, useUserState } from "@/contexts/user/UserContext";
+import { useUserState } from "@/contexts/user/UserContext";
+import { signUp } from "@/lib/auth";
 
 const CreateAccount = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [accepted, setAccepted] = useState(true);
     const [email, setEmail] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");
-    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const user = useUserState();
-    const actions = useUserActions();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user?.isLoggedIn) {
+        if (!user.loading && user.isLoggedIn) {
             navigate("/account", { replace: true });
         }
-    }, [navigate, user?.isLoggedIn]);
+    }, [navigate, user.loading, user.isLoggedIn]);
 
-    const handleCreateAccount = () => {
-        if (!actions) {
-            return;
-        }
-
+    const handleCreateAccount = async () => {
         const trimmedEmail = email.trim();
-        const trimmedName = name.trim();
+        const trimmedFirstName = firstName.trim();
+        const trimmedLastName = lastName.trim();
         const trimmedPhone = phone.trim();
+        if (!trimmedEmail || !trimmedFirstName || !trimmedLastName || !trimmedPhone || !password) return;
 
-        if (!trimmedEmail || !trimmedName) {
-            return;
+        setError("");
+        const errorMsg = await signUp({ email: trimmedEmail, password, firstName: trimmedFirstName, lastName: trimmedLastName, phone: trimmedPhone });
+        if (errorMsg) {
+            setError(errorMsg);
         }
-
-        actions.login({
-            name: trimmedName,
-            email: trimmedEmail,
-            phone: trimmedPhone,
-            isLoggedIn: true,
-        });
-
-        navigate("/account", { replace: true });
     };
 
     return (
@@ -53,7 +46,6 @@ const CreateAccount = () => {
                 <div className={styles.card}>
                     <h2 className={styles.title}>Create your account!</h2>
 
-                    {/* Botón Google */}
                     <button className={styles.googleBtn} type="button">
                         <img
                             src="/images/login/google.svg"
@@ -63,14 +55,36 @@ const CreateAccount = () => {
                         Sign up with Google
                     </button>
 
-                    {/* Divisor */}
                     <div className={styles.divider}>
                         <span className={styles.dividerLine}></span>
                         <p className={styles.dividerText}>Or enter your email</p>
                         <span className={styles.dividerLine}></span>
                     </div>
 
-                    {/* Campo E-mail */}
+                    <div className={styles.fieldGroup}>
+                        <label className={styles.label} htmlFor="firstName">First Name</label>
+                        <input
+                            id="firstName"
+                            type="text"
+                            className={styles.input}
+                            placeholder=""
+                            value={firstName}
+                            onChange={(event) => setFirstName(event.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.fieldGroup}>
+                        <label className={styles.label} htmlFor="lastName">Last Name</label>
+                        <input
+                            id="lastName"
+                            type="text"
+                            className={styles.input}
+                            placeholder=""
+                            value={lastName}
+                            onChange={(event) => setLastName(event.target.value)}
+                        />
+                    </div>
+
                     <div className={styles.fieldGroup}>
                         <label className={styles.label} htmlFor="email">E-mail</label>
                         <input
@@ -83,11 +97,10 @@ const CreateAccount = () => {
                         />
                     </div>
 
-                    {/* Campo Teléfono */}
                     <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="tel">Tel</label>
+                        <label className={styles.label} htmlFor="phone">Phone</label>
                         <input
-                            id="tel"
+                            id="phone"
                             type="tel"
                             className={styles.input}
                             placeholder=""
@@ -96,20 +109,6 @@ const CreateAccount = () => {
                         />
                     </div>
 
-                    {/* Campo Nombre */}
-                    <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="name">Name</label>
-                        <input
-                            id="name"
-                            type="text"
-                            className={styles.input}
-                            placeholder=""
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
-                        />
-                    </div>
-
-                    {/* Campo Contraseña */}
                     <div className={styles.fieldGroup}>
                         <label className={styles.label} htmlFor="password">Password</label>
                         <div className={styles.passwordWrapper}>
@@ -135,7 +134,6 @@ const CreateAccount = () => {
                         </div>
                     </div>
 
-                    {/* Checkbox */}
                     <div className={styles.checkboxGroup}>
                         <label className={styles.checkboxLabel}>
                             <input
@@ -160,15 +158,15 @@ const CreateAccount = () => {
                         </p>
                     </div>
 
-                    {/* Botón Crear Cuenta */}
+                    {error && <p className={styles.legalText} style={{ color: 'red' }}>{error}</p>}
+
                     <button className={styles.createBtn} onClick={handleCreateAccount}>
-                        Create account
+                        Sign up
                     </button>
 
-                    {/* Enlace volver al login */}
                     <p className={styles.loginRedirect}>
                         Have an account?{" "}
-                        <Link to="/login" className={styles.loginLink}>Log in</Link>
+                        <Link to="/auth/sign-in" className={styles.loginLink}>Sign in</Link>
                     </p>
                 </div>
             </main>

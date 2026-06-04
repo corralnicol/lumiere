@@ -15,6 +15,7 @@ $$;
 CREATE TABLE public.profiles (
   id           uuid        PRIMARY KEY REFERENCES auth.users ON DELETE CASCADE,
   email        text        NOT NULL UNIQUE,
+  phone        text,
   first_name   text,
   last_name    text,
   avatar_url   text,
@@ -34,10 +35,11 @@ LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
 BEGIN
-  INSERT INTO public.profiles (id, email, first_name, last_name, avatar_url)
+  INSERT INTO public.profiles (id, email, phone, first_name, last_name, avatar_url)
   VALUES (
     NEW.id,
     NEW.email,
+    NEW.raw_user_meta_data->>'phone',
     NEW.raw_user_meta_data->>'first_name',
     NEW.raw_user_meta_data->>'last_name',
     NEW.raw_user_meta_data->>'avatar_url'

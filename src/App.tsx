@@ -63,8 +63,8 @@ function App() {
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirmation" element={<Confirmation />} />
           {/* Auth Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<CreateAccount />} />
+          <Route path="/auth/sign-in" element={<Login />} />
+          <Route path="/auth/sign-up" element={<CreateAccount />} />
           <Route path="/account" element={<AccountOverview />} />
           {/* Seller Routes */}
           <Route path="/seller" element={<Seller />} />

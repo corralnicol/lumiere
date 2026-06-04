@@ -12,22 +12,26 @@
 -- ---------------------------------------------------------------------------
 -- Auth users  (the handle_new_user trigger auto-creates the matching profiles)
 -- ---------------------------------------------------------------------------
-WITH new_users(id, email, first_name, last_name) AS (
+WITH new_users(id, email, first_name, last_name, phone) AS (
   VALUES
-    ('395e637f-2b0b-48b6-bcc1-3c30b0f9575b'::uuid, 'linus@lumiere.com', 'Linus', 'Torvalds'),
-    ('97f960fd-8ce5-4215-aa25-45fd9222b536'::uuid, 'bob@lumiere.com',   'Bob',   'Martin'),
-    ('57d9019a-8227-4fa2-b378-d0b77662f7bc'::uuid, 'andrew@lumiere.com', 'Andrew', 'Ng')
+    ('395e637f-2b0b-48b6-bcc1-3c30b0f9575b'::uuid, 'linus@lumiere.com', 'Linus', 'Torvalds', '+1234567890'),
+    ('97f960fd-8ce5-4215-aa25-45fd9222b536'::uuid, 'bob@lumiere.com',   'Bob',   'Martin', '+1234567891'),
+    ('57d9019a-8227-4fa2-b378-d0b77662f7bc'::uuid, 'andrew@lumiere.com', 'Andrew', 'Ng', '+1234567892')
 )
 INSERT INTO auth.users (
-  instance_id, id, aud, role, email, encrypted_password, email_confirmed_at,
-  raw_app_meta_data, raw_user_meta_data, created_at, updated_at
+  instance_id, id, aud, role, email,
+  encrypted_password, email_confirmed_at,
+  confirmation_token, recovery_token, email_change_token_new, email_change,
+  raw_app_meta_data,
+  raw_user_meta_data,
+  created_at, updated_at
 )
 SELECT
   '00000000-0000-0000-0000-000000000000', u.id, 'authenticated', 'authenticated', u.email,
-  extensions.crypt('Password1234', extensions.gen_salt('bf')),
-  now(),
+  extensions.crypt('Password1234', extensions.gen_salt('bf')), now(),
+    '', '', '', '',
   '{"provider":"email","providers":["email"]}'::jsonb,
-  jsonb_build_object('first_name', u.first_name, 'last_name', u.last_name),
+  jsonb_build_object('first_name', u.first_name, 'last_name', u.last_name, 'phone', u.phone),
   now(), now()
 FROM new_users u
 ON CONFLICT (id) DO NOTHING;

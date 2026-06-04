@@ -8,7 +8,7 @@ type HeaderProps = {
 
 function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
   const user = useUserState();
-  const link = user?.isLoggedIn ? "/account" : "/login";
+  const link = user?.isLoggedIn ? "/account" : "/auth/sign-in";
 
   return (
     <Link
