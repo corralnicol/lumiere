@@ -4,6 +4,7 @@ import { useUserActions, useUserState } from "@/contexts/user/UserContext";
 import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar/Navbar";
 import AuthFooter from "@/components/Footer/AuthFooter";
+import SellerAnalytics from "@/components/SellerAnalytics/SellerAnalytics";
 import "./account.css";
 
 const AccountOverview = () => {
@@ -36,7 +37,7 @@ const AccountOverview = () => {
           const { data, error } = await supabase
             .from("profiles")
             .select("address, state, city, zip")
-            .eq("id", user.id)
+            .eq("id", user.id!)
             .single();
 
           if (error) {
@@ -145,7 +146,7 @@ const AccountOverview = () => {
 
           <form onSubmit={handleSaveAddress} className="account-address-form">
             <h3 className="address-section-title">Address Details</h3>
-            
+
             <div className="account-form-group">
               <label htmlFor="address">Address</label>
               <input
@@ -234,6 +235,9 @@ const AccountOverview = () => {
             Log out
           </button>
         </section>
+
+        {/* Add Seller Analytics here */}
+        <SellerAnalytics />
       </main>
 
       <AuthFooter />

@@ -142,10 +142,10 @@ export default function ProductDetailPage<
     useEffect(() => {
         if (user?.isLoggedIn && user?.id) {
             const fetchFavorites = async () => {
-                const { data, error } = await supabase
+                const { data } = await supabase
                     .from("profiles")
                     .select("favorites")
-                    .eq("id", user.id)
+                    .eq("id", user.id!)
                     .single();
 
                 if (data && Array.isArray(data.favorites)) {
@@ -154,11 +154,16 @@ export default function ProductDetailPage<
             };
             fetchFavorites();
         } else {
-            setFavoriteIds([]);
+            const timer = setTimeout(() => {
+                setFavoriteIds([]);
+            }, 0);
+            return () => clearTimeout(timer);
         }
     }, [user?.isLoggedIn, user?.id]);
 
     const isFavorite = product ? favoriteIds.includes(String(product.id)) : false;
+
+    const isUuid = (id: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 
     const handleToggleFavorite = async () => {
         if (!product) return;
@@ -181,13 +186,35 @@ export default function ProductDetailPage<
             showFeedback(`${product.name} added to favorites.`, "success");
         }
 
-        const { error } = await supabase
-            .from("profiles")
-            .update({ favorites: nextFavoriteIds })
-            .eq("id", user.id);
+        let success = false;
+        let updatedFavs = nextFavoriteIds;
+        const productIdStr = String(product.id);
 
-        if (error) {
-            console.error("Error updating favorites on detail page:", error);
+        if (isUuid(productIdStr)) {
+            const { data, error } = await supabase.rpc("toggle_favorite", {
+                p_product_id: productIdStr,
+            });
+            if (!error && data && Array.isArray(data)) {
+                success = true;
+                updatedFavs = data as string[];
+            } else {
+                console.error("Error toggling favorite via RPC:", error);
+            }
+        } else {
+            const { error } = await supabase
+                .from("profiles")
+                .update({ favorites: nextFavoriteIds })
+                .eq("id", user.id!);
+            if (!error) {
+                success = true;
+            } else {
+                console.error("Error updating favorites directly:", error);
+            }
+        }
+
+        if (success) {
+            setFavoriteIds(updatedFavs);
+        } else {
             setFavoriteIds(favoriteIds); // Revertir
         }
     };
@@ -231,11 +258,14 @@ export default function ProductDetailPage<
             return;
         }
 
-        setQuantity(1);
-        setIsReviewFormOpen(false);
-        setReviewUser("");
-        setReviewRating(5);
-        setReviewComment("");
+        const timer = setTimeout(() => {
+            setQuantity(1);
+            setIsReviewFormOpen(false);
+            setReviewUser("");
+            setReviewRating(5);
+            setReviewComment("");
+        }, 0);
+        return () => clearTimeout(timer);
     }, [productId]);
 
     useEffect(() => {

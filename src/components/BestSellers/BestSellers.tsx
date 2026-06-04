@@ -16,10 +16,10 @@ function BestSellers({ onFeedback }: BestSellersProps) {
   useEffect(() => {
     if (user?.isLoggedIn && user?.id) {
       const fetchFavorites = async () => {
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from("profiles")
           .select("favorites")
-          .eq("id", user.id)
+          .eq("id", user.id!)
           .single();
 
         if (data && Array.isArray(data.favorites)) {
@@ -28,9 +28,14 @@ function BestSellers({ onFeedback }: BestSellersProps) {
       };
       fetchFavorites();
     } else {
-      setFavoriteIds([]); // Limpiar favoritos si no hay sesión
+      const timer = setTimeout(() => {
+        setFavoriteIds([]); // Limpiar favoritos si no hay sesión
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [user?.isLoggedIn, user?.id]);
+
+  const isUuid = (id: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 
   const toggleFavorite = async (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -57,14 +62,34 @@ function BestSellers({ onFeedback }: BestSellersProps) {
       onFeedback(`${itemName} añadido a favoritos.`, "success");
     }
 
-    // Actualizar directamente la tabla profiles
-    const { error } = await supabase
-      .from("profiles")
-      .update({ favorites: newFavoriteIds })
-      .eq("id", user.id);
-    
-    if (error) {
-      console.error("Error al actualizar favoritos en Supabase:", error);
+    let success = false;
+    let updatedFavs = newFavoriteIds;
+
+    if (isUuid(productId)) {
+      const { data, error } = await supabase.rpc("toggle_favorite", {
+        p_product_id: productId,
+      });
+      if (!error && data && Array.isArray(data)) {
+        success = true;
+        updatedFavs = data as string[];
+      } else {
+        console.error("Error toggling favorite via RPC:", error);
+      }
+    } else {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ favorites: newFavoriteIds })
+        .eq("id", user.id!);
+      if (!error) {
+        success = true;
+      } else {
+        console.error("Error updating favorites directly:", error);
+      }
+    }
+
+    if (success) {
+      setFavoriteIds(updatedFavs);
+    } else {
       // Revertir el estado si falla
       setFavoriteIds(favoriteIds);
     }

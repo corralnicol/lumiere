@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { User } from '@/types/user';
@@ -41,13 +42,16 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    refresh();
+    const timer = setTimeout(refresh, 0);
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
       setTimeout(refresh, 0);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      clearTimeout(timer);
+      subscription.unsubscribe();
+    };
   }, [refresh]);
 
   const actions = useMemo<UserActions>(() => ({

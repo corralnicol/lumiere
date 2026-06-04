@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -35,26 +35,19 @@ interface ShippingData {
 // Muestra el comprobante con el número de pedido, los productos y los datos de envío
 const Confirmation: React.FC = () => {
   // Leemos los datos del pedido y envío que guardamos en las páginas anteriores
-  const [orderData, setOrderData] = useState<OrderData | null>(null);
-  const [shippingData, setShippingData] = useState<ShippingData | null>(null);
+  const [orderData] = useState<OrderData | null>(() => {
+    const savedOrder = localStorage.getItem('lumiere_order');
+    return savedOrder ? JSON.parse(savedOrder) : null;
+  });
+  const [shippingData] = useState<ShippingData | null>(() => {
+    const savedShipping = localStorage.getItem('lumiere_shipping');
+    return savedShipping ? JSON.parse(savedShipping) : null;
+  });
 
   // Función para los mensajes del Header y Footer
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
-
-  // Al cargar la página, recuperamos los datos del pedido desde localStorage
-  useEffect(() => {
-    const savedOrder = localStorage.getItem('lumiere_order');
-    const savedShipping = localStorage.getItem('lumiere_shipping');
-
-    if (savedOrder) {
-      setOrderData(JSON.parse(savedOrder));
-    }
-    if (savedShipping) {
-      setShippingData(JSON.parse(savedShipping));
-    }
-  }, []);
 
   // Formateamos la fecha para que se vea bonita en español
   const formatDate = (dateString: string) => {

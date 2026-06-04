@@ -30,21 +30,24 @@ const Checkout: React.FC = () => {
     department: '',
     zipCode: '',
   });
+  const [_isSaving, setIsSaving] = useState(false);
+  const [_saveError, setSaveError] = useState('');
 
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveError, setSaveError] = useState('');
 
   // Cuando carga el usuario, actualizamos los campos del contexto por si llegaron tarde
   useEffect(() => {
     if (user?.name || user?.email) {
       const parts = (user?.name || '').trim().split(' ');
-      setFormData((prev) => ({
-        ...prev,
-        firstName: parts[0] || prev.firstName,
-        lastName: parts.slice(1).join(' ') || prev.lastName,
-        email: user?.email || prev.email,
-        phone: user?.phone || prev.phone,
-      }));
+      const timer = setTimeout(() => {
+        setFormData((prev) => ({
+          ...prev,
+          firstName: parts[0] || prev.firstName,
+          lastName: parts.slice(1).join(' ') || prev.lastName,
+          email: user?.email || prev.email,
+          phone: user?.phone || prev.phone,
+        }));
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [user?.name, user?.email, user?.phone]);
 
@@ -83,7 +86,7 @@ const Checkout: React.FC = () => {
           state: formData.department,
           zip: formData.zipCode,
         })
-        .eq('id', user.id);
+        .eq('id', user.id!);
 
       setIsSaving(false);
 
@@ -310,9 +313,11 @@ const Checkout: React.FC = () => {
               </div>
             </div>
 
+            {_saveError && <p className="error-message" style={{ color: 'var(--accent-red, #ff4d4d)', marginTop: '10px' }}>{_saveError}</p>}
+
             {/* Botón para ir al pago (solo si los campos requeridos están llenos) */}
-            <button type="submit" className="continue-payment-btn">
-              Continuar al Pago
+            <button type="submit" className="continue-payment-btn" disabled={_isSaving}>
+              {_isSaving ? 'Guardando...' : 'Continuar al Pago'}
               <i className="fa-solid fa-arrow-right"></i>
             </button>
           </form>

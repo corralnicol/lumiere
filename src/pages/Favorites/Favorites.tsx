@@ -7,7 +7,7 @@ import productsData from "@/data/products.json";
 import { bestSellerProducts } from "@/data/bestSellerProducts";
 import { useUserState } from "@/contexts/user/UserContext";
 import { supabase } from "@/lib/supabase";
-import { type Product, hasRequiredFields } from "@/types/products";
+import { type Product, type ProductCategory, type ProductCharacteristics, hasRequiredFields } from "@/types/products";
 import { kitProducts } from "@/data/kitProducts";
 import "./Favorites.css";
 
@@ -38,7 +38,7 @@ export default function Favorites() {
           const { data, error } = await supabase
             .from("profiles")
             .select("favorites")
-            .eq("id", user.id)
+            .eq("id", user.id!)
             .single();
 
           if (error) throw error;
@@ -55,6 +55,8 @@ export default function Favorites() {
       fetchFavorites();
     }
   }, [user.isLoggedIn, user.loading, user.id, navigate]);
+
+  const isUuid = (id: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 
   const toggleFavorite = async (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -76,13 +78,34 @@ export default function Favorites() {
       showFeedback(`${itemName} added to favorites.`, "success");
     }
 
-    const { error } = await supabase
-      .from("profiles")
-      .update({ favorites: newFavoriteIds })
-      .eq("id", user.id);
-    
-    if (error) {
-      console.error("Error toggling favorite:", error);
+    let success = false;
+    let updatedFavs = newFavoriteIds;
+
+    if (isUuid(productId)) {
+      const { data, error } = await supabase.rpc("toggle_favorite", {
+        p_product_id: productId,
+      });
+      if (!error && data && Array.isArray(data)) {
+        success = true;
+        updatedFavs = data as string[];
+      } else {
+        console.error("Error toggling favorite via RPC:", error);
+      }
+    } else {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ favorites: newFavoriteIds })
+        .eq("id", user.id!);
+      if (!error) {
+        success = true;
+      } else {
+        console.error("Error updating favorites directly:", error);
+      }
+    }
+
+    if (success) {
+      setFavoriteIds(updatedFavs);
+    } else {
       // Revertir el estado si falla
       setFavoriteIds(favoriteIds);
     }
@@ -92,7 +115,7 @@ export default function Favorites() {
     .filter(p => favoriteIds.includes(p.id))
     .map(p => ({
       id: p.id,
-      category: "Best Seller" as any,
+      category: "Best Seller" as unknown as ProductCategory,
       brand: p.brand,
       name: p.name,
       description: p.description,
@@ -101,7 +124,7 @@ export default function Favorites() {
       size: p.size,
       stock: p.stock,
       imageUrl: p.image,
-      characteristics: p.characteristics as any[],
+      characteristics: p.characteristics as unknown as ProductCharacteristics[],
       reviews: p.reviews.map(r => ({ user: r.user, rating: r.rating, comment: r.comment }))
     }));
 
@@ -109,7 +132,7 @@ export default function Favorites() {
     .filter(p => favoriteIds.includes(p.id))
     .map(p => ({
       id: p.id,
-      category: "Kit" as any,
+      category: "Kit" as unknown as ProductCategory,
       brand: p.brand,
       name: p.name,
       description: p.description,
@@ -118,7 +141,7 @@ export default function Favorites() {
       size: p.size,
       stock: p.stock,
       imageUrl: p.image,
-      characteristics: p.characteristics as any[],
+      characteristics: p.characteristics as unknown as ProductCharacteristics[],
       reviews: p.reviews.map(r => ({ user: r.user, rating: r.rating, comment: r.comment }))
     }));
 

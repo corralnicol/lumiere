@@ -1,0 +1,141 @@
+.seller-analytics-container {
+  margin-top: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.seller-analytics-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.seller-analytics-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.analytics-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.metric-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eaeaea;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.metric-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #777;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+}
+
+.chart-section {
+  margin-top: 20px;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+  padding: 20px;
+}
+
+.analytics-loading,
+.analytics-empty {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .analytics-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.custom-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+  padding: 20px;
+}
+
+.custom-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.custom-bar-label {
+  width: 120px;
+  font-size: 13px;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.custom-bar-track {
+  flex: 1;
+  height: 24px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.custom-bar-fill {
+  height: 100%;
+  background-color: #333;
+  border-radius: 4px;
+  transition: width 0.5s ease-out;
+}
+
+.custom-bar-value {
+  width: 80px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+}
