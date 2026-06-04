@@ -4,7 +4,7 @@ import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
 import { useUserState } from "@/contexts/user/UserContext";
-import { signIn } from "@/lib/auth";
+import { signIn, signInWithGoogle } from "@/lib/auth";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -32,6 +32,14 @@ const Login = () => {
         }
     };
 
+    const handleGoogleSignIn = async () => {
+        setError("");
+        const errorMsg = await signInWithGoogle();
+        if (errorMsg) {
+            setError(errorMsg);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <Navbar />
@@ -40,7 +48,7 @@ const Login = () => {
                 <div className={styles.card}>
                     <h2 className={styles.title}>Sign in</h2>
 
-                    <button className={styles.googleBtn} type="button">
+                    <button className={styles.googleBtn} type="button" onClick={handleGoogleSignIn}>
                         <img
                             src="/images/login/google.svg"
                             alt="Google"

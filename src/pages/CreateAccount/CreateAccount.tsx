@@ -4,7 +4,7 @@ import styles from "./CreateAccount.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
 import { useUserState } from "@/contexts/user/UserContext";
-import { signUp } from "@/lib/auth";
+import { signUp, signInWithGoogle } from "@/lib/auth";
 
 const CreateAccount = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -38,6 +38,14 @@ const CreateAccount = () => {
         }
     };
 
+    const handleGoogleSignIn = async () => {
+        setError("");
+        const errorMsg = await signInWithGoogle();
+        if (errorMsg) {
+            setError(errorMsg);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <Navbar />
@@ -46,7 +54,7 @@ const CreateAccount = () => {
                 <div className={styles.card}>
                     <h2 className={styles.title}>Create your account!</h2>
 
-                    <button className={styles.googleBtn} type="button">
+                    <button className={styles.googleBtn} type="button" onClick={handleGoogleSignIn}>
                         <img
                             src="/images/login/google.svg"
                             alt="Google"
