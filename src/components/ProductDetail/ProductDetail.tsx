@@ -56,7 +56,7 @@ function formatCharacteristic(characteristic: string) {
 
 export default function ProductDetailPage({
     product,
-    storageKeyPrefix = "lumiere-product-reviews",
+    storageKeyPrefix = "lumiere-product-reviews-v2",
     initialReviews,
     backLinkHref = "/",
     backLinkLabel = "← Back",
@@ -82,7 +82,18 @@ export default function ProductDetailPage({
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
-    const [reviews, setReviews] = useState<ProductReview[]>([]);
+    const [reviews, setReviews] = useState<ProductReview[]>(() => {
+        const base = initialReviews ?? product?.reviews ?? [];
+        if (!product?.id) return base;
+        const key = `${storageKeyPrefix}-${product.id}`;
+        const saved = localStorage.getItem(key);
+        if (!saved) return base;
+        try {
+            const parsed = JSON.parse(saved) as ProductReview[];
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        } catch { /* ignore */ }
+        return base;
+    });
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
     const [reviewUser, setReviewUser] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
@@ -177,9 +188,11 @@ export default function ProductDetailPage({
         }
 
         const newReview: ProductReview = {
-            user: trimmedUser,
+            reviewer_id: crypto.randomUUID(),
+            reviewer_name: trimmedUser,
             rating: reviewRating,
-            comment: trimmedComment,
+            text: trimmedComment,
+            created_at: new Date().toISOString(),
         };
 
         const updatedReviews = [newReview, ...reviews];
@@ -387,10 +400,10 @@ export default function ProductDetailPage({
                         {reviews.map((review, index) => (
                             <article
                                 className="product-review-card"
-                                key={`${review.user}-${review.comment}-${index}`}
+                                key={`${review.reviewer_id}-${index}`}
                             >
                                 <div className="product-review-header">
-                                    <h3>{review.user}</h3>
+                                    <h3>{review.reviewer_name ?? "Anonymous"}</h3>
 
                                     <div
                                         className="product-review-stars"
@@ -410,7 +423,7 @@ export default function ProductDetailPage({
                                     </div>
                                 </div>
 
-                                <p>{review.comment}</p>
+                                <p>{review.text}</p>
                             </article>
                         ))}
                     </div>

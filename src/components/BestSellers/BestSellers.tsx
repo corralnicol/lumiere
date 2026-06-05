@@ -1,21 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
-import products from "@/data/products.json";
+import { useProductsByIds } from "@/hooks/useProducts";
 import { getProductImageSrc } from "@/utils/productImages";
 
 type BestSellersProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
 };
 
-function computeStars(reviews: { rating: number }[]): number {
-  if (!reviews.length) return 0;
-  return Math.round(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length);
-}
+const bestSellerIds = homeBestSellers.map((e) => e.id);
 
 function BestSellers({ onFeedback }: BestSellersProps) {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
-
+  const { data: products, loading, error } = useProductsByIds(bestSellerIds);
+  
   const toggleFavorite = (
     event: React.MouseEvent<HTMLButtonElement>,
     productId: string,
@@ -39,76 +37,82 @@ function BestSellers({ onFeedback }: BestSellersProps) {
     <section className="best-seller-section" id="best-sellers">
       <h2 className="best-seller-title">Best Sellers</h2>
 
-      <div className="best-seller-grid">
-        {homeBestSellers.map((entry) => {
-          const product = products.find((p) => p.id === entry.id);
-          if (!product) return null;
+      {error ? (
+        <p className="products-error">Could not load best sellers.</p>
+      ) : loading ? (
+        <div className="best-seller-grid best-seller-grid--loading" aria-busy="true">
+          <span className="activity-spinner" aria-hidden="true"></span>
+        </div>
+      ) : (
+        <div className="best-seller-grid">
+          {homeBestSellers.map((entry) => {
+            const product = products.find((p) => p.id === entry.id);
+            if (!product) return null;
 
-          const isFavorite = favoriteIds.includes(product.id);
-          const stars = computeStars(product.reviews);
-          const searchTarget = [product.brand, product.name, product.category]
-            .filter(Boolean)
-            .join(" ");
+            const isFavorite = favoriteIds.includes(product.id);
+            const searchTarget = [product.brand, product.name, product.category]
+              .filter(Boolean)
+              .join(" ");
 
-          return (
-            <Link
-              to={`/products/${product.id}`}
-              className="best-card"
-              data-search-target={searchTarget}
-              key={product.id}
-            >
-              <div className="best-card-image-box">
-                <button
-                  className={`best-card-fav ${isFavorite ? "is-active" : ""}`}
-                  type="button"
-                  aria-label={
-                    isFavorite
-                      ? `Eliminar ${product.name} de favoritos`
-                      : `Añadir ${product.name} a favoritos`
-                  }
-                  aria-pressed={isFavorite}
-                  onClick={(event) =>
-                    toggleFavorite(event, product.id, product.name)
-                  }
-                >
-                  <i
-                    className={`${isFavorite ? "fa-solid" : "fa-regular"} fa-heart`}
-                    aria-hidden="true"
-                  ></i>
-                </button>
-
-                <img
-                  src={getProductImageSrc(product)}
-                  alt={product.name}
-                  className={`best-card-image ${entry.imageClassName}`}
-                />
-
-                <div className="best-card-stars">
-                  {Array.from({ length: 5 }).map((_, index) => (
+            return (
+              <Link
+                to={`/products/${product.id}`}
+                className="best-card"
+                data-search-target={searchTarget}
+                key={product.id}
+              >
+                <div className="best-card-image-box">
+                  <button
+                    className={`best-card-fav ${isFavorite ? "is-active" : ""}`}
+                    type="button"
+                    aria-label={
+                      isFavorite
+                        ? `Eliminar ${product.name} de favoritos`
+                        : `Añadir ${product.name} a favoritos`
+                    }
+                    aria-pressed={isFavorite}
+                    onClick={(event) =>
+                      toggleFavorite(event, product.id, product.name)
+                    }
+                  >
                     <i
-                      className={
-                        index < stars
-                          ? "fa-solid fa-star"
-                          : "fa-regular fa-star"
-                      }
+                      className={`${isFavorite ? "fa-solid" : "fa-regular"} fa-heart`}
                       aria-hidden="true"
-                      key={index}
                     ></i>
-                  ))}
-                </div>
-              </div>
+                  </button>
 
-              <div className="best-card-info">
-                <h3 className="best-card-name">{product.brand}</h3>
-                <p className="best-card-desc">{product.name}</p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+                  <img
+                    src={getProductImageSrc(product)}
+                    alt={product.name}
+                    className={`best-card-image ${entry.imageClassName}`}
+                  />
+
+                  <div className="best-card-stars">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <i
+                        className={
+                          index < product.rating
+                            ? "fa-solid fa-star"
+                            : "fa-regular fa-star"
+                        }
+                        aria-hidden="true"
+                        key={index}
+                      ></i>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="best-card-info">
+                  <h3 className="best-card-name">{product.brand}</h3>
+                  <p className="best-card-desc">{product.name}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
-
 }
 
 export default BestSellers;

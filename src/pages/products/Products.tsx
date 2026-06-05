@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import products from "@/data/products.json";
 import { categories } from "@/data/categories";
 import "./Products.css";
 import {
@@ -11,12 +10,13 @@ import {
 } from "@/types/products";
 import { productCharacteristics } from "@/data/characteristics";
 import { ProductCard } from "@/components/ProductCard";
+import { useProducts } from "@/hooks/useProducts";
 
 export interface FeedbackState {
     message: string;
     type: "info" | "success" | "warning" | "";
     isVisible: boolean;
-};
+}
 
 export type Filters = {
     category: string;
@@ -36,18 +36,6 @@ const toggleValue = <T extends string>(values: T[], value: T) => {
 const clampValue = (value: number, min: number, max: number) => {
     return Math.min(Math.max(value, min), max);
 };
-
-const brandFilterOptions = [...new Set(
-    products
-        .filter((p) => p.brand) // Ensures brands exist (avoids null/undefined crashes)
-        .map((p) => p.brand.trim()) // Cleans up accidental leading/trailing spaces
-)]
-    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
-    console.log("Brand filter options:", brandFilterOptions);
-const characteristicFilterOptions = productCharacteristics.filter((characteristic) =>
-    products.some((product) => product.characteristics.includes(characteristic))
-);
-console.log("Characteristic filter options:", characteristicFilterOptions);
 
 const emptyFilters: Filters = {
     category: "",
@@ -296,12 +284,13 @@ export function FiltersSidebar({
     );
 }
 
-
 export function Products() {
     const [searchParams] = useSearchParams();
     const resolvedCategoryFromQuery = resolveCategoryFromQueryParam(
         searchParams.get("category")
     );
+
+    const { data: products, loading, error } = useProducts();
 
     const [feedback, setFeedback] = useState<FeedbackState>({
         message: "",
@@ -442,13 +431,21 @@ export function Products() {
         showFeedback("Filters cleared. Showing all products.", "info");
     };
 
-    const filteredProducts = useMemo(() => {
-        products.sort((a, b) => b.stock - a.stock);
-        const productsWithRating = products.map((p) => ({
-            ...p,
-            rating: Math.round(p.reviews.reduce((sum, review) => sum + review.rating, 0) / p.reviews.length),
-        }));
-        return productsWithRating.filter((product) => {
+    const brandFilterOptions = useMemo(() => {
+        return [...new Set(products.filter((p) => p.brand).map((p) => p.brand.trim()))]
+            .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true }));
+    }, [products]);
+
+    const characteristicFilterOptions = useMemo(() => {
+        return productCharacteristics.filter((c) =>
+            products.some((p) => p.characteristics.includes(c))
+        );
+    }, [products]);
+
+    const filteredProducts = useMemo((): Product[] => {
+        const sorted = [...products].sort((a, b) => b.stock - a.stock);
+
+        return sorted.filter((product) => {
             const minPrice = parsePriceInput(filters.priceMinInput);
             const maxPrice = parsePriceInput(filters.priceMaxInput);
 
@@ -484,7 +481,7 @@ export function Products() {
 
             return true;
         });
-    }, [filters]) as Product[];
+    }, [filters, products]);
 
     const activeFilterCount = useMemo(() => {
         let count = 0;
@@ -514,6 +511,49 @@ export function Products() {
 
         return count;
     }, [filters]);
+
+    const renderGrid = () => {
+        if (error) {
+            return (
+                <div className="products-empty">
+                    <h3>Could not load products</h3>
+                    <p>{error}</p>
+                </div>
+            );
+        }
+
+        if (loading) {
+            return (
+                <div className="products-loading" role="status" aria-live="polite">
+                    <span className="activity-spinner" aria-hidden="true"></span>
+                    <span>Loading products…</span>
+                </div>
+            );
+        }
+
+        if (filteredProducts.length === 0) {
+            return (
+                <div className="products-empty">
+                    <h3>No matches found</h3>
+                    <p>
+                        Try clearing a filter or widening the price and rating range.
+                    </p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="products-grid">
+                {filteredProducts.map((product, index) => (
+                    <ProductCard
+                        product={product}
+                        index={index}
+                        key={product.id}
+                    />
+                ))}
+            </div>
+        );
+    };
 
     return (
         <>
@@ -570,24 +610,7 @@ export function Products() {
                             </div>
                         </div>
 
-                        {filteredProducts.length === 0 ? (
-                            <div className="products-empty">
-                                <h3>No matches found</h3>
-                                <p>
-                                    Try clearing a filter or widening the price and rating range.
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="products-grid">
-                                {filteredProducts.map((product, index) => (
-                                    <ProductCard
-                                        product={product}
-                                        index={index}
-                                        key={product.id}
-                                    />
-                                ))}
-                            </div>
-                        )}
+                        {renderGrid()}
                     </section>
                 </div>
             </main>

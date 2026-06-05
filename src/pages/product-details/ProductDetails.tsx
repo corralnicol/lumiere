@@ -2,61 +2,73 @@ import { useParams } from "react-router-dom";
 import ProductDetailPage, {
   type DetailTab,
 } from "@/components/ProductDetail/ProductDetail";
-import productsJson from "@/data/products.json";
 import { getProductImageSrc } from "@/utils/productImages";
-import type { Product } from "@/types/products";
-import { useMemo } from "react";
-
-const products = productsJson as Product[];
+import { useProduct, useProducts } from "@/hooks/useProducts";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export default function ProductDetails() {
   const { productId } = useParams();
-  const product = useMemo(() => {
-    const found = products.find((item) => item.id === productId);
-    if (!found) return null;
-    return {
-      ...found,
-      rating: Math.round(
-        found.reviews.reduce((sum, review) => sum + review.rating, 0) / found.reviews.length
-      ),
-    };
-  }, [productId]);
+  const { data: product, loading, error } = useProduct(productId);
+  const { data: allProducts } = useProducts();
+
+  const showFeedback = () => {};
+
+  if (loading) {
+    return (
+      <>
+        <Header onFeedback={showFeedback} />
+        <main className="product-detail-empty" role="status" aria-live="polite">
+          <span className="activity-spinner" aria-hidden="true"></span>
+          <span>Loading product…</span>
+        </main>
+        <Footer onFeedback={showFeedback} />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header onFeedback={showFeedback} />
+        <main className="product-detail-empty">
+          <h1>Could not load product</h1>
+          <p>{error}</p>
+        </main>
+        <Footer onFeedback={showFeedback} />
+      </>
+    );
+  }
 
   const tabs: DetailTab[] = product
     ? [
-      {
-        id: "description",
-        label: "Description",
-        content: product.description,
-      },
-      {
-        id: "details",
-        label: "Details",
-        content: `Category: ${product.category ?? "Kit"}. Brand: ${product.brand}. Size: ${product.size || "Standard size"}. Stock: ${product.stock}.`,
-      },
-      {
-        id: "reviews",
-        label: "Reviews",
-        content: "Reviews are visible below. You can also add your own review.",
-      },
-    ]
+        {
+          id: "description",
+          label: "Description",
+          content: product.description,
+        },
+        {
+          id: "details",
+          label: "Details",
+          content: `Category: ${product.category ?? "Kit"}. Brand: ${product.brand}. Size: ${product.size || "Standard size"}. Stock: ${product.stock}.`,
+        },
+        {
+          id: "reviews",
+          label: "Reviews",
+          content: "Reviews are visible below. You can also add your own review.",
+        },
+      ]
     : [];
 
-  const recommendedProducts = products
+  const recommendedProducts = allProducts
     .filter((item) => item.id !== product?.id)
-    .slice(0, 4)
-    .map((p) => ({
-      ...p,
-      rating: Math.round(
-        p.reviews.reduce((sum, review) => sum + review.rating, 0) / p.reviews.length,
-      ),
-    }));
+    .slice(0, 4);
 
   return (
     <ProductDetailPage
       product={product}
       tabs={tabs}
-      storageKeyPrefix="lumiere-product-reviews"
+      storageKeyPrefix="lumiere-product-reviews-v2"
       imageSrc={product ? getProductImageSrc(product) : ""}
       imageFallbackSrc={(selected) =>
         `https://picsum.photos/900/900?random=${selected.id}`

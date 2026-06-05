@@ -1,5 +1,4 @@
 import { categories } from "./categories";
-import products from "./products.json";
 
 export const homeBanners = [
   {
@@ -131,8 +130,6 @@ export const homeBestSellers = [
   { id: "923b5572-01f8-4589-8d45-0a110f294fe9", imageClassName: "best-card-image-serum" },
   { id: "075a7574-12cb-4ab7-9494-30f523852e37", imageClassName: "best-card-image-foundation" },
 ];
-
-export const homeKits = products.filter((product) => product.category === null);
 
 export const footerSocialLinks = [
   {

@@ -3,11 +3,10 @@ type ProductImageInput = {
   brand: string;
   name: string;
   category: string | null;
-  imageUrl?: string;
-  localImage?: string;
+  imageUrl?: string | null;
 };
 
-export function normalizeImageUrl(imageUrl?: string) {
+export function normalizeImageUrl(imageUrl?: string | null) {
   if (!imageUrl || imageUrl.trim() === "") {
     return "";
   }
@@ -31,9 +30,7 @@ export function getFallbackImageByCategory(category: string | null) {
     return "/images/categories/foundation.png";
   }
 
-  if (
-    normalizedCategory.includes("concealer")
-  ) {
+  if (normalizedCategory.includes("concealer")) {
     return "/images/categories/concealer.png";
   }
 
@@ -65,10 +62,6 @@ export function getFallbackImageByCategory(category: string | null) {
 }
 
 export function getProductImageSrc(product: ProductImageInput) {
-  if (product.localImage) {
-    return product.localImage;
-  }
-
   const normalizedImageUrl = normalizeImageUrl(product.imageUrl);
 
   if (normalizedImageUrl) {

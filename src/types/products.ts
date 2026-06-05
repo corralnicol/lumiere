@@ -7,22 +7,26 @@ export interface Product {
     brand: string;
     name: string;
     description: string;
-    howToUse?: string;
-    ingredients?: string;
+    howToUse: string;
+    ingredients: string;
     rating: number;
     price: number;
-    size?: string;
+    size: string;
     stock: number;
+    active: boolean;
+    sellerId: string;
+    imageUrl: string | null;
     reviews: ProductReview[];
-    localImage?: string;
-    imageUrl?: string;
     characteristics: ProductCharacteristics[];
-};
+    createdAt: string;
+}
 
 export interface ProductReview {
-    user: string;
+    reviewer_id: string;
+    reviewer_name: string | null;
     rating: number;
-    comment: string;
+    text: string;
+    created_at?: string;
 }
 
 export type ProductCharacteristics = typeof productCharacteristics[number];
