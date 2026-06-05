@@ -72,6 +72,24 @@ export async function fetchProductsByIds(ids: string[]): Promise<Product[]> {
     return (data ?? []).map(mapRowToProduct);
 }
 
+export async function addReview(
+    productId: string,
+    rating: number,
+    text: string,
+): Promise<ProductReview> {
+    console.log(rating);
+    const { data, error } = await supabase.rpc("add_review", {
+        p_product_id: productId,
+        p_text: text,
+        p_rating: rating,
+    });
+    if (error) {
+        console.error(error);
+        throw error;
+    }
+    return data as unknown as ProductReview;
+}
+
 export async function fetchKits(): Promise<Product[]> {
     const { data, error } = await supabase
         .from("products")

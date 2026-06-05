@@ -9,6 +9,8 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
+import { useUserState } from "@/contexts/user/UserContext";
+import { addReview } from "@/lib/products";
 import type { Product, ProductReview } from "@/types/products";
 
 type FeedbackType = "info" | "success" | "warning";
@@ -82,23 +84,14 @@ export default function ProductDetailPage({
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
-    const [reviews, setReviews] = useState<ProductReview[]>(() => {
-        const base = initialReviews ?? product?.reviews ?? [];
-        if (!product?.id) return base;
-        const key = `${storageKeyPrefix}-${product.id}`;
-        const saved = localStorage.getItem(key);
-        if (!saved) return base;
-        try {
-            const parsed = JSON.parse(saved) as ProductReview[];
-            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        } catch { /* ignore */ }
-        return base;
-    });
+    const [reviews, setReviews] = useState<ProductReview[]>(
+        initialReviews ?? product?.reviews ?? []
+    );
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
-    const [reviewUser, setReviewUser] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
     const [reviewComment, setReviewComment] = useState("");
     const navigate = useNavigate();
+    const { name: userName, isLoggedIn } = useUserState();
 
     const { addToCart } = useCart();
 
@@ -127,38 +120,13 @@ export default function ProductDetailPage({
 
         setQuantity(1);
         setIsReviewFormOpen(false);
-        setReviewUser("");
         setReviewRating(5);
         setReviewComment("");
     }, [productId]);
 
     useEffect(() => {
-        if (productId == null || !product) {
-            return;
-        }
-
-        const resolvedBaseReviews = initialReviews ?? product.reviews;
-
-        const storageKey = `${storageKeyPrefix}-${productId}`;
-        const savedReviews = localStorage.getItem(storageKey);
-
-        if (!savedReviews) {
-            setReviews(resolvedBaseReviews);
-            return;
-        }
-
-        try {
-            const parsedReviews = JSON.parse(savedReviews) as ProductReview[];
-
-            if (Array.isArray(parsedReviews) && parsedReviews.length > 0) {
-                setReviews(parsedReviews);
-            } else {
-                setReviews(resolvedBaseReviews);
-            }
-        } catch {
-            setReviews(resolvedBaseReviews);
-        }
-    }, [productId, product, storageKeyPrefix, initialReviews]);
+        setReviews(initialReviews ?? product?.reviews ?? []);
+    }, [productId, initialReviews, product?.reviews]);
 
     const showFeedback = (message: string, type: FeedbackType = "info") => {
         setFeedbackMessage(message);
@@ -169,46 +137,35 @@ export default function ProductDetailPage({
         }, 2600);
     };
 
-    const handleReviewSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    const handleReviewSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (!product) {
-            return;
-        }
+        if (!product) return;
 
-        const trimmedUser = reviewUser.trim();
         const trimmedComment = reviewComment.trim();
-
-        if (!trimmedUser || !trimmedComment) {
-            showFeedback(
-                "Please complete your name and review before submitting.",
-                "warning"
-            );
+        if (!trimmedComment) {
+            showFeedback("Please write a review before submitting.", "warning");
             return;
         }
 
-        const newReview: ProductReview = {
-            reviewer_id: crypto.randomUUID(),
-            reviewer_name: trimmedUser,
-            rating: reviewRating,
-            text: trimmedComment,
-            created_at: new Date().toISOString(),
-        };
-
-        const updatedReviews = [newReview, ...reviews];
-
-        setReviews(updatedReviews);
-        localStorage.setItem(
-            `${storageKeyPrefix}-${product.id}`,
-            JSON.stringify(updatedReviews)
-        );
-
-        setReviewUser("");
-        setReviewRating(5);
-        setReviewComment("");
-        setIsReviewFormOpen(false);
-
-        showFeedback("Your review was submitted successfully.", "success");
+        try {
+            const returned = await addReview(product.id, reviewRating, trimmedComment);
+            const newReview: ProductReview = returned ?? {
+                reviewer_id: crypto.randomUUID(),
+                reviewer_name: userName || null,
+                rating: reviewRating,
+                text: trimmedComment,
+                created_at: new Date().toISOString(),
+            };
+            setReviews((prev) => [newReview, ...prev]);
+            setReviewRating(5);
+            setReviewComment("");
+            setIsReviewFormOpen(false);
+            showFeedback("Your review was submitted successfully.", "success");
+        } catch (err) {
+            const message = err instanceof Error ? err.message : "Failed to submit review.";
+            showFeedback(message, "warning");
+        }
     };
 
     const handleBackNavigation = () => {
@@ -428,27 +385,19 @@ export default function ProductDetailPage({
                         ))}
                     </div>
 
-                    <button
-                        type="button"
-                        className="product-review-toggle"
-                        onClick={() => setIsReviewFormOpen((currentValue) => !currentValue)}
-                    >
-                        {reviewToggleLabel}
-                    </button>
+                    {isLoggedIn && (
+                        <button
+                            type="button"
+                            className="product-review-toggle"
+                            onClick={() => setIsReviewFormOpen((currentValue) => !currentValue)}
+                        >
+                            {reviewToggleLabel}
+                        </button>
+                    )}
 
-                    {isReviewFormOpen && (
+                    {isLoggedIn && isReviewFormOpen && (
                         <form className="product-review-form" onSubmit={handleReviewSubmit}>
                             <div className="review-form-row">
-                                <label>
-                                    Name
-                                    <input
-                                        type="text"
-                                        placeholder="Write your name"
-                                        value={reviewUser}
-                                        onChange={(event) => setReviewUser(event.target.value)}
-                                    />
-                                </label>
-
                                 <div className="review-rating-field">
                                     <span>Rating</span>
 

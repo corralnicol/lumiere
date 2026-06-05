@@ -43,8 +43,12 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     refresh();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
-      setTimeout(refresh, 0);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_OUT') {
+        setState({ name: '', email: '', phone: '', isLoggedIn: false, loading: false });
+      } else {
+        setTimeout(refresh, 0);
+      }
     });
 
     return () => subscription.unsubscribe();

@@ -19,7 +19,11 @@ const AccountOverview = () => {
   }, [loading, isLoggedIn, navigate]);
 
   const handleLogout = async () => {
-    await actions?.logout?.();
+    try {
+      await actions?.logout?.();
+    } catch (err) {
+      console.error('[handleLogout]', err);
+    }
     navigate("/auth/sign-in", { replace: true });
   };
 
