@@ -20,7 +20,7 @@ export type ProductReview = {
 export type DetailTab = {
     id: string;
     label: string;
-    content: string;
+    content: string | undefined;
 };
 
 export type ProductDetailItem = {
@@ -57,7 +57,6 @@ type ProductDetailPageProps<
     tabs?: DetailTab[];
     storageKeyPrefix?: string;
     initialReviews?: ProductReview[];
-    reviewCountBase?: number;
     backLinkHref?: string;
     backLinkLabel?: string;
     notFoundTitle?: string;
@@ -106,7 +105,6 @@ export default function ProductDetailPage<
     product,
     storageKeyPrefix = "lumiere-product-reviews",
     initialReviews,
-    reviewCountBase,
     backLinkHref = "/",
     backLinkLabel = "← Back",
     notFoundTitle = "Product not found",
@@ -131,8 +129,6 @@ export default function ProductDetailPage<
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
-
-    const [baseReviews, setBaseReviews] = useState<ProductReview[]>([]);
     const [reviews, setReviews] = useState<ProductReview[]>([]);
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
     const [reviewUser, setReviewUser] = useState("");
@@ -181,8 +177,6 @@ export default function ProductDetailPage<
             initialReviews ??
             product.reviews ??
             [];
-
-        setBaseReviews(resolvedBaseReviews);
 
         const storageKey = `${storageKeyPrefix}-${productId}`;
         const savedReviews = localStorage.getItem(storageKey);
@@ -287,10 +281,7 @@ export default function ProductDetailPage<
 
     const productCharacteristics = product.characteristics ?? [];
 
-    const reviewCountDisplay =
-        typeof reviewCountBase === "number"
-            ? reviewCountBase + Math.max(0, reviews.length - baseReviews.length)
-            : reviews.length;
+    const reviewCountDisplay = product.reviews ? product.reviews.length : "0";
 
     const resolvedImageSrc =
         imageSrc ?? product.image ?? product.imageUrl ?? "";

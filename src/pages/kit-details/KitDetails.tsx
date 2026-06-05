@@ -13,17 +13,17 @@ export default function KitDetails() {
       {
         id: "description",
         label: "Description",
-        content: kit.details.description,
+        content: kit.description,
       },
       {
         id: "howToUse",
         label: "How to use",
-        content: kit.details.howToUse,
+        content: kit.howToUse,
       },
       {
         id: "ingredients",
         label: "Ingredients",
-        content: kit.details.ingredients,
+        content: kit.ingredients,
       },
     ]
     : [];
@@ -38,15 +38,14 @@ export default function KitDetails() {
       tabs={tabs}
       storageKeyPrefix="lumiere-kit-reviews"
       initialReviews={kit?.reviews}
-      reviewCountBase={kit?.reviewCount}
-      imageSrc={kit?.image}
+      imageSrc={kit?.imageUrl}
       notFoundTitle="Kit not found"
       notFoundMessage="The kit you are looking for does not exist."
       characteristicsLabel="Kit characteristics"
       reviewPlaceholder="Write your opinion about this kit"
       recommendedProducts={recommendedKits}
       getRecommendedLink={(item) => `/kits/${item.id}`}
-      getRecommendedImageSrc={(item) => item.image ?? ""}
+      getRecommendedImageSrc={(item) => item.imageUrl ?? ""}
     />
   );
 }

@@ -1,12 +1,16 @@
 import { categories } from "@/data/categories";
 import { productCharacteristics } from "@/data/characteristics";
 
+export type KitProduct = Omit<Product, "category">;
+
 export interface Product {
     id: string;
     category: ProductCategory;
     brand: string;
     name: string;
     description: string;
+    howToUse?: string;
+    ingredients?: string;
     rating: number;
     price: number;
     size?: string;

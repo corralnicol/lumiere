@@ -16,17 +16,17 @@ export default function BestSellerDetails() {
       {
         id: "description",
         label: "Description",
-        content: product.details.description,
+        content: product.description,
       },
       {
         id: "howToUse",
         label: "How to use",
-        content: product.details.howToUse,
+        content: product.howToUse,
       },
       {
         id: "ingredients",
         label: "Ingredients",
-        content: product.details.ingredients,
+        content: product.ingredients,
       },
     ]
     : [];
@@ -42,8 +42,7 @@ export default function BestSellerDetails() {
       tabs={tabs}
       storageKeyPrefix="lumiere-reviews"
       initialReviews={product?.reviews}
-      reviewCountBase={product?.reviewCount}
-      imageSrc={product?.image}
+      imageSrc={product?.imageUrl}
       recommendedProducts={recommendedProducts}
       getRecommendedImageSrc={(item) => getProductImageSrc(item)}
       getRecommendedImageFallbackSrc={(item) =>
