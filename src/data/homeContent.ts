@@ -126,39 +126,9 @@ export const homeCategories = [
 ];
 
 export const homeBestSellers = [
-  {
-    id: "patrick-ta",
-    brand: "Patrick Ta",
-    description: "Major Dimension Essential Artistry Edit Eyeshadow Palette",
-    src: "/images/best-sellers/eye-shadows.webp",
-    alt: "Patrick Ta eyeshadow palette",
-    searchTarget: "patrick ta eyeshadow palette artistry edit",
-    imageClassName: "best-card-image-eyeshadow",
-    itemName: "Patrick Ta palette",
-    stars: 4,
-  },
-  {
-    id: "the-ordinary-sunscreen",
-    brand: "The Ordinary",
-    description: "Sunscreen SPF 45",
-    src: "/images/best-sellers/sunscreen.webp",
-    alt: "The Ordinary sunscreen",
-    searchTarget: "the ordinary sunscreen spf 45 skincare",
-    imageClassName: "best-card-image-serum",
-    itemName: "The Ordinary sunscreen",
-    stars: 5,
-  },
-  {
-    id: "clinique-foundation",
-    brand: "Clinique",
-    description: "Clinique Even Better Liquid Foundation with Vitamins SPF50 30ml",
-    src: "/images/best-sellers/clinique.webp",
-    alt: "Clinique foundation",
-    searchTarget: "clinique foundation vitamins spf50 liquid foundation",
-    imageClassName: "best-card-image-foundation",
-    itemName: "Clinique foundation",
-    stars: 5,
-  },
+  { id: "2c284d14-ddd5-4da7-836a-195f2dc179c1", imageClassName: "best-card-image-eyeshadow" },
+  { id: "923b5572-01f8-4589-8d45-0a110f294fe9", imageClassName: "best-card-image-serum" },
+  { id: "075a7574-12cb-4ab7-9494-30f523852e37", imageClassName: "best-card-image-foundation" },
 ];
 
 export const homeKits = [

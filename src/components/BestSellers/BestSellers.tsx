@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
-
+import products from "@/data/products.json";
+import { getProductImageSrc } from "@/utils/productImages";
 
 type BestSellersProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
 };
+
+function computeStars(reviews: { rating: number }[]): number {
+  if (!reviews.length) return 0;
+  return Math.round(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length);
+}
 
 function BestSellers({ onFeedback }: BestSellersProps) {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
@@ -34,29 +40,35 @@ function BestSellers({ onFeedback }: BestSellersProps) {
       <h2 className="best-seller-title">Best Sellers</h2>
 
       <div className="best-seller-grid">
-        {homeBestSellers.map((product) => {
+        {homeBestSellers.map((entry) => {
+          const product = products.find((p) => p.id === entry.id);
+          if (!product) return null;
+
           const isFavorite = favoriteIds.includes(product.id);
+          const stars = computeStars(product.reviews);
+          const searchTarget = [product.brand, product.name, product.category]
+            .filter(Boolean)
+            .join(" ");
 
           return (
             <Link
-              to={`/best-sellers/${product.id}`}
+              to={`/products/${product.id}`}
               className="best-card"
-              data-search-target={product.searchTarget}
+              data-search-target={searchTarget}
               key={product.id}
             >
               <div className="best-card-image-box">
-                {/* Botón de favoritos */}
                 <button
                   className={`best-card-fav ${isFavorite ? "is-active" : ""}`}
                   type="button"
                   aria-label={
                     isFavorite
-                      ? `Eliminar ${product.itemName} de favoritos`
-                      : `Añadir ${product.itemName} a favoritos`
+                      ? `Eliminar ${product.name} de favoritos`
+                      : `Añadir ${product.name} a favoritos`
                   }
                   aria-pressed={isFavorite}
                   onClick={(event) =>
-                    toggleFavorite(event, product.id, product.itemName)
+                    toggleFavorite(event, product.id, product.name)
                   }
                 >
                   <i
@@ -66,17 +78,16 @@ function BestSellers({ onFeedback }: BestSellersProps) {
                 </button>
 
                 <img
-                  src={product.src}
-                  alt={product.alt}
-                  className={`best-card-image ${product.imageClassName}`}
+                  src={getProductImageSrc(product)}
+                  alt={product.name}
+                  className={`best-card-image ${entry.imageClassName}`}
                 />
 
-                {/* Estrellas de calificación */}
                 <div className="best-card-stars">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <i
                       className={
-                        index < product.stars
+                        index < stars
                           ? "fa-solid fa-star"
                           : "fa-regular fa-star"
                       }
@@ -89,7 +100,7 @@ function BestSellers({ onFeedback }: BestSellersProps) {
 
               <div className="best-card-info">
                 <h3 className="best-card-name">{product.brand}</h3>
-                <p className="best-card-desc">{product.description}</p>
+                <p className="best-card-desc">{product.name}</p>
               </div>
             </Link>
           );

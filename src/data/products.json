@@ -6052,5 +6052,98 @@
     "characteristics": [
       "vegan"
     ]
+  },
+  {
+    "id": "2c284d14-ddd5-4da7-836a-195f2dc179c1",
+    "category": "eyeshadow",
+    "brand": "Patrick Ta",
+    "name": "Major Dimension Essential Artistry Edit Eyeshadow Palette",
+    "description": "A talc-free matte eyeshadow palette with six essential neutrals that blend warm and cool tones, curated by Patrick for your everyday looks.",
+    "imageUrl": "/images/best-sellers/eye-shadows.webp",
+    "price": 96,
+    "size": "30ml",
+    "stock": 5,
+    "howToUse": "Apply lighter shades as a base, medium shades to define the crease, and deeper shades along the lash line for intensity.",
+    "ingredients": "Key ingredients: Hyaluronic Acid and Squalane give the powder a soft texture and smooth glide. Treated pigments provide true color payoff, superior blendability, and color that lasts.",
+    "reviews": [
+      {
+        "user": "Sofia M.",
+        "rating": 5,
+        "comment": "The shades are wearable, soft and easy to blend."
+      },
+      {
+        "user": "Camila R.",
+        "rating": 5,
+        "comment": "Beautiful neutral palette with a very polished finish."
+      },
+      {
+        "user": "Nicole A.",
+        "rating": 4,
+        "comment": "The packaging feels premium and the colors are useful."
+      }
+    ],
+    "characteristics": [
+      "gluten-free",
+      "cruelty-free",
+      "vegan"
+    ]
+  },
+  {
+    "id": "923b5572-01f8-4589-8d45-0a110f294fe9",
+    "category": "foundation",
+    "brand": "The Ordinary",
+    "name": "Sunscreen SPF 45",
+    "description": "A daily sunscreen designed to protect the skin while keeping a lightweight, comfortable finish.",
+    "imageUrl": "/images/best-sellers/sunscreen.webp",
+    "price": 70,
+    "size": "50ml",
+    "stock": 8,
+    "howToUse": "Apply generously as the last step of your morning skincare routine. Reapply throughout the day when needed.",
+    "ingredients": "Key ingredients: UV filters and skin-supporting ingredients designed for daily protection and a comfortable finish.",
+    "reviews": [
+      {
+        "user": "Isabella C.",
+        "rating": 5,
+        "comment": "It feels light on the skin and does not leave my face greasy."
+      },
+      {
+        "user": "Valeria P.",
+        "rating": 5,
+        "comment": "Very comfortable for daily use before makeup."
+      }
+    ],
+    "characteristics": [
+      "cruelty-free",
+      "vegan"
+    ]
+  },
+  {
+    "id": "075a7574-12cb-4ab7-9494-30f523852e37",
+    "category": "foundation",
+    "brand": "Clinique",
+    "name": "Clinique Even Better Liquid Foundation with Vitamins SPF50 30ml",
+    "description": "A liquid foundation with vitamins and SPF50 protection.",
+    "imageUrl": "/images/best-sellers/clinique.webp",
+    "price": 80,
+    "size": "30ml",
+    "stock": 6,
+    "howToUse": "Apply with fingers, brush, or sponge. Blend from the center of the face outward.",
+    "ingredients": "Key ingredients: Vitamins and complexion-supporting ingredients for a smooth finish and SPF protection.",
+    "reviews": [
+      {
+        "user": "Mariana G.",
+        "rating": 5,
+        "comment": "The finish looks natural and it has good coverage."
+      },
+      {
+        "user": "Laura T.",
+        "rating": 5,
+        "comment": "I liked the texture and the SPF protection."
+      }
+    ],
+    "characteristics": [
+      "gluten-free",
+      "cruelty-free"
+    ]
   }
 ]
