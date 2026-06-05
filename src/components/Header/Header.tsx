@@ -11,13 +11,26 @@ function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
   const user = useUserState();
   const link = user?.isLoggedIn ? "/account" : "/auth/sign-in";
 
+  const initials = user?.isLoggedIn
+    ? (user.name ?? '')
+        .split(' ')
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((n) => n[0].toUpperCase())
+        .join('')
+    : '';
+
   return (
-    <Link
-      to={link}
-      aria-label="Account"
-      onClick={closeMenu}
-    >
-      <i className="fa-regular fa-user" aria-hidden="true"></i>
+    <Link to={link} aria-label="Account" onClick={closeMenu} className="header-account-link">
+      {user?.isLoggedIn ? (
+        user.avatarUrl ? (
+          <img src={user.avatarUrl} alt={user.name} className="header-avatar-img" />
+        ) : (
+          <span className="header-avatar-initials" aria-hidden="true">{initials || '?'}</span>
+        )
+      ) : (
+        <i className="fa-regular fa-user" aria-hidden="true"></i>
+      )}
     </Link>
   );
 }

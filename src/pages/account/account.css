@@ -85,6 +85,212 @@
 	transform: translateY(-1px);
 }
 
+/* ── Avatar ──────────────────────────────────────────────── */
+.account-avatar-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.account-avatar-wrapper {
+	position: relative;
+	width: 88px;
+	height: 88px;
+}
+
+.account-avatar-img {
+	width: 88px;
+	height: 88px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid #de7488;
+}
+
+.account-avatar-initials {
+	width: 88px;
+	height: 88px;
+	border-radius: 50%;
+	background-color: #de7488;
+	color: #efe8e0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 28px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.account-avatar-overlay {
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.35);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.account-avatar-spinner {
+	width: 22px;
+	height: 22px;
+	border: 3px solid rgba(255, 255, 255, 0.4);
+	border-top-color: white;
+	border-radius: 50%;
+	animation: account-spin 0.7s linear infinite;
+}
+
+@keyframes account-spin {
+	to { transform: rotate(360deg); }
+}
+
+.account-avatar-btn {
+	background: none;
+	border: 1.5px solid #de7488;
+	border-radius: 10px;
+	color: #de7488;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 5px 14px;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.account-avatar-btn:hover:not(:disabled) {
+	background-color: #de7488;
+	color: #efe8e0;
+}
+
+.account-avatar-btn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.account-avatar-input {
+	display: none;
+}
+
+/* ── Editable name row ───────────────────────────────────── */
+.account-detail-name {
+	flex-direction: column;
+	align-items: stretch;
+	gap: 10px;
+}
+
+.account-name-display {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 12px;
+}
+
+.account-edit-btn {
+	background: none;
+	border: none;
+	color: #de7488;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 2px 6px;
+	border-radius: 6px;
+	transition: background-color 0.15s;
+}
+
+.account-edit-btn:hover {
+	background-color: rgba(222, 116, 136, 0.12);
+}
+
+.account-name-edit {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 100%;
+}
+
+.account-name-inputs {
+	display: flex;
+	gap: 8px;
+}
+
+.account-edit-input {
+	flex: 1;
+	padding: 8px 12px;
+	border: 1.5px solid #bf5d78;
+	border-radius: 10px;
+	font-size: 14px;
+	font-family: "Montserrat", sans-serif;
+	color: #6f5352;
+	background: white;
+	outline: none;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.account-edit-input:focus {
+	border-color: #de7488;
+	box-shadow: 0 0 0 3px rgba(222, 116, 136, 0.18);
+}
+
+.account-edit-input:disabled {
+	opacity: 0.6;
+}
+
+.account-name-actions {
+	display: flex;
+	gap: 8px;
+}
+
+.account-save-btn {
+	flex: 1;
+	padding: 8px;
+	background-color: #de7488;
+	color: #efe8e0;
+	border: none;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.account-save-btn:hover:not(:disabled) {
+	background-color: #bf5d78;
+}
+
+.account-save-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.account-cancel-btn {
+	flex: 1;
+	padding: 8px;
+	background: rgba(255, 255, 255, 0.6);
+	color: #6f5352;
+	border: 1.5px solid rgba(111, 83, 82, 0.2);
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.account-cancel-btn:hover:not(:disabled) {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.account-cancel-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* ── Inline field error ──────────────────────────────────── */
+.account-field-error {
+	font-size: 12px;
+	color: #bf5d78;
+	margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 640px) {
 	.account-card {
 		padding: 30px 24px 32px;
@@ -93,5 +299,9 @@
 	.account-detail-row {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+
+	.account-name-inputs {
+		flex-direction: column;
 	}
 }
