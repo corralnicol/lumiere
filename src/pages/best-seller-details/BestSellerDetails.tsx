@@ -7,7 +7,7 @@ import productsData from "../../data/products.json";
 import { getProductImageSrc } from "../../utils/productImages";
 
 type JsonProduct = {
-  id: number | string;
+  id: string;
   category: string;
   brand: string;
   name: string;

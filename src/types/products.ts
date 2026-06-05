@@ -1,7 +1,8 @@
 import type { categories } from "@/data/categories";
 import { productCharacteristics } from "@/data/characteristics";
+
 export interface Product {
-    id: number | string;
+    id: string;
     category: ProductCategory;
     brand: string;
     name: string;

@@ -1,5 +1,5 @@
 type ProductImageInput = {
-  id: number | string;
+  id: string;
   brand: string;
   name: string;
   category: string;

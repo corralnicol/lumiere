@@ -25,7 +25,7 @@ export type DetailTab = {
 };
 
 export type ProductDetailItem = {
-    id: number | string;
+    id: string;
     category?: string;
     brand: string;
     name: string;
@@ -41,7 +41,7 @@ export type ProductDetailItem = {
 };
 
 export type RecommendedProduct = {
-    id: number | string;
+    id: string;
     brand: string;
     name: string;
     rating: number;
@@ -149,7 +149,7 @@ export default function ProductDetailPage<
 
     const handleAddToCart = () => {
         addToCart({
-            id: Number(product!.id),
+            id: product!.id,
             category: product!.category ?? "",
             brand: product!.brand,
             name: product!.name,

@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "576d7d30-3ca3-40c5-8cdf-ea1f7928b706",
     "category": "Foundation",
     "brand": "Glossier",
     "name": "Glossier Dewy Coverage 1",
@@ -10,9 +10,6 @@
     "price": 49.66,
     "size": "16 ml",
     "stock": 207,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -28,7 +25,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": "4f3fce81-7939-4ffb-8e1c-93fd2da1d0d5",
     "category": "Foundation",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Matte Skin Base 2",
@@ -38,9 +35,6 @@
     "price": 38.19,
     "size": "15 ml",
     "stock": 99,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -72,7 +66,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": "72b6c9bb-e3e4-4fc5-bdd1-fe269aaf6db2",
     "category": "Foundation",
     "brand": "Glossier",
     "name": "Glossier Pro Filter Soft Matte 3",
@@ -82,9 +76,6 @@
     "price": 27.25,
     "size": "42 ml",
     "stock": 189,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -110,7 +101,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": "ac60b7e0-a113-4ddb-a787-88bbbd1880f7",
     "category": "Foundation",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Glow Tint 4",
@@ -120,9 +111,6 @@
     "price": 31.83,
     "size": "41 ml",
     "stock": 480,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -148,7 +136,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": "b015aa5f-24f6-42df-9026-a64f986c1132",
     "category": "Foundation",
     "brand": "Rare Beauty",
     "name": "Rare Beauty True Match Base 5",
@@ -158,9 +146,6 @@
     "price": 45.63,
     "size": "39 ml",
     "stock": 437,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -181,7 +166,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": "76736124-ed9d-43d3-9eac-7617266d7824",
     "category": "Foundation",
     "brand": "NARS",
     "name": "NARS True Match Base 6",
@@ -191,9 +176,6 @@
     "price": 30.41,
     "size": "36 ml",
     "stock": 150,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -225,7 +207,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": "9b46c281-494e-4cb6-bd01-6d169494969e",
     "category": "Foundation",
     "brand": "Sheglam",
     "name": "Sheglam Glow Tint 7",
@@ -235,9 +217,6 @@
     "price": 46.45,
     "size": "25 ml",
     "stock": 348,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -259,7 +238,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": "a97059b1-4414-4f01-b0db-9d8da2c9347c",
     "category": "Foundation",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Luminous Foundation 8",
@@ -269,9 +248,6 @@
     "price": 33.27,
     "size": "29 ml",
     "stock": 5,
-    "isGlutenFree": false,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -288,7 +264,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": "1283d22e-d69b-46f5-9397-9c36567f3da0",
     "category": "Foundation",
     "brand": "Glossier",
     "name": "Glossier Airbrush Flawless 9",
@@ -298,9 +274,6 @@
     "price": 10.49,
     "size": "49 ml",
     "stock": 269,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -326,7 +299,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": "82eebf24-b3ee-4e05-9809-680846136821",
     "category": "Foundation",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Matte Skin Base 10",
@@ -336,9 +309,6 @@
     "price": 55.95,
     "size": "39 ml",
     "stock": 499,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -369,7 +339,7 @@
     ]
   },
   {
-    "id": 11,
+    "id": "0d0acd5c-4ad9-4406-a9e6-050893aab825",
     "category": "Foundation",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Airbrush Flawless 11",
@@ -379,9 +349,6 @@
     "price": 58.49,
     "size": "24 ml",
     "stock": 7,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -402,7 +369,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": "93d06c03-784b-4025-9342-a669e3432058",
     "category": "Foundation",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Airbrush Flawless 12",
@@ -412,9 +379,6 @@
     "price": 17.7,
     "size": "22 ml",
     "stock": 266,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -445,7 +409,7 @@
     ]
   },
   {
-    "id": 13,
+    "id": "b11c480e-2eb1-4c7d-9ba8-faf56ae4968b",
     "category": "Foundation",
     "brand": "The Ordinary",
     "name": "The Ordinary Perfect Canvas 13",
@@ -455,9 +419,6 @@
     "price": 42.42,
     "size": "46 ml",
     "stock": 397,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -479,7 +440,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": "a7d90a0a-3759-4faf-b331-1d2e78913e5b",
     "category": "Foundation",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Glow Tint 14",
@@ -489,9 +450,6 @@
     "price": 13.25,
     "size": "28 ml",
     "stock": 484,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -513,7 +471,7 @@
     ]
   },
   {
-    "id": 15,
+    "id": "ca99ac26-5896-404b-8b2c-b31ff9d90636",
     "category": "Foundation",
     "brand": "Glossier",
     "name": "Glossier Luminous Foundation 15",
@@ -523,9 +481,6 @@
     "price": 42.93,
     "size": "48 ml",
     "stock": 221,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -547,7 +502,7 @@
     ]
   },
   {
-    "id": 16,
+    "id": "4a2487b5-b19d-4182-9dc2-682a759a08fd",
     "category": "Foundation",
     "brand": "The Ordinary",
     "name": "The Ordinary Pro Filter Soft Matte 16",
@@ -557,9 +512,6 @@
     "price": 16.7,
     "size": "37 ml",
     "stock": 463,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -575,7 +527,7 @@
     ]
   },
   {
-    "id": 17,
+    "id": "a536a42e-e8be-4cbc-9e2e-f12bc50ed324",
     "category": "Foundation",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Luminous Foundation 17",
@@ -585,9 +537,6 @@
     "price": 41.35,
     "size": "46 ml",
     "stock": 351,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -604,7 +553,7 @@
     ]
   },
   {
-    "id": 18,
+    "id": "adcce254-2252-4420-b356-86c0f6e1561e",
     "category": "Foundation",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Glow Tint 18",
@@ -614,9 +563,6 @@
     "price": 50.45,
     "size": "31 ml",
     "stock": 441,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -642,7 +588,7 @@
     ]
   },
   {
-    "id": 19,
+    "id": "0cf4649b-236c-49eb-b891-bfbdb4403a9f",
     "category": "Foundation",
     "brand": "Sheglam",
     "name": "Sheglam Pro Filter Soft Matte 19",
@@ -652,9 +598,6 @@
     "price": 17.96,
     "size": "16 ml",
     "stock": 171,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -681,7 +624,7 @@
     ]
   },
   {
-    "id": 20,
+    "id": "93e5eb4e-7a87-46c3-bdd7-3ddaa9f17d8b",
     "category": "Foundation",
     "brand": "MAC",
     "name": "MAC Glow Tint 20",
@@ -691,9 +634,6 @@
     "price": 51.7,
     "size": "36 ml",
     "stock": 458,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -719,7 +659,7 @@
     ]
   },
   {
-    "id": 21,
+    "id": "ee3164c0-e67b-4bf5-8a48-e0891a0b6ad1",
     "category": "Foundation",
     "brand": "NARS",
     "name": "NARS Glow Tint 21",
@@ -729,9 +669,6 @@
     "price": 18.54,
     "size": "45 ml",
     "stock": 378,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -753,7 +690,7 @@
     ]
   },
   {
-    "id": 22,
+    "id": "ebe2ec08-28d7-46f1-ba69-aeb1d3e90055",
     "category": "Foundation",
     "brand": "Glossier",
     "name": "Glossier Dewy Coverage 22",
@@ -763,9 +700,6 @@
     "price": 36.29,
     "size": "20 ml",
     "stock": 93,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -786,7 +720,7 @@
     ]
   },
   {
-    "id": 23,
+    "id": "ce154264-a830-478d-b4cc-033f9c9f609d",
     "category": "Foundation",
     "brand": "Glossier",
     "name": "Glossier Matte Skin Base 23",
@@ -796,9 +730,6 @@
     "price": 31.25,
     "size": "20 ml",
     "stock": 78,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -829,7 +760,7 @@
     ]
   },
   {
-    "id": 24,
+    "id": "47d07254-a361-4910-ae3f-77696cf547dc",
     "category": "Foundation",
     "brand": "MAC",
     "name": "MAC Perfect Canvas 24",
@@ -839,9 +770,6 @@
     "price": 47.79,
     "size": "42 ml",
     "stock": 420,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -863,7 +791,7 @@
     ]
   },
   {
-    "id": 25,
+    "id": "a3e5cf92-d2be-4e97-a286-c31049bdfc24",
     "category": "Foundation",
     "brand": "NARS",
     "name": "NARS Luminous Foundation 25",
@@ -873,9 +801,6 @@
     "price": 25.23,
     "size": "25 ml",
     "stock": 483,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -896,7 +821,7 @@
     ]
   },
   {
-    "id": 26,
+    "id": "4d603ae5-0063-423f-a8b3-c5facac5780a",
     "category": "Foundation",
     "brand": "The Ordinary",
     "name": "The Ordinary Airbrush Flawless 26",
@@ -906,9 +831,6 @@
     "price": 47.41,
     "size": "43 ml",
     "stock": 64,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -930,7 +852,7 @@
     ]
   },
   {
-    "id": 27,
+    "id": "c17e8362-5461-4f2d-817f-dfd237eaed16",
     "category": "Foundation",
     "brand": "The Ordinary",
     "name": "The Ordinary Dewy Coverage 27",
@@ -940,9 +862,6 @@
     "price": 59.92,
     "size": "32 ml",
     "stock": 296,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -968,7 +887,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": "e94033d4-5e70-4359-b87e-0b4b7e2f7f32",
     "category": "Foundation",
     "brand": "NARS",
     "name": "NARS Dewy Coverage 28",
@@ -978,9 +897,6 @@
     "price": 46.07,
     "size": "16 ml",
     "stock": 376,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -997,7 +913,7 @@
     ]
   },
   {
-    "id": 29,
+    "id": "7b657d8f-cf71-41f4-ae84-f4dfeeb6ad0b",
     "category": "Foundation",
     "brand": "The Ordinary",
     "name": "The Ordinary Matte Skin Base 29",
@@ -1007,9 +923,6 @@
     "price": 13.88,
     "size": "18 ml",
     "stock": 219,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1031,7 +944,7 @@
     ]
   },
   {
-    "id": 30,
+    "id": "852ff396-8014-460e-afbc-8a82b6640ea3",
     "category": "Foundation",
     "brand": "Sheglam",
     "name": "Sheglam Dewy Coverage 30",
@@ -1041,9 +954,6 @@
     "price": 41.38,
     "size": "48 ml",
     "stock": 171,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1070,7 +980,7 @@
     ]
   },
   {
-    "id": 31,
+    "id": "d0da83c4-e0b1-40b8-9777-28d6e223f256",
     "category": "Concelear",
     "brand": "The Ordinary",
     "name": "The Ordinary Bright Fix 1",
@@ -1080,9 +990,6 @@
     "price": 13.13,
     "size": "32 ml",
     "stock": 37,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1104,7 +1011,7 @@
     ]
   },
   {
-    "id": 32,
+    "id": "05679f6a-c97b-4ee7-bc9f-dc74d8f4fa59",
     "category": "Concelear",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Camo Concealer 2",
@@ -1114,9 +1021,6 @@
     "price": 16.1,
     "size": "15 ml",
     "stock": 182,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1143,7 +1047,7 @@
     ]
   },
   {
-    "id": 33,
+    "id": "27872ffc-58d8-4445-ad1f-c64662496f3d",
     "category": "Concelear",
     "brand": "Glossier",
     "name": "Glossier Bright Fix 3",
@@ -1153,9 +1057,6 @@
     "price": 33.15,
     "size": "50 ml",
     "stock": 87,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1187,7 +1088,7 @@
     ]
   },
   {
-    "id": 34,
+    "id": "d33af4f0-b4b5-470d-93b2-42fe0a407c1c",
     "category": "Concelear",
     "brand": "Glossier",
     "name": "Glossier Soft Matte Complete 4",
@@ -1197,9 +1098,6 @@
     "price": 40.56,
     "size": "44 ml",
     "stock": 393,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1215,7 +1113,7 @@
     ]
   },
   {
-    "id": 35,
+    "id": "46c16454-8346-481c-a4f5-bca753500373",
     "category": "Concelear",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Magic Away 5",
@@ -1225,9 +1123,6 @@
     "price": 32.01,
     "size": "48 ml",
     "stock": 243,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1254,7 +1149,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": "bc4b182e-a2a9-40c9-a959-16d5d77eecdc",
     "category": "Concelear",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Flawless Fusion 6",
@@ -1264,9 +1159,6 @@
     "price": 14.27,
     "size": "19 ml",
     "stock": 436,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1283,7 +1175,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": "da62ed37-6776-42b1-904a-5bfaa8dc3949",
     "category": "Concelear",
     "brand": "Sheglam",
     "name": "Sheglam Magic Away 7",
@@ -1293,9 +1185,6 @@
     "price": 55.05,
     "size": "26 ml",
     "stock": 264,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1316,7 +1205,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": "71bb24ec-084b-4f1a-befd-351b2a526c11",
     "category": "Concelear",
     "brand": "The Ordinary",
     "name": "The Ordinary Creaseless Concealer 8",
@@ -1326,9 +1215,6 @@
     "price": 32.86,
     "size": "36 ml",
     "stock": 473,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1350,7 +1236,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": "66c05b3d-2fb8-471b-99ec-8eff43a5e2a6",
     "category": "Concelear",
     "brand": "NARS",
     "name": "NARS Creaseless Concealer 9",
@@ -1360,9 +1246,6 @@
     "price": 14.29,
     "size": "38 ml",
     "stock": 143,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1389,7 +1272,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": "0d7b1949-5b0c-4417-9740-103fa028bbac",
     "category": "Concelear",
     "brand": "The Ordinary",
     "name": "The Ordinary Magic Away 10",
@@ -1399,9 +1282,6 @@
     "price": 53.57,
     "size": "44 ml",
     "stock": 326,
-    "isGlutenFree": false,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1423,7 +1303,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": "aad1dc51-1808-4f09-a14a-bace6376f381",
     "category": "Concelear",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Magic Away 11",
@@ -1433,9 +1313,6 @@
     "price": 56.9,
     "size": "27 ml",
     "stock": 103,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1467,7 +1344,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": "1d20e6db-64ed-4a37-9b12-f652ea704100",
     "category": "Concelear",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Camo Concealer 12",
@@ -1477,9 +1354,6 @@
     "price": 33.92,
     "size": "38 ml",
     "stock": 113,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1510,7 +1384,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": "de3ef4fe-beb7-454c-92c1-d9665cfcdcb4",
     "category": "Concelear",
     "brand": "NARS",
     "name": "NARS Camo Concealer 13",
@@ -1520,9 +1394,6 @@
     "price": 21.9,
     "size": "17 ml",
     "stock": 111,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1553,7 +1424,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": "675cfd35-fa31-4f01-9cc2-404664f685a2",
     "category": "Concelear",
     "brand": "Sheglam",
     "name": "Sheglam Magic Away 14",
@@ -1563,9 +1434,6 @@
     "price": 14.05,
     "size": "24 ml",
     "stock": 348,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1591,7 +1459,7 @@
     ]
   },
   {
-    "id": 45,
+    "id": "13cb78cb-0f9c-4882-8ed3-c36314e2b57a",
     "category": "Concelear",
     "brand": "MAC",
     "name": "MAC Creaseless Concealer 15",
@@ -1601,9 +1469,6 @@
     "price": 38.62,
     "size": "20 ml",
     "stock": 459,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1619,7 +1484,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": "0b6f6afc-7aea-43d1-859a-f5407b861925",
     "category": "Concelear",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Soft Matte Complete 16",
@@ -1629,9 +1494,6 @@
     "price": 56.11,
     "size": "24 ml",
     "stock": 499,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1648,7 +1510,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": "ffb7e5ff-f75c-46dc-95f6-c58b8f7f6ac6",
     "category": "Concelear",
     "brand": "MAC",
     "name": "MAC Camo Concealer 17",
@@ -1658,9 +1520,6 @@
     "price": 12.78,
     "size": "46 ml",
     "stock": 121,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1676,7 +1535,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": "c5bffb57-61ee-4d03-a28e-3bacce2230d0",
     "category": "Concelear",
     "brand": "Sheglam",
     "name": "Sheglam Creaseless Concealer 18",
@@ -1686,9 +1545,6 @@
     "price": 40.32,
     "size": "34 ml",
     "stock": 121,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1714,7 +1570,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": "38d4ee51-4282-4cd0-9da9-8a914e67ea6a",
     "category": "Concelear",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Soft Matte Complete 19",
@@ -1724,9 +1580,6 @@
     "price": 34.15,
     "size": "17 ml",
     "stock": 160,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1752,7 +1605,7 @@
     ]
   },
   {
-    "id": 50,
+    "id": "26540162-b2ab-4f8d-98c6-4198e984a597",
     "category": "Concelear",
     "brand": "Glossier",
     "name": "Glossier Camo Concealer 20",
@@ -1762,9 +1615,6 @@
     "price": 47.24,
     "size": "33 ml",
     "stock": 409,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1791,7 +1641,7 @@
     ]
   },
   {
-    "id": 51,
+    "id": "aabcef20-7f9e-458a-a2cb-49894f000a90",
     "category": "Concelear",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Flawless Fusion 21",
@@ -1801,9 +1651,6 @@
     "price": 35.78,
     "size": "32 ml",
     "stock": 345,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1819,7 +1666,7 @@
     ]
   },
   {
-    "id": 52,
+    "id": "1d6a8bbe-03e6-40a7-a98f-37d7f0cbc235",
     "category": "Concelear",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Camo Concealer 22",
@@ -1829,9 +1676,6 @@
     "price": 50.63,
     "size": "48 ml",
     "stock": 255,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1858,7 +1702,7 @@
     ]
   },
   {
-    "id": 53,
+    "id": "b02ec723-c350-4408-b68f-9a07afcc31d8",
     "category": "Concelear",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Camo Concealer 23",
@@ -1868,9 +1712,6 @@
     "price": 45.7,
     "size": "15 ml",
     "stock": 380,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1891,7 +1732,7 @@
     ]
   },
   {
-    "id": 54,
+    "id": "aba58b1b-28ea-429d-825b-5a2ca5376b48",
     "category": "Concelear",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Radiant Creamy 24",
@@ -1901,9 +1742,6 @@
     "price": 11.86,
     "size": "46 ml",
     "stock": 462,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1929,7 +1767,7 @@
     ]
   },
   {
-    "id": 55,
+    "id": "5d9a4db3-1214-4f54-a0d0-05be6de764b4",
     "category": "Concelear",
     "brand": "Glossier",
     "name": "Glossier Flawless Fusion 25",
@@ -1939,9 +1777,6 @@
     "price": 30.44,
     "size": "29 ml",
     "stock": 124,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -1972,7 +1807,7 @@
     ]
   },
   {
-    "id": 56,
+    "id": "add1bba9-f4d4-4943-8eff-420f1e0b8771",
     "category": "Concelear",
     "brand": "MAC",
     "name": "MAC Magic Away 26",
@@ -1982,9 +1817,6 @@
     "price": 21.4,
     "size": "29 ml",
     "stock": 347,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2016,7 +1848,7 @@
     ]
   },
   {
-    "id": 57,
+    "id": "d6ed996d-bd30-42d6-901f-fc1c7dc8d5e1",
     "category": "Concelear",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Flawless Fusion 27",
@@ -2026,9 +1858,6 @@
     "price": 52.96,
     "size": "42 ml",
     "stock": 121,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2044,7 +1873,7 @@
     ]
   },
   {
-    "id": 58,
+    "id": "df271a45-d5e6-4461-8af7-c07d39fea317",
     "category": "Concelear",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Creaseless Concealer 28",
@@ -2054,9 +1883,6 @@
     "price": 20.65,
     "size": "18 ml",
     "stock": 225,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2083,7 +1909,7 @@
     ]
   },
   {
-    "id": 59,
+    "id": "f18ce0a1-94bb-4d6a-8ec0-2aed28a9ae7b",
     "category": "Concelear",
     "brand": "Sheglam",
     "name": "Sheglam Flawless Fusion 29",
@@ -2093,9 +1919,6 @@
     "price": 59.7,
     "size": "25 ml",
     "stock": 9,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2122,7 +1945,7 @@
     ]
   },
   {
-    "id": 60,
+    "id": "82075244-72ba-41c7-82c4-6821105cc2d1",
     "category": "Concelear",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Soft Matte Complete 30",
@@ -2132,9 +1955,6 @@
     "price": 29.28,
     "size": "49 ml",
     "stock": 148,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2160,7 +1980,7 @@
     ]
   },
   {
-    "id": 61,
+    "id": "da1bdcea-9292-47cc-a10c-41d47abde7da",
     "category": "Blush",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Cheek Tint 1",
@@ -2170,9 +1990,6 @@
     "price": 20.55,
     "size": "48 ml",
     "stock": 101,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2193,7 +2010,7 @@
     ]
   },
   {
-    "id": 62,
+    "id": "017b1e84-553e-4766-87fd-2e0fb492edc3",
     "category": "Blush",
     "brand": "Glossier",
     "name": "Glossier Putty Blush 2",
@@ -2203,9 +2020,6 @@
     "price": 53.18,
     "size": "41 ml",
     "stock": 180,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2231,7 +2045,7 @@
     ]
   },
   {
-    "id": 63,
+    "id": "3a2e35c4-7164-458d-a3bd-43ddac7c5ae4",
     "category": "Blush",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Soft Pinch 3",
@@ -2241,9 +2055,6 @@
     "price": 11.39,
     "size": "46 ml",
     "stock": 67,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2269,7 +2080,7 @@
     ]
   },
   {
-    "id": 64,
+    "id": "cf52cf82-de65-4e2d-81c5-16c899f8d991",
     "category": "Blush",
     "brand": "The Ordinary",
     "name": "The Ordinary Soft Pinch 4",
@@ -2279,9 +2090,6 @@
     "price": 37.78,
     "size": "16 ml",
     "stock": 446,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2308,7 +2116,7 @@
     ]
   },
   {
-    "id": 65,
+    "id": "326d4b17-4356-4964-a52d-1d89fcfa8859",
     "category": "Blush",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Soft Pinch 5",
@@ -2318,9 +2126,6 @@
     "price": 48.92,
     "size": "50 ml",
     "stock": 474,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2337,7 +2142,7 @@
     ]
   },
   {
-    "id": 66,
+    "id": "69194721-c661-4923-a06e-49b5bb6f20b7",
     "category": "Blush",
     "brand": "MAC",
     "name": "MAC Putty Blush 6",
@@ -2347,9 +2152,6 @@
     "price": 28.84,
     "size": "20 ml",
     "stock": 402,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2376,7 +2178,7 @@
     ]
   },
   {
-    "id": 67,
+    "id": "949d9872-523f-4ac2-84e4-0506a0e76691",
     "category": "Blush",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Liquid Bloom 7",
@@ -2386,9 +2188,6 @@
     "price": 17.19,
     "size": "33 ml",
     "stock": 361,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2414,7 +2213,7 @@
     ]
   },
   {
-    "id": 68,
+    "id": "6891be84-8290-4212-9737-218f88d1af81",
     "category": "Blush",
     "brand": "NARS",
     "name": "NARS Glowish Blush 8",
@@ -2424,9 +2223,6 @@
     "price": 31.1,
     "size": "46 ml",
     "stock": 133,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2448,7 +2244,7 @@
     ]
   },
   {
-    "id": 69,
+    "id": "a32dcc0e-fe08-450e-815e-a767c506135b",
     "category": "Blush",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Matte Blush Duo 9",
@@ -2458,9 +2254,6 @@
     "price": 48.84,
     "size": "44 ml",
     "stock": 17,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2492,7 +2285,7 @@
     ]
   },
   {
-    "id": 70,
+    "id": "b61b0c64-091d-45d2-80f5-2cbc986d8b1a",
     "category": "Blush",
     "brand": "Glossier",
     "name": "Glossier Liquid Bloom 10",
@@ -2502,9 +2295,6 @@
     "price": 38.76,
     "size": "17 ml",
     "stock": 416,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2536,7 +2326,7 @@
     ]
   },
   {
-    "id": 71,
+    "id": "b1602af4-5a84-40b0-a62c-4cb39ef9db69",
     "category": "Blush",
     "brand": "Glossier",
     "name": "Glossier Rose Velvet 11",
@@ -2546,9 +2336,6 @@
     "price": 13.03,
     "size": "16 ml",
     "stock": 174,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2579,7 +2366,7 @@
     ]
   },
   {
-    "id": 72,
+    "id": "a020ca24-a179-4b7f-b404-8ae1a8f9705c",
     "category": "Blush",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Glowish Blush 12",
@@ -2589,9 +2376,6 @@
     "price": 45.46,
     "size": "46 ml",
     "stock": 407,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2623,7 +2407,7 @@
     ]
   },
   {
-    "id": 73,
+    "id": "3dae5caf-1008-40fa-9f8a-ee60ff1cce91",
     "category": "Blush",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Rose Velvet 13",
@@ -2633,9 +2417,6 @@
     "price": 23.65,
     "size": "35 ml",
     "stock": 141,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2661,7 +2442,7 @@
     ]
   },
   {
-    "id": 74,
+    "id": "60da0794-af99-4ecb-b7fb-c85e60ac048b",
     "category": "Blush",
     "brand": "The Ordinary",
     "name": "The Ordinary Rose Velvet 14",
@@ -2671,9 +2452,6 @@
     "price": 40.7,
     "size": "24 ml",
     "stock": 159,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2690,7 +2468,7 @@
     ]
   },
   {
-    "id": 75,
+    "id": "d3ec0917-784b-4d0f-a035-9b806e0aab80",
     "category": "Blush",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Soft Pinch 15",
@@ -2700,9 +2478,6 @@
     "price": 22.2,
     "size": "19 ml",
     "stock": 491,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2724,7 +2499,7 @@
     ]
   },
   {
-    "id": 76,
+    "id": "daa8d57d-5acc-4432-877a-a2d1a347365c",
     "category": "Blush",
     "brand": "MAC",
     "name": "MAC Cheek Tint 16",
@@ -2734,9 +2509,6 @@
     "price": 13.53,
     "size": "24 ml",
     "stock": 325,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2768,7 +2540,7 @@
     ]
   },
   {
-    "id": 77,
+    "id": "1d604099-4406-4b64-ad79-6dd669720ef3",
     "category": "Blush",
     "brand": "MAC",
     "name": "MAC Matte Blush Duo 17",
@@ -2778,9 +2550,6 @@
     "price": 34.24,
     "size": "16 ml",
     "stock": 109,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2812,7 +2581,7 @@
     ]
   },
   {
-    "id": 78,
+    "id": "8c1e5bc7-d85d-4aea-9ded-f9ff45bba884",
     "category": "Blush",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Putty Blush 18",
@@ -2822,9 +2591,6 @@
     "price": 23.32,
     "size": "39 ml",
     "stock": 114,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2840,7 +2606,7 @@
     ]
   },
   {
-    "id": 79,
+    "id": "555f1c2d-ec3a-4e4e-aac6-c4d1f60ba4e5",
     "category": "Blush",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Liquid Bloom 19",
@@ -2850,9 +2616,6 @@
     "price": 27.46,
     "size": "34 ml",
     "stock": 459,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2873,7 +2636,7 @@
     ]
   },
   {
-    "id": 80,
+    "id": "4e7d9cee-56bb-4ad2-af7f-73512ad19b9b",
     "category": "Blush",
     "brand": "MAC",
     "name": "MAC Putty Blush 20",
@@ -2883,9 +2646,6 @@
     "price": 26.41,
     "size": "48 ml",
     "stock": 368,
-    "isGlutenFree": false,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2916,7 +2676,7 @@
     ]
   },
   {
-    "id": 81,
+    "id": "c100e34c-79b2-447a-9456-e0016d3feb42",
     "category": "Blush",
     "brand": "Glossier",
     "name": "Glossier Glowish Blush 21",
@@ -2926,9 +2686,6 @@
     "price": 34.93,
     "size": "40 ml",
     "stock": 304,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2945,7 +2702,7 @@
     ]
   },
   {
-    "id": 82,
+    "id": "9420788f-d458-479e-8d03-94b05812df4e",
     "category": "Blush",
     "brand": "MAC",
     "name": "MAC Putty Blush 22",
@@ -2955,9 +2712,6 @@
     "price": 25.9,
     "size": "31 ml",
     "stock": 253,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -2988,7 +2742,7 @@
     ]
   },
   {
-    "id": 83,
+    "id": "5786773c-2063-49da-b1b4-a354f82910a7",
     "category": "Blush",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Rose Velvet 23",
@@ -2998,9 +2752,6 @@
     "price": 12.15,
     "size": "28 ml",
     "stock": 114,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3022,7 +2773,7 @@
     ]
   },
   {
-    "id": 84,
+    "id": "0a59fa8b-8c6f-46d7-b5bc-d9ade557d166",
     "category": "Blush",
     "brand": "MAC",
     "name": "MAC Cloud Paint 24",
@@ -3032,9 +2783,6 @@
     "price": 55.48,
     "size": "31 ml",
     "stock": 47,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3061,7 +2809,7 @@
     ]
   },
   {
-    "id": 85,
+    "id": "bc24c67d-0c54-4539-9709-4cc1d0d98f06",
     "category": "Blush",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Matte Blush Duo 25",
@@ -3071,9 +2819,6 @@
     "price": 58.28,
     "size": "35 ml",
     "stock": 397,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3090,7 +2835,7 @@
     ]
   },
   {
-    "id": 86,
+    "id": "3ac21a9f-6e5b-456e-ae13-dd81b4ca5abf",
     "category": "Blush",
     "brand": "NARS",
     "name": "NARS Glowish Blush 26",
@@ -3100,9 +2845,6 @@
     "price": 18.69,
     "size": "45 ml",
     "stock": 349,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3123,7 +2865,7 @@
     ]
   },
   {
-    "id": 87,
+    "id": "fe1c792a-bb6d-452c-89d2-e93aa77e16c8",
     "category": "Blush",
     "brand": "The Ordinary",
     "name": "The Ordinary Matte Blush Duo 27",
@@ -3133,9 +2875,6 @@
     "price": 30.66,
     "size": "49 ml",
     "stock": 390,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3166,7 +2905,7 @@
     ]
   },
   {
-    "id": 88,
+    "id": "afbeae6b-9716-47d4-ac58-9cc254117574",
     "category": "Blush",
     "brand": "The Ordinary",
     "name": "The Ordinary Liquid Bloom 28",
@@ -3176,9 +2915,6 @@
     "price": 24.48,
     "size": "42 ml",
     "stock": 348,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3204,7 +2940,7 @@
     ]
   },
   {
-    "id": 89,
+    "id": "093098b0-6e23-4b2c-ab37-6f1f4b833c2a",
     "category": "Blush",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Soft Pinch 29",
@@ -3214,9 +2950,6 @@
     "price": 13.43,
     "size": "18 ml",
     "stock": 414,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3242,7 +2975,7 @@
     ]
   },
   {
-    "id": 90,
+    "id": "ef6665ab-a3d6-4ad6-b40f-5677b715c5bd",
     "category": "Blush",
     "brand": "Sheglam",
     "name": "Sheglam Matte Blush Duo 30",
@@ -3252,9 +2985,6 @@
     "price": 48.19,
     "size": "22 ml",
     "stock": 464,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3271,7 +3001,7 @@
     ]
   },
   {
-    "id": 91,
+    "id": "dbbe8b44-595a-4fbe-b185-64245e692a89",
     "category": "Lip",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Lip Oil Plumper 1",
@@ -3281,9 +3011,6 @@
     "price": 13.82,
     "size": "11 ml",
     "stock": 146,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3299,7 +3026,7 @@
     ]
   },
   {
-    "id": 92,
+    "id": "aea4ed70-f038-4cab-9518-7687a9120625",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Lip Injection 2",
@@ -3309,9 +3036,6 @@
     "price": 43.48,
     "size": "6 ml",
     "stock": 45,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3328,7 +3052,7 @@
     ]
   },
   {
-    "id": 93,
+    "id": "67c8cd04-d324-448c-b241-113b35a86248",
     "category": "Lip",
     "brand": "MAC",
     "name": "MAC Lip Injection 3",
@@ -3338,9 +3062,6 @@
     "price": 39.22,
     "size": "10 ml",
     "stock": 250,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3366,7 +3087,7 @@
     ]
   },
   {
-    "id": 94,
+    "id": "09d00c6b-2c9b-4e65-aece-b91bc7f1c107",
     "category": "Lip",
     "brand": "The Ordinary",
     "name": "The Ordinary Butter Gloss 4",
@@ -3376,9 +3097,6 @@
     "price": 26.08,
     "size": "7 ml",
     "stock": 421,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3400,7 +3118,7 @@
     ]
   },
   {
-    "id": 95,
+    "id": "122a0c1b-c6ad-4d72-8180-eff1cdcbe584",
     "category": "Lip",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Lip Oil Plumper 5",
@@ -3410,9 +3128,6 @@
     "price": 21.49,
     "size": "7 ml",
     "stock": 469,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3429,7 +3144,7 @@
     ]
   },
   {
-    "id": 96,
+    "id": "0392c3d4-9276-448f-bc07-1d20af6c9078",
     "category": "Lip",
     "brand": "NARS",
     "name": "NARS Lip Injection 6",
@@ -3439,9 +3154,6 @@
     "price": 36.83,
     "size": "8 ml",
     "stock": 43,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3468,7 +3180,7 @@
     ]
   },
   {
-    "id": 97,
+    "id": "14442126-c3e4-42e1-9411-60c770218cec",
     "category": "Lip",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Butter Gloss 7",
@@ -3478,9 +3190,6 @@
     "price": 30.51,
     "size": "5 ml",
     "stock": 105,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3506,7 +3215,7 @@
     ]
   },
   {
-    "id": 98,
+    "id": "898a9d49-513c-4378-ac65-e04e30ef99e1",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Water Tint 8",
@@ -3516,9 +3225,6 @@
     "price": 50.76,
     "size": "3 ml",
     "stock": 460,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3550,7 +3256,7 @@
     ]
   },
   {
-    "id": 99,
+    "id": "9e65dbb3-6cdb-4653-a07a-8873e15a4c58",
     "category": "Lip",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Lip Cheat 9",
@@ -3560,9 +3266,6 @@
     "price": 50.52,
     "size": "13 ml",
     "stock": 153,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3578,7 +3281,7 @@
     ]
   },
   {
-    "id": 100,
+    "id": "0b91513a-3e29-4fa2-b322-35a45706c30e",
     "category": "Lip",
     "brand": "Sheglam",
     "name": "Sheglam Lip Oil Plumper 10",
@@ -3588,9 +3291,6 @@
     "price": 37.33,
     "size": "8 ml",
     "stock": 318,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3616,7 +3316,7 @@
     ]
   },
   {
-    "id": 101,
+    "id": "e6779bf1-f8d4-4ef1-bcc6-e6026849527f",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Lip Cheat 11",
@@ -3626,9 +3326,6 @@
     "price": 43.57,
     "size": "11 ml",
     "stock": 121,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3650,7 +3347,7 @@
     ]
   },
   {
-    "id": 102,
+    "id": "c052de84-856c-4e96-b2d4-5fd46920aefb",
     "category": "Lip",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Gloss Bomb 12",
@@ -3660,9 +3357,6 @@
     "price": 59.33,
     "size": "8 ml",
     "stock": 343,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3689,7 +3383,7 @@
     ]
   },
   {
-    "id": 103,
+    "id": "481854e5-4395-45db-98f1-05c55eda44b0",
     "category": "Lip",
     "brand": "MAC",
     "name": "MAC Velvet Liquid Lip 13",
@@ -3699,9 +3393,6 @@
     "price": 48.62,
     "size": "12 ml",
     "stock": 44,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3727,7 +3418,7 @@
     ]
   },
   {
-    "id": 104,
+    "id": "17a9a7b8-a423-418a-9387-4a4eadc127e9",
     "category": "Lip",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Lip Oil Plumper 14",
@@ -3737,9 +3428,6 @@
     "price": 13.05,
     "size": "12 ml",
     "stock": 85,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3766,7 +3454,7 @@
     ]
   },
   {
-    "id": 105,
+    "id": "17389fdc-2dfe-4f79-a5e7-f5a048cc3dfb",
     "category": "Lip",
     "brand": "MAC",
     "name": "MAC Water Tint 15",
@@ -3776,9 +3464,6 @@
     "price": 58.6,
     "size": "4 ml",
     "stock": 74,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3805,7 +3490,7 @@
     ]
   },
   {
-    "id": 106,
+    "id": "d14b44ee-e168-4590-aaf2-93fddc025a70",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Lip Oil Plumper 16",
@@ -3815,9 +3500,6 @@
     "price": 29.76,
     "size": "14 ml",
     "stock": 304,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3849,7 +3531,7 @@
     ]
   },
   {
-    "id": 107,
+    "id": "45657ba6-7114-4284-b953-b14bc0647bd1",
     "category": "Lip",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Lip Cheat 17",
@@ -3859,9 +3541,6 @@
     "price": 36.65,
     "size": "13 ml",
     "stock": 283,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3883,7 +3562,7 @@
     ]
   },
   {
-    "id": 108,
+    "id": "b0c94843-c74b-45e6-8950-8b6ab9e2bfa7",
     "category": "Lip",
     "brand": "The Ordinary",
     "name": "The Ordinary Water Tint 18",
@@ -3893,9 +3572,6 @@
     "price": 33.99,
     "size": "6 ml",
     "stock": 111,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3921,7 +3597,7 @@
     ]
   },
   {
-    "id": 109,
+    "id": "fbfb8638-0f11-443d-a2bb-d88743c9de59",
     "category": "Lip",
     "brand": "Sheglam",
     "name": "Sheglam Butter Gloss 19",
@@ -3931,9 +3607,6 @@
     "price": 34.03,
     "size": "14 ml",
     "stock": 284,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3959,7 +3632,7 @@
     ]
   },
   {
-    "id": 110,
+    "id": "d5fac4f2-5113-472d-a11c-6ebe399a24bb",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Water Tint 20",
@@ -3969,9 +3642,6 @@
     "price": 28.89,
     "size": "6 ml",
     "stock": 86,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -3987,7 +3657,7 @@
     ]
   },
   {
-    "id": 111,
+    "id": "4818757b-b727-48f3-adfc-6ebcb3d8fd24",
     "category": "Lip",
     "brand": "The Ordinary",
     "name": "The Ordinary Water Tint 21",
@@ -3997,9 +3667,6 @@
     "price": 31.57,
     "size": "13 ml",
     "stock": 425,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4031,7 +3698,7 @@
     ]
   },
   {
-    "id": 112,
+    "id": "155034d2-0e03-49a5-a6dc-6edb8fc95c57",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Gloss Bomb 22",
@@ -4041,9 +3708,6 @@
     "price": 38.58,
     "size": "14 ml",
     "stock": 380,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4065,7 +3729,7 @@
     ]
   },
   {
-    "id": 113,
+    "id": "92279e21-5aca-4bfe-8615-c31b8150ea20",
     "category": "Lip",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Lip Cheat 23",
@@ -4075,9 +3739,6 @@
     "price": 15.77,
     "size": "3 ml",
     "stock": 496,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4108,7 +3769,7 @@
     ]
   },
   {
-    "id": 114,
+    "id": "1cae5946-e72f-44ba-835e-1f272f30aa7a",
     "category": "Lip",
     "brand": "Glossier",
     "name": "Glossier Matte Revolution 24",
@@ -4118,9 +3779,6 @@
     "price": 43.15,
     "size": "13 ml",
     "stock": 139,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4136,7 +3794,7 @@
     ]
   },
   {
-    "id": 115,
+    "id": "ff5861e3-ec54-4949-8922-adf796d769b8",
     "category": "Lip",
     "brand": "NARS",
     "name": "NARS Butter Gloss 25",
@@ -4146,9 +3804,6 @@
     "price": 14.27,
     "size": "7 ml",
     "stock": 137,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4174,7 +3829,7 @@
     ]
   },
   {
-    "id": 116,
+    "id": "c750a900-a6c4-4a32-a778-76617062ec6b",
     "category": "Lip",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Velvet Liquid Lip 26",
@@ -4184,9 +3839,6 @@
     "price": 19.51,
     "size": "3 ml",
     "stock": 379,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4208,7 +3860,7 @@
     ]
   },
   {
-    "id": 117,
+    "id": "bab62907-6c8d-4bf1-9411-6f7bc1639641",
     "category": "Lip",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Velvet Liquid Lip 27",
@@ -4218,9 +3870,6 @@
     "price": 47.85,
     "size": "9 ml",
     "stock": 498,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4251,7 +3900,7 @@
     ]
   },
   {
-    "id": 118,
+    "id": "bbf584cf-3835-481e-be53-c08f2d7f5f20",
     "category": "Lip",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Gloss Bomb 28",
@@ -4261,9 +3910,6 @@
     "price": 12.06,
     "size": "4 ml",
     "stock": 61,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4289,7 +3935,7 @@
     ]
   },
   {
-    "id": 119,
+    "id": "1e2131e6-69a1-4615-a8c9-9d84b4bcd14e",
     "category": "Lip",
     "brand": "The Ordinary",
     "name": "The Ordinary Velvet Liquid Lip 29",
@@ -4299,9 +3945,6 @@
     "price": 25.2,
     "size": "13 ml",
     "stock": 86,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4323,7 +3966,7 @@
     ]
   },
   {
-    "id": 120,
+    "id": "2d81ccc1-f0ef-4d84-88c1-9077ccd8edbd",
     "category": "Lip",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Gloss Bomb 30",
@@ -4333,9 +3976,6 @@
     "price": 58.04,
     "size": "3 ml",
     "stock": 101,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4361,7 +4001,7 @@
     ]
   },
   {
-    "id": 121,
+    "id": "007b0b41-89a4-4a06-9f94-a3f47e685b60",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Match Stix 1",
@@ -4371,9 +4011,6 @@
     "price": 43.2,
     "size": "5 ml",
     "stock": 497,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4395,7 +4032,7 @@
     ]
   },
   {
-    "id": 122,
+    "id": "4f18e1db-e6e6-47a2-bb6c-d7a55b27304e",
     "category": "Contour",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Sun Stalker 2",
@@ -4405,9 +4042,6 @@
     "price": 40.47,
     "size": "5 ml",
     "stock": 316,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4423,7 +4057,7 @@
     ]
   },
   {
-    "id": 123,
+    "id": "0fa6dbb6-1000-4d6f-8948-c5663ba0d659",
     "category": "Contour",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Tantour 3",
@@ -4433,9 +4067,6 @@
     "price": 26.94,
     "size": "5 ml",
     "stock": 89,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4467,7 +4098,7 @@
     ]
   },
   {
-    "id": 124,
+    "id": "ba6d8bd4-d024-4329-bc6c-b25ef8a5dc7b",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Cream Bronzer 4",
@@ -4477,9 +4108,6 @@
     "price": 18.17,
     "size": "9 ml",
     "stock": 94,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4506,7 +4134,7 @@
     ]
   },
   {
-    "id": 125,
+    "id": "3040b882-91ed-42a6-8ea9-411caacf130a",
     "category": "Contour",
     "brand": "NARS",
     "name": "NARS Cream Bronzer 5",
@@ -4516,9 +4144,6 @@
     "price": 55.98,
     "size": "5 ml",
     "stock": 194,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4544,7 +4169,7 @@
     ]
   },
   {
-    "id": 126,
+    "id": "11d79f84-7324-4c6e-a88e-48bdf368bfb6",
     "category": "Contour",
     "brand": "The Ordinary",
     "name": "The Ordinary Match Stix 6",
@@ -4554,9 +4179,6 @@
     "price": 36.45,
     "size": "7 ml",
     "stock": 29,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4577,7 +4199,7 @@
     ]
   },
   {
-    "id": 127,
+    "id": "956a3c0e-9df6-4109-bedb-331cc19bf451",
     "category": "Contour",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Hollywood Contour Wand 7",
@@ -4587,9 +4209,6 @@
     "price": 28.77,
     "size": "11 ml",
     "stock": 158,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4610,7 +4229,7 @@
     ]
   },
   {
-    "id": 128,
+    "id": "4f93479a-ef2d-47c7-b3da-91819fd5702e",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Cheekbones Bronze 8",
@@ -4620,9 +4239,6 @@
     "price": 39.87,
     "size": "13 ml",
     "stock": 35,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4638,7 +4254,7 @@
     ]
   },
   {
-    "id": 129,
+    "id": "218418df-0285-49c1-8719-b23acda9c9f1",
     "category": "Contour",
     "brand": "Glossier",
     "name": "Glossier Cream Bronzer 9",
@@ -4648,9 +4264,6 @@
     "price": 27.55,
     "size": "9 ml",
     "stock": 378,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4681,7 +4294,7 @@
     ]
   },
   {
-    "id": 130,
+    "id": "cc3287a5-5387-44a5-8f7e-778729dc4127",
     "category": "Contour",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Pro Contour Palette 10",
@@ -4691,9 +4304,6 @@
     "price": 20.69,
     "size": "7 ml",
     "stock": 494,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4710,7 +4320,7 @@
     ]
   },
   {
-    "id": 131,
+    "id": "bc8fb3af-5d7c-428a-ae02-635fba2dd7bb",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Sculpting Stick 11",
@@ -4720,9 +4330,6 @@
     "price": 33.21,
     "size": "12 ml",
     "stock": 19,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4753,7 +4360,7 @@
     ]
   },
   {
-    "id": 132,
+    "id": "75655f64-66ff-475c-a73b-4faff2df7179",
     "category": "Contour",
     "brand": "NARS",
     "name": "NARS Cream Bronzer 12",
@@ -4763,9 +4370,6 @@
     "price": 34.21,
     "size": "2 ml",
     "stock": 174,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4782,7 +4386,7 @@
     ]
   },
   {
-    "id": 133,
+    "id": "70dc14ad-33da-4f27-9098-1815adceb89c",
     "category": "Contour",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Sculpting Stick 13",
@@ -4792,9 +4396,6 @@
     "price": 17.93,
     "size": "5 ml",
     "stock": 476,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4820,7 +4421,7 @@
     ]
   },
   {
-    "id": 134,
+    "id": "b0969764-0a00-4844-9fd7-3e2077e24f83",
     "category": "Contour",
     "brand": "Glossier",
     "name": "Glossier Match Stix 14",
@@ -4830,9 +4431,6 @@
     "price": 41.64,
     "size": "14 ml",
     "stock": 367,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4859,7 +4457,7 @@
     ]
   },
   {
-    "id": 135,
+    "id": "efd26a56-53bd-4423-8c2f-e8bcb887c285",
     "category": "Contour",
     "brand": "NARS",
     "name": "NARS Pro Contour Palette 15",
@@ -4869,9 +4467,6 @@
     "price": 35.12,
     "size": "10 ml",
     "stock": 360,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4887,7 +4482,7 @@
     ]
   },
   {
-    "id": 136,
+    "id": "e72d54f0-cb36-4555-8953-c30226259876",
     "category": "Contour",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Sculpting Stick 16",
@@ -4897,9 +4492,6 @@
     "price": 56.18,
     "size": "9 ml",
     "stock": 49,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4920,7 +4512,7 @@
     ]
   },
   {
-    "id": 137,
+    "id": "10781c97-888e-4284-bf5f-dd4a22072f4f",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Match Stix 17",
@@ -4930,9 +4522,6 @@
     "price": 42.3,
     "size": "5 ml",
     "stock": 59,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -4964,7 +4553,7 @@
     ]
   },
   {
-    "id": 138,
+    "id": "b13dba45-a3e2-4747-9837-73fc32ea1537",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Cream Bronzer 18",
@@ -4974,9 +4563,6 @@
     "price": 36.56,
     "size": "14 ml",
     "stock": 407,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5002,7 +4588,7 @@
     ]
   },
   {
-    "id": 139,
+    "id": "f44b4fef-cca1-4ba1-bac0-678e0ce8fdcb",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Hollywood Contour Wand 19",
@@ -5012,9 +4598,6 @@
     "price": 39.61,
     "size": "14 ml",
     "stock": 398,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5040,7 +4623,7 @@
     ]
   },
   {
-    "id": 140,
+    "id": "4ed9ffd3-35df-446a-9fea-ac8ab64ee341",
     "category": "Contour",
     "brand": "Glossier",
     "name": "Glossier Cream Bronzer 20",
@@ -5050,9 +4633,6 @@
     "price": 33.06,
     "size": "13 ml",
     "stock": 373,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5083,7 +4663,7 @@
     ]
   },
   {
-    "id": 141,
+    "id": "0910d4ed-e9a5-4f86-b920-421b78a26896",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Sculpting Stick 21",
@@ -5093,9 +4673,6 @@
     "price": 39.51,
     "size": "3 ml",
     "stock": 285,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5112,7 +4689,7 @@
     ]
   },
   {
-    "id": 142,
+    "id": "827e1479-5a2a-470f-99c0-ba70f095a905",
     "category": "Contour",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Cream Bronzer 22",
@@ -5122,9 +4699,6 @@
     "price": 24.37,
     "size": "15 ml",
     "stock": 134,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5145,7 +4719,7 @@
     ]
   },
   {
-    "id": 143,
+    "id": "5a7faa1d-bcfa-413b-9eaa-58acf4360fef",
     "category": "Contour",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Sun Stalker 23",
@@ -5155,9 +4729,6 @@
     "price": 11.27,
     "size": "8 ml",
     "stock": 113,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5179,7 +4750,7 @@
     ]
   },
   {
-    "id": 144,
+    "id": "74107f32-7c17-4105-b2b9-487df1e0927c",
     "category": "Contour",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Cream Bronzer 24",
@@ -5189,9 +4760,6 @@
     "price": 43.24,
     "size": "3 ml",
     "stock": 54,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5208,7 +4776,7 @@
     ]
   },
   {
-    "id": 145,
+    "id": "e9dc4979-5c06-4d9b-a900-c1711c5158b2",
     "category": "Contour",
     "brand": "NARS",
     "name": "NARS Sculpting Stick 25",
@@ -5218,9 +4786,6 @@
     "price": 32.59,
     "size": "12 ml",
     "stock": 434,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5241,7 +4806,7 @@
     ]
   },
   {
-    "id": 146,
+    "id": "b83105eb-6749-4fb8-ad65-179165d7c691",
     "category": "Contour",
     "brand": "NARS",
     "name": "NARS Pro Contour Palette 26",
@@ -5251,9 +4816,6 @@
     "price": 19.43,
     "size": "5 ml",
     "stock": 338,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5274,7 +4836,7 @@
     ]
   },
   {
-    "id": 147,
+    "id": "5809ef83-3665-4a1f-b3ea-a45eabeb1dc0",
     "category": "Contour",
     "brand": "The Ordinary",
     "name": "The Ordinary Sun Stalker 27",
@@ -5284,9 +4846,6 @@
     "price": 22.32,
     "size": "3 ml",
     "stock": 309,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5312,7 +4871,7 @@
     ]
   },
   {
-    "id": 148,
+    "id": "2b079cfd-28ce-411f-ad07-9cda433f21f6",
     "category": "Contour",
     "brand": "Glossier",
     "name": "Glossier Sculpting Stick 28",
@@ -5322,9 +4881,6 @@
     "price": 18.04,
     "size": "7 ml",
     "stock": 363,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5351,7 +4907,7 @@
     ]
   },
   {
-    "id": 149,
+    "id": "31aab8d9-d713-49f7-b6b1-2e21601b7deb",
     "category": "Contour",
     "brand": "NARS",
     "name": "NARS Pro Contour Palette 29",
@@ -5361,9 +4917,6 @@
     "price": 43.93,
     "size": "7 ml",
     "stock": 64,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5390,7 +4943,7 @@
     ]
   },
   {
-    "id": 150,
+    "id": "0895627b-f495-499b-8b48-3898c6b22de2",
     "category": "Contour",
     "brand": "Sheglam",
     "name": "Sheglam Pro Contour Palette 30",
@@ -5400,9 +4953,6 @@
     "price": 58.94,
     "size": "7 ml",
     "stock": 180,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5419,7 +4969,7 @@
     ]
   },
   {
-    "id": 151,
+    "id": "40c777a9-5e98-4bc3-903b-6e91a44256a7",
     "category": "Eyeshadow",
     "brand": "Glossier",
     "name": "Glossier Rose Metals 1",
@@ -5429,9 +4979,6 @@
     "price": 37.61,
     "size": "15 ml",
     "stock": 374,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5457,7 +5004,7 @@
     ]
   },
   {
-    "id": 152,
+    "id": "166d7988-94d2-49de-92b8-8f6e232132e4",
     "category": "Eyeshadow",
     "brand": "MAC",
     "name": "MAC Glitter & Glow 2",
@@ -5467,9 +5014,6 @@
     "price": 18.16,
     "size": "13 ml",
     "stock": 386,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5486,7 +5030,7 @@
     ]
   },
   {
-    "id": 153,
+    "id": "7c8638d4-d432-4c42-a2e7-22b06722c094",
     "category": "Eyeshadow",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Color Strike 3",
@@ -5496,9 +5040,6 @@
     "price": 25.4,
     "size": "11 ml",
     "stock": 300,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5514,7 +5055,7 @@
     ]
   },
   {
-    "id": 154,
+    "id": "86b9af85-679f-4afd-b396-3110638da160",
     "category": "Eyeshadow",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Neon Obsessions 4",
@@ -5524,9 +5065,6 @@
     "price": 20.02,
     "size": "6 ml",
     "stock": 414,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5548,7 +5086,7 @@
     ]
   },
   {
-    "id": 155,
+    "id": "f4279879-7943-4fc3-a511-ae15fcf0225b",
     "category": "Eyeshadow",
     "brand": "Glossier",
     "name": "Glossier Color Strike 5",
@@ -5558,9 +5096,6 @@
     "price": 13.12,
     "size": "2 ml",
     "stock": 138,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5576,7 +5111,7 @@
     ]
   },
   {
-    "id": 156,
+    "id": "15664984-f569-4b89-883a-b1ec92f93d38",
     "category": "Eyeshadow",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Liquid Lurex 6",
@@ -5586,9 +5121,6 @@
     "price": 27.41,
     "size": "14 ml",
     "stock": 335,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5615,7 +5147,7 @@
     ]
   },
   {
-    "id": 157,
+    "id": "f48096ad-152c-4e97-951f-cde5ed69587f",
     "category": "Eyeshadow",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Color Strike 7",
@@ -5625,9 +5157,6 @@
     "price": 26.99,
     "size": "3 ml",
     "stock": 144,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5659,7 +5188,7 @@
     ]
   },
   {
-    "id": 158,
+    "id": "b9d29d29-9a14-49b0-b7dc-90a7b8918c3b",
     "category": "Eyeshadow",
     "brand": "Glossier",
     "name": "Glossier Neon Obsessions 8",
@@ -5669,9 +5198,6 @@
     "price": 37.23,
     "size": "14 ml",
     "stock": 436,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5687,7 +5213,7 @@
     ]
   },
   {
-    "id": 159,
+    "id": "6da587d3-ea64-4f5c-ac09-c5d29b0995aa",
     "category": "Eyeshadow",
     "brand": "MAC",
     "name": "MAC Rose Metals 9",
@@ -5697,9 +5223,6 @@
     "price": 40.17,
     "size": "8 ml",
     "stock": 400,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5716,7 +5239,7 @@
     ]
   },
   {
-    "id": 160,
+    "id": "a2a11481-d65a-4388-8785-54109e0a406f",
     "category": "Eyeshadow",
     "brand": "MAC",
     "name": "MAC Soft Glam 10",
@@ -5726,9 +5249,6 @@
     "price": 27.51,
     "size": "13 ml",
     "stock": 480,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5755,7 +5275,7 @@
     ]
   },
   {
-    "id": 161,
+    "id": "c827cc85-ad6c-45f3-93b7-4e164395fced",
     "category": "Eyeshadow",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Color Strike 11",
@@ -5765,9 +5285,6 @@
     "price": 50.9,
     "size": "6 ml",
     "stock": 374,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5794,7 +5311,7 @@
     ]
   },
   {
-    "id": 162,
+    "id": "fc657cab-af8b-460f-bf66-0a223128e585",
     "category": "Eyeshadow",
     "brand": "Sheglam",
     "name": "Sheglam Color Strike 12",
@@ -5804,9 +5321,6 @@
     "price": 39.09,
     "size": "13 ml",
     "stock": 171,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5822,7 +5336,7 @@
     ]
   },
   {
-    "id": 163,
+    "id": "85327f0f-e5dd-4985-a5e0-ea53cc277c6d",
     "category": "Eyeshadow",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Neon Obsessions 13",
@@ -5832,9 +5346,6 @@
     "price": 22.6,
     "size": "13 ml",
     "stock": 25,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5861,7 +5372,7 @@
     ]
   },
   {
-    "id": 164,
+    "id": "16b30848-fa5c-4bd0-87b0-458a0fc41b69",
     "category": "Eyeshadow",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Mothership Eyeshadow 14",
@@ -5871,9 +5382,6 @@
     "price": 22.65,
     "size": "4 ml",
     "stock": 64,
-    "isGlutenFree": false,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5899,7 +5407,7 @@
     ]
   },
   {
-    "id": 165,
+    "id": "a7c1335d-2945-4ee6-94ca-113b4ae0f11b",
     "category": "Eyeshadow",
     "brand": "Sheglam",
     "name": "Sheglam Glitter & Glow 15",
@@ -5909,9 +5417,6 @@
     "price": 34.75,
     "size": "9 ml",
     "stock": 373,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5927,7 +5432,7 @@
     ]
   },
   {
-    "id": 166,
+    "id": "20db305a-4828-4fa9-a784-bcae986069ef",
     "category": "Eyeshadow",
     "brand": "MAC",
     "name": "MAC Rose Metals 16",
@@ -5937,9 +5442,6 @@
     "price": 10.27,
     "size": "13 ml",
     "stock": 289,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5956,7 +5458,7 @@
     ]
   },
   {
-    "id": 167,
+    "id": "32865d85-42ea-4028-bce8-0f3834a7751d",
     "category": "Eyeshadow",
     "brand": "Sheglam",
     "name": "Sheglam Glitter & Glow 17",
@@ -5966,9 +5468,6 @@
     "price": 54.6,
     "size": "3 ml",
     "stock": 238,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -5995,7 +5494,7 @@
     ]
   },
   {
-    "id": 168,
+    "id": "b07ceef1-de8e-4787-9a99-b2fbb7ade809",
     "category": "Eyeshadow",
     "brand": "Glossier",
     "name": "Glossier Nude Palette 18",
@@ -6005,9 +5504,6 @@
     "price": 20.18,
     "size": "15 ml",
     "stock": 349,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6038,7 +5534,7 @@
     ]
   },
   {
-    "id": 169,
+    "id": "a0703e56-b6dc-4861-b78a-334408a2a9a4",
     "category": "Eyeshadow",
     "brand": "The Ordinary",
     "name": "The Ordinary Nude Palette 19",
@@ -6048,9 +5544,6 @@
     "price": 37.08,
     "size": "6 ml",
     "stock": 308,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6071,7 +5564,7 @@
     ]
   },
   {
-    "id": 170,
+    "id": "2689e42d-3dfa-40d6-91a6-8bd24291404a",
     "category": "Eyeshadow",
     "brand": "The Ordinary",
     "name": "The Ordinary Color Strike 20",
@@ -6081,9 +5574,6 @@
     "price": 32.09,
     "size": "6 ml",
     "stock": 44,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6099,7 +5589,7 @@
     ]
   },
   {
-    "id": 171,
+    "id": "bcfe06ea-b432-4099-903c-899c7cc670ae",
     "category": "Eyeshadow",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Neon Obsessions 21",
@@ -6109,9 +5599,6 @@
     "price": 42.77,
     "size": "10 ml",
     "stock": 139,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6143,7 +5630,7 @@
     ]
   },
   {
-    "id": 172,
+    "id": "dea2623e-59f0-47f5-b4bc-b29c77ca75c0",
     "category": "Eyeshadow",
     "brand": "MAC",
     "name": "MAC Glitter & Glow 22",
@@ -6153,9 +5640,6 @@
     "price": 29.32,
     "size": "3 ml",
     "stock": 29,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6177,7 +5661,7 @@
     ]
   },
   {
-    "id": 173,
+    "id": "125caefe-5331-4d52-be47-41b0a66dd15f",
     "category": "Eyeshadow",
     "brand": "MAC",
     "name": "MAC Glitter & Glow 23",
@@ -6187,9 +5671,6 @@
     "price": 44.84,
     "size": "4 ml",
     "stock": 495,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6210,7 +5691,7 @@
     ]
   },
   {
-    "id": 174,
+    "id": "0b61095f-3e73-4bef-b646-b4c804542ae0",
     "category": "Eyeshadow",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Soft Glam 24",
@@ -6220,9 +5701,6 @@
     "price": 49.02,
     "size": "11 ml",
     "stock": 401,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6243,7 +5721,7 @@
     ]
   },
   {
-    "id": 175,
+    "id": "2dc571f3-9878-42e3-970c-335055f2c52a",
     "category": "Eyeshadow",
     "brand": "Sheglam",
     "name": "Sheglam Liquid Lurex 25",
@@ -6253,9 +5731,6 @@
     "price": 41.4,
     "size": "8 ml",
     "stock": 36,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6282,7 +5757,7 @@
     ]
   },
   {
-    "id": 176,
+    "id": "f8374ca5-1f1d-452f-9135-59c6e881ab23",
     "category": "Eyeshadow",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Neon Obsessions 26",
@@ -6292,9 +5767,6 @@
     "price": 34.11,
     "size": "14 ml",
     "stock": 12,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6311,7 +5783,7 @@
     ]
   },
   {
-    "id": 177,
+    "id": "84c08993-dfc1-4133-b3d9-fadc5fef92f9",
     "category": "Eyeshadow",
     "brand": "Sheglam",
     "name": "Sheglam Color Strike 27",
@@ -6321,9 +5793,6 @@
     "price": 50.99,
     "size": "6 ml",
     "stock": 463,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6349,7 +5818,7 @@
     ]
   },
   {
-    "id": 178,
+    "id": "fdc9c2fa-9020-4ae9-974a-70b2b27669a3",
     "category": "Eyeshadow",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Neon Obsessions 28",
@@ -6359,9 +5828,6 @@
     "price": 53.99,
     "size": "12 ml",
     "stock": 482,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6392,7 +5858,7 @@
     ]
   },
   {
-    "id": 179,
+    "id": "4dbb6954-d5af-4cf4-8c4c-99adef59576d",
     "category": "Eyeshadow",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Soft Glam 29",
@@ -6402,9 +5868,6 @@
     "price": 20.68,
     "size": "5 ml",
     "stock": 456,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6430,7 +5893,7 @@
     ]
   },
   {
-    "id": 180,
+    "id": "f3a55342-2749-4ae5-b9d8-338d11353a90",
     "category": "Eyeshadow",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Mothership Eyeshadow 30",
@@ -6440,9 +5903,6 @@
     "price": 26.03,
     "size": "8 ml",
     "stock": 63,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6464,7 +5924,7 @@
     ]
   },
   {
-    "id": 181,
+    "id": "d8d28dc8-bd9a-4c65-80b6-9be4ca1954ca",
     "category": "Eyelash",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Better Than Sex 1",
@@ -6474,9 +5934,6 @@
     "price": 57.79,
     "size": "9 ml",
     "stock": 165,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6508,7 +5965,7 @@
     ]
   },
   {
-    "id": 182,
+    "id": "7b5c0731-dec4-44b7-9122-3eafbc10d157",
     "category": "Eyelash",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Better Than Sex 2",
@@ -6518,9 +5975,6 @@
     "price": 29.36,
     "size": "7 ml",
     "stock": 386,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6536,7 +5990,7 @@
     ]
   },
   {
-    "id": 183,
+    "id": "48949d42-d805-4b17-a706-4ea6305be47e",
     "category": "Eyelash",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Sky High Mascara 3",
@@ -6546,9 +6000,6 @@
     "price": 48.37,
     "size": "14 ml",
     "stock": 390,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6574,7 +6025,7 @@
     ]
   },
   {
-    "id": 184,
+    "id": "c8ddecee-f24c-42c9-ae0a-ad105689e247",
     "category": "Eyelash",
     "brand": "Sheglam",
     "name": "Sheglam Lash Paradise 4",
@@ -6584,9 +6035,6 @@
     "price": 47.58,
     "size": "11 ml",
     "stock": 87,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6613,7 +6061,7 @@
     ]
   },
   {
-    "id": 185,
+    "id": "f4730949-14cd-4037-a2b8-7bae67019e0b",
     "category": "Eyelash",
     "brand": "MAC",
     "name": "MAC Telescopic Lift 5",
@@ -6623,9 +6071,6 @@
     "price": 25.79,
     "size": "6 ml",
     "stock": 373,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6651,7 +6096,7 @@
     ]
   },
   {
-    "id": 186,
+    "id": "51f760f2-90e2-4321-b517-d8cf286e4384",
     "category": "Eyelash",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Volume Million 6",
@@ -6661,9 +6106,6 @@
     "price": 39.35,
     "size": "13 ml",
     "stock": 55,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6690,7 +6132,7 @@
     ]
   },
   {
-    "id": 187,
+    "id": "bd884405-09fb-4bfc-8ac1-567e977b67d6",
     "category": "Eyelash",
     "brand": "MAC",
     "name": "MAC They're Real! 7",
@@ -6700,9 +6142,6 @@
     "price": 55.29,
     "size": "14 ml",
     "stock": 231,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6724,7 +6163,7 @@
     ]
   },
   {
-    "id": 188,
+    "id": "545235a9-dea3-4385-9c20-4993ea1f3ed1",
     "category": "Eyelash",
     "brand": "Milk Makeup",
     "name": "Milk Makeup They're Real! 8",
@@ -6734,9 +6173,6 @@
     "price": 58.92,
     "size": "4 ml",
     "stock": 180,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6757,7 +6193,7 @@
     ]
   },
   {
-    "id": 189,
+    "id": "ef6575c4-6177-4ecb-8c2e-9764006a43db",
     "category": "Eyelash",
     "brand": "Sheglam",
     "name": "Sheglam Better Than Sex 9",
@@ -6767,9 +6203,6 @@
     "price": 32.03,
     "size": "8 ml",
     "stock": 60,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6790,7 +6223,7 @@
     ]
   },
   {
-    "id": 190,
+    "id": "b9acb4cd-f6bb-45b6-9f83-fc10ae3f05d3",
     "category": "Eyelash",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Volume Million 10",
@@ -6800,9 +6233,6 @@
     "price": 48.56,
     "size": "6 ml",
     "stock": 374,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6834,7 +6264,7 @@
     ]
   },
   {
-    "id": 191,
+    "id": "773ef1e3-4c03-401c-9d6b-09e59fdfa489",
     "category": "Eyelash",
     "brand": "The Ordinary",
     "name": "The Ordinary Better Than Sex 11",
@@ -6844,9 +6274,6 @@
     "price": 34.99,
     "size": "11 ml",
     "stock": 19,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6872,7 +6299,7 @@
     ]
   },
   {
-    "id": 192,
+    "id": "e78767a7-f1fb-431f-9d80-94d57e027b9e",
     "category": "Eyelash",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury They're Real! 12",
@@ -6882,9 +6309,6 @@
     "price": 56.55,
     "size": "3 ml",
     "stock": 294,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6900,7 +6324,7 @@
     ]
   },
   {
-    "id": 193,
+    "id": "7af47525-1338-4084-a568-4bfa606cd6fe",
     "category": "Eyelash",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Roller Lash 13",
@@ -6910,9 +6334,6 @@
     "price": 25.84,
     "size": "2 ml",
     "stock": 60,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6929,7 +6350,7 @@
     ]
   },
   {
-    "id": 194,
+    "id": "1edb01f8-8549-4781-a10c-a60c7b07955d",
     "category": "Eyelash",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Roller Lash 14",
@@ -6939,9 +6360,6 @@
     "price": 43.17,
     "size": "4 ml",
     "stock": 418,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6962,7 +6380,7 @@
     ]
   },
   {
-    "id": 195,
+    "id": "e26e8924-af08-446f-ae48-1caa34dfedf6",
     "category": "Eyelash",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Lash Paradise 15",
@@ -6972,9 +6390,6 @@
     "price": 37.31,
     "size": "5 ml",
     "stock": 153,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -6995,7 +6410,7 @@
     ]
   },
   {
-    "id": 196,
+    "id": "c55b31e0-f2b8-4b8f-8a94-81579e3e5f58",
     "category": "Eyelash",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Roller Lash 16",
@@ -7005,9 +6420,6 @@
     "price": 59.34,
     "size": "13 ml",
     "stock": 82,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7023,7 +6435,7 @@
     ]
   },
   {
-    "id": 197,
+    "id": "7774e50e-1350-4e62-abaf-5ef9d7083016",
     "category": "Eyelash",
     "brand": "MAC",
     "name": "MAC Badgal Bang 17",
@@ -7033,9 +6445,6 @@
     "price": 23.27,
     "size": "4 ml",
     "stock": 338,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7062,7 +6471,7 @@
     ]
   },
   {
-    "id": 198,
+    "id": "636f4521-ac4f-4aea-9b7b-c182a44e54a5",
     "category": "Eyelash",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Badgal Bang 18",
@@ -7072,9 +6481,6 @@
     "price": 23.64,
     "size": "8 ml",
     "stock": 203,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7091,7 +6497,7 @@
     ]
   },
   {
-    "id": 199,
+    "id": "c6a075ec-abf6-4258-856e-fc2bccba2ad4",
     "category": "Eyelash",
     "brand": "Sheglam",
     "name": "Sheglam They're Real! 19",
@@ -7101,9 +6507,6 @@
     "price": 25.22,
     "size": "6 ml",
     "stock": 360,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7125,7 +6528,7 @@
     ]
   },
   {
-    "id": 200,
+    "id": "5ea71466-a8fa-4f23-afb1-fa0c4fb4aeb8",
     "category": "Eyelash",
     "brand": "Glossier",
     "name": "Glossier Roller Lash 20",
@@ -7135,9 +6538,6 @@
     "price": 37.24,
     "size": "3 ml",
     "stock": 100,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7159,7 +6559,7 @@
     ]
   },
   {
-    "id": 201,
+    "id": "b020072c-5f5d-40ff-965d-6d868cfacac0",
     "category": "Eyelash",
     "brand": "Sheglam",
     "name": "Sheglam Telescopic Lift 21",
@@ -7169,9 +6569,6 @@
     "price": 13.26,
     "size": "10 ml",
     "stock": 453,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7192,7 +6589,7 @@
     ]
   },
   {
-    "id": 202,
+    "id": "f59b3acf-678c-43f4-8787-b29f24fa78b2",
     "category": "Eyelash",
     "brand": "The Ordinary",
     "name": "The Ordinary Better Than Sex 22",
@@ -7202,9 +6599,6 @@
     "price": 32.36,
     "size": "11 ml",
     "stock": 258,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7236,7 +6630,7 @@
     ]
   },
   {
-    "id": 203,
+    "id": "24453907-fc11-4fe5-9143-058281c01283",
     "category": "Eyelash",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Telescopic Lift 23",
@@ -7246,9 +6640,6 @@
     "price": 55.18,
     "size": "3 ml",
     "stock": 301,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7264,7 +6655,7 @@
     ]
   },
   {
-    "id": 204,
+    "id": "8f2517d4-ff64-4c0b-99e7-5a133e815919",
     "category": "Eyelash",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Volume Million 24",
@@ -7274,9 +6665,6 @@
     "price": 11.97,
     "size": "14 ml",
     "stock": 135,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7298,7 +6686,7 @@
     ]
   },
   {
-    "id": 205,
+    "id": "47a003fd-6933-4706-865b-d574719f3ff7",
     "category": "Eyelash",
     "brand": "MAC",
     "name": "MAC Volume Million 25",
@@ -7308,9 +6696,6 @@
     "price": 34.31,
     "size": "8 ml",
     "stock": 413,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7336,7 +6721,7 @@
     ]
   },
   {
-    "id": 206,
+    "id": "5dff7901-fef9-4682-a030-d25e1624e35c",
     "category": "Eyelash",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Volume Million 26",
@@ -7346,9 +6731,6 @@
     "price": 23.42,
     "size": "15 ml",
     "stock": 221,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7375,7 +6757,7 @@
     ]
   },
   {
-    "id": 207,
+    "id": "159d089c-c630-49f6-b7db-6fc88f4431a9",
     "category": "Eyelash",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Lash Paradise 27",
@@ -7385,9 +6767,6 @@
     "price": 12.92,
     "size": "4 ml",
     "stock": 242,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7408,7 +6787,7 @@
     ]
   },
   {
-    "id": 208,
+    "id": "20ac357b-ab7d-49d1-9572-96a5672d0a33",
     "category": "Eyelash",
     "brand": "Sheglam",
     "name": "Sheglam Telescopic Lift 28",
@@ -7418,9 +6797,6 @@
     "price": 19.78,
     "size": "15 ml",
     "stock": 135,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7441,7 +6817,7 @@
     ]
   },
   {
-    "id": 209,
+    "id": "8c3d138e-b56f-40ff-a25b-639f55911e59",
     "category": "Eyelash",
     "brand": "NARS",
     "name": "NARS Telescopic Lift 29",
@@ -7451,9 +6827,6 @@
     "price": 33.24,
     "size": "12 ml",
     "stock": 334,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7484,7 +6857,7 @@
     ]
   },
   {
-    "id": 210,
+    "id": "39a17ee0-3e44-414f-b267-56b06d887e46",
     "category": "Eyelash",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Volume Million 30",
@@ -7494,9 +6867,6 @@
     "price": 49.52,
     "size": "13 ml",
     "stock": 415,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7528,7 +6898,7 @@
     ]
   },
   {
-    "id": 211,
+    "id": "397680f5-d806-4812-afc8-42ff0c465a2c",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Flyliner 1",
@@ -7538,9 +6908,6 @@
     "price": 16.04,
     "size": "4 ml",
     "stock": 125,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7572,7 +6939,7 @@
     ]
   },
   {
-    "id": 212,
+    "id": "ba7f81e8-6b56-47ca-a52a-b2b8e18e9e0a",
     "category": "Eyeliner",
     "brand": "The Ordinary",
     "name": "The Ordinary Tattoo Liner 2",
@@ -7582,9 +6949,6 @@
     "price": 27.61,
     "size": "10 ml",
     "stock": 124,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7615,7 +6979,7 @@
     ]
   },
   {
-    "id": 213,
+    "id": "8cb3a838-dc77-4fd1-b994-d2d0f9462d8e",
     "category": "Eyeliner",
     "brand": "Anastasia Beverly Hills",
     "name": "Anastasia Beverly Hills Liquid Precision 3",
@@ -7625,9 +6989,6 @@
     "price": 16.93,
     "size": "14 ml",
     "stock": 456,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7654,7 +7015,7 @@
     ]
   },
   {
-    "id": 214,
+    "id": "63e86b2d-6aa0-45de-9cd0-7da1d184189e",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Waterproof Glide 4",
@@ -7664,9 +7025,6 @@
     "price": 12.22,
     "size": "6 ml",
     "stock": 185,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7697,7 +7055,7 @@
     ]
   },
   {
-    "id": 215,
+    "id": "067dace8-a9ea-413b-bcb7-35916cb350f7",
     "category": "Eyeliner",
     "brand": "Sheglam",
     "name": "Sheglam Liquid Precision 5",
@@ -7707,9 +7065,6 @@
     "price": 57.07,
     "size": "11 ml",
     "stock": 162,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7736,7 +7091,7 @@
     ]
   },
   {
-    "id": 216,
+    "id": "19bd1590-e2d5-473a-ae55-2e9d29ddcd9e",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Stay All Day 6",
@@ -7746,9 +7101,6 @@
     "price": 32.15,
     "size": "2 ml",
     "stock": 463,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7769,7 +7121,7 @@
     ]
   },
   {
-    "id": 217,
+    "id": "9ab796ef-c141-4daa-801d-52f3112b45ac",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Tattoo Liner 7",
@@ -7779,9 +7131,6 @@
     "price": 43.47,
     "size": "7 ml",
     "stock": 442,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7807,7 +7156,7 @@
     ]
   },
   {
-    "id": 218,
+    "id": "3c2a2165-b486-4aa5-9ded-ca13011fa6d6",
     "category": "Eyeliner",
     "brand": "Sheglam",
     "name": "Sheglam Epic Ink Liner 8",
@@ -7817,9 +7166,6 @@
     "price": 52.27,
     "size": "10 ml",
     "stock": 82,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7850,7 +7196,7 @@
     ]
   },
   {
-    "id": 219,
+    "id": "48c08c52-f378-4638-8f96-6cb13ed8964c",
     "category": "Eyeliner",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Flyliner 9",
@@ -7860,9 +7206,6 @@
     "price": 15.13,
     "size": "13 ml",
     "stock": 9,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7879,7 +7222,7 @@
     ]
   },
   {
-    "id": 220,
+    "id": "74e0748b-bc4c-42bc-a76f-92d39bdf92cc",
     "category": "Eyeliner",
     "brand": "Sheglam",
     "name": "Sheglam Stay All Day 10",
@@ -7889,9 +7232,6 @@
     "price": 42.71,
     "size": "12 ml",
     "stock": 87,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7907,7 +7247,7 @@
     ]
   },
   {
-    "id": 221,
+    "id": "665f04ec-f642-4de2-b022-511d22f6df36",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Flyliner 11",
@@ -7917,9 +7257,6 @@
     "price": 51.19,
     "size": "4 ml",
     "stock": 163,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7945,7 +7282,7 @@
     ]
   },
   {
-    "id": 222,
+    "id": "825a97a4-0811-4eb2-8b38-8aa388eaebef",
     "category": "Eyeliner",
     "brand": "Glossier",
     "name": "Glossier Liquid Precision 12",
@@ -7955,9 +7292,6 @@
     "price": 55.45,
     "size": "13 ml",
     "stock": 373,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -7984,7 +7318,7 @@
     ]
   },
   {
-    "id": 223,
+    "id": "3272976d-0d6f-4091-a610-b83355855a58",
     "category": "Eyeliner",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Epic Ink Liner 13",
@@ -7994,9 +7328,6 @@
     "price": 30.31,
     "size": "8 ml",
     "stock": 423,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8017,7 +7348,7 @@
     ]
   },
   {
-    "id": 224,
+    "id": "dd62691d-62c0-4663-bd78-c33fd3cf075d",
     "category": "Eyeliner",
     "brand": "Glossier",
     "name": "Glossier Waterproof Glide 14",
@@ -8027,9 +7358,6 @@
     "price": 36.47,
     "size": "12 ml",
     "stock": 72,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8055,7 +7383,7 @@
     ]
   },
   {
-    "id": 225,
+    "id": "d9bbecfa-9846-4a09-ac83-caa04651ed89",
     "category": "Eyeliner",
     "brand": "The Ordinary",
     "name": "The Ordinary Epic Ink Liner 15",
@@ -8065,9 +7393,6 @@
     "price": 36.04,
     "size": "5 ml",
     "stock": 315,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8094,7 +7419,7 @@
     ]
   },
   {
-    "id": 226,
+    "id": "ae665c5e-d752-494d-b439-49ccd7fbf1c3",
     "category": "Eyeliner",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Stay All Day 16",
@@ -8104,9 +7429,6 @@
     "price": 42.39,
     "size": "9 ml",
     "stock": 474,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8133,7 +7455,7 @@
     ]
   },
   {
-    "id": 227,
+    "id": "82184fff-8e1d-4573-bed8-f70d15d195b8",
     "category": "Eyeliner",
     "brand": "MAC",
     "name": "MAC Epic Ink Liner 17",
@@ -8143,9 +7465,6 @@
     "price": 51.19,
     "size": "10 ml",
     "stock": 225,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8176,7 +7495,7 @@
     ]
   },
   {
-    "id": 228,
+    "id": "2bf95e77-7dcd-481e-ad31-7009c47c6f30",
     "category": "Eyeliner",
     "brand": "Charlotte Tilbury",
     "name": "Charlotte Tilbury Flyliner 18",
@@ -8186,9 +7505,6 @@
     "price": 16.81,
     "size": "7 ml",
     "stock": 183,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8204,7 +7520,7 @@
     ]
   },
   {
-    "id": 229,
+    "id": "c7016806-79e7-43f4-8ebe-1eacdf05632f",
     "category": "Eyeliner",
     "brand": "MAC",
     "name": "MAC Kohl Pencil 19",
@@ -8214,9 +7530,6 @@
     "price": 56.77,
     "size": "9 ml",
     "stock": 495,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8248,7 +7561,7 @@
     ]
   },
   {
-    "id": 230,
+    "id": "48c5382c-2725-491a-ad6f-8c5378693630",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Liquid Precision 20",
@@ -8258,9 +7571,6 @@
     "price": 21.74,
     "size": "5 ml",
     "stock": 434,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8286,7 +7596,7 @@
     ]
   },
   {
-    "id": 231,
+    "id": "01183be0-0cb7-4e27-bd33-8c60012758d2",
     "category": "Eyeliner",
     "brand": "Fenty Beauty",
     "name": "Fenty Beauty Gel Eyeliner 21",
@@ -8296,9 +7606,6 @@
     "price": 15.62,
     "size": "10 ml",
     "stock": 328,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8324,7 +7631,7 @@
     ]
   },
   {
-    "id": 232,
+    "id": "6dea1bfa-45a0-4ee5-973c-14645d9e76e1",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Waterproof Glide 22",
@@ -8334,9 +7641,6 @@
     "price": 21.09,
     "size": "9 ml",
     "stock": 51,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8363,7 +7667,7 @@
     ]
   },
   {
-    "id": 233,
+    "id": "0d52dfc7-cdf9-4a14-af9d-0639a3283ef2",
     "category": "Eyeliner",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Liquid Precision 23",
@@ -8373,9 +7677,6 @@
     "price": 38.48,
     "size": "6 ml",
     "stock": 113,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8402,7 +7703,7 @@
     ]
   },
   {
-    "id": 234,
+    "id": "b6f84eb8-63d1-438c-9f3f-9faa62ec408f",
     "category": "Eyeliner",
     "brand": "Milk Makeup",
     "name": "Milk Makeup Liquid Precision 24",
@@ -8412,9 +7713,6 @@
     "price": 12.82,
     "size": "13 ml",
     "stock": 227,
-    "isGlutenFree": false,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8436,7 +7734,7 @@
     ]
   },
   {
-    "id": 235,
+    "id": "8b3c14a5-d3e6-4303-aa41-a0694f00a633",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Liquid Precision 25",
@@ -8446,9 +7744,6 @@
     "price": 51.23,
     "size": "15 ml",
     "stock": 430,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8475,7 +7770,7 @@
     ]
   },
   {
-    "id": 236,
+    "id": "dcc322a6-0f49-479e-9540-93ba6ae06b77",
     "category": "Eyeliner",
     "brand": "MAC",
     "name": "MAC Kohl Pencil 26",
@@ -8485,9 +7780,6 @@
     "price": 51.93,
     "size": "11 ml",
     "stock": 164,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8514,7 +7806,7 @@
     ]
   },
   {
-    "id": 237,
+    "id": "e17e9558-face-48f9-ba32-0460387ce1cd",
     "category": "Eyeliner",
     "brand": "NARS",
     "name": "NARS Flyliner 27",
@@ -8524,9 +7816,6 @@
     "price": 50.57,
     "size": "6 ml",
     "stock": 15,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8552,7 +7841,7 @@
     ]
   },
   {
-    "id": 238,
+    "id": "497d45c8-1b11-4c1f-87f9-53e81acb8692",
     "category": "Eyeliner",
     "brand": "Glossier",
     "name": "Glossier Tattoo Liner 28",
@@ -8562,9 +7851,6 @@
     "price": 59.87,
     "size": "13 ml",
     "stock": 493,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8586,7 +7872,7 @@
     ]
   },
   {
-    "id": 239,
+    "id": "b5587ea5-b218-468e-867e-0a2d6622152e",
     "category": "Eyeliner",
     "brand": "Sheglam",
     "name": "Sheglam Flyliner 29",
@@ -8596,9 +7882,6 @@
     "price": 29.08,
     "size": "6 ml",
     "stock": 134,
-    "isGlutenFree": true,
-    "isCrueltyFree": true,
-    "isVegan": true,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
@@ -8615,7 +7898,7 @@
     ]
   },
   {
-    "id": 240,
+    "id": "ed921b78-aae0-44ea-96c1-d24b5fadbf8c",
     "category": "Eyeliner",
     "brand": "Rare Beauty",
     "name": "Rare Beauty Kohl Pencil 30",
@@ -8625,9 +7908,6 @@
     "price": 34.7,
     "size": "11 ml",
     "stock": 104,
-    "isGlutenFree": true,
-    "isCrueltyFree": false,
-    "isVegan": false,
     "whatItIs": "A revolutionary makeup product that will change your routine. Ideal to highlight your natural beauty.",
     "howToUse": "Apply evenly on the desired area using a brush, sponge, or your fingers. Blend well for a flawless finish.",
     "ingredients": "Water, Glycerin, Dimethicone, Mica, Silica, Titanium Dioxide, Iron Oxides.",
