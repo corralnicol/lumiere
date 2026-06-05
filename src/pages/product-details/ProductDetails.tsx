@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import ProductDetailPage, {
   type DetailTab,
 } from "@/components/ProductDetail/ProductDetail";
-import { getProductImageSrc } from "@/utils/productImages";
+import { getProductImageSrc, getFallbackImageByCategory } from "@/utils/productImages";
 import { useProduct, useProducts } from "@/hooks/useProducts";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
@@ -71,16 +71,14 @@ export default function ProductDetails() {
       storageKeyPrefix="lumiere-product-reviews-v2"
       imageSrc={product ? getProductImageSrc(product) : ""}
       imageFallbackSrc={(selected) =>
-        `https://picsum.photos/900/900?random=${selected.id}`
+        getFallbackImageByCategory(selected.category ?? null)
       }
-      imageReferrerPolicy="no-referrer"
       galleryVariant="cover"
       recommendedProducts={recommendedProducts}
       getRecommendedImageSrc={(item) => getProductImageSrc(item)}
       getRecommendedImageFallbackSrc={(item) =>
-        `https://picsum.photos/300/300?random=${item.id}`
+        getFallbackImageByCategory(item.category ?? null)
       }
-      recommendedImageReferrerPolicy="no-referrer"
     />
   );
 }
