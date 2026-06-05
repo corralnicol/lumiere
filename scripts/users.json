@@ -1,0 +1,66 @@
+[
+  {
+    "uuid": "a9edc303-095a-45e5-956a-c10d5e22280e",
+    "first_name": "Juan",
+    "last_name": "Garcia",
+    "email": "juan.garcia@gmail.com",
+    "phone": "+573012345678",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "f37ac356-6dc8-4d82-9e59-6ef25f264a7b",
+    "first_name": "Maria",
+    "last_name": "Rodriguez",
+    "email": "maria.rodriguez@gmail.com",
+    "phone": "+573112345679",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "81a202dc-bdcb-4f2b-9c58-71a63efabdd2",
+    "first_name": "Carlos",
+    "last_name": "Lopez",
+    "email": "carlos.lopez@gmail.com",
+    "phone": "+573212345680",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "8aefd553-b6ac-47a4-b555-2ea70476de88",
+    "first_name": "Ana",
+    "last_name": "Martinez",
+    "email": "ana.martinez@gmail.com",
+    "phone": "+573312345681",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "d0fe5d14-2dc8-423c-96b5-1dbb1ddb74d3",
+    "first_name": "Pedro",
+    "last_name": "Hernandez",
+    "email": "pedro.hernandez@gmail.com",
+    "phone": "+573412345682",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "2f82fdc7-0406-45a9-957f-15c9807fb8a6",
+    "first_name": "Isabella",
+    "last_name": "Sanchez",
+    "email": "isabella.sanchez@gmail.com",
+    "phone": "+573512345683",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "7bd6e02b-bb0a-46af-8257-31799356de14",
+    "first_name": "Diego",
+    "last_name": "Ramirez",
+    "email": "diego.ramirez@gmail.com",
+    "phone": "+573612345684",
+    "password": "Password1234;"
+  },
+  {
+    "uuid": "2cb290f6-b477-4616-8965-402b9863230a",
+    "first_name": "Sofia",
+    "last_name": "Flores",
+    "email": "sofia.flores@gmail.com",
+    "phone": "+573712345685",
+    "password": "Password1234;"
+  }
+]

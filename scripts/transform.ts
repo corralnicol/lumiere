@@ -6,7 +6,7 @@ const updated = products.map((p) => {
     //     ...p,
     // }
 
-    delete p.info;
+    // delete p.info;
 
     return p;
 });
