@@ -529,6 +529,34 @@
 	border: 1px solid rgba(159, 47, 56, 0.2);
 }
 
+.product-card-fav {
+	position: absolute;
+	top: 12px;
+	right: 14px;
+	z-index: 2;
+	border: none;
+	background: transparent;
+	color: #7f434e;
+	font-size: 20px;
+	cursor: pointer;
+	padding: 0;
+	line-height: 1;
+	appearance: none;
+	-webkit-appearance: none;
+	box-shadow: none;
+}
+
+.product-card-fav.is-active {
+	color: #9f2f38;
+	transform: scale(1.08);
+}
+
+.product-card-fav:focus-visible {
+	outline: 3px solid rgba(159, 47, 56, 0.28);
+	outline-offset: 4px;
+	border-radius: 999px;
+}
+
 .product-card-body h3 {
 	margin: 0;
 	font-family: "Playfair Display", serif;

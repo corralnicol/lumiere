@@ -196,7 +196,7 @@ export type Database = {
           city: string | null
           created_at: string
           email: string
-          favorites: Json
+          favorites: string[]
           first_name: string | null
           id: string
           last_name: string | null
@@ -212,7 +212,7 @@ export type Database = {
           city?: string | null
           created_at?: string
           email: string
-          favorites?: Json
+          favorites?: string[]
           first_name?: string | null
           id: string
           last_name?: string | null
@@ -228,7 +228,7 @@ export type Database = {
           city?: string | null
           created_at?: string
           email?: string
-          favorites?: Json
+          favorites?: string[]
           first_name?: string | null
           id?: string
           last_name?: string | null
@@ -286,7 +286,7 @@ export type Database = {
         Returns: Json
       }
       place_order: { Args: never; Returns: string }
-      toggle_favorite: { Args: { p_product_id: string }; Returns: Json }
+      toggle_favorite: { Args: { p_product_id: string }; Returns: string[] }
     }
     Enums: {
       order_status: "pending" | "completed" | "cancelled"

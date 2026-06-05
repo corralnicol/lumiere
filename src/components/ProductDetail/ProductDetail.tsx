@@ -10,6 +10,7 @@ import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
 import { useUserState } from "@/contexts/user/UserContext";
+import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/FavoritesContext";
 import { addReview } from "@/lib/products";
 import type { Product, ProductReview } from "@/types/products";
 
@@ -91,6 +92,9 @@ export default function ProductDetailPage({
     const [reviewComment, setReviewComment] = useState("");
     const navigate = useNavigate();
     const { name: userName, isLoggedIn } = useUserState();
+    const { ids: favIds } = useFavoritesState();
+    const favActions = useFavoritesActions();
+    const isFav = product ? favIds.includes(product.id) : false;
 
     const { addToCart } = useCart();
 
@@ -241,14 +245,27 @@ export default function ProductDetailPage({
                 <section className="product-detail-hero">
                     <div className={galleryClassName}>
                         <button
-                            className="detail-favorite"
+                            className={`detail-favorite${isFav ? " is-active" : ""}`}
                             type="button"
-                            aria-label={`Save ${product.name} to wishlist`}
-                            onClick={() =>
-                                showFeedback(`${product.name} saved to wishlist.`, "success")
-                            }
+                            aria-label={isFav ? `Remove ${product.name} from favorites` : `Add ${product.name} to favorites`}
+                            aria-pressed={isFav}
+                            onClick={async () => {
+                                if (!isLoggedIn) {
+                                    showFeedback("Sign in to save favorites.", "info");
+                                    return;
+                                }
+                                try {
+                                    await favActions?.toggle(product.id);
+                                    showFeedback(
+                                        isFav ? `${product.name} removed from favorites.` : `${product.name} added to favorites.`,
+                                        isFav ? "info" : "success"
+                                    );
+                                } catch {
+                                    showFeedback("Could not update favorites.", "warning");
+                                }
+                            }}
                         >
-                            <i className="fa-regular fa-heart" aria-hidden="true"></i>
+                            <i className={`${isFav ? "fa-solid" : "fa-regular"} fa-heart`} aria-hidden="true"></i>
                         </button>
 
                         <img

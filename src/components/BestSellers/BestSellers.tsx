@@ -1,8 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
 import { useProductsByIds } from "@/hooks/useProducts";
 import { getProductImageSrc } from "@/utils/productImages";
+import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/FavoritesContext";
+import { useUserState } from "@/contexts/user/UserContext";
 
 type BestSellersProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -11,26 +12,32 @@ type BestSellersProps = {
 const bestSellerIds = homeBestSellers.map((e) => e.id);
 
 function BestSellers({ onFeedback }: BestSellersProps) {
-  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
   const { data: products, loading, error } = useProductsByIds(bestSellerIds);
-  
-  const toggleFavorite = (
+  const { ids } = useFavoritesState();
+  const actions = useFavoritesActions();
+  const user = useUserState();
+
+  const handleToggle = async (
     event: React.MouseEvent<HTMLButtonElement>,
     productId: string,
     itemName: string
   ) => {
     event.preventDefault();
-
-    const isFavorite = favoriteIds.includes(productId);
-
-    if (isFavorite) {
-      setFavoriteIds((currentIds) => currentIds.filter((id) => id !== productId));
-      onFeedback(`${itemName} removed from favorites.`, "info");
+    event.stopPropagation();
+    if (!user.isLoggedIn) {
+      onFeedback("Sign in to save favorites.", "info");
       return;
     }
-
-    setFavoriteIds((currentIds) => [...currentIds, productId]);
-    onFeedback(`${itemName} added to favorites.`, "success");
+    const isFav = ids.includes(productId);
+    try {
+      await actions?.toggle(productId);
+      onFeedback(
+        isFav ? `${itemName} removed from favorites.` : `${itemName} added to favorites.`,
+        isFav ? "info" : "success"
+      );
+    } catch {
+      onFeedback("Could not update favorites.", "warning");
+    }
   };
 
   return (
@@ -49,7 +56,7 @@ function BestSellers({ onFeedback }: BestSellersProps) {
             const product = products.find((p) => p.id === entry.id);
             if (!product) return null;
 
-            const isFavorite = favoriteIds.includes(product.id);
+            const isFavorite = ids.includes(product.id);
             const searchTarget = [product.brand, product.name, product.category]
               .filter(Boolean)
               .join(" ");
@@ -72,7 +79,7 @@ function BestSellers({ onFeedback }: BestSellersProps) {
                     }
                     aria-pressed={isFavorite}
                     onClick={(event) =>
-                      toggleFavorite(event, product.id, product.name)
+                      handleToggle(event, product.id, product.name)
                     }
                   >
                     <i

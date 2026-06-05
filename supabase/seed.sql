@@ -59,12 +59,12 @@ WHERE id IN ('395e637f-2b0b-48b6-bcc1-3c30b0f9575b',
 
 -- Linus favorites Bob's chair
 UPDATE public.profiles
-SET favorites = '["c4928b77-9d2e-4ebf-929a-7caef208692f"]'::jsonb
+SET favorites = ARRAY['c4928b77-9d2e-4ebf-929a-7caef208692f'::uuid]
 WHERE id = '395e637f-2b0b-48b6-bcc1-3c30b0f9575b';
 
 -- Andrew favorites the lamp and the desk, and has a 2-item cart ready to check out
 UPDATE public.profiles
-SET favorites = '["0a1785a7-d9a1-4263-81a3-84520c296afa","be946926-e330-4bd0-9d4b-80f9d91bd5f6"]'::jsonb,
+SET favorites = ARRAY['0a1785a7-d9a1-4263-81a3-84520c296afa'::uuid, 'be946926-e330-4bd0-9d4b-80f9d91bd5f6'::uuid],
     cart      = '[{"product_id":"8df41f30-b061-4b36-a1a5-bc9355dbdf4e","quantity":1},
                   {"product_id":"c4928b77-9d2e-4ebf-929a-7caef208692f","quantity":2}]'::jsonb
 WHERE id = '57d9019a-8227-4fa2-b378-d0b77662f7bc';

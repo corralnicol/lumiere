@@ -1,7 +1,10 @@
-import { useState, type SubmitEvent } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef, useEffect, type SubmitEvent } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useUserState } from "@/contexts/user/UserContext";
 import { useCart } from "@/contexts/CartContext";
+import { useFavoritesState } from "@/contexts/favorites/FavoritesContext";
+import { useProductsByIds } from "@/hooks/useProducts";
+import { getProductImageSrc } from "@/utils/productImages";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -35,15 +38,97 @@ function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
   );
 }
 
+function FavoritesDropdown({ onClose }: { onClose: () => void }) {
+  const user = useUserState();
+  const { ids, loading: favLoading } = useFavoritesState();
+  const { data: favProducts, loading: prodLoading } = useProductsByIds(ids);
+  const isLoading = favLoading || prodLoading;
+
+  if (!user.isLoggedIn) {
+    return (
+      <div className="fav-dropdown-empty">
+        <p>Sign in to view your favorites.</p>
+        <Link to="/auth/sign-in" className="fav-dropdown-signin" onClick={onClose}>
+          Sign in
+        </Link>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="fav-dropdown-empty">
+        <span className="activity-spinner" aria-hidden="true"></span>
+      </div>
+    );
+  }
+
+  if (ids.length === 0) {
+    return (
+      <div className="fav-dropdown-empty">
+        <p>No favorites yet. Tap the heart on any product to save it.</p>
+      </div>
+    );
+  }
+
+  return (
+    <ul className="fav-dropdown-list">
+      {favProducts.map((p) => (
+        <li key={p.id}>
+          <Link to={`/products/${p.id}`} className="fav-dropdown-row" onClick={onClose}>
+            <img src={getProductImageSrc(p)} alt={p.name} className="fav-row-img" />
+            <span className="fav-row-info">
+              <span className="fav-row-brand">{p.brand}</span>
+              <span className="fav-row-name">{p.name}</span>
+            </span>
+            <span className="fav-row-price">${Number(p.price).toFixed(2)}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function Header({ onFeedback }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [isFavOpen, setIsFavOpen] = useState(false);
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
+  const { ids: favIds } = useFavoritesState();
+  const favCount = favIds.length;
+  const location = useLocation();
+  const desktopFavRef = useRef<HTMLDivElement>(null);
+  const mobileFavRef = useRef<HTMLDivElement>(null);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const closeAll = () => {
+    setIsFavOpen(false);
+    setIsMenuOpen(false);
+  };
+
+  // Close favorites dropdown on route change
+  useEffect(() => {
+    setIsFavOpen(false);
+  }, [location.pathname]);
+
+  // Close favorites dropdown on outside click
+  useEffect(() => {
+    if (!isFavOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (
+        desktopFavRef.current && !desktopFavRef.current.contains(e.target as Node) &&
+        mobileFavRef.current && !mobileFavRef.current.contains(e.target as Node)
+      ) {
+        setIsFavOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [isFavOpen]);
 
   const handleSearchSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -100,24 +185,6 @@ function Header({ onFeedback }: HeaderProps) {
     onFeedback("Search reset. You can try a different keyword now.", "info");
   };
 
-  const handleUtilityClick = (
-    type: "favorites" | "cart" | "account"
-  ) => {
-    if (type === "favorites") {
-      onFeedback("Favorites are still in development and will be available soon.", "info");
-    }
-
-    if (type === "cart") {
-      onFeedback("Opening the products page so you can continue shopping.", "info");
-    }
-
-    if (type === "account") {
-      onFeedback("The account section is still in development and will be available soon.", "info");
-    }
-
-    closeMenu();
-  };
-
   return (
     <header className="header-lumiere" id="top">
       <div className="degrade">
@@ -151,13 +218,24 @@ function Header({ onFeedback }: HeaderProps) {
           <Link to="/seller" onClick={closeMenu}>Seller</Link>
 
           <div className="mobile-menu-icons">
-            <Link
-              to="/products"
-              aria-label="Favorites"
-              onClick={() => handleUtilityClick("favorites")}
-            >
-              <i className="fa-regular fa-heart" aria-hidden="true"></i>
-            </Link>
+            <div className="fav-anchor" ref={mobileFavRef}>
+              <button
+                type="button"
+                className="fav-heart-btn"
+                aria-label={favCount > 0 ? `Favorites, ${favCount} items` : "Favorites"}
+                aria-expanded={isFavOpen}
+                aria-haspopup="true"
+                onClick={() => setIsFavOpen((v) => !v)}
+              >
+                <i className="fa-regular fa-heart" aria-hidden="true"></i>
+                {favCount > 0 && <span className="cart-badge" aria-hidden="true">{favCount}</span>}
+              </button>
+              {isFavOpen && (
+                <div className="fav-dropdown fav-dropdown--mobile">
+                  <FavoritesDropdown onClose={closeAll} />
+                </div>
+              )}
+            </div>
 
             <Link
               to="/cart"
@@ -200,13 +278,23 @@ function Header({ onFeedback }: HeaderProps) {
         </form>
 
         <div className="header-icons">
-          <Link
-            to="/#best-sellers"
-            aria-label="Favorites"
-            onClick={() => handleUtilityClick("favorites")}
-          >
-            <i className="fa-regular fa-heart" aria-hidden="true"></i>
-          </Link>
+          <div className="fav-anchor" ref={desktopFavRef}>
+            <button
+              type="button"
+              className="fav-heart-btn"
+              aria-label="Favorites"
+              aria-expanded={isFavOpen}
+              aria-haspopup="true"
+              onClick={() => setIsFavOpen((v) => !v)}
+            >
+              <i className="fa-regular fa-heart" aria-hidden="true"></i>
+            </button>
+            {isFavOpen && (
+              <div className="fav-dropdown">
+                <FavoritesDropdown onClose={closeAll} />
+              </div>
+            )}
+          </div>
 
           <Link
             to="/cart"

@@ -549,6 +549,7 @@ export function Products() {
                         product={product}
                         index={index}
                         key={product.id}
+                        onFeedback={showFeedback}
                     />
                 ))}
             </div>

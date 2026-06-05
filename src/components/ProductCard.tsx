@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { getProductImageSrc } from "@/utils/productImages";
 import type { Product } from "@/types/products";
 import { categories } from "@/data/categories";
+import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/FavoritesContext";
+import { useUserState } from "@/contexts/user/UserContext";
 
 const buildSearchTarget = (product: Product) => {
     return [
@@ -20,11 +22,43 @@ const getCategoryLabel = (categoryId: string | null): string => {
     return categories.find(c => c.id === categoryId)?.label ?? categoryId;
 };
 
-export function ProductCard({ product, index }: { product: Product; index?: number }) {
+type FeedbackType = "info" | "success" | "warning";
+
+export function ProductCard({
+    product,
+    index,
+    onFeedback,
+}: {
+    product: Product;
+    index?: number;
+    onFeedback?: (msg: string, type?: FeedbackType) => void;
+}) {
     const sizeLabel = product.size || "Standard size";
     const stockLabel = product.stock > 0 ? `${product.stock} left` : "Unavailable";
     const stockState = product.stock <= 20 ? "low" : "ok";
     const rating = product.rating ?? 0;
+    const user = useUserState();
+    const { ids } = useFavoritesState();
+    const actions = useFavoritesActions();
+    const isFav = ids.includes(product.id);
+
+    const handleFavClick = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!user.isLoggedIn) {
+            onFeedback?.("Sign in to save favorites.", "info");
+            return;
+        }
+        try {
+            await actions?.toggle(product.id);
+            onFeedback?.(
+                isFav ? `${product.name} removed from favorites.` : `${product.name} added to favorites.`,
+                isFav ? "info" : "success"
+            );
+        } catch {
+            onFeedback?.("Could not update favorites.", "warning");
+        }
+    };
 
     return (
         <Link
@@ -37,6 +71,15 @@ export function ProductCard({ product, index }: { product: Product; index?: numb
                 <span className="product-card-tag">
                     {getCategoryLabel(product.category)}
                 </span>
+                <button
+                    type="button"
+                    className={`product-card-fav${isFav ? " is-active" : ""}`}
+                    aria-label={isFav ? `Remove ${product.name} from favorites` : `Add ${product.name} to favorites`}
+                    aria-pressed={isFav}
+                    onClick={handleFavClick}
+                >
+                    <i className={`${isFav ? "fa-solid" : "fa-regular"} fa-heart`} aria-hidden="true" />
+                </button>
                 <img
                     src={getProductImageSrc(product)}
                     alt={product.name}
