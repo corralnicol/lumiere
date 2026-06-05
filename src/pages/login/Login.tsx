@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
@@ -14,12 +14,16 @@ const Login = () => {
     const [error, setError] = useState("");
     const user = useUserState();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Respeta la ruta de retorno si el usuario llegó aquí desde una página protegida
+    const from = (location.state as { from?: string } | null)?.from ?? '/account';
 
     useEffect(() => {
         if (!user.loading && user.isLoggedIn) {
-            navigate("/account", { replace: true });
+            navigate(from, { replace: true });
         }
-    }, [navigate, user.loading, user.isLoggedIn]);
+    }, [navigate, user.loading, user.isLoggedIn, from]);
 
     const handleLogin = async () => {
         const trimmedEmail = email.trim();

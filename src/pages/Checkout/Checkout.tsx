@@ -1,22 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
+import { useUserState } from '@/contexts/user/UserContext';
+import { supabase } from '@/lib/supabase';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
+
+interface ProfileInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
 
 // Página de checkout
 // Aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
 const Checkout: React.FC = () => {
   const { cart, getCartTotal } = useCart();
+  const { id: userId, isLoggedIn, loading: authLoading } = useUserState();
   const navigate = useNavigate();
 
-  // Estado para guardar los datos que el usuario escribe en el formulario
+  // Redirige al login si el usuario no está autenticado
+  // Cubre accesos directos por URL, no solo el botón del carrito
+  useEffect(() => {
+    if (!authLoading && !isLoggedIn) {
+      navigate('/auth/sign-in', { state: { from: '/checkout' }, replace: true });
+    }
+  }, [authLoading, isLoggedIn, navigate]);
+
+  // Datos del perfil cargados desde Supabase (solo lectura en el checkout)
+  const [profile, setProfile] = useState<ProfileInfo | null>(null);
+
+  useEffect(() => {
+    if (!userId) return;
+    supabase
+      .from('profiles')
+      .select('first_name, last_name, email, phone')
+      .eq('id', userId)
+      .single()
+      .then(({ data }) => {
+        if (data) {
+          setProfile({
+            firstName: data.first_name ?? '',
+            lastName: data.last_name ?? '',
+            email: data.email ?? '',
+            phone: data.phone ?? '',
+          });
+        }
+      });
+  }, [userId]);
+
+  // Solo dirección, ciudad y departamento son editables (los datos personales vienen del perfil)
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
     address: '',
     city: '',
     department: '',
@@ -47,7 +83,13 @@ const Checkout: React.FC = () => {
     e.preventDefault();
 
     // Guardamos los datos de envío en localStorage para usarlos después
-    localStorage.setItem('lumiere_shipping', JSON.stringify(formData));
+    localStorage.setItem('lumiere_shipping', JSON.stringify({
+      firstName: profile?.firstName ?? '',
+      lastName: profile?.lastName ?? '',
+      email: profile?.email ?? '',
+      phone: profile?.phone ?? '',
+      ...formData,
+    }));
     navigate('/payment');
   };
 
@@ -115,61 +157,25 @@ const Checkout: React.FC = () => {
               Datos de Envío
             </h2>
 
-            {/* Fila de nombre y apellido */}
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="firstName">Nombre</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  placeholder="Tu nombre"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  required
-                />
+            {/* Datos personales cargados automáticamente desde el perfil */}
+            {profile && (
+              <div className="profile-info-card">
+                <p className="profile-info-name">
+                  <i className="fa-solid fa-user"></i>
+                  {profile.firstName} {profile.lastName}
+                </p>
+                <p className="profile-info-detail">
+                  <i className="fa-solid fa-envelope"></i>
+                  {profile.email}
+                </p>
+                {profile.phone && (
+                  <p className="profile-info-detail">
+                    <i className="fa-solid fa-phone"></i>
+                    {profile.phone}
+                  </p>
+                )}
               </div>
-              <div className="form-group">
-                <label htmlFor="lastName">Apellido</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  placeholder="Tu apellido"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Fila de email y teléfono */}
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="email">Correo Electrónico</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="correo@ejemplo.com"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Teléfono</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="300 123 4567"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </div>
+            )}
 
             {/* Dirección ocupa toda la fila */}
             <div className="form-row">

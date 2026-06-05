@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
+import { useUserState } from '@/contexts/user/UserContext';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/cart.css';
@@ -10,6 +11,17 @@ import '../../styles/cart.css';
 const Cart: React.FC = () => {
   // Traemos las funciones del carrito desde el contexto global
   const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const { isLoggedIn } = useUserState();
+  const navigate = useNavigate();
+
+  // Lleva al usuario al checkout si está autenticado, o a login si no lo está
+  const handleCheckout = () => {
+    if (isLoggedIn) {
+      navigate('/checkout');
+    } else {
+      navigate('/auth/sign-in', { state: { from: '/checkout' } });
+    }
+  };
 
   // Función para mostrar mensajes tipo "toast" (la necesitan el Header y Footer)
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
@@ -101,10 +113,10 @@ const Cart: React.FC = () => {
               </div>
               
               {/* Botón para ir a la página de checkout */}
-              <Link to="/checkout" className="checkout-btn">
+              <button className="checkout-btn" onClick={handleCheckout}>
                 Ir a Pagar
                 <i className="fa-solid fa-arrow-right"></i>
-              </Link>
+              </button>
               
               {/* Link para volver al home y seguir comprando */}
               <Link to="/" className="continue-btn" style={{ width: '100%', textAlign: 'center', marginTop: '15px' }}>

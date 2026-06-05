@@ -147,6 +147,43 @@
   box-shadow: 0 0 0 4px rgba(217, 125, 144, 0.15);
 }
 
+.profile-info-card {
+  background: #FFF0F3;
+  border: 2px solid #E7C0C8;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-info-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7F434E;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-info-detail {
+  font-size: 0.9rem;
+  color: #9f6070;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-info-name i,
+.profile-info-detail i {
+  color: #D97D90;
+  width: 14px;
+  text-align: center;
+}
+
 .form-group input::placeholder {
   color: #C9A0A8;
 }

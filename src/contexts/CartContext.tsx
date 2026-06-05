@@ -1,4 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useUserState } from '@/contexts/user/UserContext';
+import { fetchServerCart, saveServerCart, mergeCarts } from '@/lib/cart';
+import type { CartItem as CartItemLib } from '@/lib/cart';
 
 // Definimos cómo se ve un producto en nuestra tienda
 export interface Product {
@@ -15,7 +18,7 @@ export interface Product {
 }
 
 // Un CartItem es un producto pero con la cantidad que el usuario quiere comprar
-interface CartItem extends Product {
+export interface CartItem extends Product {
   quantity: number;
 }
 
@@ -30,26 +33,90 @@ interface CartContextType {
   getCartCount: () => number;
 }
 
+const GUEST_CART_KEY = 'lumiere_cart';
+
 // Creamos el contexto para que cualquier componente pueda acceder al carrito
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 // Este es el componente que envuelve toda la app y comparte el estado del carrito
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Al iniciar, revisamos si ya hay un carrito guardado en el navegador (localStorage)
-  // Así no se pierde cuando el usuario recarga la página
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const savedCart = localStorage.getItem('lumiere_cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const { id: userId, isLoggedIn, loading: authLoading } = useUserState();
 
-  // Cada vez que el carrito cambia, lo guardamos en localStorage para que persista
+  // Empezamos con carrito vacío; la hidratación ocurre en el efecto de auth
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  // ready=true una vez que la fuente correcta (servidor o localStorage) fue cargada
+  // Evita que el efecto de persistencia guarde datos antes de la hidratación inicial
+  const [ready, setReady] = useState(false);
+
+  // Efecto de autenticación: hidrata el carrito según el estado de login
+  // Al iniciar sesión: carga el carrito del servidor y mezcla el carrito de invitado
+  // Al cerrar sesión: carga el carrito de invitado desde localStorage
   useEffect(() => {
-    localStorage.setItem('lumiere_cart', JSON.stringify(cart));
-  }, [cart]);
+    if (authLoading) return;
+
+    if (isLoggedIn && userId) {
+      // Lee el carrito de invitado antes de limpiarlo
+      const guestCart = (() => {
+        try {
+          const saved = localStorage.getItem(GUEST_CART_KEY);
+          return saved ? (JSON.parse(saved) as CartItem[]) : [];
+        } catch {
+          return [];
+        }
+      })();
+
+      (async () => {
+        try {
+          const serverCart = await fetchServerCart(userId) as CartItem[];
+          const merged = mergeCarts(serverCart as CartItemLib[], guestCart as CartItemLib[]) as CartItem[];
+          setCart(merged);
+          await saveServerCart(userId, merged as CartItemLib[]);
+        } catch (err) {
+          console.error('Error al cargar el carrito del servidor:', err);
+          // Fallback: usamos el carrito de invitado si el servidor falla
+          setCart(guestCart);
+        }
+
+        // Limpiamos el carrito de invitado una vez que el servidor es la fuente de verdad
+        localStorage.removeItem(GUEST_CART_KEY);
+        setReady(true);
+      })();
+    } else {
+      // No autenticado: cargamos el carrito de invitado desde localStorage
+      try {
+        const saved = localStorage.getItem(GUEST_CART_KEY);
+        setCart(saved ? (JSON.parse(saved) as CartItem[]) : []);
+      } catch {
+        setCart([]);
+      }
+      setReady(true);
+    }
+  }, [userId, isLoggedIn, authLoading]);
+
+  // Efecto de persistencia: guarda el carrito cada vez que cambia
+  // Con debounce de 400ms para usuarios autenticados (evita saturar el servidor con clics +/-)
+  useEffect(() => {
+    if (!ready) return;
+
+    if (isLoggedIn && userId) {
+      const currentCart = cart;
+      const timer = setTimeout(async () => {
+        try {
+          await saveServerCart(userId, currentCart as CartItemLib[]);
+        } catch (err) {
+          console.error('Error al guardar el carrito en el servidor:', err);
+        }
+      }, 400);
+      return () => clearTimeout(timer);
+    } else {
+      localStorage.setItem(GUEST_CART_KEY, JSON.stringify(cart));
+    }
+  }, [cart, ready, isLoggedIn, userId]);
 
   // Función para agregar un producto al carrito
-  // Si el producto ya está, solo le sumamos 1 a la cantidad
-  const addToCart = (product: Product, quantity = 1) => {
+  // Si el producto ya está, solo le sumamos la cantidad
+  const addToCart = useCallback((product: Product, quantity = 1) => {
     const amount = Math.max(1, Math.floor(quantity));
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
@@ -60,18 +127,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       return [...prevCart, { ...product, quantity: amount }];
     });
-  };
+  }, []);
 
   // Para eliminar un producto del carrito por completo
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = useCallback((productId: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-  };
+  }, []);
 
   // Para cambiar la cantidad de un producto (por ejemplo con los botones + y -)
   // Si la cantidad llega a 0, lo eliminamos
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = useCallback((productId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(productId);
+      setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
       return;
     }
     setCart((prevCart) =>
@@ -79,22 +146,22 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         item.id === productId ? { ...item, quantity } : item
       )
     );
-  };
+  }, []);
 
   // Para vaciar todo el carrito (se usa al finalizar la compra)
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCart([]);
-  };
+  }, []);
 
   // Calcula el precio total sumando precio * cantidad de cada producto
-  const getCartTotal = () => {
+  const getCartTotal = useCallback(() => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+  }, [cart]);
 
   // Cuenta cuántos productos hay en total en el carrito
-  const getCartCount = () => {
+  const getCartCount = useCallback(() => {
     return cart.reduce((count, item) => count + item.quantity, 0);
-  };
+  }, [cart]);
 
   // Compartimos el carrito y las funciones con toda la aplicación
   return (

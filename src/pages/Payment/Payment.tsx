@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
+import { useUserState } from '@/contexts/user/UserContext';
+import { saveServerCart } from '@/lib/cart';
+import { placeOrder } from '@/lib/orders';
+import type { CartItem } from '@/lib/cart';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/checkout.css';
@@ -10,7 +14,15 @@ import '../../styles/payment.css';
 // El usuario elige cómo quiere pagar (tarjeta, PSE, Nequi) y llena los datos de pago
 const Payment: React.FC = () => {
   const { cart, getCartTotal, clearCart } = useCart();
+  const user = useUserState();
   const navigate = useNavigate();
+
+  // Redirige a login si el usuario no está autenticado (place_order requiere auth)
+  useEffect(() => {
+    if (!user.loading && !user.isLoggedIn) {
+      navigate('/auth/sign-in', { state: { from: '/payment' }, replace: true });
+    }
+  }, [user.loading, user.isLoggedIn, navigate]);
 
   // Método de pago seleccionado por el usuario
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -22,6 +34,10 @@ const Payment: React.FC = () => {
     expiry: '',
     cvv: '',
   });
+
+  // Estado para el proceso de pago
+  const [submitting, setSubmitting] = useState(false);
+  const [paymentError, setPaymentError] = useState('');
 
   // Función para los mensajes del Header y Footer
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
@@ -50,24 +66,41 @@ const Payment: React.FC = () => {
   };
 
   // Cuando el usuario confirma el pago
-  const handlePayment = () => {
-    // Generamos un número de pedido único con la fecha y un número random
-    const orderNumber = `LUM-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+  const handlePayment = async () => {
+    if (submitting || !user.isLoggedIn || !user.id) return;
 
-    // Guardamos la info del pedido para mostrarla en la confirmación
-    localStorage.setItem('lumiere_order', JSON.stringify({
-      orderNumber,
-      items: cart,
-      total,
-      date: new Date().toISOString(),
-      paymentMethod,
-    }));
+    setSubmitting(true);
+    setPaymentError('');
 
-    // Vaciamos el carrito porque ya se completó la compra
-    clearCart();
+    // Snapshot del carrito antes de que el RPC lo limpie en el servidor
+    const orderItems = [...cart];
 
-    // Llevamos al usuario a la pantalla de confirmación
-    navigate('/confirmation');
+    try {
+      // Guardamos el carrito en el servidor justo antes de llamar al RPC
+      // para garantizar que tenga los últimos cambios (por si el debounce no ha disparado)
+      await saveServerCart(user.id, cart as CartItem[]);
+
+      // RPC atómico: crea la orden, decrementa stock y limpia profiles.cart
+      const orderId = await placeOrder();
+
+      // Guardamos los datos del pedido para mostrarlos en la confirmación
+      localStorage.setItem('lumiere_order', JSON.stringify({
+        orderNumber: orderId,
+        items: orderItems,
+        total,
+        date: new Date().toISOString(),
+        paymentMethod,
+      }));
+
+      // Limpiamos el carrito local (el servidor ya lo limpió el RPC)
+      clearCart();
+
+      navigate('/confirmation');
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Error al procesar el pago. Inténtalo de nuevo.';
+      setPaymentError(msg);
+      setSubmitting(false);
+    }
   };
 
   // Si el carrito está vacío, no debería estar en esta página
@@ -264,10 +297,25 @@ const Payment: React.FC = () => {
               </div>
             )}
 
+            {/* Mensaje de error si el pago falla */}
+            {paymentError && (
+              <p style={{ color: '#c0392b', marginBottom: '12px', fontSize: '14px' }}>
+                <i className="fa-solid fa-circle-exclamation" style={{ marginRight: '6px' }}></i>
+                {paymentError}
+              </p>
+            )}
+
             {/* Botón para confirmar el pago */}
-            <button className="pay-btn" onClick={handlePayment}>
-              <i className="fa-solid fa-lock"></i>
-              Confirmar y Pagar ${total.toFixed(2)}
+            <button
+              className="pay-btn"
+              onClick={handlePayment}
+              disabled={submitting}
+              style={submitting ? { opacity: 0.7, cursor: 'not-allowed' } : undefined}
+            >
+              {submitting
+                ? <><i className="fa-solid fa-spinner fa-spin"></i> Procesando...</>
+                : <><i className="fa-solid fa-lock"></i> Confirmar y Pagar ${total.toFixed(2)}</>
+              }
             </button>
 
             {/* Nota de seguridad */}
