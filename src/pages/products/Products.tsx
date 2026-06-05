@@ -2,22 +2,21 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import productsData from "@/data/products.json";
-import { homeCategories } from "@/data/homeContent";
+import { categories } from "@/data/categories";
 import "./Products.css";
 import {
     type Product,
     type ProductCharacteristics,
-    hasRequiredFields,
 } from "@/types/products";
 import { productCharacteristics } from "@/data/characteristics";
 import { ProductCard } from "@/components/ProductCard";
+import { useProducts } from "@/hooks/useProducts";
 
 export interface FeedbackState {
     message: string;
     type: "info" | "success" | "warning" | "";
     isVisible: boolean;
-};
+}
 
 export type Filters = {
     category: string;
@@ -26,19 +25,6 @@ export type Filters = {
     priceMinInput: string;
     priceMaxInput: string;
     ratingMin: number;
-};
-
-const rawProducts = productsData as Product[];
-
-const products = rawProducts.filter(hasRequiredFields);
-
-const getUniqueValues = (
-    items: Product[],
-    getter: (item: Product) => string
-) => {
-    return Array.from(new Set(items.map(getter))).sort((a, b) =>
-        a.localeCompare(b)
-    );
 };
 
 const toggleValue = <T extends string>(values: T[], value: T) => {
@@ -51,26 +37,14 @@ const clampValue = (value: number, min: number, max: number) => {
     return Math.min(Math.max(value, min), max);
 };
 
-const categoryOptions = getUniqueValues(products, (product) => product.category);
-const brandOptions = getUniqueValues(products, (product) => product.brand);
-const characteristicOptions = productCharacteristics.filter((characteristic) =>
-    products.some((product) => product.characteristics.includes(characteristic))
-);
-const categoryOptionsLookup = new Map(
-    categoryOptions.map((category) => [category.toLowerCase(), category])
-);
-const categoryIdLookup = new Map(
-    homeCategories.map((category) => [category.id.toLowerCase(), category.categoryValue])
-);
-
-const buildDefaultFilters = (): Filters => ({
+const emptyFilters: Filters = {
     category: "",
     brands: [],
     characteristics: [],
     priceMinInput: "",
     priceMaxInput: "",
     ratingMin: 0,
-});
+};
 
 const parsePriceInput = (value: string) => {
     const trimmedValue = value.trim();
@@ -88,21 +62,17 @@ const formatPrice = (value: number) => `$${value.toFixed(2)}`;
 
 const resolveCategoryFromQueryParam = (value: string | null) => {
     const normalizedValue = value?.trim().toLowerCase() ?? "";
-
     if (normalizedValue === "") {
         return "";
     }
 
-    const mappedCategory = categoryIdLookup.get(normalizedValue) ?? normalizedValue;
-
-    return categoryOptionsLookup.get(mappedCategory.toLowerCase()) ?? "";
+    return categories.find((category) => category.id.toLowerCase() === normalizedValue)?.id ?? "";
 };
 
 interface FiltersSidebarProps {
     filters: Filters;
     isSidebarOpen: boolean;
     isPending: boolean;
-    categoryOptions: string[];
     brandOptions: string[];
     characteristicOptions: ProductCharacteristics[];
     filteredProductsCount: number;
@@ -139,7 +109,6 @@ export function FiltersSidebar({
     filters,
     isSidebarOpen,
     isPending,
-    categoryOptions,
     brandOptions,
     characteristicOptions,
     filteredProductsCount,
@@ -207,9 +176,9 @@ export function FiltersSidebar({
                             onChange={(event) => onCategoryChange(event.target.value)}
                         >
                             <option value="">All categories</option>
-                            {categoryOptions.map((category) => (
-                                <option value={category} key={category}>
-                                    {category}
+                            {categories.map((c) => (
+                                <option value={c.id} key={c.id}>
+                                    {c.label}
                                 </option>
                             ))}
                         </select>
@@ -315,12 +284,13 @@ export function FiltersSidebar({
     );
 }
 
-
 export function Products() {
     const [searchParams] = useSearchParams();
     const resolvedCategoryFromQuery = resolveCategoryFromQueryParam(
         searchParams.get("category")
     );
+
+    const { data: products, loading, error } = useProducts();
 
     const [feedback, setFeedback] = useState<FeedbackState>({
         message: "",
@@ -328,7 +298,7 @@ export function Products() {
         isVisible: false,
     });
     const [filters, setFilters] = useState<Filters>(() => ({
-        ...buildDefaultFilters(),
+        ...emptyFilters,
         category: resolvedCategoryFromQuery,
     }));
     const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
@@ -456,13 +426,26 @@ export function Products() {
 
     const handleClearFilters = () => {
         startTransition(() => {
-            setFilters(buildDefaultFilters());
+            setFilters(emptyFilters);
         });
         showFeedback("Filters cleared. Showing all products.", "info");
     };
 
-    const filteredProducts = useMemo(() => {
-        return products.filter((product) => {
+    const brandFilterOptions = useMemo(() => {
+        return [...new Set(products.filter((p) => p.brand).map((p) => p.brand.trim()))]
+            .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true }));
+    }, [products]);
+
+    const characteristicFilterOptions = useMemo(() => {
+        return productCharacteristics.filter((c) =>
+            products.some((p) => p.characteristics.includes(c))
+        );
+    }, [products]);
+
+    const filteredProducts = useMemo((): Product[] => {
+        const sorted = [...products].sort((a, b) => b.stock - a.stock);
+
+        return sorted.filter((product) => {
             const minPrice = parsePriceInput(filters.priceMinInput);
             const maxPrice = parsePriceInput(filters.priceMaxInput);
 
@@ -498,7 +481,7 @@ export function Products() {
 
             return true;
         });
-    }, [filters]);
+    }, [filters, products]);
 
     const activeFilterCount = useMemo(() => {
         let count = 0;
@@ -529,6 +512,49 @@ export function Products() {
         return count;
     }, [filters]);
 
+    const renderGrid = () => {
+        if (error) {
+            return (
+                <div className="products-empty">
+                    <h3>Could not load products</h3>
+                    <p>{error}</p>
+                </div>
+            );
+        }
+
+        if (loading) {
+            return (
+                <div className="products-loading" role="status" aria-live="polite">
+                    <span className="activity-spinner" aria-hidden="true"></span>
+                    <span>Loading products…</span>
+                </div>
+            );
+        }
+
+        if (filteredProducts.length === 0) {
+            return (
+                <div className="products-empty">
+                    <h3>No matches found</h3>
+                    <p>
+                        Try clearing a filter or widening the price and rating range.
+                    </p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="products-grid">
+                {filteredProducts.map((product, index) => (
+                    <ProductCard
+                        product={product}
+                        index={index}
+                        key={product.id}
+                    />
+                ))}
+            </div>
+        );
+    };
+
     return (
         <>
             <a className="skip-link" href="#products-main">
@@ -553,9 +579,8 @@ export function Products() {
                         filters={filters}
                         isSidebarOpen={isSidebarOpen}
                         isPending={isPending}
-                        categoryOptions={categoryOptions}
-                        brandOptions={brandOptions}
-                        characteristicOptions={characteristicOptions}
+                        brandOptions={brandFilterOptions}
+                        characteristicOptions={characteristicFilterOptions}
                         filteredProductsCount={filteredProducts.length}
                         totalProductsCount={products.length}
                         activeFilterCount={activeFilterCount}
@@ -585,24 +610,7 @@ export function Products() {
                             </div>
                         </div>
 
-                        {filteredProducts.length === 0 ? (
-                            <div className="products-empty">
-                                <h3>No matches found</h3>
-                                <p>
-                                    Try clearing a filter or widening the price and rating range.
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="products-grid">
-                                {filteredProducts.map((product, index) => (
-                                    <ProductCard
-                                        product={product}
-                                        index={index}
-                                        key={product.id}
-                                    />
-                                ))}
-                            </div>
-                        )}
+                        {renderGrid()}
                     </section>
                 </div>
             </main>

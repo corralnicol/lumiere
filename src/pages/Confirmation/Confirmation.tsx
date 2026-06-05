@@ -8,7 +8,7 @@ import '../../styles/confirmation.css';
 interface OrderData {
   orderNumber: string;
   items: Array<{
-    id: number;
+    id: string;
     name: string;
     brand: string;
     imageUrl: string;

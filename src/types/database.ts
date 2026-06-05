@@ -7,6 +7,11 @@ export type Json =
   | Json[]
 
 export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.5"
+  }
   graphql_public: {
     Tables: {
       [_ in never]: never
@@ -121,38 +126,56 @@ export type Database = {
       products: {
         Row: {
           active: boolean
+          brand: string
+          category: string | null
+          characteristics: Json
           created_at: string
           description: string | null
+          how_to_use: string
           id: string
           image_url: string | null
+          ingredients: string
           name: string
           price: number
           reviews: Json
           seller_id: string
+          size: string
           stock: number
         }
         Insert: {
           active?: boolean
+          brand?: string
+          category?: string | null
+          characteristics?: Json
           created_at?: string
           description?: string | null
+          how_to_use?: string
           id?: string
           image_url?: string | null
+          ingredients?: string
           name: string
           price: number
           reviews?: Json
           seller_id: string
+          size?: string
           stock?: number
         }
         Update: {
           active?: boolean
+          brand?: string
+          category?: string | null
+          characteristics?: Json
           created_at?: string
           description?: string | null
+          how_to_use?: string
           id?: string
           image_url?: string | null
+          ingredients?: string
           name?: string
           price?: number
           reviews?: Json
           seller_id?: string
+          size?: string
           stock?: number
         }
         Relationships: [
@@ -167,37 +190,52 @@ export type Database = {
       }
       profiles: {
         Row: {
+          address: string | null
           avatar_url: string | null
           cart: Json
+          city: string | null
           created_at: string
           email: string
           favorites: Json
           first_name: string | null
           id: string
           last_name: string | null
+          phone: string | null
+          state: string | null
           updated_at: string
+          zip: string | null
         }
         Insert: {
+          address?: string | null
           avatar_url?: string | null
           cart?: Json
+          city?: string | null
           created_at?: string
           email: string
           favorites?: Json
           first_name?: string | null
           id: string
           last_name?: string | null
+          phone?: string | null
+          state?: string | null
           updated_at?: string
+          zip?: string | null
         }
         Update: {
+          address?: string | null
           avatar_url?: string | null
           cart?: Json
+          city?: string | null
           created_at?: string
           email?: string
           favorites?: Json
           first_name?: string | null
           id?: string
           last_name?: string | null
+          phone?: string | null
+          state?: string | null
           updated_at?: string
+          zip?: string | null
         }
         Relationships: []
       }
@@ -386,4 +424,3 @@ export const Constants = {
     },
   },
 } as const
-

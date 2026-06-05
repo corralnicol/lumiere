@@ -5,7 +5,8 @@ import Hero from "../../components/Hero/Hero";
 import Categories from "../../components/Categories/Categories";
 import BestSellers from "../../components/BestSellers/BestSellers";
 import Footer from "../../components/Footer/Footer";
-import { homeKits } from "../../data/homeContent";
+import { getProductImageSrc } from "@/utils/productImages";
+import { useKits } from "@/hooks/useProducts";
 
 type FeedbackType = "info" | "success" | "warning";
 
@@ -21,6 +22,8 @@ function Home() {
     type: "",
     isVisible: false,
   });
+
+  const { data: kits, loading: kitsLoading, error: kitsError } = useKits();
 
   const showFeedback = (
     message: string,
@@ -80,17 +83,26 @@ function Home() {
         <section className="kits-section" id="kits">
           <h2 className="kits-title">Kits &amp; Sets</h2>
 
-          <div className="kits-grid">
-          {homeKits.map((kit) => (
-          <Link
-          to={`/kits/${kit.id}`}
-          className="kits-card"
-          key={kit.id}
-          aria-label={`View details for ${kit.alt}`}>
-         <img src={kit.image} alt={kit.alt} />
-         </Link>
-        ))}
-        </div>
+          {kitsError ? (
+            <p className="products-error">Could not load kits.</p>
+          ) : kitsLoading ? (
+            <div className="kits-grid kits-grid--loading" role="status" aria-live="polite">
+              <span className="activity-spinner" aria-hidden="true"></span>
+            </div>
+          ) : (
+            <div className="kits-grid">
+              {kits.map((kit) => (
+                <Link
+                  to={`/products/${kit.id}`}
+                  className="kits-card"
+                  key={kit.id}
+                  aria-label={`View details for ${kit.name}`}
+                >
+                  <img src={getProductImageSrc(kit)} alt={kit.name} />
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
       </main>
 

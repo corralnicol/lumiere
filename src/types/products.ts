@@ -1,38 +1,34 @@
-import type { categories } from "@/data/categories";
+import { categories } from "@/data/categories";
 import { productCharacteristics } from "@/data/characteristics";
+
 export interface Product {
-    id: number | string;
-    category: ProductCategory;
+    id: string;
+    category: ProductCategory | null;
     brand: string;
     name: string;
     description: string;
+    howToUse: string;
+    ingredients: string;
     rating: number;
     price: number;
-    size?: string;
+    size: string;
     stock: number;
+    active: boolean;
+    sellerId: string;
+    imageUrl: string | null;
     reviews: ProductReview[];
-    localImage?: string;
-    imageUrl?: string;
     characteristics: ProductCharacteristics[];
-};
+    createdAt: string;
+}
 
 export interface ProductReview {
-    user: string;
+    reviewer_id: string;
+    reviewer_name: string | null;
     rating: number;
-    comment: string;
+    text: string;
+    created_at?: string;
 }
 
 export type ProductCharacteristics = typeof productCharacteristics[number];
 
-export type ProductCategory = typeof categories[number];
-
-export const hasRequiredFields = (product: Partial<Product>): product is Product => {
-    return Boolean(
-        product &&
-        product.id !== undefined &&
-        product.category &&
-        product.name &&
-        product.brand &&
-        typeof product.price === "number"
-    );
-};
+export type ProductCategory = typeof categories[number]["id"];

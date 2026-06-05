@@ -6,10 +6,8 @@ import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Payment/Payment";
 import Confirmation from "./pages/Confirmation/Confirmation";
-import BestSellerDetails from "./pages/best-seller-details/BestSellerDetails";
 import Products from "./pages/products/Products";
 import ProductDetails from "./pages/product-details/ProductDetails";
-import KitDetails from "./pages/kit-details/KitDetails";
 import Login from "./pages/login/Login";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import AccountOverview from "./pages/account/Overview";
@@ -53,8 +51,6 @@ function App() {
         <ScrollToHash />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/kits/:kitId" element={<KitDetails />} />
-          <Route path="/best-sellers/:productId" element={<BestSellerDetails />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:productId" element={<ProductDetails />} />
           {/* Order flow: cart -> checkout -> payment -> confirmation */}

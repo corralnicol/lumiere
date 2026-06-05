@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
     useEffect,
-    useRef,
     useState,
     type ImgHTMLAttributes,
     type SubmitEvent,
@@ -10,56 +9,21 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
+import type { Product, ProductReview } from "@/types/products";
 
 type FeedbackType = "info" | "success" | "warning";
-export type ProductReview = {
-    user: string;
-    rating: number;
-    comment: string;
-};
 
 export type DetailTab = {
     id: string;
     label: string;
-    content: string;
+    content: string | undefined;
 };
 
-export type ProductDetailItem = {
-    id: number | string;
-    category?: string;
-    brand: string;
-    name: string;
-    description?: string;
-    image?: string;
-    imageUrl?: string;
-    rating: number;
-    price: number;
-    size?: string;
-    stock?: number;
-    characteristics?: string[];
-    reviews?: ProductReview[];
-};
-
-export type RecommendedProduct = {
-    id: number | string;
-    brand: string;
-    name: string;
-    rating: number;
-    price: number;
-    image?: string;
-    imageUrl?: string;
-};
-
-type ProductDetailPageProps<
-    T extends ProductDetailItem = ProductDetailItem,
-    R extends RecommendedProduct = RecommendedProduct
-> = {
-    product?: T | null;
+type ProductDetailPageProps = {
+    product?: Product | null;
     tabs?: DetailTab[];
     storageKeyPrefix?: string;
     initialReviews?: ProductReview[];
-    getInitialReviews?: (product: T) => ProductReview[];
-    reviewCountBase?: number;
     backLinkHref?: string;
     backLinkLabel?: string;
     notFoundTitle?: string;
@@ -68,17 +32,17 @@ type ProductDetailPageProps<
     notFoundLinkHref?: string;
     galleryVariant?: "default" | "cover";
     imageSrc?: string;
-    imageFallbackSrc?: string | ((product: T) => string);
+    imageFallbackSrc?: (product: Product) => string;
     imageReferrerPolicy?: ImgHTMLAttributes<HTMLImageElement>["referrerPolicy"];
     characteristicsLabel?: string;
     reviewsTitle?: string;
     reviewToggleLabel?: string;
     reviewSubmitLabel?: string;
     reviewPlaceholder?: string;
-    recommendedProducts?: R[];
-    getRecommendedLink?: (item: R) => string;
-    getRecommendedImageSrc?: (item: R) => string;
-    getRecommendedImageFallbackSrc?: (item: R) => string;
+    recommendedProducts?: Product[];
+    getRecommendedLink?: (item: Product) => string;
+    getRecommendedImageSrc?: (item: Product) => string;
+    getRecommendedImageFallbackSrc?: (item: Product) => string;
     recommendedImageReferrerPolicy?: ImgHTMLAttributes<HTMLImageElement>["referrerPolicy"];
 };
 
@@ -90,26 +54,10 @@ function formatCharacteristic(characteristic: string) {
         .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-function resolveFallback<T>(
-    fallback: string | ((value: T) => string) | undefined,
-    value: T
-) {
-    if (!fallback) {
-        return "";
-    }
-
-    return typeof fallback === "function" ? fallback(value) : fallback;
-}
-
-export default function ProductDetailPage<
-    T extends ProductDetailItem,
-    R extends RecommendedProduct = RecommendedProduct
->({
+export default function ProductDetailPage({
     product,
-    storageKeyPrefix = "lumiere-product-reviews",
+    storageKeyPrefix = "lumiere-product-reviews-v2",
     initialReviews,
-    getInitialReviews,
-    reviewCountBase,
     backLinkHref = "/",
     backLinkLabel = "← Back",
     notFoundTitle = "Product not found",
@@ -130,42 +78,45 @@ export default function ProductDetailPage<
     getRecommendedImageSrc,
     getRecommendedImageFallbackSrc,
     recommendedImageReferrerPolicy,
-}: ProductDetailPageProps<T, R>) {
+}: ProductDetailPageProps) {
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
-
-    const [baseReviews, setBaseReviews] = useState<ProductReview[]>([]);
-    const [reviews, setReviews] = useState<ProductReview[]>([]);
+    const [reviews, setReviews] = useState<ProductReview[]>(() => {
+        const base = initialReviews ?? product?.reviews ?? [];
+        if (!product?.id) return base;
+        const key = `${storageKeyPrefix}-${product.id}`;
+        const saved = localStorage.getItem(key);
+        if (!saved) return base;
+        try {
+            const parsed = JSON.parse(saved) as ProductReview[];
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        } catch { /* ignore */ }
+        return base;
+    });
     const [isReviewFormOpen, setIsReviewFormOpen] = useState(false);
     const [reviewUser, setReviewUser] = useState("");
     const [reviewRating, setReviewRating] = useState(5);
     const [reviewComment, setReviewComment] = useState("");
     const navigate = useNavigate();
 
-    const getInitialReviewsRef = useRef(getInitialReviews);
-
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
         addToCart({
-            id: Number(product!.id),
+            id: product!.id,
             category: product!.category ?? "",
             brand: product!.brand,
             name: product!.name,
-            description: product!.description ?? "",
-            imageUrl: product!.imageUrl ?? product!.image ?? "",
+            description: product!.description,
+            imageUrl: product!.imageUrl ?? "",
             rating: product!.rating,
             price: product!.price,
             size: product!.size ?? "",
-            stock: product!.stock ?? 0,
+            stock: product!.stock,
         });
         showFeedback(`${quantity} ${product!.name} added to cart.`, "success");
     };
-
-    useEffect(() => {
-        getInitialReviewsRef.current = getInitialReviews;
-    }, [getInitialReviews]);
 
     const productId = product?.id;
 
@@ -186,13 +137,7 @@ export default function ProductDetailPage<
             return;
         }
 
-        const resolvedBaseReviews =
-            getInitialReviewsRef.current?.(product) ??
-            initialReviews ??
-            product.reviews ??
-            [];
-
-        setBaseReviews(resolvedBaseReviews);
+        const resolvedBaseReviews = initialReviews ?? product.reviews;
 
         const storageKey = `${storageKeyPrefix}-${productId}`;
         const savedReviews = localStorage.getItem(storageKey);
@@ -243,9 +188,11 @@ export default function ProductDetailPage<
         }
 
         const newReview: ProductReview = {
-            user: trimmedUser,
+            reviewer_id: crypto.randomUUID(),
+            reviewer_name: trimmedUser,
             rating: reviewRating,
-            comment: trimmedComment,
+            text: trimmedComment,
+            created_at: new Date().toISOString(),
         };
 
         const updatedReviews = [newReview, ...reviews];
@@ -295,15 +242,7 @@ export default function ProductDetailPage<
             : "fa-regular fa-star"
     );
 
-    const productCharacteristics = product.characteristics ?? [];
-
-    const reviewCountDisplay =
-        typeof reviewCountBase === "number"
-            ? reviewCountBase + Math.max(0, reviews.length - baseReviews.length)
-            : reviews.length;
-
-    const resolvedImageSrc =
-        imageSrc ?? product.image ?? product.imageUrl ?? "";
+    const resolvedImageSrc = imageSrc ?? product.imageUrl ?? "";
 
     const galleryClassName =
         galleryVariant === "cover"
@@ -311,10 +250,9 @@ export default function ProductDetailPage<
             : "product-detail-gallery";
 
     const recommendedImageResolver =
-        getRecommendedImageSrc ??
-        ((item: R) => item.image ?? item.imageUrl ?? "");
+        getRecommendedImageSrc ?? ((item: Product) => item.imageUrl ?? "");
 
-    const category = product.category ?? "uncategorized";
+    const category = product.category ?? "Kit";
 
     return (
         <>
@@ -360,8 +298,7 @@ export default function ProductDetailPage<
                             onError={
                                 imageFallbackSrc
                                     ? (event) => {
-                                        const fallback = resolveFallback(imageFallbackSrc, product);
-
+                                        const fallback = imageFallbackSrc(product);
                                         if (fallback) {
                                             event.currentTarget.src = fallback;
                                         }
@@ -390,7 +327,7 @@ export default function ProductDetailPage<
                                 ))}
                             </div>
 
-                            <p>({reviewCountDisplay})</p>
+                            <p>({product.reviews.length})</p>
                         </div>
 
                         <p className="detail-price">${Number(product.price).toFixed(2)}</p>
@@ -436,15 +373,15 @@ export default function ProductDetailPage<
                         </div>
 
                         <p className="detail-stock">
-                            {product.stock ?? "Several"} units left available
+                            {product.stock} units left available
                         </p>
 
-                        {productCharacteristics.length > 0 && (
+                        {product.characteristics.length > 0 && (
                             <div
                                 className="detail-badges"
                                 aria-label={characteristicsLabel}
                             >
-                                {productCharacteristics.map((characteristic) => (
+                                {product.characteristics.map((characteristic) => (
                                     <span key={characteristic}>
                                         {formatCharacteristic(characteristic)}
                                     </span>
@@ -452,9 +389,7 @@ export default function ProductDetailPage<
                             </div>
                         )}
 
-                        {product.description && (
-                            <p className="detail-description">{product.description}</p>
-                        )}
+                        <p className="detail-description">{product.description}</p>
                     </div>
                 </section>
 
@@ -465,10 +400,10 @@ export default function ProductDetailPage<
                         {reviews.map((review, index) => (
                             <article
                                 className="product-review-card"
-                                key={`${review.user}-${review.comment}-${index}`}
+                                key={`${review.reviewer_id}-${index}`}
                             >
                                 <div className="product-review-header">
-                                    <h3>{review.user}</h3>
+                                    <h3>{review.reviewer_name ?? "Anonymous"}</h3>
 
                                     <div
                                         className="product-review-stars"
@@ -488,7 +423,7 @@ export default function ProductDetailPage<
                                     </div>
                                 </div>
 
-                                <p>{review.comment}</p>
+                                <p>{review.text}</p>
                             </article>
                         ))}
                     </div>
@@ -582,11 +517,7 @@ export default function ProductDetailPage<
                                             onError={
                                                 getRecommendedImageFallbackSrc
                                                     ? (event) => {
-                                                        const fallback = resolveFallback(
-                                                            getRecommendedImageFallbackSrc,
-                                                            item
-                                                        );
-
+                                                        const fallback = getRecommendedImageFallbackSrc(item);
                                                         if (fallback) {
                                                             event.currentTarget.src = fallback;
                                                         }

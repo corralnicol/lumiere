@@ -1,3 +1,5 @@
+import { categories } from "./categories";
+
 export const homeBanners = [
   {
     id: "loreal",
@@ -50,11 +52,16 @@ export const brandLogos = [
   },
 ];
 
+export const homeCategories2 = categories.map((category) => ({
+  ...category,
+  searchTarget: `${category.label.toLowerCase()} ${category.id}`,
+  imageClassName: `category-img-${category.id}`,
+}));
+
 export const homeCategories = [
   {
     id: "foundation",
     label: "Foundation",
-    categoryValue: "Foundation",
     src: "/images/categories/foundation.png",
     alt: "Foundation",
     searchTarget: "base complexion products foundation",
@@ -63,7 +70,6 @@ export const homeCategories = [
   {
     id: "concealer",
     label: "Concealer",
-    categoryValue: "Concelear",
     src: "/images/categories/concealer.png",
     alt: "Concealer",
     searchTarget: "concealer under eye skin tone",
@@ -72,7 +78,6 @@ export const homeCategories = [
   {
     id: "blush",
     label: "Blush",
-    categoryValue: "Blush",
     src: "/images/categories/blush.png",
     alt: "Blush",
     searchTarget: "blush cheeks color glow",
@@ -81,7 +86,6 @@ export const homeCategories = [
   {
     id: "contour",
     label: "Contour",
-    categoryValue: "Contour",
     src: "/images/categories/contour.png",
     alt: "Contour",
     searchTarget: "contour sculpt face definition",
@@ -90,7 +94,6 @@ export const homeCategories = [
   {
     id: "eyelash",
     label: "Eyelash",
-    categoryValue: "Eyelash",
     src: "/images/categories/eyelash.png",
     alt: "Eyelash",
     searchTarget: "eyelash lashes volume mascara",
@@ -99,7 +102,6 @@ export const homeCategories = [
   {
     id: "eyeliner",
     label: "Eyeliner",
-    categoryValue: "Eyeliner",
     src: "/images/categories/eyeliner.png",
     alt: "Eyeliner",
     searchTarget: "eyeliner eyes precision",
@@ -108,7 +110,6 @@ export const homeCategories = [
   {
     id: "eyeshadow",
     label: "Eyeshadow",
-    categoryValue: "Eyeshadow",
     src: "/images/categories/eyeshadow.png",
     alt: "Eyeshadow",
     searchTarget: "eyeshadow palette eye color",
@@ -117,7 +118,6 @@ export const homeCategories = [
   {
     id: "lip",
     label: "Lip",
-    categoryValue: "Lip",
     src: "/images/categories/lip.png",
     alt: "Lip",
     searchTarget: "lip lipstick gloss tint",
@@ -126,70 +126,10 @@ export const homeCategories = [
 ];
 
 export const homeBestSellers = [
-  {
-    id: "patrick-ta",
-    brand: "Patrick Ta",
-    description: "Major Dimension Essential Artistry Edit Eyeshadow Palette",
-    src: "/images/best-sellers/eye-shadows.webp",
-    alt: "Patrick Ta eyeshadow palette",
-    searchTarget: "patrick ta eyeshadow palette artistry edit",
-    imageClassName: "best-card-image-eyeshadow",
-    itemName: "Patrick Ta palette",
-    stars: 4,
-  },
-  {
-    id: "the-ordinary-sunscreen",
-    brand: "The Ordinary",
-    description: "Sunscreen SPF 45",
-    src: "/images/best-sellers/sunscreen.webp",
-    alt: "The Ordinary sunscreen",
-    searchTarget: "the ordinary sunscreen spf 45 skincare",
-    imageClassName: "best-card-image-serum",
-    itemName: "The Ordinary sunscreen",
-    stars: 5,
-  },
-  {
-    id: "clinique-foundation",
-    brand: "Clinique",
-    description: "Clinique Even Better Liquid Foundation with Vitamins SPF50 30ml",
-    src: "/images/best-sellers/clinique.webp",
-    alt: "Clinique foundation",
-    searchTarget: "clinique foundation vitamins spf50 liquid foundation",
-    imageClassName: "best-card-image-foundation",
-    itemName: "Clinique foundation",
-    stars: 5,
-  },
+  { id: "2c284d14-ddd5-4da7-836a-195f2dc179c1", imageClassName: "best-card-image-eyeshadow" },
+  { id: "923b5572-01f8-4589-8d45-0a110f294fe9", imageClassName: "best-card-image-serum" },
+  { id: "075a7574-12cb-4ab7-9494-30f523852e37", imageClassName: "best-card-image-foundation" },
 ];
-
-export const homeKits = [
-  {
-    id: "glow-essentials-kit",
-    image: "/images/kits/kit1.svg",
-    alt: "Sheglam lip kit",
-  },
-  {
-    id: "soft-glam-set",
-    image: "/images/kits/kit2.svg",
-    alt: "Rare Beauty set",
-  },
-  {
-    id: "skin-prep-kit",
-    image: "/images/kits/kit3.svg",
-    alt: "The Ordinary set",
-  },
-  {
-    id: "lip-care-set",
-    image: "/images/kits/kit4.svg",
-    alt: "Milk Makeup set",
-  },
-  {
-    id: "full-routine-kit",
-    image: "/images/kits/kit5.svg",
-    alt: "Sol de Janeiro set",
-  },
-];
-
-export const kits = homeKits;
 
 export const footerSocialLinks = [
   {

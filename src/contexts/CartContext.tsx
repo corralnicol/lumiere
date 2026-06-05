@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Definimos cómo se ve un producto en nuestra tienda
 export interface Product {
-  id: number;
+  id: string;
   category: string;
   brand: string;
   name: string;
@@ -23,8 +23,8 @@ interface CartItem extends Product {
 interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: number) => void;
-  updateQuantity: (productId: number, quantity: number) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
@@ -62,13 +62,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Para eliminar un producto del carrito por completo
-  const removeFromCart = (productId: number) => {
+  const removeFromCart = (productId: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
   // Para cambiar la cantidad de un producto (por ejemplo con los botones + y -)
   // Si la cantidad llega a 0, lo eliminamos
-  const updateQuantity = (productId: number, quantity: number) => {
+  const updateQuantity = (productId: string, quantity: number) => {
     if (quantity <= 0) {
       removeFromCart(productId);
       return;
