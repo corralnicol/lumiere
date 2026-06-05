@@ -58,7 +58,6 @@ function formatCharacteristic(characteristic: string) {
 
 export default function ProductDetailPage({
     product,
-    storageKeyPrefix = "lumiere-product-reviews-v2",
     initialReviews,
     backLinkHref = "/",
     backLinkLabel = "← Back",
