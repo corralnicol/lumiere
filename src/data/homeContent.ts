@@ -1,3 +1,5 @@
+import { categories } from "./categories";
+
 export const homeBanners = [
   {
     id: "loreal",
@@ -50,11 +52,16 @@ export const brandLogos = [
   },
 ];
 
+export const homeCategories2 = categories.map((category) => ({
+  ...category,
+  searchTarget: `${category.label.toLowerCase()} ${category.id}`,
+  imageClassName: `category-img-${category.id}`,
+}));
+
 export const homeCategories = [
   {
     id: "foundation",
     label: "Foundation",
-    categoryValue: "Foundation",
     src: "/images/categories/foundation.png",
     alt: "Foundation",
     searchTarget: "base complexion products foundation",
@@ -63,7 +70,6 @@ export const homeCategories = [
   {
     id: "concealer",
     label: "Concealer",
-    categoryValue: "Concelear",
     src: "/images/categories/concealer.png",
     alt: "Concealer",
     searchTarget: "concealer under eye skin tone",
@@ -72,7 +78,6 @@ export const homeCategories = [
   {
     id: "blush",
     label: "Blush",
-    categoryValue: "Blush",
     src: "/images/categories/blush.png",
     alt: "Blush",
     searchTarget: "blush cheeks color glow",
@@ -81,7 +86,6 @@ export const homeCategories = [
   {
     id: "contour",
     label: "Contour",
-    categoryValue: "Contour",
     src: "/images/categories/contour.png",
     alt: "Contour",
     searchTarget: "contour sculpt face definition",
@@ -90,7 +94,6 @@ export const homeCategories = [
   {
     id: "eyelash",
     label: "Eyelash",
-    categoryValue: "Eyelash",
     src: "/images/categories/eyelash.png",
     alt: "Eyelash",
     searchTarget: "eyelash lashes volume mascara",
@@ -99,7 +102,6 @@ export const homeCategories = [
   {
     id: "eyeliner",
     label: "Eyeliner",
-    categoryValue: "Eyeliner",
     src: "/images/categories/eyeliner.png",
     alt: "Eyeliner",
     searchTarget: "eyeliner eyes precision",
@@ -108,7 +110,6 @@ export const homeCategories = [
   {
     id: "eyeshadow",
     label: "Eyeshadow",
-    categoryValue: "Eyeshadow",
     src: "/images/categories/eyeshadow.png",
     alt: "Eyeshadow",
     searchTarget: "eyeshadow palette eye color",
@@ -117,7 +118,6 @@ export const homeCategories = [
   {
     id: "lip",
     label: "Lip",
-    categoryValue: "Lip",
     src: "/images/categories/lip.png",
     alt: "Lip",
     searchTarget: "lip lipstick gloss tint",

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import productsData from "@/data/products.json";
-import { homeCategories } from "@/data/homeContent";
+import { categories } from "@/data/categories";
 import "./Products.css";
 import {
     type Product,
@@ -56,21 +56,15 @@ const brandOptions = getUniqueValues(products, (product) => product.brand);
 const characteristicOptions = productCharacteristics.filter((characteristic) =>
     products.some((product) => product.characteristics.includes(characteristic))
 );
-const categoryOptionsLookup = new Map(
-    categoryOptions.map((category) => [category.toLowerCase(), category])
-);
-const categoryIdLookup = new Map(
-    homeCategories.map((category) => [category.id.toLowerCase(), category.categoryValue])
-);
 
-const buildDefaultFilters = (): Filters => ({
+const emptyFilters: Filters = {
     category: "",
     brands: [],
     characteristics: [],
     priceMinInput: "",
     priceMaxInput: "",
     ratingMin: 0,
-});
+};
 
 const parsePriceInput = (value: string) => {
     const trimmedValue = value.trim();
@@ -88,14 +82,11 @@ const formatPrice = (value: number) => `$${value.toFixed(2)}`;
 
 const resolveCategoryFromQueryParam = (value: string | null) => {
     const normalizedValue = value?.trim().toLowerCase() ?? "";
-
     if (normalizedValue === "") {
         return "";
     }
 
-    const mappedCategory = categoryIdLookup.get(normalizedValue) ?? normalizedValue;
-
-    return categoryOptionsLookup.get(mappedCategory.toLowerCase()) ?? "";
+    return categories.find((category) => category.id.toLowerCase() === normalizedValue)?.id ?? "";
 };
 
 interface FiltersSidebarProps {
@@ -328,7 +319,7 @@ export function Products() {
         isVisible: false,
     });
     const [filters, setFilters] = useState<Filters>(() => ({
-        ...buildDefaultFilters(),
+        ...emptyFilters,
         category: resolvedCategoryFromQuery,
     }));
     const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
@@ -456,7 +447,7 @@ export function Products() {
 
     const handleClearFilters = () => {
         startTransition(() => {
-            setFilters(buildDefaultFilters());
+            setFilters(emptyFilters);
         });
         showFeedback("Filters cleared. Showing all products.", "info");
     };
