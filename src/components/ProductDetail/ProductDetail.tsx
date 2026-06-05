@@ -9,13 +9,9 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
 import { useCart } from "@/contexts/CartContext";
+import type { Product, ProductReview } from "@/types/products";
 
 type FeedbackType = "info" | "success" | "warning";
-export type ProductReview = {
-    user: string;
-    rating: number;
-    comment: string;
-};
 
 export type DetailTab = {
     id: string;
@@ -23,37 +19,8 @@ export type DetailTab = {
     content: string | undefined;
 };
 
-export type ProductDetailItem = {
-    id: string;
-    category?: string;
-    brand: string;
-    name: string;
-    description?: string;
-    image?: string;
-    imageUrl?: string;
-    rating: number;
-    price: number;
-    size?: string;
-    stock?: number;
-    characteristics?: string[];
-    reviews?: ProductReview[];
-};
-
-export type RecommendedProduct = {
-    id: string;
-    brand: string;
-    name: string;
-    rating: number;
-    price: number;
-    image?: string;
-    imageUrl?: string;
-};
-
-type ProductDetailPageProps<
-    T extends ProductDetailItem = ProductDetailItem,
-    R extends RecommendedProduct = RecommendedProduct
-> = {
-    product?: T | null;
+type ProductDetailPageProps = {
+    product?: Product | null;
     tabs?: DetailTab[];
     storageKeyPrefix?: string;
     initialReviews?: ProductReview[];
@@ -65,17 +32,17 @@ type ProductDetailPageProps<
     notFoundLinkHref?: string;
     galleryVariant?: "default" | "cover";
     imageSrc?: string;
-    imageFallbackSrc?: string | ((product: T) => string);
+    imageFallbackSrc?: (product: Product) => string;
     imageReferrerPolicy?: ImgHTMLAttributes<HTMLImageElement>["referrerPolicy"];
     characteristicsLabel?: string;
     reviewsTitle?: string;
     reviewToggleLabel?: string;
     reviewSubmitLabel?: string;
     reviewPlaceholder?: string;
-    recommendedProducts?: R[];
-    getRecommendedLink?: (item: R) => string;
-    getRecommendedImageSrc?: (item: R) => string;
-    getRecommendedImageFallbackSrc?: (item: R) => string;
+    recommendedProducts?: Product[];
+    getRecommendedLink?: (item: Product) => string;
+    getRecommendedImageSrc?: (item: Product) => string;
+    getRecommendedImageFallbackSrc?: (item: Product) => string;
     recommendedImageReferrerPolicy?: ImgHTMLAttributes<HTMLImageElement>["referrerPolicy"];
 };
 
@@ -87,21 +54,7 @@ function formatCharacteristic(characteristic: string) {
         .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-function resolveFallback<T>(
-    fallback: string | ((value: T) => string) | undefined,
-    value: T
-) {
-    if (!fallback) {
-        return "";
-    }
-
-    return typeof fallback === "function" ? fallback(value) : fallback;
-}
-
-export default function ProductDetailPage<
-    T extends ProductDetailItem,
-    R extends RecommendedProduct = RecommendedProduct
->({
+export default function ProductDetailPage({
     product,
     storageKeyPrefix = "lumiere-product-reviews",
     initialReviews,
@@ -125,7 +78,7 @@ export default function ProductDetailPage<
     getRecommendedImageSrc,
     getRecommendedImageFallbackSrc,
     recommendedImageReferrerPolicy,
-}: ProductDetailPageProps<T, R>) {
+}: ProductDetailPageProps) {
     const [quantity, setQuantity] = useState(1);
     const [feedbackMessage, setFeedbackMessage] = useState("");
     const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
@@ -144,12 +97,12 @@ export default function ProductDetailPage<
             category: product!.category ?? "",
             brand: product!.brand,
             name: product!.name,
-            description: product!.description ?? "",
-            imageUrl: product!.imageUrl ?? product!.image ?? "",
+            description: product!.description,
+            imageUrl: product!.imageUrl ?? "",
             rating: product!.rating,
             price: product!.price,
             size: product!.size ?? "",
-            stock: product!.stock ?? 0,
+            stock: product!.stock,
         });
         showFeedback(`${quantity} ${product!.name} added to cart.`, "success");
     };
@@ -173,10 +126,7 @@ export default function ProductDetailPage<
             return;
         }
 
-        const resolvedBaseReviews =
-            initialReviews ??
-            product.reviews ??
-            [];
+        const resolvedBaseReviews = initialReviews ?? product.reviews;
 
         const storageKey = `${storageKeyPrefix}-${productId}`;
         const savedReviews = localStorage.getItem(storageKey);
@@ -279,12 +229,7 @@ export default function ProductDetailPage<
             : "fa-regular fa-star"
     );
 
-    const productCharacteristics = product.characteristics ?? [];
-
-    const reviewCountDisplay = product.reviews ? product.reviews.length : "0";
-
-    const resolvedImageSrc =
-        imageSrc ?? product.image ?? product.imageUrl ?? "";
+    const resolvedImageSrc = imageSrc ?? product.imageUrl ?? "";
 
     const galleryClassName =
         galleryVariant === "cover"
@@ -292,10 +237,9 @@ export default function ProductDetailPage<
             : "product-detail-gallery";
 
     const recommendedImageResolver =
-        getRecommendedImageSrc ??
-        ((item: R) => item.image ?? item.imageUrl ?? "");
+        getRecommendedImageSrc ?? ((item: Product) => item.imageUrl ?? "");
 
-    const category = product.category ?? "uncategorized";
+    const category = product.category ?? "Kit";
 
     return (
         <>
@@ -341,8 +285,7 @@ export default function ProductDetailPage<
                             onError={
                                 imageFallbackSrc
                                     ? (event) => {
-                                        const fallback = resolveFallback(imageFallbackSrc, product);
-
+                                        const fallback = imageFallbackSrc(product);
                                         if (fallback) {
                                             event.currentTarget.src = fallback;
                                         }
@@ -371,7 +314,7 @@ export default function ProductDetailPage<
                                 ))}
                             </div>
 
-                            <p>({reviewCountDisplay})</p>
+                            <p>({product.reviews.length})</p>
                         </div>
 
                         <p className="detail-price">${Number(product.price).toFixed(2)}</p>
@@ -417,15 +360,15 @@ export default function ProductDetailPage<
                         </div>
 
                         <p className="detail-stock">
-                            {product.stock ?? "Several"} units left available
+                            {product.stock} units left available
                         </p>
 
-                        {productCharacteristics.length > 0 && (
+                        {product.characteristics.length > 0 && (
                             <div
                                 className="detail-badges"
                                 aria-label={characteristicsLabel}
                             >
-                                {productCharacteristics.map((characteristic) => (
+                                {product.characteristics.map((characteristic) => (
                                     <span key={characteristic}>
                                         {formatCharacteristic(characteristic)}
                                     </span>
@@ -433,9 +376,7 @@ export default function ProductDetailPage<
                             </div>
                         )}
 
-                        {product.description && (
-                            <p className="detail-description">{product.description}</p>
-                        )}
+                        <p className="detail-description">{product.description}</p>
                     </div>
                 </section>
 
@@ -563,11 +504,7 @@ export default function ProductDetailPage<
                                             onError={
                                                 getRecommendedImageFallbackSrc
                                                     ? (event) => {
-                                                        const fallback = resolveFallback(
-                                                            getRecommendedImageFallbackSrc,
-                                                            item
-                                                        );
-
+                                                        const fallback = getRecommendedImageFallbackSrc(item);
                                                         if (fallback) {
                                                             event.currentTarget.src = fallback;
                                                         }

@@ -9,6 +9,7 @@
     },
     "types": ["vite/client"],
     "skipLibCheck": true,
+    "strict": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",

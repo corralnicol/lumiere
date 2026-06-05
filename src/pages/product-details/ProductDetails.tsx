@@ -2,21 +2,24 @@ import { useParams } from "react-router-dom";
 import ProductDetailPage, {
   type DetailTab,
 } from "@/components/ProductDetail/ProductDetail";
-import products from "@/data/products.json";
+import productsJson from "@/data/products.json";
 import { getProductImageSrc } from "@/utils/productImages";
 import type { Product } from "@/types/products";
 import { useMemo } from "react";
 
+const products = productsJson as Product[];
+
 export default function ProductDetails() {
   const { productId } = useParams();
   const product = useMemo(() => {
-    const product = products.find((item) => String(item.id) === String(productId))
-    if (!product) return null;
-    const productWithRating = {
-      ...product,
-      rating: useMemo(() => Math.round(product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length), [product.reviews]),
-    }
-    return productWithRating;
+    const found = products.find((item) => item.id === productId);
+    if (!found) return null;
+    return {
+      ...found,
+      rating: Math.round(
+        found.reviews.reduce((sum, review) => sum + review.rating, 0) / found.reviews.length
+      ),
+    };
   }, [productId]);
 
   const tabs: DetailTab[] = product
@@ -29,8 +32,7 @@ export default function ProductDetails() {
       {
         id: "details",
         label: "Details",
-        content: `Category: ${product.category}. Brand: ${product.brand}. Size: ${product.size || "Standard size"
-          }. Stock: ${product.stock ?? "Available"}.`,
+        content: `Category: ${product.category ?? "Kit"}. Brand: ${product.brand}. Size: ${product.size || "Standard size"}. Stock: ${product.stock}.`,
       },
       {
         id: "reviews",
@@ -41,7 +43,7 @@ export default function ProductDetails() {
     : [];
 
   const recommendedProducts = products
-    .filter((item) => String(item.id) !== String(product?.id))
+    .filter((item) => item.id !== product?.id)
     .slice(0, 4)
     .map((p) => ({
       ...p,
@@ -62,7 +64,7 @@ export default function ProductDetails() {
       imageReferrerPolicy="no-referrer"
       galleryVariant="cover"
       recommendedProducts={recommendedProducts}
-      getRecommendedImageSrc={(item) => getProductImageSrc(item as Product)}
+      getRecommendedImageSrc={(item) => getProductImageSrc(item)}
       getRecommendedImageFallbackSrc={(item) =>
         `https://picsum.photos/300/300?random=${item.id}`
       }

@@ -2,7 +2,7 @@ type ProductImageInput = {
   id: string;
   brand: string;
   name: string;
-  category: string;
+  category: string | null;
   imageUrl?: string;
   localImage?: string;
 };
@@ -21,7 +21,10 @@ export function normalizeImageUrl(imageUrl?: string) {
   }
 }
 
-export function getFallbackImageByCategory(category: string) {
+export function getFallbackImageByCategory(category: string | null) {
+  if (!category) {
+    return "/images/categories/foundation.png";
+  }
   const normalizedCategory = category.toLowerCase();
 
   if (normalizedCategory.includes("foundation")) {

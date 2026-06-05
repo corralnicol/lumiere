@@ -1,4 +1,5 @@
 import { categories } from "./categories";
+import products from "./products.json";
 
 export const homeBanners = [
   {
@@ -131,35 +132,7 @@ export const homeBestSellers = [
   { id: "075a7574-12cb-4ab7-9494-30f523852e37", imageClassName: "best-card-image-foundation" },
 ];
 
-export const homeKits = [
-  {
-    id: "glow-essentials-kit",
-    image: "/images/kits/kit1.svg",
-    alt: "Sheglam lip kit",
-  },
-  {
-    id: "soft-glam-set",
-    image: "/images/kits/kit2.svg",
-    alt: "Rare Beauty set",
-  },
-  {
-    id: "skin-prep-kit",
-    image: "/images/kits/kit3.svg",
-    alt: "The Ordinary set",
-  },
-  {
-    id: "lip-care-set",
-    image: "/images/kits/kit4.svg",
-    alt: "Milk Makeup set",
-  },
-  {
-    id: "full-routine-kit",
-    image: "/images/kits/kit5.svg",
-    alt: "Sol de Janeiro set",
-  },
-];
-
-export const kits = homeKits;
+export const homeKits = products.filter((product) => product.category === null);
 
 export const footerSocialLinks = [
   {

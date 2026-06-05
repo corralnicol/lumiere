@@ -6,6 +6,7 @@ import Categories from "../../components/Categories/Categories";
 import BestSellers from "../../components/BestSellers/BestSellers";
 import Footer from "../../components/Footer/Footer";
 import { homeKits } from "../../data/homeContent";
+import { getProductImageSrc } from "@/utils/productImages";
 
 type FeedbackType = "info" | "success" | "warning";
 
@@ -83,11 +84,11 @@ function Home() {
           <div className="kits-grid">
           {homeKits.map((kit) => (
           <Link
-          to={`/kits/${kit.id}`}
+          to={`/products/${kit.id}`}
           className="kits-card"
           key={kit.id}
-          aria-label={`View details for ${kit.alt}`}>
-         <img src={kit.image} alt={kit.alt} />
+          aria-label={`View details for ${kit.name}`}>
+         <img src={getProductImageSrc(kit)} alt={kit.name} />
          </Link>
         ))}
         </div>

@@ -2,6 +2,7 @@ import { type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { getProductImageSrc } from "@/utils/productImages";
 import type { Product } from "@/types/products";
+import { categories } from "@/data/categories";
 
 const buildSearchTarget = (product: Product) => {
     return [
@@ -12,6 +13,11 @@ const buildSearchTarget = (product: Product) => {
     ]
         .filter(Boolean)
         .join(" ");
+};
+
+const getCategoryLabel = (categoryId: string | null): string => {
+    if (!categoryId) return "Kit";
+    return categories.find(c => c.id === categoryId)?.label ?? categoryId;
 };
 
 export function ProductCard({ product, index }: { product: Product; index?: number }) {
@@ -29,7 +35,7 @@ export function ProductCard({ product, index }: { product: Product; index?: numb
         >
             <div className="product-card-media">
                 <span className="product-card-tag">
-                    {product.category}
+                    {getCategoryLabel(product.category)}
                 </span>
                 <img
                     src={getProductImageSrc(product)}
