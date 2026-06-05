@@ -1,43 +1,23 @@
 import { useParams } from "react-router-dom";
 import ProductDetailPage, {
   type DetailTab,
-  type ProductDetailItem,
-  type ProductReview,
 } from "@/components/ProductDetail/ProductDetail";
-import productsData from "@/data/products.json";
+import products from "@/data/products.json";
 import { getProductImageSrc } from "@/utils/productImages";
-
-type Product = ProductDetailItem & {
-  category: string;
-  description: string;
-  reviews?: ProductReview[];
-};
-
-const products = productsData as Product[];
-
-function getDefaultReviews(product: Product): ProductReview[] {
-  return [
-    {
-      user: "Sofia M.",
-      rating: Math.max(4, Math.round(product.rating)),
-      comment: `I liked the texture and finish of this ${product.category.toLowerCase()} product.`,
-    },
-    {
-      user: "Camila R.",
-      rating: Math.max(4, Math.round(product.rating)),
-      comment: "The product feels comfortable and works well for everyday use.",
-    },
-    {
-      user: "Nicole A.",
-      rating: Math.max(4, Math.round(product.rating)),
-      comment: "Nice presentation, good quality and easy to use.",
-    },
-  ];
-}
+import type { Product } from "@/types/products";
+import { useMemo } from "react";
 
 export default function ProductDetails() {
   const { productId } = useParams();
-  const product = products.find((item) => String(item.id) === String(productId));
+  const product = useMemo(() => {
+    const product = products.find((item) => String(item.id) === String(productId))
+    if (!product) return null;
+    const productWithRating = {
+      ...product,
+      rating: useMemo(() => Math.round(product.reviews.reduce((sum, review) => sum + review.rating, 0) / product.reviews.length), [product.reviews]),
+    }
+    return productWithRating;
+  }, [productId]);
 
   const tabs: DetailTab[] = product
     ? [
@@ -60,22 +40,21 @@ export default function ProductDetails() {
     ]
     : [];
 
-  const recommendedProducts = product
-    ? products
-      .filter((item) => String(item.id) !== String(product.id))
-      .slice(0, 4)
-    : [];
+  const recommendedProducts = products
+    .filter((item) => String(item.id) !== String(product?.id))
+    .slice(0, 4)
+    .map((p) => ({
+      ...p,
+      rating: Math.round(
+        p.reviews.reduce((sum, review) => sum + review.rating, 0) / p.reviews.length,
+      ),
+    }));
 
   return (
     <ProductDetailPage
       product={product}
       tabs={tabs}
       storageKeyPrefix="lumiere-product-reviews"
-      getInitialReviews={(selected) =>
-        selected.reviews && selected.reviews.length > 0
-          ? selected.reviews
-          : getDefaultReviews(selected)
-      }
       imageSrc={product ? getProductImageSrc(product) : ""}
       imageFallbackSrc={(selected) =>
         `https://picsum.photos/900/900?random=${selected.id}`

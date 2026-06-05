@@ -26,14 +26,3 @@ export interface ProductReview {
 export type ProductCharacteristics = typeof productCharacteristics[number];
 
 export type ProductCategory = typeof categories[number]["id"];
-
-export const hasRequiredFields = (product: Partial<Product>): product is Product => {
-    return Boolean(
-        product &&
-        product.id !== undefined &&
-        product.category &&
-        product.name &&
-        product.brand &&
-        typeof product.price === "number"
-    );
-};

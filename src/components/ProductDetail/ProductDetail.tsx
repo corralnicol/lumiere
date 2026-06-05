@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
     useEffect,
-    useRef,
     useState,
     type ImgHTMLAttributes,
     type SubmitEvent,
@@ -58,7 +57,6 @@ type ProductDetailPageProps<
     tabs?: DetailTab[];
     storageKeyPrefix?: string;
     initialReviews?: ProductReview[];
-    getInitialReviews?: (product: T) => ProductReview[];
     reviewCountBase?: number;
     backLinkHref?: string;
     backLinkLabel?: string;
@@ -108,7 +106,6 @@ export default function ProductDetailPage<
     product,
     storageKeyPrefix = "lumiere-product-reviews",
     initialReviews,
-    getInitialReviews,
     reviewCountBase,
     backLinkHref = "/",
     backLinkLabel = "← Back",
@@ -143,8 +140,6 @@ export default function ProductDetailPage<
     const [reviewComment, setReviewComment] = useState("");
     const navigate = useNavigate();
 
-    const getInitialReviewsRef = useRef(getInitialReviews);
-
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
@@ -162,10 +157,6 @@ export default function ProductDetailPage<
         });
         showFeedback(`${quantity} ${product!.name} added to cart.`, "success");
     };
-
-    useEffect(() => {
-        getInitialReviewsRef.current = getInitialReviews;
-    }, [getInitialReviews]);
 
     const productId = product?.id;
 
@@ -187,7 +178,6 @@ export default function ProductDetailPage<
         }
 
         const resolvedBaseReviews =
-            getInitialReviewsRef.current?.(product) ??
             initialReviews ??
             product.reviews ??
             [];

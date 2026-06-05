@@ -1,22 +1,11 @@
 import { useParams } from "react-router-dom";
 import ProductDetailPage, {
   type DetailTab,
-} from "../../components/ProductDetail/ProductDetail";
+} from "@/components/ProductDetail/ProductDetail";
 import { bestSellerProducts } from "../../data/bestSellerProducts";
-import productsData from "../../data/products.json";
+import products from "@/data/products.json";
 import { getProductImageSrc } from "../../utils/productImages";
-
-type JsonProduct = {
-  id: string;
-  category: string;
-  brand: string;
-  name: string;
-  imageUrl?: string;
-  rating: number;
-  price: number;
-};
-
-const jsonProducts = productsData as JsonProduct[];
+import { useMemo } from "react";
 
 export default function BestSellerDetails() {
   const { productId } = useParams();
@@ -42,7 +31,10 @@ export default function BestSellerDetails() {
     ]
     : [];
 
-  const recommendedProducts = jsonProducts.slice(0, 4);
+  const recommendedProducts = products.slice(0, 4).map((p) => ({
+    ...p,
+    rating: useMemo(() => Math.round(p.reviews.reduce((sum, review) => sum + review.rating, 0) / p.reviews.length), [p.reviews]),
+  }));
 
   return (
     <ProductDetailPage

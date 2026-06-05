@@ -2,13 +2,12 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import productsData from "@/data/products.json";
+import products from "@/data/products.json";
 import { categories } from "@/data/categories";
 import "./Products.css";
 import {
     type Product,
     type ProductCharacteristics,
-    hasRequiredFields,
 } from "@/types/products";
 import { productCharacteristics } from "@/data/characteristics";
 import { ProductCard } from "@/components/ProductCard";
@@ -28,13 +27,9 @@ export type Filters = {
     ratingMin: number;
 };
 
-const rawProducts = productsData as Product[];
-
-const products = rawProducts.filter(hasRequiredFields);
-
-const getUniqueValues = (
-    items: Product[],
-    getter: (item: Product) => string
+const getUniqueValues = <T extends string>(
+    items: any[],
+    getter: (item: any) => T
 ) => {
     return Array.from(new Set(items.map(getter))).sort((a, b) =>
         a.localeCompare(b)
@@ -453,7 +448,12 @@ export function Products() {
     };
 
     const filteredProducts = useMemo(() => {
-        return products.filter((product) => {
+        products.sort((a, b) => b.stock - a.stock);
+        const productsWithRating = products.map((p) => ({
+            ...p,
+            rating: Math.round(p.reviews.reduce((sum, review) => sum + review.rating, 0) / p.reviews.length),
+        }));
+        return productsWithRating.filter((product) => {
             const minPrice = parsePriceInput(filters.priceMinInput);
             const maxPrice = parsePriceInput(filters.priceMaxInput);
 
@@ -489,7 +489,7 @@ export function Products() {
 
             return true;
         });
-    }, [filters]);
+    }, [filters]) as Product[];
 
     const activeFilterCount = useMemo(() => {
         let count = 0;

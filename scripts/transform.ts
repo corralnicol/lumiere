@@ -1,20 +1,14 @@
 import products from "../src/data/products.json" with { type: "json" };
-import path from "path";
 
-// An item in the products.json file has the following structure:
-type ProductEntry = typeof products[number];
-
-function transform(p: ProductEntry) {
+// Transform function
+const updated = products.map((p) => {
     p = {
         ...p,
     }
-    
-    // delete p.isVegan;
+
+    // delete p.rating;
 
     return p;
-}
-
-// Transform function
-const updated = products.map(transform);
+});
 
 Bun.write("products.json", JSON.stringify(updated, null, 2) + "\n");
