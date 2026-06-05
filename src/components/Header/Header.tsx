@@ -1,6 +1,7 @@
 import { useState, type SubmitEvent } from "react";
 import { Link } from "react-router-dom";
 import { useUserState } from "@/contexts/user/UserContext";
+import { useCart } from "@/contexts/CartContext";
 
 type HeaderProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;
@@ -24,6 +25,8 @@ function AccountIcon({ closeMenu }: { closeMenu: () => void }) {
 function Header({ onFeedback }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -145,10 +148,12 @@ function Header({ onFeedback }: HeaderProps) {
 
             <Link
               to="/cart"
-              aria-label="Cart"
+              className="cart-link"
+              aria-label={cartCount > 0 ? `Cart, ${cartCount} items` : "Cart"}
               onClick={() => closeMenu()}
             >
               <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
+              {cartCount > 0 && <span className="cart-badge" aria-hidden="true">{cartCount}</span>}
             </Link>
 
             <AccountIcon closeMenu={closeMenu} />
@@ -192,10 +197,12 @@ function Header({ onFeedback }: HeaderProps) {
 
           <Link
             to="/cart"
-            aria-label="Cart"
+            className="cart-link"
+            aria-label={cartCount > 0 ? `Cart, ${cartCount} items` : "Cart"}
             onClick={() => closeMenu()}
           >
             <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
+            {cartCount > 0 && <span className="cart-badge" aria-hidden="true">{cartCount}</span>}
           </Link>
 
           <AccountIcon closeMenu={closeMenu} />

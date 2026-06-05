@@ -96,19 +96,23 @@ export default function ProductDetailPage({
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
-        addToCart({
-            id: product!.id,
-            category: product!.category ?? "",
-            brand: product!.brand,
-            name: product!.name,
-            description: product!.description,
-            imageUrl: product!.imageUrl ?? "",
-            rating: product!.rating,
-            price: product!.price,
-            size: product!.size ?? "",
-            stock: product!.stock,
-        });
+        addToCart(
+            {
+                id: product!.id,
+                category: product!.category ?? "",
+                brand: product!.brand,
+                name: product!.name,
+                description: product!.description,
+                imageUrl: product!.imageUrl ?? "",
+                rating: product!.rating,
+                price: product!.price,
+                size: product!.size ?? "",
+                stock: product!.stock,
+            },
+            quantity,
+        );
         showFeedback(`${quantity} ${product!.name} added to cart.`, "success");
+        setQuantity(1);
     };
 
     const productId = product?.id;

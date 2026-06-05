@@ -185,6 +185,26 @@
   color: #9f2f38;
 }
 
+.cart-link {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #9f2f38;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
 @media (max-width: 1200px) {
   .header-bar {
     grid-template-columns: minmax(0, 1fr) minmax(220px, 340px) auto;
