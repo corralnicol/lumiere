@@ -5,15 +5,30 @@ import SellNavbar from "../../components/Navbar/SellNavbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
 import { productCharacteristics as characteristics } from "@/data/characteristics";
 import { capitalize } from "@/utils/strings";
+import { createProduct } from "@/lib/products";
+import { useUserState } from "@/contexts/user/UserContext";
 
 const SkincareDetails = () => {
 
     const searchParams = useSearchParams();
     const navigate = useNavigate();
     const category = searchParams[0].get("category");
+    const user = useUserState();
 
     const [selected, setSelected] = useState<string[]>([]);
-    const [form, setForm] = useState({ name: '', brand: '', price: '', size: '', stock: '' });
+    const [form, setForm] = useState({
+        name: '',
+        brand: '',
+        price: '',
+        size: '',
+        stock: '',
+        description: '',
+        howToUse: '',
+        ingredients: '',
+        imageUrl: '',
+    });
+    const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const toggleChar = (char: string) => {
         setSelected(prev =>
@@ -21,23 +36,43 @@ const SkincareDetails = () => {
         );
     };
 
-    const handleField = (e: React.ChangeEvent<HTMLInputElement>) =>
+    const handleField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
     const canSend = selected.length > 0 && form.name.trim() && form.brand.trim() && form.price.trim();
 
-    const handleSend = () => {
-        if (!canSend) return;
-        const params = new URLSearchParams({
-            category: category ?? '',
-            characteristics: selected.join(','),
-            name: form.name,
-            brand: form.brand,
-            price: form.price,
-            ...(form.size && { size: form.size }),
-            ...(form.stock !== '' && { stock: form.stock }),
-        });
-        navigate(`/sell/success?${params}`);
+    const handleSend = async () => {
+        if (!canSend || submitting) return;
+        if (!user.isLoggedIn || !user.id) {
+            navigate("/auth/sign-in");
+            return;
+        }
+        setSubmitting(true);
+        setError(null);
+        try {
+            await createProduct(
+                {
+                    name: form.name.trim(),
+                    brand: form.brand.trim(),
+                    price: Number(form.price),
+                    size: form.size || undefined,
+                    stock: form.stock === '' ? undefined : Number(form.stock),
+                    category,
+                    characteristics: selected,
+                    description: form.description || undefined,
+                    howToUse: form.howToUse || undefined,
+                    ingredients: form.ingredients || undefined,
+                    imageUrl: form.imageUrl || null,
+                },
+                user.id,
+            );
+            navigate("/sell/success");
+        } catch (e) {
+            setError("Could not publish product. Please try again.");
+            console.error(e);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -111,6 +146,26 @@ const SkincareDetails = () => {
                             <input name="stock" type="number" min="0" step="1" value={form.stock} onChange={handleField}
                                 placeholder="0" className={styles.fieldInput} />
                         </div>
+                        <div className={styles.fieldGroup}>
+                            <label className={styles.fieldLabel}>Image URL <span className={styles.optional}>(optional)</span></label>
+                            <input name="imageUrl" value={form.imageUrl} onChange={handleField}
+                                placeholder="https://..." className={styles.fieldInput} />
+                        </div>
+                        <div className={`${styles.fieldGroup} ${styles.fieldGroupFull}`}>
+                            <label className={styles.fieldLabel}>Description <span className={styles.optional}>(optional)</span></label>
+                            <textarea name="description" value={form.description} onChange={handleField}
+                                placeholder="Describe your product..." className={styles.fieldInput} rows={3} />
+                        </div>
+                        <div className={`${styles.fieldGroup} ${styles.fieldGroupFull}`}>
+                            <label className={styles.fieldLabel}>How to use <span className={styles.optional}>(optional)</span></label>
+                            <textarea name="howToUse" value={form.howToUse} onChange={handleField}
+                                placeholder="Application instructions..." className={styles.fieldInput} rows={3} />
+                        </div>
+                        <div className={`${styles.fieldGroup} ${styles.fieldGroupFull}`}>
+                            <label className={styles.fieldLabel}>Ingredients <span className={styles.optional}>(optional)</span></label>
+                            <textarea name="ingredients" value={form.ingredients} onChange={handleField}
+                                placeholder="Aqua, Glycerin, Niacinamide..." className={styles.fieldInput} rows={3} />
+                        </div>
                     </div>
                 </section>
 
@@ -140,20 +195,21 @@ const SkincareDetails = () => {
                     </div>
 
                     <div className={styles.inputWrapper}>
-                        <input 
-                            type="text" 
-                            placeholder="Ex: Garnier foundation with sunscreen." 
+                        <input
+                            type="text"
+                            placeholder="Ex: Garnier foundation with sunscreen."
                             className={styles.searchInput}
                         />
                     </div>
 
                     <div className={styles.actionRow}>
+                        {error && <p className={styles.errorMessage}>{error}</p>}
                         <button
-                            className={canSend ? styles.sendButton : styles.sendButtonDisabled}
+                            className={canSend && !submitting ? styles.sendButton : styles.sendButtonDisabled}
                             onClick={handleSend}
-                            disabled={!canSend}
+                            disabled={!canSend || submitting}
                         >
-                            Send
+                            {submitting ? "Publishing..." : "Send"}
                         </button>
                     </div>
                 </section>
@@ -161,7 +217,7 @@ const SkincareDetails = () => {
                 {/* Legal Notice */}
                 <hr className={styles.dividerLine} />
                 <p className={styles.legalNotice}>
-                    By posting, you agree to <strong>Lumière Beauty's Terms and Conditions</strong>. 
+                    By posting, you agree to <strong>Lumière Beauty's Terms and Conditions</strong>.
                     See how we protect your privacy in our <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                 </p>
             </main>

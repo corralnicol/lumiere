@@ -487,3 +487,15 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Spans full row in the 3-col grid */
+.fieldGroupFull {
+    grid-column: 1 / -1;
+}
+
+.errorMessage {
+    color: #DE7488;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: auto;
+}

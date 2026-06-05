@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import type { Tables } from "@/types/database";
+import type { Tables, TablesInsert } from "@/types/database";
 import type { Product, ProductCharacteristics, ProductReview } from "@/types/products";
 import type { ProductCategory } from "@/types/products";
 
@@ -88,6 +88,50 @@ export async function addReview(
         throw error;
     }
     return data as unknown as ProductReview;
+}
+
+export type NewProductInput = {
+    name: string;
+    brand: string;
+    price: number;
+    size?: string;
+    stock?: number;
+    category: string | null;
+    characteristics: string[];
+    description?: string;
+    howToUse?: string;
+    ingredients?: string;
+    imageUrl?: string | null;
+};
+
+export async function createProduct(
+    input: NewProductInput,
+    sellerId: string,
+): Promise<Product> {
+    const row: TablesInsert<"products"> = {
+        seller_id: sellerId,
+        name: input.name,
+        brand: input.brand,
+        price: input.price,
+        size: input.size ?? "",
+        stock: input.stock ?? 0,
+        category: input.category,
+        characteristics: JSON.stringify(input.characteristics),
+        description: input.description ?? null,
+        how_to_use: input.howToUse ?? "",
+        ingredients: input.ingredients ?? "",
+        image_url: input.imageUrl || null,
+        reviews: "[]",
+    };
+
+    const { data, error } = await supabase
+        .from("products")
+        .insert(row)
+        .select("*")
+        .single();
+
+    if (error) throw error;
+    return mapRowToProduct(data);
 }
 
 export async function fetchKits(): Promise<Product[]> {
