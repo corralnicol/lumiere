@@ -24,7 +24,7 @@ Lumière está construido con un stack moderno enfocado en rendimiento simplicid
 
 - **React Hot Toast**: Notificaciones de eventos como adición al carrito, errores y advertencias.
 
-- **GitHub Pages**: Hosting estático para desplegar la aplicación sin necesidad de backend.
+- **Vercel**: Hosting estático para desplegar la aplicación sin necesidad de backend.
 
 - **EmailJS**: Envío de correos desde el frontend para confirmaciones de registro y notificaciones de compra.
 
