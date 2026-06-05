@@ -32,11 +32,19 @@ const Checkout: React.FC = () => {
   // Datos del perfil cargados desde Supabase (solo lectura en el checkout)
   const [profile, setProfile] = useState<ProfileInfo | null>(null);
 
+  // Solo dirección, ciudad y departamento son editables (los datos personales vienen del perfil)
+  const [formData, setFormData] = useState({
+    address: '',
+    city: '',
+    department: '',
+    zipCode: '',
+  });
+
   useEffect(() => {
     if (!userId) return;
     supabase
       .from('profiles')
-      .select('first_name, last_name, email, phone')
+      .select('first_name, last_name, email, phone, address, city, state, zip')
       .eq('id', userId)
       .single()
       .then(({ data }) => {
@@ -47,17 +55,16 @@ const Checkout: React.FC = () => {
             email: data.email ?? '',
             phone: data.phone ?? '',
           });
+          // Pre-llenar campos de dirección si ya fueron guardados en el perfil
+          setFormData({
+            address: data.address ?? '',
+            city: data.city ?? '',
+            department: data.state ?? '',
+            zipCode: data.zip ?? '',
+          });
         }
       });
   }, [userId]);
-
-  // Solo dirección, ciudad y departamento son editables (los datos personales vienen del perfil)
-  const [formData, setFormData] = useState({
-    address: '',
-    city: '',
-    department: '',
-    zipCode: '',
-  });
 
   // Función simple para los mensajes del Header y Footer
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
@@ -79,7 +86,7 @@ const Checkout: React.FC = () => {
   };
 
   // Cuando el usuario envía el formulario, guardamos los datos y lo llevamos a la página de pago
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Guardamos los datos de envío en localStorage para usarlos después
@@ -90,6 +97,24 @@ const Checkout: React.FC = () => {
       phone: profile?.phone ?? '',
       ...formData,
     }));
+
+    // Persistimos la dirección en el perfil (best-effort: si falla, igual avanzamos al pago)
+    if (userId) {
+      try {
+        await supabase
+          .from('profiles')
+          .update({
+            address: formData.address,
+            city: formData.city,
+            state: formData.department,
+            zip: formData.zipCode,
+          })
+          .eq('id', userId);
+      } catch (err) {
+        console.error('No se pudo guardar la dirección en el perfil:', err);
+      }
+    }
+
     navigate('/payment');
   };
 
