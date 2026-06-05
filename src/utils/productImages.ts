@@ -29,7 +29,6 @@ export function getFallbackImageByCategory(category: string) {
   }
 
   if (
-    normalizedCategory.includes("concelear") ||
     normalizedCategory.includes("concealer")
   ) {
     return "/images/categories/concealer.png";

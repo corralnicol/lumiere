@@ -27,15 +27,6 @@ export type Filters = {
     ratingMin: number;
 };
 
-const getUniqueValues = <T extends string>(
-    items: any[],
-    getter: (item: any) => T
-) => {
-    return Array.from(new Set(items.map(getter))).sort((a, b) =>
-        a.localeCompare(b)
-    );
-};
-
 const toggleValue = <T extends string>(values: T[], value: T) => {
     return values.includes(value)
         ? values.filter((item) => item !== value)
@@ -46,11 +37,17 @@ const clampValue = (value: number, min: number, max: number) => {
     return Math.min(Math.max(value, min), max);
 };
 
-const categoryOptions = getUniqueValues(products, (product) => product.category);
-const brandOptions = getUniqueValues(products, (product) => product.brand);
-const characteristicOptions = productCharacteristics.filter((characteristic) =>
+const brandFilterOptions = [...new Set(
+    products
+        .filter((p) => p.brand) // Ensures brands exist (avoids null/undefined crashes)
+        .map((p) => p.brand.trim()) // Cleans up accidental leading/trailing spaces
+)]
+    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
+    console.log("Brand filter options:", brandFilterOptions);
+const characteristicFilterOptions = productCharacteristics.filter((characteristic) =>
     products.some((product) => product.characteristics.includes(characteristic))
 );
+console.log("Characteristic filter options:", characteristicFilterOptions);
 
 const emptyFilters: Filters = {
     category: "",
@@ -88,7 +85,6 @@ interface FiltersSidebarProps {
     filters: Filters;
     isSidebarOpen: boolean;
     isPending: boolean;
-    categoryOptions: string[];
     brandOptions: string[];
     characteristicOptions: ProductCharacteristics[];
     filteredProductsCount: number;
@@ -125,7 +121,6 @@ export function FiltersSidebar({
     filters,
     isSidebarOpen,
     isPending,
-    categoryOptions,
     brandOptions,
     characteristicOptions,
     filteredProductsCount,
@@ -193,9 +188,9 @@ export function FiltersSidebar({
                             onChange={(event) => onCategoryChange(event.target.value)}
                         >
                             <option value="">All categories</option>
-                            {categoryOptions.map((category) => (
-                                <option value={category} key={category}>
-                                    {category}
+                            {categories.map((c) => (
+                                <option value={c.id} key={c.id}>
+                                    {c.label}
                                 </option>
                             ))}
                         </select>
@@ -544,9 +539,8 @@ export function Products() {
                         filters={filters}
                         isSidebarOpen={isSidebarOpen}
                         isPending={isPending}
-                        categoryOptions={categoryOptions}
-                        brandOptions={brandOptions}
-                        characteristicOptions={characteristicOptions}
+                        brandOptions={brandFilterOptions}
+                        characteristicOptions={characteristicFilterOptions}
                         filteredProductsCount={filteredProducts.length}
                         totalProductsCount={products.length}
                         activeFilterCount={activeFilterCount}
