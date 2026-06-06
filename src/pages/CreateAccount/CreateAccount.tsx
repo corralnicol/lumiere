@@ -15,6 +15,8 @@ const CreateAccount = () => {
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+    const [loading, setLoading] = useState(false);
     const user = useUserState();
     const navigate = useNavigate();
 
@@ -32,11 +34,31 @@ const CreateAccount = () => {
         if (!trimmedEmail || !trimmedFirstName || !trimmedLastName || !trimmedPhone || !password) return;
 
         setError("");
-        const errorMsg = await signUp({ email: trimmedEmail, password, firstName: trimmedFirstName, lastName: trimmedLastName, phone: trimmedPhone });
-        if (errorMsg) {
-            setError(errorMsg);
+        setSuccess("");
+        setLoading(true);
+
+        try {
+            const result = await signUp({
+                email: trimmedEmail,
+                password,
+                firstName: trimmedFirstName,
+                lastName: trimmedLastName,
+                phone: trimmedPhone,
+            });
+
+            if (result.error) {
+                setError(result.error);
+            } else if (result.message) {
+                setSuccess(result.message);
+            }
+        } catch {
+            setError("Could not create your account. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
+
+    const canSubmit = Boolean(email.trim() && firstName.trim() && lastName.trim() && phone.trim() && password && accepted && !loading);
 
     return (
         <div className={styles.container}>
@@ -159,9 +181,10 @@ const CreateAccount = () => {
                     </div>
 
                     {error && <p className={styles.legalText} style={{ color: 'red' }}>{error}</p>}
+                    {success && <p className={styles.legalText} style={{ color: '#2f7a45' }}>{success}</p>}
 
-                    <button className={styles.createBtn} onClick={handleCreateAccount}>
-                        Sign up
+                    <button className={styles.createBtn} onClick={handleCreateAccount} disabled={!canSubmit}>
+                        {loading ? "Creating account..." : "Sign up"}
                     </button>
 
                     <p className={styles.loginRedirect}>

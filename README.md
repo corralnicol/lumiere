@@ -28,6 +28,10 @@ Lumière está construido con un stack moderno enfocado en rendimiento simplicid
 
 - **EmailJS**: Envío de correos desde el frontend para confirmaciones de registro y notificaciones de compra.
 
+## Confirmación de correo
+
+La app usa Supabase Auth para validar el correo al registrarse. En el dashboard de Supabase debe estar activo `Authentication > Providers > Email > Confirm email`, así Supabase envía el correo y el usuario no puede iniciar sesión hasta confirmarlo.
+
 ## Código de Conducta
 
 Para mantener un flujo de trabajo prágmatico y organizado, nuestro equipo seguirá prácticas basadas en Git-flow pero con ajustes orientados a la velocidad, con las siguientes prácticas fundamentales:
