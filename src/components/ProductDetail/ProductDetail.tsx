@@ -304,7 +304,7 @@ export default function ProductDetailPage({
                                 ))}
                             </div>
 
-                            <p>({product.reviews.length})</p>
+                            <p>({reviews.length})</p>
                         </div>
 
                         <p className="detail-price">${Number(product.price).toFixed(2)}</p>

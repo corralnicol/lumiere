@@ -1,7 +1,51 @@
 import { supabase } from "@/lib/supabase";
-import type { Tables, TablesInsert } from "@/types/database";
+import type { Json, Tables, TablesInsert } from "@/types/database";
 import type { Product, ProductCharacteristics, ProductReview } from "@/types/products";
 import type { ProductCategory } from "@/types/products";
+
+function jsonArray<T>(value: unknown): T[] {
+    if (Array.isArray(value)) {
+        return value as T[];
+    }
+
+    if (typeof value !== "string") {
+        return [];
+    }
+
+    try {
+        const parsed = JSON.parse(value);
+        return Array.isArray(parsed) ? (parsed as T[]) : [];
+    } catch {
+        return [];
+    }
+}
+
+function isProductReview(value: unknown): value is ProductReview {
+    if (value === null || typeof value !== "object" || Array.isArray(value)) {
+        return false;
+    }
+
+    const candidate = value as Record<string, unknown>;
+    return (
+        typeof candidate.reviewer_id === "string" &&
+        typeof candidate.rating === "number" &&
+        typeof candidate.text === "string"
+    );
+}
+
+function normalizeReviewResponse(data: unknown): ProductReview {
+    if (isProductReview(data)) {
+        return data;
+    }
+
+    const reviews = jsonArray<ProductReview>(data);
+    const latestReview = reviews.at(-1);
+    if (isProductReview(latestReview)) {
+        return latestReview;
+    }
+
+    throw new Error("Unexpected review response from Supabase.");
+}
 
 export function computeRating(reviews: { rating: number }[]): number {
     if (!reviews.length) return 0;
@@ -9,10 +53,8 @@ export function computeRating(reviews: { rating: number }[]): number {
 }
 
 export function mapRowToProduct(row: Tables<"products">): Product {
-    const reviewsJson = JSON.parse(row.reviews?.toString() ?? "[]");
-    const reviews = (Array.isArray(reviewsJson) ? reviewsJson : []) as unknown as ProductReview[];
-    const characteristicsJson = JSON.parse(row.characteristics?.toString() ?? "[]");
-    const characteristics = (Array.isArray(characteristicsJson) ? characteristicsJson : []) as unknown as ProductCharacteristics[];
+    const reviews = jsonArray<ProductReview>(row.reviews);
+    const characteristics = jsonArray<ProductCharacteristics>(row.characteristics);
 
     return {
         id: row.id,
@@ -77,7 +119,6 @@ export async function addReview(
     rating: number,
     text: string,
 ): Promise<ProductReview> {
-    console.log(rating);
     const { data, error } = await supabase.rpc("add_review", {
         p_product_id: productId,
         p_text: text,
@@ -87,7 +128,7 @@ export async function addReview(
         console.error(error);
         throw error;
     }
-    return data as unknown as ProductReview;
+    return normalizeReviewResponse(data);
 }
 
 export type NewProductInput = {
@@ -116,12 +157,12 @@ export async function createProduct(
         size: input.size ?? "",
         stock: input.stock ?? 0,
         category: input.category,
-        characteristics: JSON.stringify(input.characteristics),
+        characteristics: input.characteristics as Json,
         description: input.description ?? null,
         how_to_use: input.howToUse ?? "",
         ingredients: input.ingredients ?? "",
         image_url: input.imageUrl || null,
-        reviews: "[]",
+        reviews: [],
     };
 
     const { data, error } = await supabase
