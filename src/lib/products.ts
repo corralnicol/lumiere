@@ -126,7 +126,7 @@ export async function addReview(
     });
     if (error) {
         console.error(error);
-        throw error;
+        throw new Error(error.message || "Failed to submit review.");
     }
     return normalizeReviewResponse(data);
 }
