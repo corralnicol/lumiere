@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useUserState } from "@/contexts/user/useUser";
 import { signIn } from "@/lib/auth";
 
 const Login = () => {

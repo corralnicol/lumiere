@@ -43,7 +43,7 @@ function ScrollToHash() {
   return null;
 }
 
-// TODO: Use UserProvider with name and email instead of just cart
+// Pendiente: usar el usuario completo en toda la app.
 function App() {
   return (
     <AppProviders >
@@ -53,16 +53,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:productId" element={<ProductDetails />} />
-          {/* Order flow: cart -> checkout -> payment -> confirmation */}
+          {/* Flujo de compra: carrito, envío, pago y confirmación */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/confirmation" element={<Confirmation />} />
-          {/* Auth Routes */}
+          {/* Rutas de autenticación */}
           <Route path="/auth/sign-in" element={<Login />} />
           <Route path="/auth/sign-up" element={<CreateAccount />} />
           <Route path="/account" element={<AccountOverview />} />
-          {/* Seller Routes */}
+          {/* Rutas de vendedor */}
           <Route path="/seller" element={<Seller />} />
           <Route path="/sell" element={<CategorySelection />} />
           <Route path="/sell/details" element={<SkincareDetails />} />

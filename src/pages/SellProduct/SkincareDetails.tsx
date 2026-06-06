@@ -6,7 +6,7 @@ import AuthFooter from "../../components/Footer/AuthFooter";
 import { productCharacteristics as characteristics } from "@/data/characteristics";
 import { capitalize } from "@/utils/strings";
 import { createProduct } from "@/lib/products";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useUserState } from "@/contexts/user/useUser";
 
 const SkincareDetails = () => {
 
@@ -87,14 +87,14 @@ const SkincareDetails = () => {
                     </Link>
                 </div>
 
-                {/* Banner 1: Características */}
+                {/* Sección 1: Características */}
                 <section className={styles.heroBanner}>
                     <h2 className={styles.heroTitle}>
                         In which skincare characteristics is <br /> your product?
                     </h2>
                 </section>
 
-                {/* Grid de Características con iconos decorativos */}
+                {/* Cuadrícula de características con iconos decorativos */}
                 <section className={styles.characteristicsSection}>
                     {/* Iconos decorativos flotantes */}
                     <img src="/images/characteristcs/icono sol.svg" alt="" className={styles.decorIconSunTop} />
@@ -117,7 +117,7 @@ const SkincareDetails = () => {
                     </div>
                 </section>
 
-                {/* Product Details Form */}
+                {/* Formulario de detalles del producto */}
                 <section className={styles.productDetailsSection}>
                     <h3 className={styles.detailsTitle}>Product details</h3>
                     <div className={styles.detailsGrid}>
@@ -169,7 +169,7 @@ const SkincareDetails = () => {
                     </div>
                 </section>
 
-                {/* Banner 2: Búsqueda */}
+                {/* Sección 2: Búsqueda */}
                 <section className={styles.searchBanner}>
                     <div className={styles.searchBannerContent}>
                         <h3 className={styles.searchTitle}>The more details, the better!</h3>
@@ -177,7 +177,7 @@ const SkincareDetails = () => {
                     </div>
                 </section>
 
-                {/* Métodos de búsqueda con tus iconos SVG */}
+                {/* Métodos de búsqueda con iconos */}
                 <section className={styles.searchMethods}>
                     <div className={styles.methodsContainer}>
                         <button className={styles.methodCard}>
@@ -214,7 +214,7 @@ const SkincareDetails = () => {
                     </div>
                 </section>
 
-                {/* Legal Notice */}
+                {/* Aviso legal */}
                 <hr className={styles.dividerLine} />
                 <p className={styles.legalNotice}>
                     By posting, you agree to <strong>Lumière Beauty's Terms and Conditions</strong>.

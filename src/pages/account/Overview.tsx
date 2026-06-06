@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserActions, useUserState } from "@/contexts/user/UserContext";
+import { useUserActions, useUserState } from "@/contexts/user/useUser";
 import { fetchProfile, updateProfileName, uploadAvatar } from "@/lib/profile";
 import Navbar from "@/components/Navbar/Navbar";
 import AuthFooter from "@/components/Footer/AuthFooter";
@@ -30,7 +30,7 @@ const AccountOverview = () => {
   const [phone, setPhone] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
 
-  // Carga los datos del perfil desde profiles al montar (no del JWT cacheado)
+  // Carga los datos del perfil desde profiles.
   useEffect(() => {
     if (!userId) return;
     fetchProfile(userId).then((p) => {
@@ -95,7 +95,7 @@ const AccountOverview = () => {
       setAvatarError(err instanceof Error ? err.message : 'Error al subir la foto.');
     } finally {
       setUploadingAvatar(false);
-      // Reset input so the same file can be re-selected if needed
+      // Limpiamos el campo para poder elegir la misma imagen otra vez.
       if (fileInputRef.current) fileInputRef.current.value = '';
     }
   };

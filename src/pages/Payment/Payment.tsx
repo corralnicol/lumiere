@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext';
-import { useUserState } from '@/contexts/user/UserContext';
+import { useCart } from '../../contexts/useCart';
+import { useUserState } from '@/contexts/user/useUser';
 import { saveServerCart } from '@/lib/cart';
 import { placeOrder } from '@/lib/orders';
 import type { CartItem } from '@/lib/cart';
@@ -17,7 +17,7 @@ const Payment: React.FC = () => {
   const user = useUserState();
   const navigate = useNavigate();
 
-  // Redirige a login si el usuario no está autenticado (place_order requiere auth)
+  // Redirige a login si el usuario no está autenticado.
   useEffect(() => {
     if (!user.loading && !user.isLoggedIn) {
       navigate('/auth/sign-in', { state: { from: '/payment' }, replace: true });
@@ -72,15 +72,14 @@ const Payment: React.FC = () => {
     setSubmitting(true);
     setPaymentError('');
 
-    // Snapshot del carrito antes de que el RPC lo limpie en el servidor
+    // Guardamos una copia del carrito antes de pagar.
     const orderItems = [...cart];
 
     try {
-      // Guardamos el carrito en el servidor justo antes de llamar al RPC
-      // para garantizar que tenga los últimos cambios (por si el debounce no ha disparado)
+      // Guardamos el carrito en Supabase antes de crear la orden.
       await saveServerCart(user.id, cart as CartItem[]);
 
-      // RPC atómico: crea la orden, decrementa stock y limpia profiles.cart
+      // Esta llamada crea la orden, descuenta stock y limpia el carrito.
       const orderId = await placeOrder();
 
       // Guardamos los datos del pedido para mostrarlos en la confirmación
@@ -92,7 +91,7 @@ const Payment: React.FC = () => {
         paymentMethod,
       }));
 
-      // Limpiamos el carrito local (el servidor ya lo limpió el RPC)
+      // También limpiamos el carrito local.
       clearCart();
 
       navigate('/confirmation');
@@ -153,7 +152,7 @@ const Payment: React.FC = () => {
           </div>
         </div>
 
-        {/* Link para volver al checkout */}
+        {/* Enlace para volver al envío */}
         <Link to="/checkout" className="back-link">
           <i className="fa-solid fa-arrow-left"></i>
           Volver a Envío

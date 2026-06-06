@@ -1,7 +1,7 @@
 import { supabase } from '@/lib/supabase';
 import type { Json } from '@/types/database';
 
-// Debe coincidir estructuralmente con CartItem de CartContext.tsx
+// Debe tener la misma forma que el producto del carrito.
 export interface CartItem {
   id: string;
   category: string;
@@ -16,8 +16,8 @@ export interface CartItem {
   quantity: number;
 }
 
-// Agrega el campo product_id (requerido por el RPC place_order)
-// Los demás campos son ignorados por el RPC pero los guardamos para renderizar el carrito sin consultas adicionales
+// Agrega product_id para que Supabase pueda crear la orden.
+// Guardamos los demás datos para mostrar el carrito sin pedirlos otra vez.
 export function serializeCart(items: CartItem[]): Json {
   return items.map((item) => ({
     ...item,
@@ -25,7 +25,7 @@ export function serializeCart(items: CartItem[]): Json {
   })) as unknown as Json;
 }
 
-// Convierte el JSON crudo de profiles.cart en CartItem[], con validación tolerante
+// Convierte el carrito guardado en datos que la app pueda usar.
 export function deserializeCart(raw: Json): CartItem[] {
   const arr = raw as unknown;
   if (!Array.isArray(arr)) return [];
@@ -64,7 +64,7 @@ export function mergeCarts(a: CartItem[], b: CartItem[]): CartItem[] {
   return Array.from(map.values());
 }
 
-// Lee el carrito del servidor desde profiles.cart
+// Lee el carrito guardado en Supabase.
 export async function fetchServerCart(userId: string): Promise<CartItem[]> {
   const { data, error } = await supabase
     .from('profiles')
@@ -75,7 +75,7 @@ export async function fetchServerCart(userId: string): Promise<CartItem[]> {
   return deserializeCart(data.cart);
 }
 
-// Guarda el carrito en profiles.cart del usuario autenticado
+// Guarda el carrito del usuario en Supabase.
 export async function saveServerCart(userId: string, items: CartItem[]): Promise<void> {
   const { error } = await supabase
     .from('profiles')

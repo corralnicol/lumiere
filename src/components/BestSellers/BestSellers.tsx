@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { homeBestSellers } from "../../data/homeContent";
 import { useProductsByIds } from "@/hooks/useProducts";
 import { getProductImageSrc } from "@/utils/productImages";
-import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/FavoritesContext";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/useFavorites";
+import { useUserState } from "@/contexts/user/useUser";
 
 type BestSellersProps = {
   onFeedback: (message: string, type?: "info" | "success" | "warning") => void;

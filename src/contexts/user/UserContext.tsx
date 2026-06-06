@@ -1,21 +1,16 @@
-import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback, type ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
 import { fetchProfile } from '@/lib/profile';
 import type { User } from '@/types/user';
+import {
+  UserDispatchContext,
+  UserStateContext,
+  type UserActions,
+} from './userContextValues';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { clearUser, setUser } from '@/store/slices/authSlice';
 
-const initialState: User = { name: '', email: '', phone: '', isLoggedIn: false, loading: true };
-
-const UserStateContext = createContext<User>(initialState);
-
-type UserActions = {
-  logout: () => Promise<void>;
-  refreshProfile: () => Promise<void>;
-};
-
-const UserDispatchContext = createContext<UserActions | null>(null);
-
-// Lee el perfil desde la tabla profiles (fuente de verdad) en lugar del user_metadata del JWT,
-// que queda desactualizado hasta el próximo token refresh.
+// Lee el perfil desde profiles porque ahí están los datos más actualizados.
 async function loadFromProfile(): Promise<User> {
   const { data } = await supabase.auth.getClaims();
   if (!data?.claims) {
@@ -36,7 +31,7 @@ async function loadFromProfile(): Promise<User> {
       loading: false,
     };
   } catch {
-    // fetchProfile failed (network, RLS) — fall back to session email so app is never stuck
+    // Si falla profiles, usamos el email de la sesión para que la app no se quede cargando.
     return {
       id: userId,
       name: email,
@@ -49,27 +44,28 @@ async function loadFromProfile(): Promise<User> {
   }
 }
 
-export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<User>(initialState);
+export function UserProvider({ children }: { children: ReactNode }) {
+  const state = useAppSelector((storeState) => storeState.auth);
+  const dispatch = useAppDispatch();
 
   const refresh = useCallback(async () => {
     const user = await loadFromProfile();
-    setState(user);
-  }, []);
+    dispatch(setUser(user));
+  }, [dispatch]);
 
   useEffect(() => {
     refresh();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'SIGNED_OUT') {
-        setState({ name: '', email: '', phone: '', isLoggedIn: false, loading: false });
+        dispatch(clearUser());
       } else {
         setTimeout(refresh, 0);
       }
     });
 
     return () => subscription.unsubscribe();
-  }, [refresh]);
+  }, [dispatch, refresh]);
 
   const actions = useMemo<UserActions>(() => ({
     logout: async () => {
@@ -86,6 +82,3 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     </UserStateContext.Provider>
   );
 }
-
-export const useUserState = () => useContext(UserStateContext);
-export const useUserActions = () => useContext(UserDispatchContext);

@@ -42,7 +42,7 @@ const SuccessPublish = () => {
                     </Link>
                 </div>
 
-                {/* Legal Notice */}
+                {/* Aviso legal */}
                 <hr className={styles.dividerLine} />
                 <p className={styles.legalNotice}>
                     By posting, you agree to <strong>Lumière Beauty's Terms and Conditions</strong>. 

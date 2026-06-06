@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./CreateAccount.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useUserState } from "@/contexts/user/useUser";
 import { signUp } from "@/lib/auth";
 
 const CreateAccount = () => {

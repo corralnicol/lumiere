@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { getProductImageSrc } from "@/utils/productImages";
 import type { Product } from "@/types/products";
 import { categories } from "@/data/categories";
-import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/FavoritesContext";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/useFavorites";
+import { useUserState } from "@/contexts/user/useUser";
 
 const buildSearchTarget = (product: Product) => {
     return [

@@ -1,69 +1,63 @@
-import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback, type ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
 import { fetchFavorites, toggleFavorite as toggleFavoriteLib } from '@/lib/favorites';
+import {
+    FavoritesActionsContext,
+    FavoritesStateContext,
+    type FavoritesActions,
+} from './favoritesContextValues';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { clearWishlist, setWishlistIds, setWishlistLoading } from '@/store/slices/wishlistSlice';
 
-type FavoritesState = {
-    ids: string[];
-    loading: boolean;
-};
-
-type FavoritesActions = {
-    toggle: (productId: string) => Promise<void>;
-};
-
-const FavoritesStateContext = createContext<FavoritesState>({ ids: [], loading: true });
-const FavoritesActionsContext = createContext<FavoritesActions | null>(null);
-
-export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-    const [ids, setIds] = useState<string[]>([]);
-    const [loading, setLoading] = useState(true);
+export function FavoritesProvider({ children }: { children: ReactNode }) {
+    const dispatch = useAppDispatch();
+    const ids = useAppSelector((state) => state.wishlist.ids);
+    const loading = useAppSelector((state) => state.wishlist.loading);
 
     const load = useCallback(async (userId: string) => {
-        setLoading(true);
+        dispatch(setWishlistLoading(true));
         try {
             const favs = await fetchFavorites(userId);
-            setIds(favs);
+            dispatch(setWishlistIds(favs));
         } catch {
-            setIds([]);
+            dispatch(setWishlistIds([]));
         } finally {
-            setLoading(false);
+            dispatch(setWishlistLoading(false));
         }
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         supabase.auth.getClaims().then(({ data }) => {
             if (data?.claims?.sub) {
                 load(data.claims.sub);
             } else {
-                setIds([]);
-                setLoading(false);
+                dispatch(clearWishlist());
             }
         });
 
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
             if (event === 'SIGNED_OUT') {
-                setIds([]);
-                setLoading(false);
+                dispatch(clearWishlist());
             } else if (session?.user?.id) {
                 load(session.user.id);
             }
         });
 
         return () => subscription.unsubscribe();
-    }, [load]);
+    }, [dispatch, load]);
 
     const toggle = useCallback(async (productId: string) => {
         const prev = ids;
         const isIn = prev.includes(productId);
-        setIds(isIn ? prev.filter(id => id !== productId) : [...prev, productId]);
+        dispatch(setWishlistIds(isIn ? prev.filter(id => id !== productId) : [...prev, productId]));
         try {
             const updated = await toggleFavoriteLib(productId);
-            setIds(updated);
+            dispatch(setWishlistIds(updated));
         } catch (err) {
-            setIds(prev);
+            dispatch(setWishlistIds(prev));
             throw err;
         }
-    }, [ids]);
+    }, [dispatch, ids]);
 
     const state = useMemo(() => ({ ids, loading }), [ids, loading]);
     const actions = useMemo<FavoritesActions>(() => ({ toggle }), [toggle]);
@@ -76,6 +70,3 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
         </FavoritesStateContext.Provider>
     );
 }
-
-export const useFavoritesState = () => useContext(FavoritesStateContext);
-export const useFavoritesActions = () => useContext(FavoritesActionsContext);

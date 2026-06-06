@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext';
-import { useUserState } from '@/contexts/user/UserContext';
+import { useCart } from '../../contexts/useCart';
+import { useUserState } from '@/contexts/user/useUser';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import '../../styles/cart.css';
@@ -14,7 +14,7 @@ const Cart: React.FC = () => {
   const { isLoggedIn } = useUserState();
   const navigate = useNavigate();
 
-  // Lleva al usuario al checkout si está autenticado, o a login si no lo está
+  // Lleva al usuario al envío si está autenticado, o a login si no lo está.
   const handleCheckout = () => {
     if (isLoggedIn) {
       navigate('/checkout');
@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
     }
   };
 
-  // Función para mostrar mensajes tipo "toast" (la necesitan el Header y Footer)
+  // Función para mostrar mensajes simples en Header y Footer.
   const showFeedback = (message: string, type: "info" | "success" | "warning" = "info") => {
     console.log(`Feedback: ${message} (${type})`);
   };
@@ -58,7 +58,7 @@ const Cart: React.FC = () => {
                 <article key={item.id} className="cart-item">
                   <img src={item.imageUrl} alt={item.name} className="cart-item-image" />
                   
-                  {/* Info del producto: marca, nombre y precio */}
+                  {/* Información del producto: marca, nombre y precio */}
                   <div className="cart-item-info">
                     <p className="cart-item-brand">{item.brand}</p>
                     <h2 className="cart-item-name">{item.name}</h2>
@@ -112,13 +112,13 @@ const Cart: React.FC = () => {
                 <span>${total.toFixed(2)}</span>
               </div>
               
-              {/* Botón para ir a la página de checkout */}
+              {/* Botón para ir a datos de envío */}
               <button className="checkout-btn" onClick={handleCheckout}>
                 Ir a Pagar
                 <i className="fa-solid fa-arrow-right"></i>
               </button>
               
-              {/* Link para volver al home y seguir comprando */}
+              {/* Enlace para volver al inicio y seguir comprando */}
               <Link to="/" className="continue-btn" style={{ width: '100%', textAlign: 'center', marginTop: '15px' }}>
                 Continuar Comprando
               </Link>
