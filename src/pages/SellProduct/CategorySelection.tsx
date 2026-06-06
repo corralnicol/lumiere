@@ -12,7 +12,7 @@ const CategorySelection = () => {
             <SellNavbar />
 
             <main className={styles.main}>
-                {/* Banner de Inicio con fondo de imagen */}
+                {/* Sección inicial con fondo de imagen */}
                 <section className={styles.banner}>
                     <div className={styles.bannerContent}>
                         <h2 className={styles.bannerTitle}>Start selling on Lumière Beauty</h2>

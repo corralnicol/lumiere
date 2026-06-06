@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Login.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import AuthFooter from "../../components/Footer/AuthFooter";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useUserState } from "@/contexts/user/useUser";
 import { signIn } from "@/lib/auth";
 
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const user = useUserState();
     const navigate = useNavigate();
     const location = useLocation();
@@ -30,11 +31,21 @@ const Login = () => {
         if (!trimmedEmail || !password) return;
 
         setError("");
-        const errorMsg = await signIn({ email: trimmedEmail, password });
-        if (errorMsg) {
-            setError(errorMsg);
+        setLoading(true);
+
+        try {
+            const result = await signIn({ email: trimmedEmail, password });
+            if (result.error) {
+                setError(result.error);
+            }
+        } catch {
+            setError("Could not sign in. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
+
+    const canSubmit = Boolean(email.trim() && password && !loading);
 
     return (
         <div className={styles.container}>
@@ -122,8 +133,8 @@ const Login = () => {
 
                     {error && <p className={styles.error ?? styles.legalText} style={{ color: 'red' }}>{error}</p>}
 
-                    <button className={styles.loginBtn} onClick={handleLogin}>
-                        Sign in
+                    <button className={styles.loginBtn} onClick={handleLogin} disabled={!canSubmit}>
+                        {loading ? "Signing in..." : "Sign in"}
                     </button>
 
                     <p className={styles.createAccount}>

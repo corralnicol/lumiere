@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, type SubmitEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useUserState } from "@/contexts/user/UserContext";
-import { useCart } from "@/contexts/CartContext";
-import { useFavoritesState } from "@/contexts/favorites/FavoritesContext";
+import { useUserState } from "@/contexts/user/useUser";
+import { useCart } from "@/contexts/useCart";
+import { useFavoritesState } from "@/contexts/favorites/useFavorites";
 import { useProductsByIds } from "@/hooks/useProducts";
 import { getProductImageSrc } from "@/utils/productImages";
 
@@ -110,12 +110,12 @@ function Header({ onFeedback }: HeaderProps) {
     setIsMenuOpen(false);
   };
 
-  // Close favorites dropdown on route change
+  // Cerramos favoritos cuando cambia la ruta.
   useEffect(() => {
     setIsFavOpen(false);
   }, [location.pathname]);
 
-  // Close favorites dropdown on outside click
+  // Cerramos favoritos si el usuario hace clic afuera.
   useEffect(() => {
     if (!isFavOpen) return;
     const handler = (e: MouseEvent) => {

@@ -66,12 +66,11 @@ export function useProduct(id: string | undefined): AsyncState<Product | null> {
 }
 
 export function useProductsByIds(ids: string[]): AsyncState<Product[]> {
-    // Stable dep: serialize ids so effect only re-runs when ids actually change
+    // Usamos una llave simple para recargar solo cuando cambian los ids.
     const key = ids.join(",");
     return useAsync<Product[]>(
         [],
         () => fetchProductsByIds(ids),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [key]
     );
 }

@@ -8,7 +8,7 @@ export interface ProfileData {
   avatarUrl: string;
 }
 
-// Lee los campos de perfil directamente desde profiles (fuente de verdad, sin caché JWT)
+// Lee los datos del perfil desde profiles.
 export async function fetchProfile(userId: string): Promise<ProfileData> {
   const { data, error } = await supabase
     .from('profiles')
@@ -38,8 +38,7 @@ export async function updateProfileName(
   if (error) throw error;
 }
 
-// Sube el avatar al bucket y guarda la URL pública (con cache-bust) en profiles.avatar_url.
-// La ruta está fija por la política RLS: avatars/<uid>.png
+// Sube el avatar y guarda su URL en el perfil.
 export async function uploadAvatar(userId: string, file: File): Promise<string> {
   const path = `avatars/${userId}.png`;
 
@@ -49,7 +48,7 @@ export async function uploadAvatar(userId: string, file: File): Promise<string> 
   if (uploadError) throw uploadError;
 
   const { data } = supabase.storage.from('avatars').getPublicUrl(path);
-  // Cache-bust: misma URL por cada usuario, el navegador/CDN la cachea sin ?t
+  // Agregamos la fecha para que se vea la imagen nueva.
   const bustedUrl = `${data.publicUrl}?t=${Date.now()}`;
 
   const { error: updateError } = await supabase

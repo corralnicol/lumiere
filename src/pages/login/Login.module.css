@@ -248,6 +248,14 @@
     transform: translateY(-1px);
 }
 
+.loginBtn:disabled,
+.loginBtn:disabled:hover {
+    opacity: 0.65;
+    cursor: not-allowed;
+    background-color: #DE7488;
+    transform: none;
+}
+
 /* ─── Enlace "Create one" ─── */
 .createAccount {
     margin: 0;

@@ -1,62 +1,32 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { useUserState } from '@/contexts/user/UserContext';
+import React, { useEffect, useCallback } from 'react';
+import { useUserState } from '@/contexts/user/useUser';
 import { fetchServerCart, saveServerCart, mergeCarts } from '@/lib/cart';
 import type { CartItem as CartItemLib } from '@/lib/cart';
+import { CartContext, GUEST_CART_KEY, type CartItem, type Product } from './cartContextValues';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import {
+  addCartItem,
+  clearCart as clearReduxCart,
+  removeCartItem,
+  setCart,
+  setCartReady,
+  updateCartQuantity,
+} from '@/store/slices/cartSlice';
 
-// Definimos cómo se ve un producto en nuestra tienda
-export interface Product {
-  id: string;
-  category: string;
-  brand: string;
-  name: string;
-  description: string;
-  imageUrl: string;
-  rating: number;
-  price: number;
-  size: string;
-  stock: number;
-}
-
-// Un CartItem es un producto pero con la cantidad que el usuario quiere comprar
-export interface CartItem extends Product {
-  quantity: number;
-}
-
-// Estas son todas las acciones que se pueden hacer con el carrito
-interface CartContextType {
-  cart: CartItem[];
-  addToCart: (product: Product, quantity?: number) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  clearCart: () => void;
-  getCartTotal: () => number;
-  getCartCount: () => number;
-}
-
-const GUEST_CART_KEY = 'lumiere_cart';
-
-// Creamos el contexto para que cualquier componente pueda acceder al carrito
-const CartContext = createContext<CartContextType | undefined>(undefined);
-
-// Este es el componente que envuelve toda la app y comparte el estado del carrito
+// Este componente comparte el carrito con toda la app.
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { id: userId, isLoggedIn, loading: authLoading } = useUserState();
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart.items);
+  const ready = useAppSelector((state) => state.cart.ready);
 
-  // Empezamos con carrito vacío; la hidratación ocurre en el efecto de auth
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  // ready=true una vez que la fuente correcta (servidor o localStorage) fue cargada
-  // Evita que el efecto de persistencia guarde datos antes de la hidratación inicial
-  const [ready, setReady] = useState(false);
-
-  // Efecto de autenticación: hidrata el carrito según el estado de login
-  // Al iniciar sesión: carga el carrito del servidor y mezcla el carrito de invitado
-  // Al cerrar sesión: carga el carrito de invitado desde localStorage
+  // Carga el carrito correcto según si el usuario inició sesión o no.
   useEffect(() => {
     if (authLoading) return;
+    dispatch(setCartReady(false));
 
     if (isLoggedIn && userId) {
-      // Lee el carrito de invitado antes de limpiarlo
+      // Guardamos el carrito de invitado antes de mezclarlo.
       const guestCart = (() => {
         try {
           const saved = localStorage.getItem(GUEST_CART_KEY);
@@ -70,32 +40,32 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
           const serverCart = await fetchServerCart(userId) as CartItem[];
           const merged = mergeCarts(serverCart as CartItemLib[], guestCart as CartItemLib[]) as CartItem[];
-          setCart(merged);
+          dispatch(setCart(merged));
           await saveServerCart(userId, merged as CartItemLib[]);
         } catch (err) {
           console.error('Error al cargar el carrito del servidor:', err);
-          // Fallback: usamos el carrito de invitado si el servidor falla
-          setCart(guestCart);
+          // Si falla Supabase, usamos el carrito local.
+          dispatch(setCart(guestCart));
         }
 
-        // Limpiamos el carrito de invitado una vez que el servidor es la fuente de verdad
+        // Ya quedó guardado en Supabase, entonces limpiamos el local.
         localStorage.removeItem(GUEST_CART_KEY);
-        setReady(true);
+        dispatch(setCartReady(true));
       })();
     } else {
-      // No autenticado: cargamos el carrito de invitado desde localStorage
+      // Si no hay sesión, usamos el carrito del navegador.
       try {
         const saved = localStorage.getItem(GUEST_CART_KEY);
-        setCart(saved ? (JSON.parse(saved) as CartItem[]) : []);
+        dispatch(setCart(saved ? (JSON.parse(saved) as CartItem[]) : []));
       } catch {
-        setCart([]);
+        dispatch(setCart([]));
       }
-      setReady(true);
+      dispatch(setCartReady(true));
     }
-  }, [userId, isLoggedIn, authLoading]);
+  }, [userId, isLoggedIn, authLoading, dispatch]);
 
-  // Efecto de persistencia: guarda el carrito cada vez que cambia
-  // Con debounce de 400ms para usuarios autenticados (evita saturar el servidor con clics +/-)
+  // Guarda el carrito cuando cambia.
+  // Esperamos un poco para no enviar muchos cambios seguidos.
   useEffect(() => {
     if (!ready) return;
 
@@ -114,56 +84,43 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [cart, ready, isLoggedIn, userId]);
 
-  // Función para agregar un producto al carrito
-  // Si el producto ya está, solo le sumamos la cantidad
+  // Agrega un producto o suma cantidad si ya existe.
   const addToCart = useCallback((product: Product, quantity = 1) => {
     const amount = Math.max(1, Math.floor(quantity));
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + amount } : item
-        );
-      }
-      return [...prevCart, { ...product, quantity: amount }];
-    });
-  }, []);
+    dispatch(addCartItem({ product, quantity: amount }));
+  }, [dispatch]);
 
-  // Para eliminar un producto del carrito por completo
+  // Elimina un producto del carrito.
   const removeFromCart = useCallback((productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-  }, []);
+    dispatch(removeCartItem(productId));
+  }, [dispatch]);
 
-  // Para cambiar la cantidad de un producto (por ejemplo con los botones + y -)
-  // Si la cantidad llega a 0, lo eliminamos
+  // Cambia la cantidad de un producto.
+  // Si queda en cero, se elimina.
   const updateQuantity = useCallback((productId: string, quantity: number) => {
     if (quantity <= 0) {
-      setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+      dispatch(removeCartItem(productId));
       return;
     }
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
-  }, []);
+    dispatch(updateCartQuantity({ productId, quantity }));
+  }, [dispatch]);
 
-  // Para vaciar todo el carrito (se usa al finalizar la compra)
+  // Vacía el carrito después de comprar.
   const clearCart = useCallback(() => {
-    setCart([]);
-  }, []);
+    dispatch(clearReduxCart());
+  }, [dispatch]);
 
-  // Calcula el precio total sumando precio * cantidad de cada producto
+  // Calcula el total del carrito.
   const getCartTotal = useCallback(() => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   }, [cart]);
 
-  // Cuenta cuántos productos hay en total en el carrito
+  // Cuenta todos los productos del carrito.
   const getCartCount = useCallback(() => {
     return cart.reduce((count, item) => count + item.quantity, 0);
   }, [cart]);
 
-  // Compartimos el carrito y las funciones con toda la aplicación
+  // Compartimos el carrito y sus acciones.
   return (
     <CartContext.Provider
       value={{
@@ -179,13 +136,4 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       {children}
     </CartContext.Provider>
   );
-};
-
-// Este hook nos permite usar el carrito desde cualquier componente fácilmente
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (context === undefined) {
-    throw new Error('useCart debe usarse dentro de un CartProvider');
-  }
-  return context;
 };

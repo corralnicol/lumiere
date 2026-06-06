@@ -242,6 +242,14 @@
     transform: translateY(-1px);
 }
 
+.createBtn:disabled,
+.createBtn:disabled:hover {
+    opacity: 0.65;
+    cursor: not-allowed;
+    background-color: #DE7488;
+    transform: none;
+}
+
 /* ─── Enlace volver al login ─── */
 .loginRedirect {
     margin: 0;

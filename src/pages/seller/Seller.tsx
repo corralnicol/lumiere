@@ -3,7 +3,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import "./Seller.css";
 import { Link } from "react-router-dom";
-import { useUserState } from "@/contexts/user/UserContext";
+import { useUserState } from "@/contexts/user/useUser";
 
 type FeedbackType = "info" | "success" | "warning";
 

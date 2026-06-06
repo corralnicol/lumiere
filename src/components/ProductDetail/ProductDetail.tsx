@@ -8,9 +8,9 @@ import {
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
-import { useCart } from "@/contexts/CartContext";
-import { useUserState } from "@/contexts/user/UserContext";
-import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/FavoritesContext";
+import { useCart } from "@/contexts/useCart";
+import { useUserState } from "@/contexts/user/useUser";
+import { useFavoritesState, useFavoritesActions } from "@/contexts/favorites/useFavorites";
 import { addReview } from "@/lib/products";
 import type { Product, ProductReview } from "@/types/products";
 
@@ -304,7 +304,7 @@ export default function ProductDetailPage({
                                 ))}
                             </div>
 
-                            <p>({product.reviews.length})</p>
+                            <p>({reviews.length})</p>
                         </div>
 
                         <p className="detail-price">${Number(product.price).toFixed(2)}</p>

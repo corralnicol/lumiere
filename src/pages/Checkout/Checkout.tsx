@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext';
-import { useUserState } from '@/contexts/user/UserContext';
+import { useCart } from '../../contexts/useCart';
+import { useUserState } from '@/contexts/user/useUser';
 import { supabase } from '@/lib/supabase';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -14,7 +14,7 @@ interface ProfileInfo {
   phone: string;
 }
 
-// Página de checkout
+// Página de datos de envío.
 // Aquí el usuario llena sus datos de envío y revisa el resumen de su pedido antes de pagar
 const Checkout: React.FC = () => {
   const { cart, getCartTotal } = useCart();
@@ -29,7 +29,7 @@ const Checkout: React.FC = () => {
     }
   }, [authLoading, isLoggedIn, navigate]);
 
-  // Datos del perfil cargados desde Supabase (solo lectura en el checkout)
+  // Datos del perfil cargados desde Supabase.
   const [profile, setProfile] = useState<ProfileInfo | null>(null);
 
   // Solo dirección, ciudad y departamento son editables (los datos personales vienen del perfil)
@@ -55,7 +55,7 @@ const Checkout: React.FC = () => {
             email: data.email ?? '',
             phone: data.phone ?? '',
           });
-          // Pre-llenar campos de dirección si ya fueron guardados en el perfil
+          // Llenamos la dirección si ya estaba guardada en el perfil.
           setFormData({
             address: data.address ?? '',
             city: data.city ?? '',
@@ -98,7 +98,7 @@ const Checkout: React.FC = () => {
       ...formData,
     }));
 
-    // Persistimos la dirección en el perfil (best-effort: si falla, igual avanzamos al pago)
+    // Intentamos guardar la dirección en el perfil. Si falla, igual dejamos seguir al pago.
     if (userId) {
       try {
         await supabase
@@ -168,7 +168,7 @@ const Checkout: React.FC = () => {
           </div>
         </div>
 
-        {/* Link para volver al carrito */}
+        {/* Enlace para volver al carrito */}
         <Link to="/cart" className="back-link">
           <i className="fa-solid fa-arrow-left"></i>
           Volver al Carrito
